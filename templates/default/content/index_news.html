@@ -50,7 +50,10 @@
 				                         {/foreach}
 										</div>
 										<div class="title">{$vs.title}</div>
-										<div class="time">By {$vs.author} <!--  .  <span name="_time">{$vs.create_time}</span> day ago --></div>
+										<div class="time">{php} 
+												$obj = json_decode($vs,true);
+												echo date('Y-m-d',$obj['create_time']); 
+											{/php} By {$vs.author}</div>
 										<p>{$vs.description}</p>
 									</div>
 								</a>
