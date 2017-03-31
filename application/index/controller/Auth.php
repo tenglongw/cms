@@ -86,22 +86,49 @@ class Auth extends \app\index\controller\Common
     
     public function getSignPackage(){
     	include('JSSDK.php');
-    	$jssdk = new \JSSDK('wx094cb8caa0e2b77a', '380c61170ec343df389852621f612e0d');
+    	$jssdk = new \JSSDK('wx037f50b90883a846', '077b8f55057c5a6ca0ab7c6544bd1944');
     	$data = $jssdk->getSignPackage();
     	$result['data'] = $data;
     	echo json_encode($result);exit;
     }
     
-    public function openOauth2(){
-    	include('JSSDK.php');
-    	$jssdk = new \JSSDK('wx094cb8caa0e2b77a', '380c61170ec343df389852621f612e0d');
-    	$source_url = $_GET['source_url'];
+    public function qqCallBack(){
     	if (isset($_GET['code'])){
-    		$res = $jssdk->getaccess_tken($_GET['code']);
-    		echo json_encode($res);exit;
-    		if($res['openid']){
-    			$userInfo = $jssdk->getUserInfo($res['access_token'],$res['openid']);
-    			$id = $this->updateUserInfo($userInfo);
+    		$qc = new \QC();
+    		$acess_toke = $qc->get_access_token();
+    		echo print_r($acess_toke);exti;
+    		if($acess_toke){
+    			$openid = $qc->get_openid();
+//     			$userInfo = $jssdk->getUserInfo($res['access_token'],$res['openid']);
+//     			$id = $this->updateUserInfo($userInfo);
+    			// 清空session
+    			\think\Session::clear();
+    			// 写入新session
+//     			session('user_id', $id);
+//     			session('user_nickname', $row['nickname']);
+//     			session('user_avatar', $row['headimgurl']);
+//     			$this->assign('user',$row);
+    			\think\Session::clear('go');
+    			Header("HTTP/1.1 303 See Other");
+    		}else{
+    			$this->error('授权出错,请重新授权!');
+    		}
+    	}else{
+			echo "NO CODE";
+		}
+    }
+    
+    public function mobile_auth(){
+    	include('class_weixin_adv.php');
+    	$weixin= new \class_weixin_adv("wx037f50b90883a846", "077b8f55057c5a6ca0ab7c6544bd1944");
+    	$source = $_GET['source'];
+    	if (isset($_GET['code'])){
+    		$url="https://api.weixin.qq.com/sns/oauth2/access_token?appid=wx037f50b90883a846&secret=077b8f55057c5a6ca0ab7c6544bd1944&code=".$_GET['code']."&grant_type=authorization_code";
+    		$res = $weixin->https_request($url);
+    		$res=(json_decode($res, true));
+    		$row=$weixin->get_user_info($res['openid'],$res['access_token']);
+    		if ($row['openid']) {
+    			$id = $this->updateUserInfo($row);
     			// 清空session
     			\think\Session::clear();
     			// 写入新session
@@ -111,19 +138,15 @@ class Auth extends \app\index\controller\Common
     			$this->assign('user',$row);
     			\think\Session::clear('go');
     			Header("HTTP/1.1 303 See Other");
-    			Header("Location: $source_url");exit;
+    			Header("Location: $source");exit;
     		}else{
     			$this->error('授权出错,请重新授权!');
     		}
     	}else{
-			echo "NO CODE";
-		}
-    }
-    
-    public function getUserInfo(){
-    	include('JSSDK.php');
-    	$jssdk = new \JSSDK('wx094cb8caa0e2b77a', '380c61170ec343df389852621f612e0d');
-    	$data = $jssdk->getUserInfo();
+    		echo "NO CODE";
+    	}
+    	
+    	
     	$result['data'] = $data;
     	echo json_encode($result);exit;
     }
@@ -179,7 +202,7 @@ class Auth extends \app\index\controller\Common
     	$m = \think\Db::name('user');
     	
     	$where = array(
-    			'unionid' => $row['unionid'],
+    			'openid' => $row['openid'],
     	);
     	$m1 = new \app\admin\model\User();
     	if ($user = $m1->where($where)->find()) {
@@ -201,7 +224,7 @@ class Auth extends \app\index\controller\Common
     				'nickname' => $row['nickname'],
     				'email' => 'weixin@qq.com',
     				'avatar' => $row['headimgurl'],
-    				'unionid' => $row['unionid'],
+    				'openid' => $row['openid'],
     				'salt' => 'weixin',
     				'password' => crypt_pwd($row['nickname'], $salt),
     				'create_time' => time(),

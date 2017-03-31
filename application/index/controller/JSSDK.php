@@ -29,7 +29,7 @@ class JSSDK{
     return $signPackage; 
   }
   
-  public function getaccess_tken($code){
+  public function getaccess_token($code){
   	$url = 'https://api.weixin.qq.com/sns/oauth2/access_token?appid='.$this->appId.'&secret='.$this->appSecret.'&code='.$code.'&grant_type=authorization_code';
   	$res = json_decode($this->httpGet($url));
   	return res;

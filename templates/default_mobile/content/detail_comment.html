@@ -2,6 +2,16 @@
 <script>
     Namespace.register("EBCMS.CONTENT");
 </script>
+<script type="text/javascript">
+
+	//QQ登录
+	//微信登录
+	var href = window.location.href;
+	$(function(){
+		var wiloginUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx037f50b90883a846&redirect_uri=http://www.long7.com/wxAuth?source='+href+'&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect';
+		$('.wx').attr('href',wiloginUrl);
+	});
+</script>
 	<section class="comment">
 	
 	<div class="logoin" id="logoin">
@@ -64,13 +74,17 @@
 	
 					<div class="imgC">
 	
-						<img src="{:get_root()}/static/index/mobile/images/ku/img_06.png">
+						{if condition="session('?user_avatar')"} 
+						    <img src="{php} echo session('user_avatar'){/php}">
+							{else /}
+								<img src="{:get_root()}/static/index/new/images/public/icon.jpg">
+							{/if}
 	
 					</div>
 	
 					<div class="text">
 	
-						<textarea rows="5" name="content" placeholder="随便说点什么吧...."></textarea>
+						<textarea rows="5" id="content"  name="content" placeholder="随便说点什么吧...."></textarea>
 			
 					</div>
 	
@@ -78,7 +92,7 @@
 	
 				<div class="butC clearfloat">
 	
-					<div class="line">{$content.comment_count}条评论</div>
+					<div class="line"><span id="comment_count">{$content.comment_count}</span>条评论</div>
 	
 					<button type="button" id="commit" class="but">评论</button>
 				</div>
@@ -110,8 +124,15 @@
             };
             $('#commit').on('click',function(){
             	var log_state = $('#log_state').val();
+            	var content = $('#content').val();
             	if(log_state == 1){
-            		$('#comment_form').submit();
+            		if('' != content && content.length>0){
+	            		$('#comment_form').submit();
+	            		var comment_count = $('#comment_count').html();
+	            		$('#comment_count').html(parseInt(comment_count)+1);
+            		}else{
+            			CnAlert('评论内容不能为空！');
+            		}
             	}else{
             		$('#logoin').show();
             	}
@@ -236,6 +257,7 @@
                 }
             };
         });
+        EBCMS.CONTENT.loadcomment();
     });
 </script>
 	<script id="comment-item" type="text/html">
@@ -247,14 +269,14 @@
 
 				<li class="clearfloat" id="comment_id_[[v.id]]">
 
-					<div class="imgc"><img src="{:get_root()}/static/index/image/avatar.gif"></div>
+					<div class="imgc"><img src="[[v.user.avatar]]"></div>
 
 					<div class="word">
 
 						<div class="name">[[v.user.nickname]]</div>
 
 						<p>[[v.content]]</p>
-
+						<span name="time_format" class="time">[[v.create_date]]</span>
 					</div>
 
 				</li>
