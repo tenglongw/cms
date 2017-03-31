@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+    <div class="panel-heading"><a href="{:url('index/link/apply')}" class="pull-right">申请</a>友情链接</div>
+    <div class="panel-body">
+        {ebcms:link limit='10' return='data'/}
+        {foreach name="data" item="vo" }
+             <a href="{$vo.url}" target='_blank'>{$vo.title}</a> 
+        {/foreach}
+    </div>
+</div>

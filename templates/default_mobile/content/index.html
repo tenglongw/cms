@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{include file='common/head' /}
+<body>
+{include file='common/header' /}
+<div class="row">
+    <div class="col-md-9">
+        <ul class="media-list artilelist">
+            {foreach name='lists' item='vo'}
+            <li class="media">
+                <div class="media-left hidden-xs hidden-sm">
+                    <a href="{$vo.url}">
+                        <img class="media-object" src="{$vo.thumb|thumb=200,160,3}" alt="{$vo.title}">
+                    </a>
+                </div>
+                <div class="media-body">
+                    <h3 class="media-heading "><strong><a href="{$vo.url}" class="text-danger">{$vo.shorttitle}</a></strong></h3>
+                    <p class="desc">{$vo.description}</p>
+                </div>
+            </li>
+            {/foreach}
+        </ul>
+        {$page}
+    </div>
+    <div class="col-md-3">
+            {include file='common/categorys' /}
+    </div>
+</div>
+{include file='common/footer' /}

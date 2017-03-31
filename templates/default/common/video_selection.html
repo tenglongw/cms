@@ -1,0 +1,5 @@
+{ebcms:recommend mark='shipin_selection' limit='5' return='data'/}<div class="listOne">
+	<div class="IdheadTow">视频精选</div>
+	<ul class="onlist clearfloat">        			{foreach name='data' item='vo'}        				<li>							<a href="{$vo.url}">											<div class="imgC"><img src="{$vo.thumb|thumb=470,355}"></div>											<div class="fud">												<p>{$vo.title} </p>											</div>										</a>						</li>     			{/foreach}
+	</ul>
+</div>

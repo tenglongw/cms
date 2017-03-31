@@ -1,0 +1,177 @@
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.queryParams = {
+            page:1,
+            rows:20,
+            model:'admin/user',
+            with:'group'
+        };
+        EBCMS.{$namespace}.refresh = function refresh(p){
+            if (p) {
+                $.each(p, function(index, val) {
+                    if (typeof val == 'object') {
+                        EBCMS.{$namespace}.queryParams[index] = $.extend(EBCMS.{$namespace}.queryParams[index], p[index]);
+                        delete p[index];
+                    };
+                });
+                $.extend(EBCMS.{$namespace}.queryParams, p);
+            };
+            EBCMS.CORE.api({
+                queryParams:EBCMS.{$namespace}.queryParams,
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_table',
+                compileAfter:function(p){
+                    EBCMS.FN.renderPage({
+                        namespace:'{$namespace}',
+                        total:p.data.total,
+                    });
+                    EBCMS.FN.renderFilter({
+                        namespace:'{$namespace}',
+                        filter:{
+                            search:{
+                                field:'email|nickname|motto',
+                                value:''
+                            },
+                            lock:{
+                                field:'locked',
+                            },
+                            status:{
+                                field:'status',
+                            },
+                            order:{
+                                filters:{id:'id',login_times:'登录次数',login_time:'最后登录时间',update_time:'更新时间',sort:'权重'}
+                            },
+                            rows:true,
+                        }
+                    });
+                },
+            });
+        };
+        EBCMS.{$namespace}.edit = function edit(id){
+            EBCMS.CORE.get({
+                url:'{:url('admin/user/edit')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.{$namespace}.add = function add(pid){
+            EBCMS.CORE.get({
+                url:'{:url('admin/user/add')}',
+                target:'#lgModal .modal-content',
+            });
+        };
+        /*分配用户组*/
+        EBCMS.{$namespace}.group = function group(id){
+            EBCMS.CORE.get({
+                url:'{:url('admin/user/group')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        /*重置密码*/
+        EBCMS.{$namespace}.password = function password(id){
+            EBCMS.MSG.confirm('确定重置密码？<br/>重置连接将以邮件的形式发送给用户！',function(){
+                EBCMS.CORE.submit({
+                    url:'{:url('admin/user/password')}',
+                    queryParams:{
+                        id:id,
+                    },
+                    success:function(res){
+                        if (!res.code) {
+                            EBCMS.MSG.alert(res.msg);
+                        }else{
+                            EBCMS.MSG.notice(res.msg);
+                        };
+                    }
+                });
+            });
+        };
+        EBCMS.CORE.compile({
+            tpl:'{$namespace}-box',
+            target:'#{$namespace}_box',
+            compileAfter:function(){
+                EBCMS.{$namespace}.refresh();
+            }
+        });
+    });
+</script>
+
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div class="footer-page" id="{$namespace}_filter"></div>
+        <div class="header-title" onclick="EBCMS.{$namespace}.refresh();">会员管理</div>
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="EBCMS.CORE.getconfig('{:eb_encrypt('name|user')}');">设置</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.add();">添加</button>
+        </div>
+    </div>
+    <div class="body">
+        <div id="{$namespace}_table" class="box"></div>
+    </div>
+    <div class="footer">
+        <div id="{$namespace}_page" class="footer-page"></div>
+    </div>
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    <table class="table table-bordered table-hover table-ebcms">
+        <tbody>
+            <tr>
+                <th style="width:70px;">id</th>
+                <th style="width:320px;">操作</th>
+                <th>昵称</th>
+                <th>角色</th>
+                <th>邮箱</th>
+            </tr>
+            [[each rows as v n]]
+                <tr>
+                    <td>[[v.id]]</td>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                        [[if access('{:mca('lock')}',0)]]
+                            [[if v.locked==1]]
+                            <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('admin/user/lock')}','[[v.id]]','0','{$namespace}');">已锁</button>
+                            [[else]]
+                            <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('admin/user/lock')}','[[v.id]]','1','{$namespace}');">未锁</button>
+                            [[/if]]
+                        [[/if]]
+                        [[if access('{:mca('status')}',v.locked)]]
+                            [[if v.status==1]]
+                            <button class="btn btn-primary" onclick="EBCMS.ACT.status('{:url('admin/user/status')}','[[v.id]]','0','{$namespace}');">已审</button>
+                            [[else]]
+                            <button class="btn btn-warning" onclick="EBCMS.ACT.status('{:url('admin/user/status')}','[[v.id]]','1','{$namespace}');">未审</button>
+                            [[/if]]
+                        [[/if]]
+                        [[if access('{:mca('edit')}',v.locked)]]
+                        <button class="btn btn-primary" onclick="EBCMS.{$namespace}.edit('[[v.id]]');">编辑</button>
+                        [[/if]]
+                        [[if access('{:mca('group')}',v.locked)]]
+                        <button class="btn btn-primary" onclick="EBCMS.{$namespace}.group('[[v.id]]');">角色</button>
+                        [[/if]]
+                        [[if access('{:mca('password')}',v.locked)]]
+                        <button class="btn btn-primary" onclick="EBCMS.{$namespace}.password('[[v.id]]');">重置密码</button>
+                        [[/if]]
+                        [[if access('{:mca('delete')}',v.locked)]]
+                        <button class="btn btn-primary" onclick="EBCMS.ACT.del('{:url('admin/user/delete')}','[[v.id]]','{$namespace}');">删除</button>
+                        [[/if]]
+                        </div>
+                    </td>
+                    <td><button class="btn btn-xs" onclick="EBCMS.CORE.userinfo('[[v.id]]');">[[v.nickname]]</button></td>
+                    <td>
+                        [[each v.group as role index]]
+                        [[role.title]],
+                        [[/each]]
+                    </td>
+                    <td>
+                        [[v.email]]
+                    </td>
+                </tr>
+            [[/each]]
+        </tbody>
+    </table>
+</script>

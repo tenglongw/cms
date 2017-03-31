@@ -1,0 +1,101 @@
+{php}$namespace = ns();{/php}
+<div class="box" id="{$namespace}_box"></div>
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.queryParams = {
+            page:1,
+            rows:10,
+        };
+        EBCMS.{$namespace}.refresh = function refresh(p){
+            if (p) {
+                $.each(p, function(index, val) {
+                    if (typeof val == 'object') {
+                        EBCMS.{$namespace}.queryParams[index] = $.extend(EBCMS.{$namespace}.queryParams[index], p[index]);
+                        delete p[index];
+                    };
+                });
+                $.extend(EBCMS.{$namespace}.queryParams, p);
+            };
+            EBCMS.CORE.load({
+                url:'{:url('admin/upgrade/index')}',
+                queryParams:EBCMS.{$namespace}.queryParams,
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_table',
+                compileAfter:function(p){
+                    EBCMS.FN.renderPage({
+                        namespace:'{$namespace}',
+                        total:p.data.total,
+                    });
+                },
+            });
+        };
+        EBCMS.{$namespace}.upgrade = function upgrade(tips){
+            if (tips) {
+                var x = artDialog.tips('提交中...',5);
+            }
+            EBCMS.CORE.get({
+                url:'{:url('admin/upgrade/upgrade')}',
+                target:'#lgModal .modal-content',
+                loadAfter:function(data){
+                    if (tips) {
+                        x.close();
+                    }
+                }
+            });
+        };
+        EBCMS.CORE.compile({
+            tpl:'{$namespace}-box',
+            target:'#{$namespace}_box',
+            compileAfter:function(){
+                EBCMS.{$namespace}.refresh();
+            }
+        });
+    });
+</script>
+
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div class="header-title" onclick="EBCMS.{$namespace}.refresh();">系统升级</div>
+        <div id="{$namespace}_filter" class="footer-page"></div>
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="EBCMS.CORE.getconfig('{:eb_encrypt('name|upgrade')}');">设置</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.upgrade();">升级</button>
+        </div>
+    </div>
+    <div class="body">
+        <div id="{$namespace}_table" class="box"></div>
+    </div>
+    <div class="footer">
+        <div id="{$namespace}_page" class="footer-page"></div>
+    </div>
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    <table class="table table-bordered table-hover table-ebcms">
+        <tbody>
+            <tr>
+                <th style="width:210px;">操作</th>
+                <th>版本号</th>
+                <th>更新内容</th>
+            </tr>
+            [[include '{$namespace}-table-item' data]]
+        </tbody>
+    </table>
+</script>
+
+<script id="{$namespace}-table-item" type="text/html">
+    [[each rows as v n]]
+        <tr>
+            <td>
+                <div class="btn-group btn-group-sm">
+                [[if access('{:mca('edit')}',v.locked) && v.id == next]]
+                <button class="btn btn-primary" onclick="EBCMS.{$namespace}.upgrade();">更新</button>
+                [[/if]]
+                </div>
+            </td>
+            <td>[[v.version]]</td>
+            <td>[[#v.content | htmlspecialchars_decode]]</td>
+        </tr>
+    [[/each]]
+</script>

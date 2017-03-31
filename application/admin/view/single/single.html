@@ -1,0 +1,147 @@
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.queryParams = {
+            page:1,
+            rows:20,
+            order:{
+                'sort':'desc',
+                'id':'asc',
+            },
+            model:'admin/single',
+        };
+        EBCMS.{$namespace}.refresh = function refresh(p){
+            if (p) {
+                $.each(p, function(index, val) {
+                    if (typeof val == 'object') {
+                        EBCMS.{$namespace}.queryParams[index] = $.extend(EBCMS.{$namespace}.queryParams[index], p[index]);
+                        delete p[index];
+                    };
+                });
+                $.extend(EBCMS.{$namespace}.queryParams, p);
+            };
+            EBCMS.CORE.api({
+                queryParams:EBCMS.{$namespace}.queryParams,
+                group:'group',
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_box',
+                compileAfter:function(){
+                    $('.hide-bar').parent().height($('.hide-bar').parent().height()).css('overflow','hidden');
+                    $('.hide-bar').parent().hover(function() {
+                        $(this).find('.hide-bar').show();
+                        $(this).find('.hide-bar').animate({bottom:$(this).find('.hide-bar').height()});
+                    }, function() {
+                        $(this).find('.hide-bar').animate({bottom:'0px'});
+                    });
+
+                    $('#{$namespace}_box').find('.input_sort').focus(function(){
+                        EBCMS.{$namespace}.sortvalue = $(this).val();
+                    }).blur(function(){
+                        var $this = $(this);
+                        if ($this.val() != EBCMS.{$namespace}.sortvalue) {
+                            EBCMS.ACT.togglefield('{:url('admin/single/resort')}',$this.data('id'),$this.val(),'{$namespace}','resort');
+                        };
+                    });
+
+                }
+            });
+        };
+        EBCMS.{$namespace}.edit = function edit(id){
+            EBCMS.CORE.get({
+                url:'{:url('admin/single/edit')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.{$namespace}.add = function add(group){
+            EBCMS.CORE.get({
+                url:'{:url('admin/single/add')}',
+                queryParams:{
+                    group:group,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.{$namespace}.refresh();
+    });
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    <br>
+    <div class="col-md-12">
+        <button class="btn btn-primary" onclick="EBCMS.{$namespace}.add();">添加</button>
+        <hr>
+        <div class="alert alert-danger">
+            <p>单页功能是对内容模块的一个补充。支持自定义扩展，支持自选模板，支持自定义路径。用单页功能可以制作出独特的页面。</p>
+        </div>
+    </div>
+    <div class="col-md-12">
+        [[each groups as data group]]
+        <div class="panel panel-default">
+            <div class="panel-heading">[[group]]</div>
+            <div class="panel-body">
+                [[include '{$namespace}-table-item' data]]
+            </div>
+            <div class="panel-footer">
+                <button class="btn btn-primary btn-sm" onclick="EBCMS.{$namespace}.add('[[group]]');">添加</button>
+            </div>
+        </div>
+        [[/each]]
+    </div>
+</script>
+<style>
+    .hide-bar button{
+        margin: 5px auto;
+    }
+</style>
+<script id="{$namespace}-table-item" type="text/html">
+    [[each rows as v n]]
+        <div class="thumbnail" style="width:180px;float:left;margin:10px;cursor: pointer;">
+            <div style="width:100%;height:100px;background:#FF630E;">
+                <div style="width:100%;height:100px;line-height:100px;color:#fff;font-size:30px;text-align:center;overflow:hidden;">[[v.title]]</div>
+                <div class="hide-bar" >
+                    <div style="padding:5px;">
+                        [[if access('{:mca('lock')}',0)]]
+                            [[if v.locked==1]]
+                            <button class="btn btn-default btn-xs" onclick="EBCMS.ACT.lock('{:url('admin/single/lock')}','[[v.id]]','0','{$namespace}');">已锁</button>
+                            [[else]]
+                            <button class="btn btn-default btn-xs" onclick="EBCMS.ACT.lock('{:url('admin/single/lock')}','[[v.id]]','1','{$namespace}');">未锁</button>
+                            [[/if]]
+                        [[/if]]
+                        [[if access('{:mca('status')}',v.locked)]]
+                            [[if v.status==1]]
+                            <button class="btn btn-default btn-xs" onclick="EBCMS.ACT.status('{:url('admin/single/status')}','[[v.id]]','0','{$namespace}');">已审</button>
+                            [[else]]
+                            <button class="btn btn-warning btn-xs" onclick="EBCMS.ACT.status('{:url('admin/single/status')}','[[v.id]]','1','{$namespace}');">未审</button>
+                            [[/if]]
+                        [[/if]]
+                        [[if access('{:mca('edit')}',v.locked)]]
+                        <button class="btn btn-default btn-xs" onclick="EBCMS.{$namespace}.edit('[[v.id]]');">编辑</button>
+                        [[/if]]
+                        [[if access('{:mca('delete')}',v.locked)]]
+                        <button class="btn btn-default btn-xs" onclick="EBCMS.ACT.del('{:url('admin/single/delete')}','[[v.id]]','{$namespace}');">删除</button>
+                        [[/if]]
+                        [[if access('{:mca('push','recommend')}',0)]]
+                        <button class="btn btn-default btn-xs" onclick="EBCMS.CORE.recommend({
+                            model:'single/single',
+                            id:'[[v.id]]',
+                            thumb:'[[v.thumb]]',
+                            url:'[[v.ebcms_url]]',
+                            title:'[[v.shorttitle | escape]]',
+                            description:'[[v.description | escape]]'
+                            });">推送</button>
+                        [[/if]]
+                    </div>
+                </div>
+            </div>
+            <!-- <br> -->
+            <div style="height:5px;clear:both;"></div>
+            <div class="input-group">
+              <span class="input-group-addon">排序</span>
+              <input type="text" class="form-control input-sm input_sort" data-id="[[v.id]]" value="[[v.sort]]" placeholder="越大越靠前">
+            </div>
+        </div>
+    [[/each]]
+</script>

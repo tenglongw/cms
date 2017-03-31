@@ -1,0 +1,178 @@
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.queryParams = {
+            order:{
+                'sort':'desc',
+            },
+            model:'admin/group',
+        };
+        EBCMS.{$namespace}.refresh = function refresh(p){
+            if (p) {
+                $.each(p, function(index, val) {
+                    if (typeof val == 'object') {
+                        EBCMS.{$namespace}.queryParams[index] = $.extend(EBCMS.{$namespace}.queryParams[index], p[index]);
+                        delete p[index];
+                    };
+                });
+                $.extend(EBCMS.{$namespace}.queryParams, p);
+            };
+            EBCMS.CORE.api({
+                queryParams:EBCMS.{$namespace}.queryParams,
+                group:'group',
+                tree:true,
+                treelevel:true,
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_table',
+                compileAfter:function(data){
+                    $('#{$namespace}_table').find('.input_sort').focus(function(){
+                        EBCMS.{$namespace}.sortvalue = $(this).val();
+                    }).blur(function(){
+                        var $this = $(this);
+                        if ($this.val() != EBCMS.{$namespace}.sortvalue) {
+                            EBCMS.ACT.togglefield('{:url('admin/group/resort')}',$this.data('id'),$this.val(),'{$namespace}','resort');
+                        };
+                    });
+                    EBCMS.FN.renderFilter({
+                        namespace:'{$namespace}',
+                        filter:{
+                            search:{
+                                field:'group|title|description',
+                                value:''
+                            },
+                            lock:{
+                                field:'locked',
+                            },
+                            status:{
+                                field:'status',
+                            },
+                            order:{
+                                filters:{id:'id',update_time:'更新时间',sort:'权重'}
+                            },
+                        }
+                    });
+                },
+            });
+        };
+        EBCMS.{$namespace}.edit = function edit(id){
+            EBCMS.CORE.get({
+                url:'{:url('admin/group/edit')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.{$namespace}.add = function add(pid){
+            EBCMS.CORE.get({
+                url:'{:url('admin/group/add')}',
+                queryParams:{
+                    pid:pid,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        /*分配用户组*/
+        EBCMS.{$namespace}.rule = function rule(id){
+            EBCMS.CORE.get({
+                url:'{:url('admin/group/rule')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        /*分配功能*/
+        EBCMS.{$namespace}.menu = function menu(id){
+            EBCMS.CORE.get({
+                url:'{:url('admin/group/menu')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.CORE.compile({
+            tpl:'{$namespace}-box',
+            target:'#{$namespace}_box',
+            compileAfter:function(){
+                EBCMS.{$namespace}.refresh();
+            }
+        });
+    });
+</script>
+
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div class="footer-page" id="{$namespace}_filter"></div>
+        <div class="header-title" onclick="EBCMS.{$namespace}.refresh();">角色管理</div>
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.add();">添加</button>
+        </div>
+    </div>
+    <div class="body" style="bottom:0px;">
+        <div class="box" id="{$namespace}_table"></div>
+    </div>
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    <table class="table table-bordered table-hover table-ebcms">
+        <tbody>
+            <tr>
+                <!-- <th style="width:70px;">id</th> -->
+                <th style="width:290px;">操作</th>
+                <th>名称</th>
+                <th>排序</th>
+            </tr>
+            [[each groups as rows group]]
+            <tr>
+                <th colspan="4">[[group]]</th>
+            </tr>
+                [[include '{$namespace}-table-item' rows]]
+            [[/each]]
+        </tbody>
+    </table>
+</script>
+
+<script id="{$namespace}-table-item" type="text/html">
+    [[each rows as v n]]
+        <tr>
+            <!-- <td>[[v.id]]</td> -->
+            <td>
+                <div class="btn-group btn-group-sm">
+                [[if access('{:mca('lock')}',0)]]
+                    [[if v.locked==1]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('admin/group/lock')}','[[v.id]]','0','{$namespace}');">已锁</button>
+                    [[else]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('admin/group/lock')}','[[v.id]]','1','{$namespace}');">未锁</button>
+                    [[/if]]
+                [[/if]]
+                [[if access('{:mca('status')}',v.locked)]]
+                    [[if v.status==1]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.status('{:url('admin/group/status')}','[[v.id]]','0','{$namespace}');">已审</button>
+                    [[else]]
+                    <button class="btn btn-warning" onclick="EBCMS.ACT.status('{:url('admin/group/status')}','[[v.id]]','1','{$namespace}');">未审</button>
+                    [[/if]]
+                [[/if]]
+                [[if access('{:mca('edit')}',v.locked)]]
+                <button class="btn btn-primary" onclick="EBCMS.{$namespace}.edit('[[v.id]]');">编辑</button>
+                [[/if]]
+                [[if access('{:mca('rule')}',v.locked)]]
+                <button class="btn btn-primary" onclick="EBCMS.{$namespace}.rule('[[v.id]]');">权限</button>
+                [[/if]]
+                [[if access('{:mca('menu')}',v.locked)]]
+                <button class="btn btn-primary" onclick="EBCMS.{$namespace}.menu('[[v.id]]');">功能</button>
+                [[/if]]
+                [[if access('{:mca('delete')}',v.locked)]]
+                <button class="btn btn-primary" onclick="EBCMS.ACT.del('{:url('admin/group/delete')}','[[v.id]]','{$namespace}');">删除</button>
+                [[/if]]
+                </div>
+            </td>
+            <td>[[v.levelstr]][[v.title]]</td>
+            <td><input value="[[v.sort]]" class="form-control input-sm input_sort" data-id="[[v.id]]"></td>
+        </tr>
+        [[if v.rows]]
+            [[include '{$namespace}-table-item' v]]
+        [[/if]]
+    [[/each]]
+</script>

@@ -1,0 +1,442 @@
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.queryParams = {
+            page:1,
+            rows:20,
+            order:{
+                'content.id':'desc',
+            },
+            model:'content/content',
+            with:'category'
+        };
+        EBCMS.{$namespace}.refresh = function refresh(p){
+            if (p) {
+                $.each(p, function(index, val) {
+                    if (typeof val == 'object') {
+                        EBCMS.{$namespace}.queryParams[index] = $.extend(EBCMS.{$namespace}.queryParams[index], p[index]);
+                        delete p[index];
+                    };
+                });
+                $.extend(EBCMS.{$namespace}.queryParams, p);
+            };
+            EBCMS.CORE.api({
+                queryParams:EBCMS.{$namespace}.queryParams,
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_table',
+                compileAfter:function(p){
+                    $('#{$namespace}_table').find('.input_sort').focus(function(){
+                        EBCMS.{$namespace}.sortvalue = $(this).val();
+                    }).blur(function(){
+                        var $this = $(this);
+                        if ($this.val() != EBCMS.{$namespace}.sortvalue) {
+                            EBCMS.ACT.togglefield('{:url('content/admin.content/resort')}',$this.data('id'),$this.val(),'{$namespace}','resort');
+                        };
+                    });
+                    EBCMS.FN.renderPage({
+                        namespace:'{$namespace}',
+                        total:p.data.total,
+                    });
+                    EBCMS.FN.renderFilter({
+                        namespace:'{$namespace}',
+                        filter:{
+                            search:{
+                                field:'content.title|content.description',
+                                value:''
+                            },
+                            lock:{
+                                field:'content.locked',
+                            },
+                            status:{
+                                field:'content.status',
+                                filters:{'待审核':99,"已通过":1,'未通过':0}
+                            },
+                            order:{
+                                filters:{'content.id':'id','content.update_time':'更新时间','content.sort':'权重'}
+                            },
+                            rows:true,
+                        },
+                    });
+                },
+            });
+        };
+        EBCMS.{$namespace}.add = function add(){
+            if (EBCMS.{$namespace}.category_id) {
+                EBCMS.CORE.get({
+                    url:'{:url('content/admin.content/add')}',
+                    queryParams:{
+                        category_id:EBCMS.{$namespace}.category_id,
+                    },
+                    target:'#main_edit',
+                });
+            }else{
+                EBCMS.MSG.notice('请先选择分类！');
+            };
+        };
+        EBCMS.{$namespace}.edit = function edit(id){
+            EBCMS.CORE.get({
+                url:'{:url('content/admin.content/edit')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#main_edit',
+            });
+        };
+        /*加粗*/
+        EBCMS.{$namespace}.bold = function bold(id,value){
+            EBCMS.CORE.submit({
+                url:'{:url('content/admin.content/style')}',
+                queryParams:{
+                    id: id,
+                    bold:value
+                },
+                success:function(res){
+                   if (!res.code) {
+                       EBCMS.MSG.alert(res.msg);
+                   }
+                   EBCMS.{$namespace}.refresh();
+                }
+            });
+        };
+        /*着色*/
+        EBCMS.{$namespace}.color = function color(id,value){
+            EBCMS.CORE.submit({
+                url:'{:url('content/admin.content/style')}',
+                queryParams:{
+                    id: id,
+                    color:value
+                },
+                success:function(res){
+                   if (!res.code) {
+                       EBCMS.MSG.alert(res.msg);
+                   }
+                   EBCMS.{$namespace}.refresh();
+                }
+            });
+        };
+        EBCMS.{$namespace}.move = function(){
+            var ids = EBCMS.FN.getCheckedId('{$namespace}');
+            if (ids) {
+                EBCMS.CORE.get({
+                    url:'{:url('content/admin.content/move')}',
+                    queryParams:{
+                        ids:ids,
+                    },
+                    target:'#lgModal .modal-content',
+                });
+            }else{
+                EBCMS.MSG.notice('请先勾选要移动的数据！');
+            };
+        };
+
+        EBCMS.{$namespace}.baidu = function baidu(id){
+            EBCMS.CORE.submit({
+                url:'{:url('content/admin.content/baidu')}',
+                queryParams:{
+                    id:id,
+                },
+                success:function(res){
+                    EBCMS.MSG.notice(res.msg);
+                    EBCMS.{$namespace}.refresh();
+                }
+            });
+        };
+
+        EBCMS.{$namespace}.params_comment = {
+            page:1,
+            size:10,
+            tid:0,
+        };
+        EBCMS.{$namespace}.comment_load = function(id){
+            if (id) {
+                EBCMS.{$namespace}.params_comment.tid = id;
+                EBCMS.{$namespace}.params_comment.page = 1;
+                if ($('#{$namespace}_content_comment_'+EBCMS.{$namespace}.params_comment.tid).html()) {
+                    $('#{$namespace}_content_comment_'+EBCMS.{$namespace}.params_comment.tid).html('');
+                    $('#{$namespace}_content_comment_page_'+EBCMS.{$namespace}.params_comment.tid).html('');
+                    return;
+                }
+            }
+            EBCMS.CORE.load({
+                url: '{:url('content/admin.comment/index')}',
+                queryParams:EBCMS.{$namespace}.params_comment,
+                loadAfter:function(data){
+                    var coms = template('{$namespace}-comment-item', {
+                        rows:EBCMS.FN.array2tree(data.comments.data.concat(data.subcomments))||[]
+                    });
+                    $('#{$namespace}_content_comment_'+EBCMS.{$namespace}.params_comment.tid).html(coms);
+
+                    $('#{$namespace}_content_comment_page_'+EBCMS.{$namespace}.params_comment.tid).html(data.page);
+                    $.each($('#{$namespace}_content_comment_page_'+EBCMS.{$namespace}.params_comment.tid+' a'), function(index, val) {
+                        $this = $(this);
+                        $this.attr({
+                            href: '#{$namespace}_content_'+EBCMS.{$namespace}.params_comment.tid
+                        });
+                        $this.data('{$namespace}_comment_tid',EBCMS.{$namespace}.params_comment.tid);
+                        num = $this.html();
+                        if ($.isNumeric(num)) {
+                            $this.data('{$namespace}_comment_page',num);
+                        }else if(num == '»'){
+                            $this.data('{$namespace}_comment_page',Number(EBCMS.{$namespace}.params_comment.page)+1);
+                        }else if(num == '«'){
+                            $this.data('{$namespace}_comment_page',Number(EBCMS.{$namespace}.params_comment.page)-1);
+                        }
+                        $this.bind('click', function(event) {
+                            EBCMS.{$namespace}.params_comment.page=$(this).data('{$namespace}_comment_page');
+                            EBCMS.{$namespace}.params_comment.tid=$(this).data('{$namespace}_comment_tid');
+                            EBCMS.{$namespace}.comment_load();
+                        });
+                    });
+                }
+            });
+            return false;
+        };
+
+        EBCMS.{$namespace}.comment_pingbi = function comment_pingbi(id,value,tid){
+            EBCMS.{$namespace}.params_comment.tid = tid;
+            EBCMS.CORE.submit({
+                url: '{:url('content/admin.comment/pingbi')}',
+                queryParams:{
+                    ids:id,
+                    value:value,
+                },
+                success:function(res){
+                    EBCMS.{$namespace}.comment_load();
+                    if (res.code) {
+                        EBCMS.MSG.notice(res.msg);
+                    }else{
+                        EBCMS.MSG.alert(res.msg);
+                    };
+                }
+            });
+        };
+
+        EBCMS.{$namespace}.comment_tuijian = function(id,value){
+            EBCMS.CORE.submit({
+                url: '{:url('content/admin.comment/resort')}',
+                queryParams:{
+                    ids:id,
+                    value:value,
+                },
+                success:function(res){
+                    EBCMS.{$namespace}.comment_load();
+                    if (!res.code) {
+                        EBCMS.MSG.alert(res.msg);
+                    };
+                }
+            });
+        };
+
+    });
+</script>
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div id="{$namespace}_filter" class="pull-right"></div>
+        <div class="header-title">内容管理</div>
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="EBCMS.CORE.getconfig('{:eb_encrypt('name|content')}');">设置</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.add();">添加</button>
+        </div>
+    </div>
+    <div class="body">
+        <div class="box" id="{$namespace}_table" style="padding:10px;"></div>
+    </div>
+    <div class="footer">
+        <div id="{$namespace}_page" class="pull-right"></div>
+        <div class="btn-group dropup">
+          <button type="button" class="btn btn-primary" onclick="EBCMS.FN.inverse('{$namespace}');">选中(反选)</button>
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            [[if access('{:mca('delete')}',0)]]
+            <li><a href="###" onclick="EBCMS.ACT.dels('{:url('content/admin.content/delete')}','{$namespace}');">批量删除</a></li>
+            [[/if]]
+            [[if access('{:mca('status')}',0)]]
+            <li role="separator" class="divider"></li>
+            <li><a href="###" onclick="EBCMS.ACT.statuss('{:url('content/admin.content/status')}',1,'{$namespace}');">批量审核</a></li>
+            <li><a href="###" onclick="EBCMS.ACT.statuss('{:url('content/admin.content/status')}',0,'{$namespace}');">取消审核</a></li>
+            [[/if]]
+            [[if access('{:mca('lock')}',0)]]
+            <li role="separator" class="divider"></li>
+            <li><a href="###" onclick="EBCMS.ACT.locks('{:url('content/admin.content/lock')}',0,'{$namespace}');">批量解锁</a></li>
+            <li><a href="###" onclick="EBCMS.ACT.locks('{:url('content/admin.content/lock')}',1,'{$namespace}');">批量锁定</a></li>
+            [[/if]]
+            [[if access('{:mca('move')}',0)]]
+            <li role="separator" class="divider"></li>
+            <li><a href="###" onclick="EBCMS.{$namespace}.move();">移动</a></li>
+            [[/if]]
+          </ul>
+        </div>
+    </div>
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    [[each rows as v n]]
+        <div class="media contentlist" id="{$namespace}_content_[[v.id]]">
+            <div class="media-left">
+                <div class="thumbnail" style="width: 160px;">
+                    <img src="[[v.thumb | realpath ]]" alt="">
+                </div>
+				<div class="input-group">
+                  <span class="input-group-addon">权重</span>
+                  <input type="text" class="form-control input-sm input_sort" data-id="[[v.id]]" value="[[v.sort]]" placeholder="越大越靠前">
+                </div>
+            </div>
+            <div class="media-body">
+                <div class="media-heading" style="font-size:1.5em;"><input type="checkbox" name="id" value="[[v.id]]" id="{$namespace}_item_[[v.id]]"><span style="[[if v.color]]color:[[v.color]];[[/if]][[if v.bold]]font-weight:[[v.bold]];[[/if]][[if v.size>10]]font-size:[[v.size]]px;[[/if]]">[[v.title]]</span>[[if 1 == v.sort]]<sup><i class="iconfont icon-tuijian text-danger"></i></sup>[[/if]]</div>
+                <div class="tips">
+                    <span>ID:[[v.id]] </span>
+                    <span>浏览：[[v.click]] </span>
+                    <span>更新时间：[[v.update_time | unixtostr]] </span>
+                    <span>收录：[[if v.baidu==1]]<i class="iconfont icon-baidu cursor-pointer text-danger" onclick="EBCMS.{$namespace}.baidu('[[v.id]]');"></i>[[else]]<i class="iconfont icon-baidu cursor-pointer" onclick="EBCMS.{$namespace}.baidu('[[v.id]]');"></i>[[/if]] </span>
+                </div>
+                <div class="description">[[v.description]]</div>
+                <div style="margin:10px auto;">
+                    <div class="btn-group btn-group-sm">
+                        [[if access('{:mca('lock')}',0)]]
+                            [[if v.locked==1]]
+                            <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('content/admin.content/lock')}','[[v.id]]','0','{$namespace}');">已锁</button>
+                            [[else]]
+                            <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('content/admin.content/lock')}','[[v.id]]','1','{$namespace}');">未锁</button>
+                            [[/if]]
+                        [[/if]]
+                        [[if access('{:mca('status')}',v.locked)]]
+                            [[if v.status==99]]
+                            <button class="btn btn-danger" onclick="EBCMS.ACT.status('{:url('content/admin.content/status')}','[[v.id]]','0','{$namespace}');">不通过</button>
+                            <button class="btn btn-danger" onclick="EBCMS.ACT.status('{:url('content/admin.content/status')}','[[v.id]]','1','{$namespace}');">通过</button>
+                            [[else if v.status==1]]
+                            <button class="btn btn-primary" onclick="EBCMS.ACT.status('{:url('content/admin.content/status')}','[[v.id]]','0','{$namespace}');">已通过</button>
+                            [[else]]
+                            <button class="btn btn-warning" onclick="EBCMS.ACT.status('{:url('content/admin.content/status')}','[[v.id]]','1','{$namespace}');">未通过</button>
+                            [[/if]]
+                        [[/if]]
+                        [[if access('{:mca('edit')}',v.locked)]]
+                        <button class="btn btn-primary" onclick="EBCMS.{$namespace}.edit('[[v.id]]');">编辑</button>
+                        [[/if]]
+                        [[if access('{:mca('delete')}',v.locked)]]
+                        <button class="btn btn-primary" onclick="EBCMS.ACT.del('{:url('content/admin.content/delete')}','[[v.id]]','{$namespace}');">删除</button>
+                        [[/if]]
+                    </div>
+                    <div class="btn-group btn-group-sm">
+                        [[if access('{:mca('style')}',v.locked)]]
+                        <div class="btn-group btn-group-sm dropup">
+                          <button type="button" class="btn btn-primary" onclick="EBCMS.{$namespace}.bold('[[v.id]]','[[if '' == v.bold]]600[[/if]]');">加粗</button>
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <div class="dropdown-menu" style="padding:5px;">
+                            <div class="btn-group" style="display: inline-flex;" role="group" aria-label="...">
+                              <button type="button" class="btn btn-default" onclick="EBCMS.{$namespace}.bold('[[v.id]]','600');"><span style="font-weight:600;">加粗</span></button>
+                              <button type="button" class="btn btn-default" onclick="EBCMS.{$namespace}.bold('[[v.id]]','900');"><span style="font-weight:900;">特粗</span></button>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="btn-group btn-group-sm dropup">
+                          <button type="button" class="btn btn-primary" onclick="EBCMS.{$namespace}.color('[[v.id]]','[[if '' == v.color]]#d9534f[[/if]]');">着色</button>
+                          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span class="caret"></span>
+                            <span class="sr-only">Toggle Dropdown</span>
+                          </button>
+                          <div class="dropdown-menu" style="padding:5px;">
+                            <div class="btn-group" style="display: inline-flex;" role="group" aria-label="...">
+                              <button type="button" class="btn btn-primary" onclick="EBCMS.{$namespace}.color('[[v.id]]','#428bca');">蓝</button>
+                              <button type="button" class="btn btn-success" onclick="EBCMS.{$namespace}.color('[[v.id]]','#5cb85c');">绿</button>
+                              <button type="button" class="btn btn-info" onclick="EBCMS.{$namespace}.color('[[v.id]]','#5bc0de');">青</button>
+                              <button type="button" class="btn btn-warning" onclick="EBCMS.{$namespace}.color('[[v.id]]','#f0ad4e');">黄</button>
+                              <button type="button" class="btn btn-danger" onclick="EBCMS.{$namespace}.color('[[v.id]]','#d9534f');">红</button>
+                            </div>
+                          </div>
+                        </div>
+                        [[/if]]
+                        [[if access('{:mca('resort')}',0)]]
+                        <button class="btn btn-primary" onclick="EBCMS.ACT.togglefield('{:url('content/admin.content/resort')}','[[v.id]]','[[if 255 == v.sort]]0[[else]]255[[/if]]','{$namespace}','resort');" role="button">推荐</button>
+                        [[/if]]
+                    </div>
+                    <div class="btn-group btn-group-sm" role="group">
+                        [[if access('{:mca('index','admin.comment')}',0)]]
+                        <button class="btn btn-primary" onclick="EBCMS.{$namespace}.comment_load('[[v.id]]');" role="button">评论</button>
+                        [[/if]]
+                        [[if access('{:mca('push','recommend')}',0)]]
+                        <button class="btn btn-primary" onclick="EBCMS.CORE.recommend({
+                            model:'content/content',
+                            id:'[[v.id]]',
+                            thumb:'[[v.thumb]]',
+                            url:'[[v.ebcms_url]]',
+                            title:'[[v.shorttitle | escape]]',
+                            description:'[[v.description | escape]]'
+                            });" role="button">推送</button>
+                        [[/if]]
+                    </div>
+                </div>
+                <div id="{$namespace}_content_comment_[[v.id]]"></div>
+                <div id="{$namespace}_content_comment_page_[[v.id]]"></div>
+            </div>
+        </div>
+    [[/each]]
+</script>
+
+<script id="{$namespace}-comment-item" type="text/html">
+[[if rows.length]]
+    [[each rows as v n]]
+        <div class="media media-border" id="comment_id_[[v.id]]">
+          <div class="media-left">
+            <a href="#">
+              <img class="media-object" src="{:get_root()}/static/index/image/avatar.gif" width="40" alt="...">
+            </a>
+				<div class="input-group">
+                  <span class="input-group-addon">权重</span>
+                  <input type="text" class="form-control input-sm input_sort" data-id="[[v.id]]" value="[[v.sort]]" placeholder="越大越靠前">
+                </div>
+          </div>
+          <div class="media-body">
+            <h4 class="media-heading">[[if v.user.nickname]]<button class="btn btn-xs" onclick="EBCMS.CORE.userinfo('[[v.user.id]]');">[[v.user.nickname]]</button>[[else /]]游客[[/if]][[if v.touser.nickname]] 回复 <button class="btn btn-xs" onclick="EBCMS.CORE.userinfo('[[v.touser.id]]');">[[v.touser.nickname]]</button>[[/if]]</h4>
+            [[if v.status==99]]
+                <div class="alert alert-warning">
+                    <p>待审核！</p>
+                    <hr>
+                    <p>[[v.content]]</p>
+                    <p>ip：[[v.ip]] 时间：[[v.create_time | unixtostr]]</p>
+                </div>
+                [[if access('{:mca('pingbi','admin.comment')}',0)]]
+                <p>
+                    <button class="btn btn-primary btn-xs" onclick="EBCMS.{$namespace}.comment_pingbi('[[v.id]]','1','[[v.tid]]');">通过</button>
+                    <button class="btn btn-primary btn-xs" onclick="EBCMS.{$namespace}.comment_pingbi('[[v.id]]','0','[[v.tid]]');">屏蔽</button>
+                </p>
+                [[/if]]
+            [[else if v.status==1]]
+                <div class="alert alert-info">
+                    <p>[[v.content]][[if 1 == v.sort]]<sup><i class="iconfont icon-tuijian text-danger"></i></sup>[[/if]]</p>
+                    <p>ip：[[v.ip]] 时间：[[v.create_time | unixtostr]]</p>
+                </div>
+                <p>
+                    [[if access('{:mca('index','admin.comment')}',0)]]
+                    <button class="btn btn-primary btn-xs" onclick="EBCMS.{$namespace}.comment_pingbi('[[v.id]]','0','[[v.tid]]');">屏蔽</button>
+                    [[/if]]
+                    [[if access('{:mca('resort','admin.comment')}',0)]]
+                    <button class="btn btn-primary btn-xs" onclick="EBCMS.{$namespace}.comment_tuijian('[[v.id]]','[[if 1 == v.sort]]0[[else]]1[[/if]]');" role="button">推荐</button>
+                    [[/if]]
+                </p>
+            [[else]]
+                <div class="alert alert-danger">
+                    <p><del><b>[[v.content]]</b></del></p>
+                    <p>ip：[[v.ip]] 时间：[[v.create_time | unixtostr]]</p>
+                </div>
+                [[if access('{:mca('index','admin.comment')}',0)]]
+                <p>
+                    <button class="btn btn-primary btn-xs" onclick="EBCMS.{$namespace}.comment_pingbi('[[v.id]]','1','[[v.tid]]');">撤销</button>
+                </p>
+                [[/if]]
+            [[/if]]
+            [[if v.rows]]
+                [[include '{$namespace}-comment-item' v]]
+            [[/if]]
+          </div>
+        </div>
+    [[/each]]
+[[else]]
+    <div class="alert alert-danger">暂无评论</div>
+[[/if]]
+</script>

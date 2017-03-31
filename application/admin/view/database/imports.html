@@ -1,0 +1,65 @@
+{php}$namespace = ns();{/php}
+<script>
+    $(function(){
+        EBCMS.{$namespace}.imports = function imports(queryParams){
+            EBCMS.CORE.submit({
+                url: '{:url('imports')}',
+                queryParams:queryParams,
+                success:function(res){
+                    if (res.code) {
+                        if (res.data.start == -1) {
+                            $('#{$namespace}_imports_'+Number(res.data.part-1)).html('100 %');
+                            EBCMS.{$namespace}.refresh();
+                            EBCMS.{:ns('databasetable')}.refresh();
+                            EBCMS.MSG.alert('还原成功！');
+                        }else if(res.data.initend == 1){
+                            $('#{$namespace}_imports_init_0').html('完成！');
+                            setTimeout(function() {
+                                $('#{$namespace}_imports_init_1').html('完成！');
+                                EBCMS.{$namespace}.imports(res.data);
+                            }, 100);
+                        }else{
+                            $('#{$namespace}_imports_'+res.data.part).html(res.data.rate+' %');
+                            if (res.data.start==0) {
+                                $('#{$namespace}_imports_'+Number(res.data.part-1)).html('100 %');
+                            };
+                            EBCMS.{$namespace}.imports(res.data);
+                        };
+                    }else{
+                        EBCMS.MSG.alert(res.msg);
+                    };
+                },
+            });
+        };
+    });
+</script>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">数据还原</h4>
+</div>
+<div class="modal-body">
+    <h5 class="text-warning"><b><span class="glyphicon glyphicon-phone-alt"></span> 还原初始化</b></h5>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <span class="badge" id="{$namespace}_imports_init_0">?</span>
+            数据完整性检测
+        </li>
+        <li class="list-group-item">
+            <span class="badge" id="{$namespace}_imports_init_1">?</span>
+            准备数据
+        </li>
+    </ul>
+    <h5 class="text-warning"><b><span class="glyphicon glyphicon-phone-alt"></span> 还原初始化</b></h5>
+    <ul class="list-group">
+        {foreach name='backup_list' item='table'}
+            <li class="list-group-item">
+                <span class="badge" id="{$namespace}_imports_{$key}">...</span>
+                {$table}
+            </li>
+        {/foreach}
+    </ul>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" onclick="EBCMS.{$namespace}.imports({init:1,filetime:'{$filetime}'});">开始</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+</div>

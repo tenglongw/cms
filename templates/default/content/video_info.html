@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<body style="background-color: #f4f4f4;">{include file='common/header' /}<script>    Namespace.register("EBCMS.CONTENT");</script>	<!-- section.VideoInfo -->
+	<section class="VideoInfo">
+		<div class="centerCon clearfloat">
+			<div class="videoCn">
+
+				<embed src='{$content.ext.video_pc}' allowFullScreen='true' quality='high' align='middle' allowScriptAccess='always' type='application/x-shockwave-flash'></embed>
+			</div>
+			<div class="MoreToLove">
+				<div class="head"><h3>相关推荐</h3></div>
+				<div class="div_scroll">					<ul class="MoreToLovels">
+		 				{foreach name='content.relation' item='vo'}		 					<li class="clearfloat">								<a class="clearfloat" target="_blank" href="{$vo.url}">									<div class="imgc"><img src="{$vo.thumb|thumb=117,80}"></div>											<div class="text">												<div class="title">{$vo.title}</div>												<div class="abost">{$vo.description|mb_substr=0,100}</div>											</div>								</a>							</li>		 				{/foreach}
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>	<!-- section.VideoInfo end --><section class="VideoDescription" style="padding-bottom:30px;">		<div class="centerCon">			<div class="woed">				{$content.body.body|htmlspecialchars_decode}			</div>		</div>	</section>
+			{if condition="$content['comment_able'] && ebconfig('content.comment_able')"}	            {include file='content/detail_comment' tid='$content.id' /}	        {/if}
+	<!-- section.comment -->
+	<div style="height: 30px;"></div>
+	<!-- footer --><!-- footer -->{include file='common/footer' /}
+	<!-- footer end -->
+	<script type="text/javascript" src="{:get_root()}/static/index/new/js/scrool/easyscroll.js"></script>
+	<!-- <script type="text/javascript" src="js/index.js"></script> -->
+	<script>        
+		var mySwiper = new Swiper ('#NewsInfoLs', {
+			loop: true,
+	    // 如果需要前进后退按钮
+	    nextButton: '.swiper-button-next',
+	    prevButton: '.swiper-button-prev',
+	    
+	}) 
+
+     	//模拟滚动条
+
+		$(function(){
+			$('.div_scroll').scroll_absolute({arrows:false});
+		});
+
+	</script>

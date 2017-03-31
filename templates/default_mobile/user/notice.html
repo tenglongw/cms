@@ -1,0 +1,81 @@
+{include file='common/header' /}
+<div class="row">
+    <div class="col-md-3">
+        {include file='user/left' /}
+    </div>
+    <div class="col-md-9">
+        <!-- 用户评论 -->
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1>我的消息<div class="btn-group btn-group-sm pull-right"><a href="{:url('index/user/notice')}" class="btn btn-primary {if condition="input('isread')!=1"}active{/if}">未读</a><a href="{:url('index/user/notice?isread=1')}" class="btn btn-primary {if condition="input('isread')==1"}active{/if}">已读</a></div></h1>
+                <hr>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="btn btn-danger btn-sm" onclick="M.selectall();">全选</div>
+                        &nbsp;&nbsp;设为
+                        <div class="btn-group btn-group-sm">
+                            <div class="btn btn-primary" onclick="M.setreads(1);">已读</div>
+                            <div class="btn btn-primary" onclick="M.setreads(0);">未读</div>
+                        </div>
+                    </div>
+                </div>
+                {foreach name='lists' item='vo'}
+                <div class="media">
+                    <div class="media-left noticeid" style="display:none;">
+                        <input type="checkbox" name='id[]' value="{$vo.id}">
+                    </div>
+                    <div class="media-body">
+                        <div class="alert alert-info">
+                            {$vo.content}
+                        </div>
+                    </div>
+                </div>
+                {/foreach}
+                {$page}
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    var M = {};
+    $(function() {
+        M.setread = function(ids,isread){
+            if (typeof(ids) != 'object') {
+                ids = [ids];
+            }
+            $.ajax({
+                url: '{:url('index/user/notice')}',
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    ids:ids,
+                    isread:isread,
+                },
+                success:function(data){
+                    if (data.code) {
+                        self.location=data.url;
+                    }else{
+                        alert(data.msg);
+                    }
+                },
+                error:function(a,b,c){
+                    alert('服务器错误！请稍后再试！');
+                }
+            });
+        };
+        M.selectall = function(){
+            $('.noticeid').show();
+            $("input[name='id[]']").each(function(){ 
+                $(this).click();
+            });
+        };
+        M.setreads = function(isread){
+            var ids = [];
+            $("input[name='id[]']:checkbox:checked").each(function(){ 
+                ids.push($(this).attr('value'));
+            });
+            M.setread(ids,isread);
+        }
+    });
+</script>
+{include file='common/footer' /}

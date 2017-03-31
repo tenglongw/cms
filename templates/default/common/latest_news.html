@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+    <div class="panel-heading">滚动新闻</div>
+    <div class="list-group">
+        {content:list limit='5' return='data' /}
+        {foreach name='data' item='vo'}
+            <a href="{$vo.url}" class="list-group-item">{$vo.shorttitle}</a>
+        {/foreach}
+    </div>
+</div>

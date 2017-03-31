@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{include file='common/head' /}
+<script type="text/javascript" src="{:get_root()}/static/index/mobile/js/pulldownload/pulldownload.js"></script>
+<body>
+{include file='common/header' /}
+	
+	
+	<section id="Max_Con" style="background:#f2f2f2;">
+		<input type="hidden" id="category_id" value="{$category_id}">
+		<input id='tag_tag' value="{$tag.tag}" type="hidden">
+		<ul class="newsList" id="data_list">
+        </ul>
+
+		{include file='common/footer' /}
+
+	</section>
+	<script type="text/javascript">
+var url = 'http://120.26.192.83/index.php/index/mobile/tag?tag='+$("#tag_tag").val()+'&page=';
+//添加Html
+function addIndexHtml(data){
+	var html = '';
+	for(var i=0;i < data.length;i++){
+		html+= '<li><a href="'+data[i].url+'">'
+           	+ '<img class="newsList_img" src="'+data[i].thumb+'">'
+           	+ '<div class="newsList_d">'
+           	+ '<P class="newsList_d_p1">'+data[i].tag+'</P>'
+           	+ ' <P class="newsList_d_p2">'+data[i].title+'</P>'
+           	+ ' <P class="newsList_d_p3">'+dateFormat1(data[i].create_time)+' By '+data[i].author+'</P>'
+           	+ ' <P class="newsList_d_p4">'+data[i].description+'</P>'
+           	+ '</div>'
+           	+ '</a></li>';
+	}
+	$('#data_list').append(html);
+}
+
+function dateFormat1(time){
+	var date = new Date(parseInt(time)*1000);
+	return date.Format('yyyy-MM-dd');
+}
+Date.prototype.Format = function(fmt)   
+{ //author: meizz   
+	var o = {   
+    "M+" : this.getMonth()+1,                 //月份   
+    "d+" : this.getDate(),                    //日   
+    "h+" : this.getHours(),                   //小时   
+    "m+" : this.getMinutes(),                 //分   
+    "s+" : this.getSeconds(),                 //秒   
+    "q+" : Math.floor((this.getMonth()+3)/3), //季度   
+    "S"  : this.getMilliseconds()             //毫秒   
+};   
+if(/(y+)/.test(fmt))   
+	fmt=fmt.replace(RegExp.$1, (this.getFullYear()+"").substr(4 - RegExp.$1.length));   
+for(var k in o)   
+	if(new RegExp("("+ k +")").test(fmt))   
+		fmt = fmt.replace(RegExp.$1, (RegExp.$1.length==1) ? (o[k]) : (("00"+ o[k]).substr((""+ o[k]).length)));   
+	return fmt;   
+} 
+</script>

@@ -1,0 +1,45 @@
+{include file='common/header' /}
+<script>
+    Namespace.register("EBCMS.CONTENT");
+</script>
+<div class="row">
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1>{$content.title}</h1><hr>
+                {$content.body.body|htmlspecialchars_decode}
+                <hr>
+                <h4><b class="text-danger">延伸阅读：{foreach name='content.tag' item='vo'} <a href="{$vo.url}">{$vo.tag}</a>{/foreach}</b></h4>
+                {notempty name='content.tag'}
+                <ol style="padding-left: 20px;">
+                {foreach name='content.relation' item='vo'}
+                    <li><a href="{$vo.url}">{$vo.shorttitle}</a></li>
+                {/foreach}
+                </ol>
+                {/notempty}
+                <hr>
+                <nav>
+                  <ul class="pager">
+                    {notempty name='content.prev'}
+                    <li class="previous"><a href="{$content.prev.url}"><span aria-hidden="true">&larr;</span> {$content.prev.title}</a></li>
+                    {else/}
+                    <li class="previous disabled"><a href="###"><span aria-hidden="true">&larr;</span> 没有了</a></li>
+                    {/notempty}
+                    {notempty name='content.next'}
+                    <li class="next"><a href="{$content.next.url}">{$content.next.title} <span aria-hidden="true">&rarr;</span></a></li>
+                    {else/}
+                    <li class="next disabled"><a href="###">没有了 <span aria-hidden="true">&rarr;</span></a></li>
+                    {/notempty}
+                  </ul>
+                </nav>
+            </div>
+        </div>
+        {if condition="$content['comment_able'] && ebconfig('content.comment_able')"}
+            {include file='content/detail_comment_2' tid='$content.id' /}
+        {/if}
+    </div>
+    <div class="col-md-3">
+        {include file='common/categorys' /}
+    </div>
+</div>
+{include file='common/footer' /}

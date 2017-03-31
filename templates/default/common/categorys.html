@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+    <div class="list-group">
+        {content:category tree='1' return='data'/}
+        {foreach name='data' item='vo'}
+            <div class="list-group-item"><a href="{$vo.url}"><b>{$vo.title}</b></a></div>
+            {notempty name='vo.rows'}
+                <div class="list-group-item">
+                    {foreach name='vo.rows' item='sub'}
+                            <a href="{$sub.url}" >{$sub.title}</a>
+                    {/foreach}
+                </div>
+            {/notempty}
+        {/foreach}
+    </div>
+</div>

@@ -1,0 +1,63 @@
+{php}$namespace = ns();{/php}
+<script>
+    $(function(){
+        EBCMS.{$namespace}.exports = function exports(queryParams){
+            EBCMS.CORE.submit({
+                url: '{:url('admin/database/exports')}',
+                queryParams:queryParams,
+                success:function(res){
+                    if (res.code) {
+                        if (res.data.step==3) {
+                            $('#{$namespace}_exports_'+res.data.table).html(res.data.rate+' %');
+                            EBCMS.{$namespace}.refresh();
+                            EBCMS.{:ns('databasetable')}.refresh();
+                            EBCMS.MSG.alert('备份成功！');
+                        }else if(res.data.step==2){
+                            $('#{$namespace}_exports_step_1').html('成功！');
+                            $('#{$namespace}_exports_'+res.data.table).html(res.data.rate+' %');
+                            if (res.data.pretable) {
+                                $('#{$namespace}_exports_'+res.data.pretable).html('100 %');
+                            };
+                            EBCMS.{$namespace}.exports(res.data);
+                        }else{
+                            $('#{$namespace}_exports_step_'+Number(res.data.step-1)).html('成功！');
+                            EBCMS.{$namespace}.exports(res.data);
+                        };
+                    }else{
+                        EBCMS.MSG.alert(res.msg);
+                    };
+                },
+            });
+        };
+    });
+</script>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">数据备份</h4>
+</div>
+<div class="modal-body">
+    <h5 class="text-warning"><b><span class="glyphicon glyphicon-phone-alt"></span> 备份初始化</b></h5>
+    <ul class="list-group">
+        <li class="list-group-item">
+            <span class="badge" id="{$namespace}_exports_step_0">?</span>
+            检测备份进程
+        </li>
+        <li class="list-group-item">
+            <span class="badge" id="{$namespace}_exports_step_1">?</span>
+            创建备份文件
+        </li>
+    </ul>
+    <h5 class="text-warning"><b><span class="glyphicon glyphicon-phone-alt"></span> 备份初始化</b></h5>
+    <ul class="list-group">
+        {foreach name='tables' item='vo'}
+            <li class="list-group-item">
+                <span class="badge" id="{$namespace}_exports_{$vo}">...</span>
+                {$vo}
+            </li>
+        {/foreach}
+    </ul>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" onclick="EBCMS.{$namespace}.exports({step:0});">开始</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+</div>

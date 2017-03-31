@@ -1,0 +1,6 @@
+{ebcms:recommend mark='index_zhuanti' limit='4' return='data'/}
+{notempty name='data'}
+				{foreach name='data' item='vo'}
+	                <div class="swiper-slide"><a href="{$vo.url}"><img src="{$vo.thumb|thumb=0,0}" ></a></div>
+	            {/foreach}
+{/notempty}

@@ -1,0 +1,266 @@
+<script type="text/javascript" src="{:get_root()}/third/artTemplate/template.js"></script>
+<script>
+    Namespace.register("EBCMS.CONTENT");
+</script>
+	<section class="comment">
+	
+	<div class="logoin" id="logoin">
+
+			<div class="exit"><i class="iconfont">&#xe66c;</i></div>
+			<div class="logoinCon">
+
+				<a class="qq" href="#">使用QQ直接登录</a>
+
+				<a class="wx" href="#">使用微信直接登录</a>
+
+				<!-- <a class="wb" href="#">使用微博直接登录</a> -->
+
+			</div>
+		</div>
+	
+			<!-- <div class="commentBottom clearfloat" >
+				<div class="name">分享：</div>
+				<div class="bot clearfloat bdsharebuttonbox">
+					<a href="#"  class="bds_weixin" data-cmd="weixin" title="分享到微信"><i class="iconfont">&#xe63b;</i></a>
+					<a href="#"  class="bds_weixin" data-cmd="weixin" title="分享到微信"><i class="iconfont">&#xe6a5;</i></a>
+					<a href="#"  class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"><i class="iconfont">&#xe620;</i></a>
+					<a href="#"  class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"><i class="iconfont">&#xe60f;</i></a>
+				</div>
+			</div> -->
+		<div id="weixinMenfd" style="width: 100%;height: 100%;position: fixed;top: 0;left: 0;z-index: 999;text-align: right;display: none;">
+			<img src="http://3gimg.qq.com/wap30/infoapp/touch/wx_choice/images/weixin_share_layer_bg.png">
+		</div>
+		
+		<div class="commentBottom clearfloat" id="fengxxiangOne" style="display: none;">
+			<div class="name">分享：</div>
+			<div class="bot clearfloat bdsharebuttonbox" style="height: 70px;">
+				<a href="javascript:void(0)" class="weinfenx"   title="分享到微信" style="background-image: none;height: 70px;line-height: 70px;"><i class="iconfont">&#xe63b;</i></a>
+				<a href="javascript:void(0)" class="weinfenx"   title="分享到微信" style="background-image: none;height: 70px;line-height: 70px;"><i class="iconfont">&#xe6a5;</i></a>
+				<a href="javascript:void(0)" class="weinfenx"   title="分享到QQ空间" style="background-image: none;height: 70px;line-height: 70px;"><i class="iconfont">&#xe620;</i></a>
+				<a href="javascript:void(0)"  class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" style="background-image: none;height: 70px;line-height: 70px;"><i class="iconfont">&#xe60f;</i></a>
+			</div>
+		</div>
+
+		
+		<div class="commentBottom clearfloat" id="fengxxiangTwo" style="display: none;">
+			<div class="name">分享：</div>
+			<div class="bot clearfloat bdsharebuttonbox" style="height: 70px;">
+				<a href="#"  class="bds_weixin" data-cmd="weixin" title="分享到微信" style="background-image: none;height: 70px;line-height: 70px;"><i class="iconfont">&#xe63b;</i></a>
+				<a href="#"  class="bds_weixin" data-cmd="weixin" title="分享到微信" style="background-image: none;height: 70px;line-height: 70px;"><i class="iconfont">&#xe6a5;</i></a>
+				<a href="#"  class="bds_qzone" data-cmd="qzone" title="分享到QQ空间" style="background-image: none;height: 70px;line-height: 70px;"><i class="iconfont">&#xe620;</i></a>
+				<a href="#"  class="bds_tsina" data-cmd="tsina" title="分享到新浪微博" style="background-image: none;height: 70px;line-height: 70px;"><i class="iconfont">&#xe60f;</i></a>
+			</div>
+		</div>
+
+
+{if condition="session('?user_id') || ebconfig('content.comment_visitor')"} 
+    <input type="hidden" id="log_state" value="1">
+	{else /}
+		<input type="hidden" id="log_state" value="2">
+	{/if}
+	
+	<form action="" id="comment_form" onsubmit="return EBCMS.CONTENT.comment();">
+			<div class="import clearfloat">
+	
+					<div class="imgC">
+	
+						<img src="{:get_root()}/static/index/mobile/images/ku/img_06.png">
+	
+					</div>
+	
+					<div class="text">
+	
+						<textarea rows="5" name="content" placeholder="随便说点什么吧...."></textarea>
+			
+					</div>
+	
+				</div>
+	
+				<div class="butC clearfloat">
+	
+					<div class="line">{$content.comment_count}条评论</div>
+	
+					<button type="button" id="commit" class="but">评论</button>
+				</div>
+			
+	        <input type="hidden" name="tid" value="{$content.id}">
+	    </form>
+	    
+	   <script>
+        $(function(){
+            EBCMS.CONTENT.comment = function(){
+                $.ajax({
+                    url: '{:url('index/comment/add')}',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: $('#comment_form').serialize(),
+                    success:function(data){
+                        if (data.code) {
+                            $('#comment_form textarea').val('');
+                            $('#comment_verify').val('');
+                            EBCMS.CONTENT.param.page = 1;
+                            EBCMS.CONTENT.reloadcomment();
+                        }else{
+                            alert(data.msg);
+                        }
+                        EBCMS.FN.change_verify('#comment_verify_img');
+                    }
+                });
+                return false;
+            };
+            $('#commit').on('click',function(){
+            	var log_state = $('#log_state').val();
+            	if(log_state == 1){
+            		$('#comment_form').submit();
+            	}else{
+            		$('#logoin').show();
+            	}
+            });
+            $('.exit').on('click',function(){
+            	$('#logoin').hide();
+            });
+        });
+    </script>
+	
+	<div id="comments"></div>
+	<div id="comment_page"></div>
+	<script>
+    $(function(){
+        template.config('openTag', '[[');
+        template.config('closeTag', ']]');
+        EBCMS.CONTENT.param = {
+            page:1,
+            size:5,
+            tid:'{$content.id}',
+        };
+        EBCMS.CONTENT.loading = 0;
+        EBCMS.CONTENT.reloadcomment = function(){
+            $('#reply_media').appendTo('#reply_form_contain');
+            EBCMS.CONTENT.param.page=1;
+            $('#comments').html('');
+            EBCMS.CONTENT.loadcomment();
+        };
+        EBCMS.CONTENT.loadcomment = function(page){
+            if (page) {
+                $('#reply_media').appendTo('#reply_form_contain');
+                $.ajax({
+                    url: '{:url('index/comment/index')}',
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        page:page,
+                        size:EBCMS.CONTENT.param.size,
+                        tid:EBCMS.CONTENT.param.tid,
+                    },
+                    success:function(res){
+                        if (res.code) {
+                            var coms = template('comment-item', {
+                                rows:EBCMS.FN.array2tree(res.data.comments.data.concat(res.data.subcomments))
+                            });
+                            $('#comment_page_'+page).html(coms);
+                        }else{
+                            alert(res.msg);
+                        }
+                    }
+                });
+                return false;
+            }else{
+                if (EBCMS.CONTENT.loading == 0) {
+                    EBCMS.CONTENT.loading = 1;
+                    $('#reply_media').appendTo('#reply_form_contain');
+                    $('#comments_tips').html('加载中。。。');
+                    $.ajax({
+                        url: '{:url('index/comment/index')}',
+                        type: 'POST',
+                        dataType: 'json',
+                        data: EBCMS.CONTENT.param,
+                        success:function(res){
+                            if (res.code) {
+                                if (res.data.comments.data.length) {
+                                    var coms = template('comment-item', {
+                                        rows:EBCMS.FN.array2tree(res.data.comments.data.concat(res.data.subcomments))
+                                    });
+                                    $('#comments').append('<div class="comment_page" data-page="'+EBCMS.CONTENT.param.page+'" id="comment_page_'+EBCMS.CONTENT.param.page+'">'+coms+'</div>');
+                                    EBCMS.CONTENT.param.page += 1;
+                                    $('#comments_tips').html('');
+                                }else{
+                                    EBCMS.CONTENT.loadover = 1;
+                                    $('#comments_tips').html('没有更多了');
+                                }
+                            }else{
+                                alert(res.msg);
+                            }
+                            EBCMS.CONTENT.loading = 0;
+                        }
+                    });
+                }
+                return false;
+            }
+        };
+        EBCMS.CONTENT.reply = function(id){
+            $('#reply_id').val(id);
+            if ($('#comment_id_'+id+' .media-body:eq(0) > p #reply_media').length) {
+                $('#reply_media').toggle();
+            }else{
+                $('#reply_media').appendTo('#comment_id_'+id+' .media-body:eq(0) > p').show();
+            }
+        };
+        EBCMS.CONTENT.replysubmit = function(){
+            $.ajax({
+                url: '{:url('index/comment/reply')}',
+                type: 'POST',
+                dataType: 'json',
+                data: $('#reply_form').serialize(),
+                success:function(data){
+                    if (data.code) {
+                        $('#reply_form textarea').val('');
+                        $('#reply_verify').val('');
+                        /*获取当前页page*/
+                        var reply_id = $('#reply_id').val();
+                        var c = $('#comment_id_'+reply_id).parents('div.comment_page')[0];
+                        var page = $(c).data('page');
+                        EBCMS.CONTENT.loadcomment(page);
+                    }else{
+                        alert(data.msg);
+                    }
+                    EBCMS.FN.change_verify('#reply_verify_img');
+                }
+            });
+            return false;
+        };
+        // 若不要瀑布流滚动触发加载，可自行改用其他事件触发加载。。
+        $(document).scroll(function(){
+            if ($(document).scrollTop()>=$(document).height()-$(window).height()) {
+                if (EBCMS.CONTENT.loadover != 1) {
+                    EBCMS.CONTENT.loadcomment();
+                }
+            };
+        });
+    });
+</script>
+	<script id="comment-item" type="text/html">
+
+ 	<ul class="commentlist">
+
+    [[each rows as v n]]
+		
+
+				<li class="clearfloat" id="comment_id_[[v.id]]">
+
+					<div class="imgc"><img src="{:get_root()}/static/index/image/avatar.gif"></div>
+
+					<div class="word">
+
+						<div class="name">[[v.user.nickname]]</div>
+
+						<p>[[v.content]]</p>
+
+					</div>
+
+				</li>
+
+    [[/each]]
+</ul>
+	</script>
+	<script type="text/javascript" src="{:get_root()}/static/index/mobile/js/share/share.js"></script>
+	</section>

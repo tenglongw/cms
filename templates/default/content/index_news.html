@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{include file='common/head' /}
+<body>
+{include file='common/header' /}
+<script type="text/javascript" src="{:get_root()}/static/index/new/js/news_list.js"></script>
+<!-- NewsList -->
+	<section class="NewsList">
+		<div class="centerCon clearfloat">
+			<div class="leftC">
+				<div class="Na clearfloat">
+					<nav id="nav_clearfloat" class="clearfloat">
+					<input id='category_id' value="{$category.id}" type="hidden">
+					<input id='tag_id' value="" type="hidden">
+					{content:category pid='1' return='data'/}
+					<a {if ($category.id == '1')}
+			        		class='active'
+			        	{/if} href="{:url('../News')}" >最新</a>
+				        {foreach name='data' item='vo'}
+				         	<a {if ($category.id == $vo.id)}
+			        		class='active'
+			        	{/if} href="{$vo.url}" >{$vo.title}</a>
+				        {/foreach}
+					</nav>
+					<div class="line"><span></span></div>
+					<ul id="tag_list">
+					</ul>
+				</div>
+				{ebcms:recommend mark='news_advice' limit='5' return='data'/}
+	  			{foreach name='data' item='vo'}
+					<div class="linkImg">
+						<a href="{$vo.url}"><img src="{$vo.thumb|thumb=240,320}"></a>
+					</div>
+	 			{/foreach}
+				
+			</div>
+
+			<div class="RightC">
+				<ul class="newslistN">
+				{foreach name='lists' item='vs'}
+                            <li>
+								<a target="_blank" class="clearfloat" href="{$vs.url}">
+									<div class="imgC"><img src="{$vs.thumb|thumb=0,0}"></div>
+									<div class="word">
+										<div class="zhuoz">
+										{foreach name='tag_list' item='tag'}
+				                            {if ($tag.c_id == $vs.id)}
+				                            {$tag.tag}
+				                            {/if}
+				                         {/foreach}
+										</div>
+										<div class="title">{$vs.title}</div>
+										<div class="time">By {$vs.author} <!--  .  <span name="_time">{$vs.create_time}</span> day ago --></div>
+										<p>{$vs.description}</p>
+									</div>
+								</a>
+							</li>
+                       {/foreach}
+				</ul>
+				<div class="fengye">
+					{$page}
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- NewsList end -->
+
+{include file='common/footer' /}

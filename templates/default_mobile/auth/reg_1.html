@@ -1,0 +1,64 @@
+{include file='common/header'/}
+<script>
+    var M = {};
+    $(function(){
+        M.verify = function verify(){
+            var email = $('#email').val();
+            $.ajax({
+                url: '{:url('index/api/verify')}',
+                type: 'POST',
+                dataType: 'json',
+                data: {email: email},
+                success:function(data){
+                    if (data.status) {
+                        alert(data.info);
+                    }else{
+                        alert(data.info);
+                    };
+                }
+            });
+        };
+    });
+</script>
+<div class="row">
+    <div class="col-md-3">
+        <div class="panel panel-default">
+            <div class="panel-heading">欢迎留言</div>
+            <div class="panel-body">
+                欢迎留言，请尽量填写能方便联系到您的联系方式，我们将尽快联系您！
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1>
+                    <div class="btn-group pull-right">
+                        <a href="{:url('index/auth/login')}" class="btn btn-primary">用户登录</a>
+                        <a href="{:url('index/auth/reg')}" class="btn btn-primary">会员注册</a>
+                        <a href="{:url('index/auth/password')}" class="btn btn-primary">找回密码</a>
+                    </div>
+                    会员注册
+                </h1>
+                <hr>
+                <div class="progress">
+                  <div class="progress-bar progress-bar-success" style="width: 30%">
+                    <span class="sr-only">30% Complete (success)</span>
+                    第一步：输入邮箱
+                  </div>
+                  <div class="progress-bar progress-bar-success" style="width: 40%;">
+                    <span class="sr-only">40% Complete (warning)</span>
+                    第二步：进入邮箱 打开链接
+                  </div>
+                  <div class="progress-bar" style="width: 30%;background:#696969;">
+                    <span class="sr-only">30% Complete (warning)</span>
+                    第三步：注册成功
+                  </div>
+                </div>
+                <hr>
+                <p>邮件已经发送到您的邮箱。请登录邮箱继续操作！</p>
+            </div>
+        </div>
+    </div>
+</div>
+{include file='common/footer' /}

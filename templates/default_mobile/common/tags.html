@@ -1,0 +1,9 @@
+<div class="panel panel-default">
+    <div class="panel-heading">推荐标签</div>
+    <div class="panel-body">
+        {content:tag limit='20' recommend='1' return='data'/}
+        {foreach name='data' item='vo'}
+        <a href="{$vo.url}" style="{$vo.style}">{$vo.tag}({$vo.count})</a>  
+        {/foreach}
+    </div>
+</div>

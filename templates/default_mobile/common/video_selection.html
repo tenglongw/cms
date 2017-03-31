@@ -1,0 +1,1 @@
+{ebcms:recommend mark='shipin_selection' limit='1' return='data'/}{foreach name='data' item='vo'}	<div class="videoList_d"><a href="{$vo.url}">        	<img class="videoList_d_img" src="{$vo.thumb|thumb=710,536}">            <span class="videoList_d_span"></span>            <P class="videoList_d_p">{$vo.title}</P>        </a></div>{/foreach}

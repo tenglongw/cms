@@ -1,0 +1,178 @@
+{php}
+$namespace = ns('datadictcate');
+$core = 0;
+if(input('ebcms') == 'ebcms'){
+    $core = 1;
+}
+{/php}
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.queryParams = {
+            order:{
+                'sort':'desc',
+            },
+            model:'admin/datadictcate',
+            where:{
+                {eq name='core' value='0'}
+                system:['eq',0],
+                {/eq}
+            }
+        };
+        EBCMS.{$namespace}.refresh = function refresh(p){
+            if (p) {
+                $.each(p, function(index, val) {
+                    if (typeof val == 'object') {
+                        EBCMS.{$namespace}.queryParams[index] = $.extend(EBCMS.{$namespace}.queryParams[index], p[index]);
+                        delete p[index];
+                    };
+                });
+                $.extend(EBCMS.{$namespace}.queryParams, p);
+            };
+            EBCMS.CORE.api({
+                queryParams:EBCMS.{$namespace}.queryParams,
+                group:'group',
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_table',
+                compileAfter:function(data){
+                    $('#{$namespace}_table').find('.input_sort').focus(function(){
+                        EBCMS.{$namespace}.sortvalue = $(this).val();
+                    }).blur(function(){
+                        var $this = $(this);
+                        if ($this.val() != EBCMS.{$namespace}.sortvalue) {
+                            EBCMS.ACT.togglefield('{:url('datadictcate/resort')}',$this.data('id'),$this.val(),'{$namespace}','resort');
+                        };
+                    });
+                    $('#{$namespace}_table').find('tr').bind('click', function(event) {
+                        $(this).addClass('warning').siblings('tr').removeClass('warning');
+                    });
+                    EBCMS.FN.renderFilter({
+                        namespace:'{$namespace}',
+                        filter:{
+                            search:{
+                                field:'group|title|field|remark',
+                                value:''
+                            },
+                            // lock:{
+                            //     field:'locked',
+                            // },
+                            // status:{
+                            //     field:'status',
+                            // },
+                            // order:{
+                            //     filters:{id:'id',update_time:'更新时间',sort:'权重'}
+                            // },
+                        }
+                    });
+                },
+            });
+        };
+        EBCMS.{$namespace}.edit = function edit(id){
+            EBCMS.CORE.get({
+                url:'{:url('datadictcate/edit')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.{$namespace}.add = function add(pid,group){
+            EBCMS.CORE.get({
+                url:'{:url('datadictcate/add')}',
+                queryParams:{
+                    pid:pid,
+                    group:group,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.{$namespace}.changecate = function changecate(category_id){
+            EBCMS.{$namespace}.category_id = category_id;
+            EBCMS.CORE.compile({
+                tpl:'{:ns()}-box',
+                target:'#{:ns()}_box',
+                compileAfter:function(){
+                    EBCMS.{:ns()}.refresh({
+                        where:{
+                            category_id:['eq',category_id],
+                        }
+                    });
+                }
+            });
+        };
+        EBCMS.CORE.compile({
+            tpl:'{$namespace}-box',
+            target:'#{$namespace}_box',
+            compileAfter:function(){
+                EBCMS.{$namespace}.refresh();
+            }
+        });
+    });
+</script>
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div class="footer-page" id="{$namespace}_filter"></div>
+        <div class="header-title" onclick="EBCMS.{$namespace}.refresh();">字典分类</div>
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.add();">添加</button>
+            <button class="btn btn-primary" onclick="EBCMS.CORE.changemain('{:url('admin/extend/index?group=datadict')}');">扩展</button>
+        </div>
+    </div>
+    <div class="body" style="bottom:0px;">
+        <div class="box" id="{$namespace}_table"></div>
+    </div>
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    <table class="table table-bordered table-hover table-ebcms">
+        <tbody>
+            <tr>
+                <!-- <th style="width:70px;">id</th> -->
+                <th style="width:200px;">操作</th>
+                <th>名称</th>
+                <th>字段</th>
+                <th>排序</th>
+                <th style="width:50px;">管理</th>
+            </tr>
+            [[each groups as data group]]
+                <tr>
+                    <th>[[group]]</th>
+                    <th colspan="4"><button class="btn btn-primary" onclick="EBCMS.{$namespace}.add(0,'[[group]]');">添加</button></th>
+                </tr>
+                [[include '{$namespace}-table-item' data]]
+            [[/each]]
+        </tbody>
+    </table>
+</script>
+
+<script id="{$namespace}-table-item" type="text/html">
+    [[each rows as v n]]
+        <tr>
+            <!-- <td>[[v.id]]</td> -->
+            <td>
+                <div class="btn-group btn-group-sm">
+                    [[if v.locked==1]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('datadictcate/lock')}','[[v.id]]','0','{$namespace}');">已锁</button>
+                    [[else]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('datadictcate/lock')}','[[v.id]]','1','{$namespace}');">未锁</button>
+                    [[/if]]
+                    [[if v.status==1]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.status('{:url('datadictcate/status')}','[[v.id]]','0','{$namespace}');">已审</button>
+                    [[else]]
+                    <button class="btn btn-warning" onclick="EBCMS.ACT.status('{:url('datadictcate/status')}','[[v.id]]','1','{$namespace}');">未审</button>
+                    [[/if]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.del('{:url('datadictcate/delete')}','[[v.id]]','{$namespace}');">删除</button>
+                    <button class="btn btn-primary" onclick="EBCMS.{$namespace}.edit('[[v.id]]')">编辑</button>
+                </div>
+            </td>
+            <td>[[v.title]]</td>
+            <td>[[v.field]]</td>
+            <td><input value="[[v.sort]]" class="form-control input-sm input_sort" data-id="[[v.id]]"></td>
+            <td>
+                <div class="btn-group btn-group-sm">
+                    <button class="btn btn-primary" onclick="EBCMS.{$namespace}.changecate('[[v.id]]')">管理</button>
+                </div>
+            </td>
+        </tr>
+    [[/each]]
+</script>

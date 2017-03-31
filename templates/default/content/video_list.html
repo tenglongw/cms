@@ -1,0 +1,15 @@
+<!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<body>{include file='common/header' /}	<script type="text/javascript" src="{:get_root()}/static/index/new/js/pulldownload/pulldownload.js"></script>	<!-- header end -->
+	<!-- section.VideoList -->
+	<section class="VideoList">
+		<div class="centerCon ">			<!-- 精选视频 -->
+			{include file='common/video_selection' /}
+
+			<div class="listTwo">
+				<nav class="nav">					{content:category pid='3' return='data'/}					<a {if ($category.id == '3')}			        		class='active'			        	{/if} href="{:url('../Video')}" >最新</a>				        {foreach name='data' item='vo'}				        {if ($vo.title != '精选视频')}				         	<a {if ($category.id == $vo.id)}			        		class='active'			        	{/if} href="{$vo.url}" >{$vo.title}</a>			        	{/if}				        {/foreach}				</nav>
+				<ul id="wolist" class="wolist clearfloat">
+				</ul>				<div class="IndMore" >					<a href="more" style="display: none" id="more" data-id='{$category.id}'>Load more</a>				</div>
+			</div>
+		</div>
+	</section><script type="text/javascript">
+    function addDoem(data){        var html = '';        for (var i = 0; i < data.length; i++) {            html+= '<li><a href="'+data[i].url+'"><div class="imgC"><img src="'+data[i].thumb+'"></div><div class="fud"><p>'+data[i].title+'</p></div></a></li>'        }        $('#wolist').append(html);    }
+</script>	<!-- footer -->{include file='common/footer' /}

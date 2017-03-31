@@ -1,0 +1,17 @@
+<div class="videoCon" id="videoCon">
+
+	<div class="Cn">
+
+		<div class="guanbi" id="guanbi"><i class="iconfont">&#xe614;</i></div>
+
+		<embed src="https://imgcache.qq.com/tencentvideo_v1/playerv3/TPout.swf?max_age=86400&v=20161117&vid=f0362fpab3i&auto=0" allowFullScreen="true" quality="high" align="middle" allowScriptAccess="always" type="application/x-shockwave-flash"></embed>
+
+		<!-- <iframe frameborder="0" src="https://v.qq.com/iframe/player.html?vid=e0363x2fiqs&tiny=0&auto=0" allowfullscreen></iframe> -->
+
+	</div>
+
+</div>
+{ebcms:recommend mark='index_top_advice' limit='1' return='data'/}
+{foreach name='data' item='vo'}
+	<div class="InTopBanner"><a href="{$vo.url}"><img src="{$vo.thumb|thumb=1920,107}"></a></div>
+{/foreach}

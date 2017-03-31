@@ -1,0 +1,116 @@
+{php}$namespace = ns();{/php}
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.refresh = function refresh(){
+            EBCMS.CORE.load({
+                url:'{:url('admin/database/index')}',
+                queryParams:{
+                    api:'databackups',
+                },
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_table',
+                compileAfter:function(data){
+                    $('#{$namespace}_table').find('tr').bind('click', function(event) {
+                        $(this).addClass('warning').siblings('tr').removeClass('warning');
+                    });
+                },
+            });
+        };
+        /*预览*/
+        EBCMS.{$namespace}.showsql = function showsql(filename){
+            EBCMS.CORE.get({
+                url:'{:url('admin/database/showsql')}',
+                queryParams:{
+                    filename:filename,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        /*删除*/
+        EBCMS.{$namespace}.startDelete = function startDelete(time,ext,parts){
+            EBCMS.MSG.confirm('确定删除备份数据？<br/>删除后不可恢复！',function(){
+                EBCMS.CORE.submit({
+                    url:'{:url('admin/database/delete')}',
+                    queryParams:{
+                        time:time,
+                        ext:ext,
+                        parts:parts,
+                    },
+                    success:function(data){
+                        EBCMS.MSG.notice('删除成功！');
+                        EBCMS.{$namespace}.refresh();
+                    }
+                });
+            });
+        };
+        /*还原*/
+        EBCMS.{$namespace}.importsform = function importsform(filetime){
+            EBCMS.CORE.get({
+                url:'{:url('admin/database/imports')}',
+                queryParams:{
+                    filetime:filetime,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.CORE.compile({
+            tpl:'{$namespace}-box',
+            target:'#{$namespace}_box',
+            compileAfter:function(){
+                EBCMS.{$namespace}.refresh();
+            }
+        });
+    });
+</script>
+
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div class="header-title" onclick="EBCMS.{$namespace}.refresh();">备份管理</div>
+    </div>
+    <div class="body" style="bottom:0px;">
+        <div class="box" id="{$namespace}_table"></div>
+    </div>
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    <table class="table table-bordered table-hover table-ebcms">
+        <tbody>
+            <tr>
+                <th style="width:70px;">id</th>
+                <th>名称</th>
+                <th style="width:110px;">操作</th>
+            </tr>
+            [[each rows as file index]]
+                <tr>
+                    <th colspan="2">备份时间：[[file.time]]</th>
+                    <td>
+                        <div class="btn-group btn-group-sm">
+                        [[if access('{:mca('imports')}',0)]]
+                        <button class="btn btn-primary" onclick="EBCMS.{$namespace}.importsform('[[file.time]]');">还原</button>
+                        [[/if]]
+                        [[if access('{:mca('delete')}',0)]]
+                        <button class="btn btn-primary" onclick="EBCMS.{$namespace}.startDelete('[[file.time]]','[[file.ext]]','[[file.parts]]');">删除</button>
+                        [[/if]]
+                        </div>
+                    </td>
+                </tr>
+                [[if file.files]]
+                    [[each file.files as v n]]
+                        <tr>
+                            <td>[[n]]</td>
+                            <td>[[v.file]]</td>
+                            <td>
+                                <div class="btn-group btn-group-sm">
+                                [[if access('{:mca('showsql')}',0)]]
+                                <button class="btn btn-primary" onclick="EBCMS.{$namespace}.showsql('[[v.file]]');">预览</button>
+                                [[/if]]
+                                </div>
+                            </td>
+                        </tr>
+                    [[/each]]
+                [[/if]]
+            [[/each]]
+        </tbody>
+    </table>
+</script>

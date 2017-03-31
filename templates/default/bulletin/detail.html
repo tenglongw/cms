@@ -1,0 +1,13 @@
+{include file='common/header' /}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1 class="text-center">{$bulletin.title}</h1>
+                <hr>
+                {$bulletin.body|htmlspecialchars_decode}
+            </div>
+        </div>
+    </div>
+</div>
+{include file='common/footer' /}

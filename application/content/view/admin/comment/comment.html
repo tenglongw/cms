@@ -1,0 +1,163 @@
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.queryParams = {
+            page:1,
+            rows:20,
+            order:{
+                'comment.id':'desc',
+            },
+            model:'content/comment',
+            with:'user,touser,tocontent'
+        };
+        EBCMS.{$namespace}.refresh = function refresh(p){
+            if (p) {
+                $.each(p, function(index, val) {
+                    if (typeof val == 'object') {
+                        EBCMS.{$namespace}.queryParams[index] = $.extend(EBCMS.{$namespace}.queryParams[index], p[index]);
+                        delete p[index];
+                    };
+                });
+                $.extend(EBCMS.{$namespace}.queryParams, p);
+            };
+            EBCMS.CORE.api({
+                queryParams:EBCMS.{$namespace}.queryParams,
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_table',
+                compileAfter:function(p){
+                    EBCMS.FN.renderPage({
+                        namespace:'{$namespace}',
+                        total:p.data.total,
+                    });
+                    EBCMS.FN.renderFilter({
+                        namespace:'{$namespace}',
+                        filter:{
+                            search:{
+                                field:'comment.content',
+                                value:''
+                            },
+                            lock:{
+                                field:'comment.locked',
+                            },
+                            status:{
+                                field:'comment.status',
+                                filters:{'待审核':99,"已通过":1,'已屏蔽':0}
+                            },
+                            order:{
+                                filters:{'comment.id':'id','comment.update_time':'更新时间'}
+                            },
+                            rows:true,
+                        }
+                    });
+                },
+            });
+        };
+        EBCMS.{$namespace}.edit = function edit(id){
+            EBCMS.CORE.get({
+                url:'{:url('content/admin.comment/edit')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.CORE.compile({
+            tpl:'{$namespace}-box',
+            target:'#{$namespace}_box',
+            compileAfter:function(){
+                EBCMS.{$namespace}.refresh();
+            }
+        });
+    });
+</script>
+
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div class="header-title" onclick="EBCMS.{$namespace}.refresh();">评论管理</div>
+        <div id="{$namespace}_filter" class="footer-page"></div>
+    </div>
+    <div class="body">
+        <div id="{$namespace}_table" class="box"></div>
+    </div>
+    <div class="footer">
+        <div id="{$namespace}_page" class="footer-page"></div>
+    </div>
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    <table class="table table-bordered table-hover table-ebcms">
+        <tbody>
+            <tr>
+                <th style="width:80px;">id</th>
+                <th style="width:300px;">信息</th>
+                <th>内容</th>
+            </tr>
+            [[include '{$namespace}-table-item' data]]
+        </tbody>
+    </table>
+</script>
+
+<script id="{$namespace}-table-item" type="text/html">
+    [[each rows as v n]]
+        <tr>
+            <td>[[v.id]]</td>
+            <td>
+                <p>[[if v.user.nickname]]<button class="btn btn-xs" onclick="EBCMS.CORE.userinfo('[[v.user.id]]');">[[v.user.nickname]]</button>[[else]]游客[[/if]] 回复 [[if v.touser.nickname]]<button class="btn btn-xs" onclick="EBCMS.CORE.userinfo('[[v.touser.id]]');">[[v.touser.nickname]]</button>[[else]]游客[[/if]]</p>
+                <p class="text-overflow">IP：[[v.ip]]</p>
+                <p class="text-overflow">时间：[[v.create_time | unixtostr]]</p>
+                <p class="text-overflow">文章：[[v.tocontent.title]]</p>
+            </td>
+            <td>
+                [[if v.status==99]]
+                    <div class="alert alert-warning">
+                        <p>待审核！</p>
+                        <hr>
+                        <p>[[v.content]]</p>
+                    </div>
+                    [[if access('{:mca('status')}',v.locked)]]
+                        <div class="btn-group btn-group-sm">
+                        <button class="btn btn-danger" onclick="EBCMS.ACT.status('{:url('content/admin.comment/status')}','[[v.id]]','1','{$namespace}');">通过</button>
+                        <button class="btn btn-danger" onclick="EBCMS.ACT.status('{:url('content/admin.comment/status')}','[[v.id]]','0','{$namespace}');">屏蔽</button>
+                        </div>
+                    [[/if]]
+                [[else if v.status==1]]
+                    <div class="alert alert-info">
+                        <p>[[v.content]][[if 1 == v.sort]]<sup><i class="iconfont icon-tuijian text-danger"></i></sup>[[/if]]</p>
+                    </div>
+                        <div class="btn-group btn-group-sm">
+                        [[if access('{:mca('status')}',v.locked)]]
+                        <button class="btn btn-primary" onclick="EBCMS.ACT.status('{:url('content/admin.comment/status')}','[[v.id]]','0','{$namespace}');">屏蔽</button>
+                        [[/if]]
+                        [[if access('{:mca('resort')}',v.locked)]]
+                        <button class="btn btn-primary" onclick="EBCMS.ACT.togglefield('{:url('content/admin.comment/resort')}','[[v.id]]','[[if 1 == v.sort]]0[[else]]1[[/if]]','{$namespace}','resort');" role="button">推荐</button>
+                        [[/if]]
+                        </div>
+                [[else]]
+                    <div class="alert alert-danger">
+                        <p><del><b>[[v.content]]</b></del></p>
+                    </div>
+                    [[if access('{:mca('status')}',v.locked)]]
+                        <div class="btn-group btn-group-sm">
+                        <button class="btn btn-primary" onclick="EBCMS.ACT.status('{:url('content/admin.comment/status')}','[[v.id]]','1','{$namespace}');">撤销</button>
+                        </div>
+                    [[/if]]
+                [[/if]]
+                <div class="btn-group btn-group-sm">
+                [[if access('{:mca('delete')}',v.locked)]]
+                <button class="btn btn-primary" onclick="EBCMS.ACT.del('{:url('content/admin.comment/delete')}','[[v.id]]','{$namespace}');">删除</button>
+                [[/if]]
+                [[if access('{:mca('edit')}',v.locked)]]
+                <button class="btn btn-primary" onclick="EBCMS.{$namespace}.edit('[[v.id]]');">编辑</button>
+                [[/if]]
+                [[if access('{:mca('lock')}',0)]]
+                    [[if v.locked==1]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('content/admin.comment/lock')}','[[v.id]]','0','{$namespace}');">已锁</button>
+                    [[else]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('content/admin.comment/lock')}','[[v.id]]','1','{$namespace}');">未锁</button>
+                    [[/if]]
+                [[/if]]
+                </div>
+            </td>
+        </tr>
+    [[/each]]
+</script>

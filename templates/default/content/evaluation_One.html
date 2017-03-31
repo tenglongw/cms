@@ -1,0 +1,25 @@
+<!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<body>{include file='common/header' /}<script>    Namespace.register("EBCMS.CONTENT");</script>	<!-- header end -->
+	<!-- section.EvaluationOne -->	<section class="EvaluationOne">
+		<div class="centerCon">
+			<div class="head">{$content.title}</div>			<div class="time">{php} 								$obj = json_decode($content,true);								echo date('Y-m-d',$obj['create_time']); 							{/php}  &nbsp; By {$content.author} &nbsp; {$content.source}</div>		{notempty name='content.ext.images_1'}
+			<div class="word">
+				{foreach name='content.ext.images_1' item='vo'}					<img src="{$vo.img|thumb=0,0}">						<p>{$vo.description}</p>                {/foreach}
+			</div>
+		{/notempty}
+		{notempty name='content.ext.images_2'}
+			<ul class="wordLs clearfloat">
+								{foreach name='content.ext.images_2' item='vo'}					<li>						<img src="{$vo.img|thumb=0,0}">							<p>{$vo.description}</p>					</li>                {/foreach}
+			</ul>
+		{/notempty}		{notempty name='$content.body.body'}				<div class="word">				{$content.body.body|htmlspecialchars_decode}			</div>		{/notempty}		{notempty name='content.ext.ad'}
+			<div class="guangg">
+				<a href="#"><img src="{$content.ext.ad|thumb=1000,110}"></a>
+			</div>		{/notempty}
+		</div>
+	</section>
+	<!-- section.EvaluationOne end -->
+		<!-- section.comment -->
+		{if condition="$content['comment_able'] && ebconfig('content.comment_able')"}	            {include file='content/detail_comment' tid='$content.id' /}	        {/if}
+	<!-- section.comment -->
+
+	<!-- section.Recommend -->
+<section class="Recommend">		<div class="centerCon">			<div class="InHeader"><span>相关推荐</span></div>			<ul class="Recommendlist">				{foreach name='content.relation' item='vo'}                    <li class="clearfloat">					<a href="{$vo.url}">						<div class="imgC"><img src="{$vo.thumb|thumb=335,251}"></div>						<div class="word">							<div class="name">								{foreach name='content.tag' item='vs'}								{$vs.tag}								{/foreach}							</div>							<div class="title">{$vo.title}</div>							<div class="time">{php} 								$obj = json_decode($vo,true);								echo date('Y-m-d',$obj['create_time']); 							{/php}  &nbsp;By {$vo.author}</div>							<p>{$vo.description|mb_substr=0,100}</p>						</div>					</a>				</li>                                    {/foreach}			</ul>		</div>	</section>

@@ -1,0 +1,178 @@
+{php}$namespace = ns('databasetable');{/php}
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.refresh = function refresh(){
+            EBCMS.CORE.load({
+                url:'{:url('admin/database/index')}',
+                queryParams:{
+                    api:'datatables',
+                },
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_table',
+                compileAfter:function(data){
+                    $('#{$namespace}_table').find('tr').bind('click', function(event) {
+                        $(this).addClass('warning').siblings('tr').removeClass('warning');
+                    });
+                },
+            });
+        };
+        EBCMS.{$namespace}.optimize = function optimize(table){
+            if (!table) {
+                table = EBCMS.FN.getCheckedId('{$namespace}');
+            };
+            if (table) {
+                EBCMS.CORE.submit({
+                    url:'{:url('admin/database/optimize')}',
+                    queryParams:{
+                        table:table,
+                    },
+                    success:function(data){
+                        if (data.code) {
+                            EBCMS.MSG.notice(data.msg);
+                            EBCMS.{$namespace}.refresh();
+                        }else{
+                            EBCMS.MSG.alert(data.msg);
+                        };
+                    }
+                });
+            }else{
+                EBCMS.MSG.alert('请选择要优化的数据表');
+            };
+        };
+        EBCMS.{$namespace}.repair = function repair(table){
+            if (!table) {
+                table = EBCMS.FN.getCheckedId('{$namespace}');
+            };
+            if (table) {
+                EBCMS.CORE.submit({
+                    url:'{:url('admin/database/repair')}',
+                    queryParams:{
+                        table:table,
+                    },
+                    success:function(data){
+                        if (data.code) {
+                            EBCMS.MSG.notice(data.msg);
+                            EBCMS.{$namespace}.refresh();
+                        }else{
+                            EBCMS.MSG.alert(data.msg);
+                        };
+                    }
+                });
+            }else{
+                EBCMS.MSG.alert('请选择要修复的数据表');
+            };
+        };
+        EBCMS.{$namespace}.showcreate = function showcreate(table){
+            EBCMS.CORE.load({
+                url:'{:url('admin/database/showcreate')}',
+                queryParams:{
+                    table:table,
+                },
+                tpl:'{$namespace}-showcreate',
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.{$namespace}.exportsform = function exportsform(table){
+            var tables;
+            if (table) {
+                tables = table;
+            }else{
+                tables = EBCMS.FN.getCheckedId('{$namespace}');
+            };
+            if (tables.length) {
+                EBCMS.CORE.get({
+                    url:'{:url('admin/database/exports')}',
+                    queryParams:{
+                        tables:tables,
+                    },
+                    target:'#lgModal .modal-content',
+                });
+            }else{
+                EBCMS.MSG.alert('请选择要备份的数据表');
+            };
+        };
+        EBCMS.CORE.compile({
+            tpl:'{$namespace}-box',
+            target:'#{$namespace}_box',
+            compileAfter:function(){
+                EBCMS.{$namespace}.refresh();
+            }
+        });
+    });
+</script>
+
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div class="header-title" onclick="EBCMS.{$namespace}.refresh();">数据库管理</div>
+        <div class="btn-group pull-right">
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.exportsform()">备份</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.optimize()">优化</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.repair()">修复</button>
+        </div>
+    </div>
+    <div class="body" style="bottom:0px;">
+        <div class="box" id="{$namespace}_table"></div>
+    </div>
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    <table class="table table-bordered table-hover table-ebcms">
+        <tbody>
+            <tr>
+                <th onclick="EBCMS.FN.inverse('{$namespace}');" style="cursor:pointer">表（点击反选）</th>
+                <th>备注</th>
+                <th>引擎</th>
+                <th>整理</th>
+                <th>数据量</th>
+                <th>大小</th>
+                <th>碎片</th>
+                <th style="width:200px;">操作</th>
+            </tr>
+            [[each rows as v n]]
+                <tr>
+                    <th>
+                        <input type="checkbox" name="id" value="[[v.name]]" id="{$namespace}_item_[[v.name]]">
+                        <label for='{$namespace}_item_[[v.name]]'>[[v.name]]</label>
+                    </th>
+                    <td>[[v.comment]]</td>
+                    <td>[[v.engine]]</td>
+                    <td>[[v.collation]]</td>
+                    <td>[[v.rows]]</td>
+                    <td>[[v.data_length]]</td>
+                    <td>[[v.data_free]]</td>
+                    <td>
+                    <div class="btn-group btn-group-sm">
+                        [[if access('{:mca('optimize')}',0)]]
+                        <button class="btn btn-primary" onclick="EBCMS.{$namespace}.optimize('[[v.name]]');">优化</button>
+                        [[/if]]
+                        [[if access('{:mca('repair')}',0)]]
+                        <button class="btn btn-primary" onclick="EBCMS.{$namespace}.repair('[[v.name]]');">修复</button>
+                        [[/if]]
+                        [[if access('{:mca('showcreate')}',0)]]
+                        <button class="btn btn-primary" onclick="EBCMS.{$namespace}.showcreate('[[v.name]]');">详情</button>
+                        [[/if]]
+                        [[if access('{:mca('exports')}',0)]]
+                        <button class="btn btn-primary" onclick="EBCMS.{$namespace}.exportsform('[[v.name]]');">备份</button>
+                        [[/if]]
+                    </div>
+                    </td>
+                </tr>
+            [[/each]]
+        </tbody>
+    </table>
+</script>
+
+<!-- 查看表详情 -->
+<script id="{$namespace}-showcreate" type="text/html">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">表 " <span class="text-danger">[[table]]</span> " 的创建信息</h4>
+    </div>
+    <div class="modal-body">
+        <pre>[[tableinfo]]</pre>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+    </div>
+</script>

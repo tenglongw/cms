@@ -1,0 +1,75 @@
+		{ebcms:recommend mark='index_special' return='data'/}
+<!-- section展示 -->
+	<section class="exhibition">
+		<div class="centerCon">
+		{foreach name='data' item='vo'}
+			{eq name='vo.locked' value='1'}
+			<a href="{$vo.url}" class="InWindow clearfloat">
+
+				<div class="text">
+
+					<div class="line"></div>
+
+					<div class="head">{$vo.title} </div>
+
+					<div class="time">
+						{php} 
+								$obj = json_decode($vo,true);
+								echo date('Y-m-d',$obj['create_time']); 
+							{/php}  &nbsp; By {$vo.author} &nbsp; 
+							{notempty name='vo.source'}
+							Via {$vo.source}
+							{/notempty}
+					
+					</div>
+
+					<p>{$vo.description}</p>
+
+				</div>
+
+				<div class="imgC">
+
+					<img src="{$vo.thumb|thumb=490,370}">
+
+				</div>
+
+			</a>
+			{/eq}
+        {/foreach}
+
+			<div class="slideSweiper">
+
+				<div class="swiper-container" id="exhibitionSwiper">
+
+					<div class="swiper-wrapper">
+							{foreach name='data' item='vo'}
+								{eq name='vo.locked' value='0'}
+								<div class="swiper-slide clearfloat">
+
+									<a href="{$vo.url}" class="wordin"><img src="{$vo.thumb|thumb=206,154}"><div class="pcn"><p>{$vo.title}</p></div></a>
+		
+								</div>
+								{/eq}
+					        {/foreach}
+
+					</div>
+
+				</div>
+
+				<div class="swiper-button-prev exhibitionPrev"></div>
+
+				<div class="swiper-button-next exhibitionNext"></div>
+				
+
+			</div>
+			<div class="IndMore">
+
+				<a href="http://www.long7.com/index.php/news">more</a>
+
+			</div>
+
+		</div>
+
+	</section>
+
+	<!-- section展示 -->

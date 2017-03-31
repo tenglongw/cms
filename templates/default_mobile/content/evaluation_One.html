@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<body>{include file='common/header' /}<script>    Namespace.register("EBCMS.CONTENT");</script>	<section id="Max_Con">	<section class="DiggleInfo" id="DiggleInfo">		<div class="imgCTow">			<img src="{$content.thumb|thumb=0,0}">		</div>		<div class="head">{$content.title}</div><input id="content_title" style="display:none" value="{$content.title}"></input>			<input id="content_des" style="display:none" value="{$content.description}"></input>			<input id="content_image" style="display:none" value="{$content.thumb|thumb=0,0}"></input>
+		<div class="time">{php}$obj = json_decode($content,true);													echo date('Y-m-d',$obj['create_time']); 												{/php}  &nbsp;By {$content.author}</div>
+			{notempty name='content.ext.images_1'}			<div class="word">				{foreach name='content.ext.images_1' item='vo'}					<img src="{$vo.img|thumb=0,0}">						<p>{$vo.description}</p>                {/foreach}			</div>			{/notempty}
+		{notempty name='$content.body.body'}				<div class="word">				{$content.body.body|htmlspecialchars_decode}			</div>		{/notempty}
+		<!-- <div class="indBot"><a class="but" href="#">Buy Now</a></div> -->
+	</section>
+	<!-- section.comment -->
+{if condition="$content['comment_able'] && ebconfig('content.comment_able')"}	            {include file='content/detail_comment' tid='$content.id' /}	        {/if}	<!-- section.Recommend -->
+	<section class="Recommend">
+		<div class="InHeader"><span>相关推荐</span></div>		<ul class="Recommendlist">
+			{foreach name='content.relation' item='vo'}				<li>					<a href="{$vo.url}">						<div class="imgC"><img src="{$vo.thumb|thumb=710,535}"></div>						<div class="word">							<div class="name">								{foreach name='content.tag' item='vs'}								{$vs.tag}								{/foreach}							</div>							<div class="title">{$vo.title}</div>							<div class="time">{php}$obj = json_decode($vo,true);													echo date('Y-m-d',$obj['create_time']); 												{/php}  &nbsp;By {$vo.author}</div>						</div>					</a>				</li>            {/foreach}
+		</ul>	</section>
+	<!-- section.Recommend end -->
+	{include file='common/footer' /}</section><script type="text/javascript">	$(function () {
+		$('#VideoInfo').find('iframe').attr('width',710);
+		$('#VideoInfo').find('iframe').attr('height',400);
+	})
+</script>
+</body>
+</html>

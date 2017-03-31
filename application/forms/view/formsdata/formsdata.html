@@ -1,0 +1,113 @@
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.queryParams = {
+            page:1,
+            rows:20,
+            order:{
+                'sort':'desc',
+                'id':'desc',
+            },
+            model:'forms/formsdata',
+        };
+        EBCMS.{$namespace}.refresh = function refresh(p){
+            if (p) {
+                $.each(p, function(index, val) {
+                    if (typeof val == 'object') {
+                        EBCMS.{$namespace}.queryParams[index] = $.extend(EBCMS.{$namespace}.queryParams[index], p[index]);
+                        delete p[index];
+                    };
+                });
+                $.extend(EBCMS.{$namespace}.queryParams, p);
+            };
+            EBCMS.CORE.api({
+                queryParams:EBCMS.{$namespace}.queryParams,
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_table',
+                compileAfter:function(p){
+                    $('#{$namespace}_table').find('.input_sort').focus(function(){
+                        EBCMS.{$namespace}.sortvalue = $(this).val();
+                    }).blur(function(){
+                        var $this = $(this);
+                        if ($this.val() != EBCMS.{$namespace}.sortvalue) {
+                            EBCMS.ACT.togglefield('{:url('forms/formsdata/resort')}',$this.data('id'),$this.val(),'{$namespace}','resort');
+                        };
+                    });
+                    EBCMS.FN.renderPage({
+                        namespace:'{$namespace}',
+                        total:p.data.total,
+                    });
+                    EBCMS.FN.renderFilter({
+                        namespace:'{$namespace}',
+                        filter:{
+                            search:{
+                                field:'ip|data',
+                                value:''
+                            },
+                            lock:{
+                                field:'locked',
+                            },
+                            status:{
+                                field:'status',
+                            },
+                            order:{
+                                filters:{id:'id',update_time:'更新时间',sort:'权重'}
+                            },
+                            rows:true,
+                        },
+                    });
+                },
+            });
+        };
+    });
+</script>
+
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div id="{$namespace}_filter" class="footer-page"></div>
+        <div class="header-title" onclick="EBCMS.{$namespace}.refresh();">内容管理</div>
+    </div>
+    <div class="body">
+        <div id="{$namespace}_table" class="box"></div>
+    </div>
+    <div class="footer">
+        <div id="{$namespace}_page" class="footer-page"></div>
+    </div>
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    [[each rows as v n]]
+        <table class="table table-bordered">
+            <tr>
+                <th style="width:120px;">留言时间</th>
+                <td>[[v.create_time | unixtostr]]</td>
+                <th style="width:120px;">IP</th>
+                <td>[[v.ip]]</td>
+            </tr>
+            [[each v.data as a b]]
+            <tr>
+                <th style="width:120px;">[[b]]</th>
+                <td colspan="3">
+                    [[a | dostr]]
+                </td>
+            </tr>
+            [[/each]]
+            <tr>
+                <td colspan="4">
+                    <div class="btn-group btn-group-sm">
+                        [[if access('{:mca('lock')}',0)]]
+                            [[if v.locked==1]]
+                            <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('forms/formsdata/lock')}','[[v.id]]','0','{$namespace}');">已锁</button>
+                            [[else]]
+                            <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('forms/formsdata/lock')}','[[v.id]]','1','{$namespace}');">未锁</button>
+                            [[/if]]
+                        [[/if]]
+                        [[if access('{:mca('delete')}',v.locked)]]
+                        <button class="btn btn-primary" onclick="EBCMS.ACT.del('{:url('forms/formsdata/delete')}','[[v.id]]','{$namespace}');">删除</button>
+                        [[/if]]
+                    </div>
+                </td>
+            </tr>
+        </table>
+    [[/each]]
+</script>

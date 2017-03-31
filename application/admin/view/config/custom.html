@@ -1,0 +1,162 @@
+{php}$namespace = ns('config');{/php}
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.queryParams = {
+            order:{
+                'sort':'desc',
+            },
+            model:'admin/config',
+            where:{
+                category_id:['eq',9],
+            }
+        };
+        EBCMS.{$namespace}.refresh = function refresh(p){
+            if (p) {
+                $.each(p, function(index, val) {
+                    if (typeof val == 'object') {
+                        EBCMS.{$namespace}.queryParams[index] = $.extend(EBCMS.{$namespace}.queryParams[index], p[index]);
+                        delete p[index];
+                    };
+                });
+                $.extend(EBCMS.{$namespace}.queryParams, p);
+            };
+            EBCMS.CORE.api({
+                queryParams:EBCMS.{$namespace}.queryParams,
+                tree:true,
+                treelevel:true,
+                group:'group',
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_table',
+                compileAfter:function(data){
+                    $('#{$namespace}_table').find('.input_sort').focus(function(){
+                        EBCMS.{$namespace}.sortvalue = $(this).val();
+                    }).blur(function(){
+                        var $this = $(this);
+                        if ($this.val() != EBCMS.{$namespace}.sortvalue) {
+                            EBCMS.ACT.togglefield('{:url('admin/config/resort')}',$this.data('id'),$this.val(),'{$namespace}','resort');
+                        };
+                    });
+                    $('#{$namespace}_table').find('tr').bind('click', function(event) {
+                        $(this).addClass('warning').siblings('tr').removeClass('warning');
+                    });
+                    EBCMS.FN.renderFilter({
+                        namespace:'{$namespace}',
+                        filter:{
+                            search:{
+                                field:'group|title|name|value|remark',
+                                value:''
+                            },
+                            // lock:{
+                            //     field:'locked',
+                            // },
+                            // status:{
+                            //     field:'status',
+                            // },
+                            order:{
+                                filters:{id:'id',update_time:'更新时间',sort:'权重'}
+                            },
+                        }
+                    });
+                },
+            });
+        };
+        EBCMS.{$namespace}.edit = function edit(id){
+            EBCMS.CORE.get({
+                url:'{:url('admin/config/edit')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.{$namespace}.config = function config(id){
+            EBCMS.CORE.get({
+                url:'{:url('admin/config/config')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.{$namespace}.add = function add(group,pid){
+            pid = pid||0;
+            EBCMS.CORE.get({
+                url:'{:url('admin/config/add')}',
+                queryParams:{
+                    category_id:9,
+                    group:group,
+                    pid:pid,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.CORE.compile({
+            tpl:'{$namespace}-box',
+            target:'#{$namespace}_box',
+            compileAfter:function(){
+                EBCMS.{$namespace}.refresh();
+            }
+        });
+    });
+</script>
+<div class="box" id="{:ns()}_box"></div>
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div class="footer-page" id="{$namespace}_filter"></div>
+        <div class="header-title" onclick="EBCMS.{$namespace}.refresh();">配置管理</div>
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.add('默认分组',0)">添加</button>
+        </div>
+    </div>
+    <div class="body" style="bottom:0px;">
+        <div class="box" id="{$namespace}_table"></div>
+    </div>
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    <table class="table table-bordered table-hover table-ebcms">
+        <tbody>
+            <tr>
+                <!-- <th style="width:70px;">id</th> -->
+                <th style="width:245px;">操作</th>
+                <th>名称</th>
+                <th>键</th>
+                <th>值</th>
+                <th>排序</th>
+            </tr>
+            [[each groups as data group]]
+                <tr>
+                    <th>[[group]]</th>
+                    <th colspan="4">
+                        <div class="btn-group btn-group-sm">
+                            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.add('[[group]]',0);">添加</a>
+                        </div>
+                    </th>
+                </tr>
+                [[include '{$namespace}-table-item' data]]
+            [[/each]]
+        </tbody>
+    </table>
+</script>
+
+<script id="{$namespace}-table-item" type="text/html">
+    [[each rows as v n]]
+        <tr>
+            <!-- <td>[[v.id]]</td> -->
+            <td>
+                <div class="btn-group btn-group-sm">
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.del('{:url('admin/config/delete')}','[[v.id]]','{$namespace}');">删除</button>
+                    <button class="btn btn-primary" onclick="EBCMS.{$namespace}.edit('[[v.id]]');">编辑</button>
+                </div>
+            </td>
+            <td>[[v.levelstr]][[v.title]]</td>
+            <td>[[v.levelstr]][[v.name]]</td>
+            <td>[[v.levelstr]][[v.value]]</td>
+            <td><input value="[[v.sort]]" class="form-control input-sm input_sort" data-id="[[v.id]]"></td>
+        </tr>
+        [[if v.rows]]
+            [[include '{$namespace}-table-item' v]]
+        [[/if]]
+    [[/each]]
+</script>

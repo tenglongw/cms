@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+{include file='common/head' /}
+<body>
+{include file='common/header' /}
+	<!-- header end -->	<!-- section.SearchList -->
+	<section class="SearchList">
+
+		<div class="centerCon">
+				<form class="SearchForm" id="searchForm"  method="get" action="{:url('index/content/search')}">
+	
+					<input type="text" id="q" name="q" class="form-control" value="{$q}" placeholder="Search for...">
+					<input id="category" type="hidden" name="category" value="">
+					<button type="submit" class="but">搜索</button>
+	
+				</form>
+
+			<nav class="SearchNav clearfloat">
+				{content:category tree='1' return='data'/}
+					<a {if ($category == 0)} class="active" {/if} data-id='' href="#">全站</a>
+					{foreach name='data' item='vo'}
+	                    <a href="javascript:;" {if ($category == $vo.id)} class="active" {/if} data-id='{$vo.id}'>{$vo.title}</a>
+                     {/foreach}
+			</nav>
+
+			<div class="Searchinf">hi,您目前在 全站 搜索关键字“<span>{$q}</span>”，共找到{$total}个内容。</div>
+			<div class="clearfloat" style="background-color: #fff;">
+				<ul class="Searchinfo" id="wolist">
+					{notempty name='q'}
+                    {notempty name='lists'}
+                            {foreach name='lists' item='vo'}
+								<li>
+									<a class="clearfloat" href="{$vo.url}">
+			
+										<div class="imgC"><img src="{$vo.thumb|thumb=265,200}"></div>
+			
+										<div class="word">
+			
+											<div class="lei">
+												 {foreach name='tag_list' item='tag'}
+						                            {if ($tag.c_id == $vo.id)}
+						                            {$tag.tag}
+						                            {/if}
+						                         {/foreach}
+											</div>
+			
+											<div class="title">{$vo.title}</div>
+			
+											<div class="time"> {php} 
+																$obj = json_decode($vo,true);
+																echo date('Y-m-d',$obj['create_time']); 
+															{/php}  &nbsp;By {$vo.author}</div>
+			
+											<div class="info">{$vo.description}</div>
+										</div>
+									</a>
+								</li>
+                            {/foreach}
+                        {notempty name='page'}
+                        <div style="display: none">
+							{$page}
+						</div>
+						{/notempty}
+                    {else/}
+                    {/notempty}
+                {/notempty}
+					
+				</ul>
+				<div class="RigCon">
+					<div class="total">Total<br/><span>{$total}</span></div>
+				</div>
+			</div>
+			
+			<div class="IndMore" style="background-color: #fff;">
+				<a id="more" href="javascript:;" >Load more</a>
+			</div>
+		</div>
+	</section>
+	<script type="text/javascript">
+	$(function(){
+		searchUtil();
+	})
+		function searchUtil(){
+			$('.SearchNav').find('a').click(function(){
+				var category_id = $(this).attr('data-id');
+				console.log(category_id);
+				$('#category').val(category_id);
+				removeClass();
+				$(this).addClass('active');
+				$('#searchForm').submit();
+			});
+		}
+		function removeClass(){
+			$('.SearchNav').find('a').each(function(index,val){
+				$('.SearchNav').find('a').eq(index).removeClass();
+			});
+		}
+		
+		function addDoem(data){
+		    var html = '';
+		    for (var i = 0; i < data.length; i++) {
+		    	html+= '<li><a href="'+data[i].url+'"> <div class="imgC"><img src="'+data[i].thumb+'"></div><div class="head">'+data[i].title+'</div> <p>'+data[i].description+'</p></a> </li>'
+		    }
+		    $('#wolist').append(html);
+		}
+		var cantext = true;
+		var time = null;
+
+		var currentPage = 2;
+		var hasMore = true;
+		var IfTop = 0;
+		$(window).scroll(function(){
+			
+			var scrollY = $(this)[0].scrollY;
+			var innerHeight =  $(this)[0].innerHeight;
+			var documentHeight  = $(document).height(); 
+			var height = scrollY +innerHeight;
+			if (height > (documentHeight-420) && cantext && IfTop < scrollY && hasMore) {
+				IfTop = scrollY;
+				console.log('触发');
+				ajaxFun();
+				cantext = false;
+				time = setTimeout(function(){cantext = true; console.log(cantext)}, 3000);
+				
+			}
+		})
+		
+		function ajaxFun(){
+
+	    	var q = $('#q').val();
+	    	var category =$('#category').val(); 
+					console.log('hasMore:'+hasMore+"cantext:"+cantext);
+	        if (hasMore && cantext) {
+	            $.ajax({
+	                url: 'index/comment/search?q='+q+'&category='+category+'&page='+currentPage,
+	                type: 'GET',
+	                dataType: 'JSONP'
+	            })
+	            .done(function(data) {
+	            	console.log(data);
+					currentPage++;
+	                hasMore  = data.page.hasMore;
+	                addDoem(data.lists);
+	                if (!hasMore) {
+	                    $('.IndMore').find('a').hide();
+	                    $('.IndMore').find('span').show().text('已经到底了！');
+
+	                }
+	            })
+	        }else{
+	            // CnAlert('已经到底了！');
+	        }
+	                
+	    }
+		
+		function addDoem(data){
+			console.log(data);
+		    var html = '';
+		    for (var i = 0; i < data.length; i++) {
+		    	var tag = '';
+		    	if(data[i].tag){
+		    		tag = data[i].tag;
+		    	}
+		    	html+='<li>'
+				+'		<a class="clearfloat" href="'+data[i].url+'">'
+				+'			<div class="imgC"><img src="'+data[i].thumb+'"></div>'
+				+'			<div class="word">'
+				+'				<div class="lei">'+tag+'</div>'
+				+'				<div class="title">'+data[i].title+'</div>'
+				+'				<div class="time">'+dateFormat1(data[i].create_time)+' By '+data[i].author+'</div>'
+				+'				<div class="info">'+data[i].description+'</div>'
+				+'			</div>'
+				+'		</a>'
+				+'	</li>';
+		    }
+		    $('#wolist').append(html);
+		}
+		function dateFormat1(time){
+			var date = new Date(parseInt(time)*1000);
+			return date.Format('yyyy-MM-dd');
+		}
+	</script>	<!-- section.SearchList end -->	<!-- footer -->	{include file='common/footer' /}	<!-- footer end -->

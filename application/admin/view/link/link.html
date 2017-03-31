@@ -1,0 +1,167 @@
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.queryParams = {
+            page:1,
+            rows:20,
+            order:{
+                'sort':'desc',
+            },
+            model:'admin/link',
+        };
+        EBCMS.{$namespace}.refresh = function refresh(p){
+            if (p) {
+                $.each(p, function(index, val) {
+                    if (typeof val == 'object') {
+                        EBCMS.{$namespace}.queryParams[index] = $.extend(EBCMS.{$namespace}.queryParams[index], p[index]);
+                        delete p[index];
+                    };
+                });
+                $.extend(EBCMS.{$namespace}.queryParams, p);
+            };
+            EBCMS.CORE.api({
+                queryParams:EBCMS.{$namespace}.queryParams,
+                group:'group',
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_table',
+                compileAfter:function(p){
+                    $('#{$namespace}_table').find('.input_sort').focus(function(){
+                        EBCMS.{$namespace}.sortvalue = $(this).val();
+                    }).blur(function(){
+                        var $this = $(this);
+                        if ($this.val() != EBCMS.{$namespace}.sortvalue) {
+                            EBCMS.ACT.togglefield('{:url('admin/link/resort')}',$this.data('id'),$this.val(),'{$namespace}','resort');
+                        };
+                    });
+                    EBCMS.FN.renderPage({
+                        namespace:'{$namespace}',
+                        total:p.data.total,
+                    });
+                    EBCMS.FN.renderFilter({
+                        namespace:'{$namespace}',
+                        filter:{
+                            search:{
+                                field:'group|title|description|info|url',
+                                value:''
+                            },
+                            lock:{
+                                field:'locked',
+                            },
+                            status:{
+                                field:'status',
+                                filters:{'待审核':99,"已通过":1,'已屏蔽':0}
+                            },
+                            order:{
+                                filters:{id:'id',update_time:'更新时间',sort:'权重'}
+                            },
+                            rows:true,
+                        }
+                    });
+                },
+            });
+        };
+        EBCMS.{$namespace}.edit = function edit(id){
+            EBCMS.CORE.get({
+                url:'{:url('admin/link/edit')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.{$namespace}.add = function add(pid){
+            EBCMS.CORE.get({
+                url:'{:url('admin/link/add')}',
+                queryParams:{
+                    pid:pid,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.CORE.compile({
+            tpl:'{$namespace}-box',
+            target:'#{$namespace}_box',
+            compileAfter:function(){
+                EBCMS.{$namespace}.refresh();
+            }
+        });
+    });
+</script>
+
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div class="header-title" onclick="EBCMS.{$namespace}.refresh();">友情链接管理</div>
+        <div id="{$namespace}_filter" class="footer-page"></div>
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="EBCMS.CORE.getconfig('{:eb_encrypt('name|link')}');">设置</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.add();">添加</button>
+        </div>
+    </div>
+    <div class="body">
+        <div id="{$namespace}_table" class="box"></div>
+    </div>
+    <div class="footer">
+        <div id="{$namespace}_page" class="footer-page"></div>
+    </div>
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    <table class="table table-bordered table-hover table-ebcms">
+        <tbody>
+            <tr>
+                <!-- <th style="width:70px;">id</th> -->
+                <th style="width:210px;">操作</th>
+                <th>名称</th>
+                <th>连接</th>
+                <th>排序</th>
+            </tr>
+            [[each groups as data group]]
+            <tr>
+                <th colspan="4">[[group]]</th>
+            </tr>
+                [[include '{$namespace}-table-item' data]]
+            [[/each]]
+        </tbody>
+    </table>
+</script>
+
+<script id="{$namespace}-table-item" type="text/html">
+    [[each rows as v n]]
+        <tr>
+            <!-- <td>[[v.id]]</td> -->
+            <td>
+                <div class="btn-group btn-group-sm">
+                [[if access('{:mca('lock')}',0)]]
+                    [[if v.locked==1]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('admin/link/lock')}','[[v.id]]','0','{$namespace}');">已锁</button>
+                    [[else]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('admin/link/lock')}','[[v.id]]','1','{$namespace}');">未锁</button>
+                    [[/if]]
+                [[/if]]
+                [[if access('{:mca('status')}',v.locked)]]
+                    [[if v.status==99]]
+                    <button class="btn btn-danger" onclick="EBCMS.ACT.status('{:url('admin/link/status')}','[[v.id]]','1','{$namespace}');">通过</button>
+                    <button class="btn btn-danger" onclick="EBCMS.ACT.status('{:url('admin/link/status')}','[[v.id]]','0','{$namespace}');">屏蔽</button>
+                    [[else if v.status==1]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.status('{:url('admin/link/status')}','[[v.id]]','0','{$namespace}');">已通过</button>
+                    [[else]]
+                    <button class="btn btn-warning" onclick="EBCMS.ACT.status('{:url('admin/link/status')}','[[v.id]]','1','{$namespace}');">未通过</button>
+                    [[/if]]
+                [[/if]]
+                [[if access('{:mca('edit')}',v.locked)]]
+                <button class="btn btn-primary" onclick="EBCMS.{$namespace}.edit('[[v.id]]');">编辑</button>
+                [[/if]]
+                [[if access('{:mca('delete')}',v.locked)]]
+                <button class="btn btn-primary" onclick="EBCMS.ACT.del('{:url('admin/link/delete')}','[[v.id]]','{$namespace}');">删除</button>
+                [[/if]]
+                </div>
+            </td>
+            <td>[[v.title]]</td>
+            <td>[[v.url]]</td>
+            <td><input value="[[v.sort]]" class="form-control input-sm input_sort" data-id="[[v.id]]"></td>
+        </tr>
+        [[if v.rows]]
+            [[include '{$namespace}-table-item' v]]
+        [[/if]]
+    [[/each]]
+</script>

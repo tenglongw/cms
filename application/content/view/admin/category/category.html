@@ -1,0 +1,189 @@
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.queryParams = {
+            order:{
+                'category.sort':'desc',
+                'category.id':'asc',
+            },
+            model:'content/category',
+            with:'extend',
+        };
+        EBCMS.{$namespace}.refresh = function refresh(p){
+            if (p) {
+                $.each(p, function(index, val) {
+                    if (typeof val == 'object') {
+                        EBCMS.{$namespace}.queryParams[index] = $.extend(EBCMS.{$namespace}.queryParams[index], p[index]);
+                        delete p[index];
+                    };
+                });
+                $.extend(EBCMS.{$namespace}.queryParams, p);
+            };
+            EBCMS.CORE.api({
+                queryParams:EBCMS.{$namespace}.queryParams,
+                tree:true,
+                treelevel:true,
+                tpl:'{$namespace}-box',
+                target:'#{$namespace}_box',
+                compileAfter:function(data){
+                    $('#{$namespace}_box').find('.input_sort').focus(function(){
+                        EBCMS.{$namespace}.sortvalue = $(this).val();
+                    }).blur(function(){
+                        var $this = $(this);
+                        if ($this.val() != EBCMS.{$namespace}.sortvalue) {
+                            EBCMS.ACT.togglefield('{:url('content/admin.category/resort')}',$this.data('id'),$this.val(),'{$namespace}','resort');
+                        };
+                    });
+                    EBCMS.FN.renderFilter({
+                        namespace:'{$namespace}',
+                        filter:{
+                            search:{
+                                field:'category.title|category.keywords|category.description|category.metatitle',
+                                value:''
+                            },
+                            lock:{
+                                field:'category.locked',
+                            },
+                            status:{
+                                field:'category.status',
+                            },
+                            order:{
+                                filters:{
+                                    'category.id':'id',
+                                    'category.update_time':'更新时间',
+                                    'category.sort':'权重'
+                                }
+                            },
+                        }
+                    });
+                },
+            });
+        };
+        EBCMS.{$namespace}.edit = function edit(id){
+            EBCMS.CORE.get({
+                url:'{:url('content/admin.category/edit')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.{$namespace}.add = function add(pid){
+            EBCMS.CORE.get({
+                url:'{:url('content/admin.category/add')}',
+                queryParams:{
+                    pid:pid,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+        EBCMS.{$namespace}.merge = function(){
+            var ids = EBCMS.FN.getCheckedId('{$namespace}');
+            if (ids) {
+                EBCMS.CORE.get({
+                    url:'{:url('content/admin.category/merge')}',
+                    queryParams:{
+                        ids:ids,
+                    },
+                    target:'#lgModal .modal-content',
+                });
+            }else{
+                EBCMS.MSG.notice('请先勾选要移动的数据！');
+            };
+        };
+        EBCMS.{$namespace}.refresh();
+    });
+</script>
+
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div class="footer-page" id="{$namespace}_filter"></div>
+        <div class="header-title">内容分类</div>
+        <div class="btn-group">
+            [[if access('{:mca('add')}',0)]]
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.add();">添加</button>
+            [[/if]]
+            <button class="btn btn-primary" onclick="EBCMS.FN.inverse('{$namespace}');">选择(反选)</button>
+            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right">
+            [[if access('{:mca('delete')}',0)]]
+                <li><a href="###" onclick="EBCMS.ACT.dels('{:url('content/admin.category/delete')}','{$namespace}');">批量删除</a></li>
+            [[/if]]
+            [[if access('{:mca('status')}',0)]]
+                <li role="separator" class="divider"></li>
+                <li><a href="###" onclick="EBCMS.ACT.statuss('{:url('content/admin.category/status')}',1,'{$namespace}');">批量审核</a></li>
+                <li><a href="###" onclick="EBCMS.ACT.statuss('{:url('content/admin.category/status')}',0,'{$namespace}');">取消审核</a></li>
+            [[/if]]
+            [[if access('{:mca('lock')}',0)]]
+                <li role="separator" class="divider"></li>
+                <li><a href="###" onclick="EBCMS.ACT.locks('{:url('content/admin.category/lock')}',0,'{$namespace}');">批量解锁</a></li>
+                <li><a href="###" onclick="EBCMS.ACT.locks('{:url('content/admin.category/lock')}',1,'{$namespace}');">批量锁定</a></li>
+            [[/if]]
+            [[if access('{:mca('merge')}',0)]]
+                <li role="separator" class="divider"></li>
+                <li><a href="###" onclick="EBCMS.{$namespace}.merge();">合并</a></li>
+            [[/if]]
+            </ul>
+        </div>
+    </div>
+    <div class="body" style="padding:5px;bottom:0px;">
+        <table class="table table-bordered table-hover table-ebcms">
+            <tbody>
+                <tr>
+                    <th style="width:70px;">id</th>
+                    <th style="width:200px;">操作</th>
+                    <th>标题</th>
+                    <th>名称</th>
+                    <th>模型</th>
+                    <th>排序</th>
+                </tr>
+                [[include '{$namespace}-table-item']]
+            </tbody>
+        </table>
+    </div>
+</script>
+
+<script id="{$namespace}-table-item" type="text/html">
+    [[each rows as v n]]
+        <tr>
+            <td>
+                <input type="checkbox" name="id" value="[[v.id]]" id="{$namespace}_item_[[v.id]]">
+                <label for='{$namespace}_item_[[v.id]]'>[[v.id]]</label>
+            </td>
+            <td>
+                <div class="btn-group btn-group-sm">
+                [[if access('{:mca('lock')}',0)]]
+                    [[if v.locked==1]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('content/admin.category/lock')}','[[v.id]]','0','{$namespace}');">已锁</button>
+                    [[else]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.lock('{:url('content/admin.category/lock')}','[[v.id]]','1','{$namespace}');">未锁</button>
+                    [[/if]]
+                [[/if]]
+                [[if access('{:mca('status')}',v.locked)]]
+                    [[if v.status==1]]
+                    <button class="btn btn-primary" onclick="EBCMS.ACT.status('{:url('content/admin.category/status')}','[[v.id]]','0','{$namespace}');">已审</button>
+                    [[else]]
+                    <button class="btn btn-warning" onclick="EBCMS.ACT.status('{:url('content/admin.category/status')}','[[v.id]]','1','{$namespace}');">未审</button>
+                    [[/if]]
+                [[/if]]
+                [[if access('{:mca('edit')}',v.locked)]]
+                <button class="btn btn-primary" onclick="EBCMS.{$namespace}.edit('[[v.id]]');">编辑</button>
+                [[/if]]
+                [[if access('{:mca('delete')}',v.locked)]]
+                <button class="btn btn-primary" onclick="EBCMS.ACT.del('{:url('content/admin.category/delete')}','[[v.id]]','{$namespace}');">删除</button>
+                [[/if]]
+                </div>
+            </td>
+            <td>[[v.levelstr]]┣[[v.title]][[if v.ebcms_url != '']]&nbsp;<b><i class="iconfont icon-url text-danger"></i></b>[[/if]]</td>
+            <td>[[v.levelstr]]┣[[v.name]]</td>
+            <td>[[if v.extend.title != null]][[v.extend.title]][[else]][[/if]]</td>
+            <td><input value="[[v.sort]]" class="form-control input-sm input_sort" data-id="[[v.id]]"></td>
+        </tr>
+        [[if v.rows]]
+            [[include '{$namespace}-table-item' v]]
+        [[/if]]
+    [[/each]]
+</script>

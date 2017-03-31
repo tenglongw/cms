@@ -1,0 +1,91 @@
+{php}$namespace = ns();{/php}
+<script>
+    $(function() {
+        EBCMS.{$namespace}.upgradesubmit = function(){
+            if ('{$error|default='0'}' == '1') {
+                EBCMS.MSG.alert('请先处理会引起更新错误的问题！');
+            }else{
+                EBCMS.CORE.submit({
+                    url:'{:url('admin/upgrade/upgrade')}',
+                    queryParams:{
+                        version:'{$res.version}',
+                    },
+                    success:function(res){
+                        if (res.code) {
+                            EBCMS.MSG.notice(res.msg);
+                            $('#lgModal').modal('hide');
+                            EBCMS.{$namespace}.refresh();
+                        }else{
+                            EBCMS.MSG.alert(res.msg);
+                        }
+                    }
+                });
+            }
+        }
+    });
+</script>
+<div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+    <h4 class="modal-title">系统升级</h4>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div class="col-md-12">
+            <p style="font-size:2em;">升级到 <strong class="text-danger">EBCMS V{$res.version}</strong> 版本</p>
+            <div class="alert alert-info">{$res.content|htmlspecialchars_decode}</div>
+        </div>
+        <div class="col-md-12">
+            <div class="alert alert-danger alert-dismissible fade in" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <h4><strong>注意事项！</strong></h4>
+                <p>更新系统属自愿原则，我们不承担由此带来的任何责任！</p>
+                <p>为了安全起见，我们建议您全站备份！</p>
+                {notempty name='res.exec'}
+                <p><strong>有数据库更新，请备份数据库</strong></p>
+                {/notempty}
+            </div>
+        </div>
+        {notempty name='res.file'}
+            {notempty name='errors'}
+            <div class="col-md-12">
+                {notempty name='errors'}
+                    <h3>可能是以下文件或文件夹权限不足，导致无法更新，建议检查！</h3>
+                    <table class="table table-bordered" style="width:100%;">
+                    <tr>
+                        <th>错误</th>
+                        <th style="width:200px;">权限不足</th>
+                    </tr>
+                        {foreach name='errors' item='vo'}
+                        <tr>
+                            <td>{$vo}</td>
+                            <td><i class="iconfont icon-tishi1 text-danger"></i></td>
+                        </tr>
+                        {/foreach}
+                    </table>
+                {/notempty}
+            </div>
+            {/notempty}
+            {notempty name='files'}
+            <div class="col-md-12">
+                <table class="table table-bordered" style="width:100%;">
+                    <tr>
+                        <th>需要更新的文件</th>
+                        <th style="width:200px;">检测结果</th>
+                    </tr>
+                    {foreach name='files' item='vo'}
+                    <tr>
+                        <td>{$key}</td>
+                        <td>{eq name='vo' value='1'}<i class="iconfont icon-yes text-success"></i>{else/}<i class="iconfont icon-tishi1 text-danger"></i>{/eq}</td>
+                    </tr>
+                    {/foreach}
+                </table>
+            </div>
+            {/notempty}
+        {/notempty}
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-primary" onclick="EBCMS.{$namespace}.upgrade('1');">检测</button>
+    <button type="button" class="btn btn-primary" onclick="EBCMS.{$namespace}.upgradesubmit();">升级</button>
+    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+</div>

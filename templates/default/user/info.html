@@ -1,0 +1,46 @@
+{include file='common/header' /}
+<div class="row">
+    <div class="col-md-3">
+        {include file='user/left' /}
+    </div>
+    <div class="col-md-9">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <h1>修改基本信息</h1>
+                <hr>
+                <form class="form-horizontal well" method="post" action="{:url('index/user/info')}" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="avatar" class="col-sm-2 control-label">选择头像</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="avatar" id="avatar">
+                            <p class="help-block">只支持jpg格式图片，大小小于100k。</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="nickname" class="col-sm-2 control-label">昵称</label>
+                        <div class="col-sm-10">
+                            <input type="text" class="form-control" name="nickname" value="{$user.nickname}" id="nickname">
+                            <p class="help-block">6-10个字符</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="motto" class="col-sm-2 control-label">个性签名</label>
+                        <div class="col-sm-10">
+                            <textarea name="motto" class="form-control" id="motto" rows="5">{$user.motto}</textarea>
+                            <p class="help-block">255个字符以内</p>
+                        </div>
+                    </div>
+                    {if condition="0 != ebconfig('user.info_verify')"}
+                        {include file='common/verify' /}
+                    {/if}
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{include file='common/footer' /}

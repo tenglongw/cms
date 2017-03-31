@@ -1,0 +1,65 @@
+<div class="row">
+    {content:category pid='0' return='data'/}
+    {foreach name='data' item='vo'}
+    {eq name='vo.ebcms_url' value=''}
+        <div class="col-md-6">
+            <div class="panel panel-default">
+                {content:category pid='$vo.id' return='subcates'/}
+                {empty name='subcates'}
+                    <div class="panel-heading">
+                        <a href="{$vo.url}">{$vo.title}</a>
+                    </div>
+                    <div class="list-group">
+                    {eq name='vo.ebcms_url' value=''}
+                        {content:list category_id='$vo.id' limit='5' return='lists'/}
+                        {foreach name='lists' item='vs'}
+                        <a href="{$vs.url}" class="list-group-item" style="{$vs.style}"> <strong>{$key+1}</strong>. {$vs.shorttitle|mb_substr=0,24}</a>
+                        {/foreach}
+                    {/eq}
+                    </div>
+                {else/}
+                    <div class="panel-heading">
+                        <div class="btn-group btn-group-xs pull-right category_tab" role="group" aria-label="...">
+                            {foreach name='subcates' item='subcate'}
+                            {eq name='subcate.ebcms_url' value=''}
+                            <span type="button" class="btn btn-default" data-id="{$subcate.id}">{$subcate.title}</span>
+                            {/eq}
+                            {/foreach}
+                        </div>
+                        <a href="{$vo.url}">{$vo.title}</a>
+                    </div>
+                    <div class="list-group">
+                    {foreach name='subcates' item='subcate'}
+                    {eq name='subcate.ebcms_url' value=''}
+                    <div id="content_category_{$subcate.id}" style="display:none;">
+                        {content:list category_id='$subcate.id' limit='5' return='lists'/}
+                        {foreach name='lists' item='vs'}
+                        <a href="{$vs.url}" class="list-group-item" style="{$vs.style}"> <strong>{$key+1}</strong>. {$vs.shorttitle|mb_substr=0,24}</a>
+                        {/foreach}
+                    </div>
+                    {/eq}
+                    {/foreach}
+                    </div>
+                {/empty}
+            </div>
+        </div>
+    {/eq}
+    {/foreach}
+</div>
+<script>
+    $(function() {
+        $('.category_tab span').bind('click', function(event) {
+            $(this).addClass('active').siblings().removeClass('active');
+            var id = $(this).data('id');
+            $('#content_category_'+id).show().siblings().hide();
+        });
+        $('.category_tab span').hover(function() {
+            $(this).addClass('active').siblings().removeClass('active');
+            var id = $(this).data('id');
+            $('#content_category_'+id).show().siblings().hide();
+        });
+        $.each($('.category_tab'), function(index, val) {
+            $(this).children('span:eq(0)').click();
+        });
+    });
+</script>

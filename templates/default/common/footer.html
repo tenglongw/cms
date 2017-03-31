@@ -1,0 +1,17 @@
+<footer id="footer">
+	<div class="centerCon">
+		<div class="imgC"><img src="{:get_root()}/static/index/new/images/public/logo_02.jpg"></div>
+		<div class="link">
+		    {ebcms:nav mark='bottom' return='nav' tree='1' /}
+             {foreach name="nav" item="vo" }<a href="{$vo.url}">{$vo.title}</a>{/foreach}
+		</div>
+
+		<p>2016LONG7.COM ALL RIGHTS RESERVED / POWERED BY LONG7 PROFESSIONAL SNEAKER MEDIA 沪ICP备15526666号</p>
+	</div>
+</footer>
+<!-- <script type="text/javascript">
+    $youziku.load("body", "b20df310087445b9a2001396d1c92021", "PingFangSC_R");
+    /*$youziku.load("#id1,.class1,h1", "b20df310087445b9a2001396d1c92021", "PingFangSC_R");*/
+    /*．．．*/
+    $youziku.draw();
+</script> -->

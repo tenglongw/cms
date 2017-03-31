@@ -1,0 +1,57 @@
+
+
+
+ .div_scroll {
+	width: 100%;
+	overflow: auto;
+}	
+
+ .scroll_container {
+	overflow: hidden;
+	position: relative;
+}
+
+ .scroll_absolute {
+    position: absolute;
+}
+
+ .scroll_vertical_bar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 6px;
+    border-radius: 3px;
+    height: 100%;
+    background: #eee;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+ .scroll_track {
+	position: relative;
+	background-color: #eee;
+}
+
+ .scroll_drag {
+	position: relative;
+	top: 0;
+	left: 0;
+	cursor: pointer;
+	background-color: #ccc;
+    border-radius: 3px;
+
+}
+
+ .scroll_arrow {
+	text-indent: -20000px;
+	display: block;
+	cursor: pointer;
+	background-color: #D6B74B;
+}
+
+ .scroll_vertical_bar .scroll_arrow {
+    height: 16px;
+}
+
+

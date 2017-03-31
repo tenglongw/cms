@@ -1,0 +1,851 @@
+[ 2017-03-30T10:17:25+08:00 ] ::1 ::1 GET /l7cms/index.php/News/Gym%20shoes/1089.html
+[ log ] localhost/l7cms/index.php/News/Gym%20shoes/1089.html [运行时间：0.493235s][吞吐率：2.03req/s] [内存消耗：3,610.04kb] [文件加载：62]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'content',
+    2 => 'detail',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://localhost/l7cms/index.php/News.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490784681',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1089',
+  'category_id' => '7',
+)
+[ info ] [ RUN ] Method [ <user> public method detail ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Content.php 107 - 179
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ VIEW ] E:\workspace-php\l7cms\templates\default\content\newsInfo.html [ array (
+  0 => 'seo',
+  1 => 'content',
+  2 => 'category',
+  3 => 'qq_url',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '9eb7bb9cdb123ee8e9df8cdae0d4484f_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Tongji @app_end [ RunTime:0.023819s ]
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Click @app_end [ RunTime:0.013485s ]
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.029964s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_content` WHERE  `id` = '1089' LIMIT 1    [ RunTime:0.019335s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_category` WHERE  `id` = 7 LIMIT 1   [ RunTime:0.013639s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_body` WHERE  `id` = 1089 LIMIT 1   [ RunTime:0.020302s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_tags` [ RunTime:0.019258s ]
+[ sql ] [ SQL ] SELECT `tag_id` FROM `ebcms5_content_tags` WHERE  `c_id` = 1089 LIMIT 20   [ RunTime:0.013663s ]
+[ sql ] [ SQL ] SELECT `c_id` FROM `ebcms5_content_tags` WHERE  `tag_id` IN (8)  AND `c_id` <> 1089 ORDER BY c_id desc LIMIT 20   [ RunTime:0.024102s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_category` [ RunTime:0.017840s ]
+[ sql ] [ SQL ] SELECT content.id,content.category_id,content.title,content.shorttitle,content.metatitle,content.keywords,content.description,content.thumb,content.tpl,content.ebcms_url,content.filename,content.ext,content.click,content.user_id,content.baidu,content.comment_able,content.update_time,content.create_time,content.sort,content.status,content.locked,content.color,content.size,content.bold,content.author,content.source,content.comment_count,category.id AS category__id,category.pid AS category__pid,category.name AS category__name,category.title AS category__title,category.metatitle AS category__metatitle,category.keywords AS category__keywords,category.description AS category__description,category.extend_id AS category__extend_id,category.pagenum AS category__pagenum,category.tpl AS category__tpl,category.tpl_detail AS category__tpl_detail,category.ebcms_url AS category__ebcms_url,category.datatype AS category__datatype,category.expire AS category__expire,category.order AS category__order,category.ext AS category__ext,category.update_time AS category__update_time,category.create_time AS category__create_time,category.sort AS category__sort,category.status AS category__status,category.locked AS category__locked FROM ebcms5_content_content content INNER JOIN ebcms5_content_category category ON content.category_id=category.id  WHERE  content.id IN (1094,1088,1080,1069,1067,1063,1062,1058,1040,1035,1025,997,994,993,987,982,979,977,964,959)  AND content.status = 1  AND category.status = 1  AND category.extend_id = 14 ORDER BY content.id desc LIMIT 20   [ RunTime:0.044845s ]
+[ sql ] [ SQL ] SELECT ebcms5_content_tag.*,pivot.c_id AS pivot__c_id,pivot.tag_id AS pivot__tag_id,pivot.cc_id AS pivot__cc_id FROM `ebcms5_content_tag` INNER JOIN ebcms5_content_tags pivot ON pivot.tag_id=ebcms5_content_tag.id  WHERE  pivot.c_id = 1089  [ RunTime:0.020907s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_navcate` WHERE  `status` = 1  AND `mark` = 'bottom' LIMIT 1   [ RunTime:0.017623s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_nav` WHERE  `category_id` = 2  AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.018813s ]
+[ sql ] [ SQL ] INSERT INTO `ebcms5_tongji` (`user_id` , `title` , `url` , `ip` , `create_time`) VALUES ('0' , 'Reigning Champ x adidas Ultra Boost 3.0 即将发售' , 'http://localhost/l7cms/index.php/News/Gym%20shoes/1089.html' , '0.0.0.0' , '1490840244')       [ RunTime:0.019957s ]
+[ sql ] [ SQL ] UPDATE `ebcms5_content_content`  SET `click`=click+1  WHERE  `id` = '1089'    [ RunTime:0.011222s ]
+
+---------------------------------------------------------------
+[ 2017-03-30T10:17:25+08:00 ] ::1 ::1 GET /l7cms/static/index/new/js/idangerous.swiper.min.js
+[ log ] localhost/l7cms/static/index/new/js/idangerous.swiper.min.js [运行时间：0.047882s][吞吐率：20.88req/s] [内存消耗：1,351.73kb] [文件加载：31]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'index',
+    2 => 'new',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://localhost/l7cms/index.php/News/Gym%20shoes/1089.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490784681',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'idangerous.swiper.min.js',
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+
+---------------------------------------------------------------
+[ 2017-03-30T10:17:25+08:00 ] ::1 ::1 POST /l7cms/index.php/index/comment/index.html
+[ log ] localhost/l7cms/index.php/index/comment/index.html [运行时间：0.240962s][吞吐率：4.15req/s] [内存消耗：2,900.62kb] [文件加载：50]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'comment',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://localhost',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'referer' => 'http://localhost/l7cms/index.php/News/Gym%20shoes/1089.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490840245',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '22',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'size' => '5',
+  'tid' => '1089',
+)
+[ info ] [ RUN ] Method [ <user> public method index ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Comment.php 6 - 30
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032865s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_user` [ RunTime:0.037839s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM ebcms5_content_comment comment LEFT JOIN ebcms5_user touser ON comment.touid=touser.id LEFT JOIN ebcms5_user user ON comment.uid=user.id  WHERE  comment.pid = 0  AND comment.tid = '1089' ORDER BY comment.id  desc LIMIT 1   [ RunTime:0.017732s ]
+[ sql ] [ SQL ] SELECT comment.id,comment.uid,comment.touid,comment.topid,comment.tid,comment.pid,comment.content,comment.update_time,comment.create_time,comment.create_date,comment.status,comment.locked,comment.sort,comment.ip,touser.id AS touser__id,touser.email AS touser__email,touser.nickname AS touser__nickname,touser.avatar AS touser__avatar,touser.motto AS touser__motto,touser.password AS touser__password,touser.login_times AS touser__login_times,touser.login_ip AS touser__login_ip,touser.jifen AS touser__jifen,touser.jinbi AS touser__jinbi,touser.login_time AS touser__login_time,touser.salt AS touser__salt,touser.safe_code AS touser__safe_code,touser.update_time AS touser__update_time,touser.create_time AS touser__create_time,touser.sort AS touser__sort,touser.status AS touser__status,touser.locked AS touser__locked,touser.ext AS touser__ext,touser.unionid AS touser__unionid,user.id AS user__id,user.email AS user__email,user.nickname AS user__nickname,user.avatar AS user__avatar,user.motto AS user__motto,user.password AS user__password,user.login_times AS user__login_times,user.login_ip AS user__login_ip,user.jifen AS user__jifen,user.jinbi AS user__jinbi,user.login_time AS user__login_time,user.salt AS user__salt,user.safe_code AS user__safe_code,user.update_time AS user__update_time,user.create_time AS user__create_time,user.sort AS user__sort,user.status AS user__status,user.locked AS user__locked,user.ext AS user__ext,user.unionid AS user__unionid FROM ebcms5_content_comment comment LEFT JOIN ebcms5_user touser ON comment.touid=touser.id LEFT JOIN ebcms5_user user ON comment.uid=user.id  WHERE  comment.pid = 0  AND comment.tid = '1089' ORDER BY comment.id  desc LIMIT 0,5   [ RunTime:0.020126s ]
+
+---------------------------------------------------------------
+[ 2017-03-30T10:17:50+08:00 ] ::1 ::1 GET /l7cms/index.php/News/Gym%20shoes/1089.html
+[ log ] localhost/l7cms/index.php/News/Gym%20shoes/1089.html [运行时间：0.490596s][吞吐率：2.04req/s] [内存消耗：3,610.15kb] [文件加载：62]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'content',
+    2 => 'detail',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://localhost/l7cms/index.php/News.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490840245',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1089',
+  'category_id' => '7',
+)
+[ info ] [ RUN ] Method [ <user> public method detail ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Content.php 107 - 179
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ VIEW ] E:\workspace-php\l7cms\templates\default\content\newsInfo.html [ array (
+  0 => 'seo',
+  1 => 'content',
+  2 => 'category',
+  3 => 'qq_url',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '9eb7bb9cdb123ee8e9df8cdae0d4484f_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Tongji @app_end [ RunTime:0.022807s ]
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Click @app_end [ RunTime:0.025742s ]
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.026441s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_content` WHERE  `id` = '1089' LIMIT 1    [ RunTime:0.015765s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_category` WHERE  `id` = 7 LIMIT 1   [ RunTime:0.021406s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_body` WHERE  `id` = 1089 LIMIT 1   [ RunTime:0.026350s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_tags` [ RunTime:0.019940s ]
+[ sql ] [ SQL ] SELECT `tag_id` FROM `ebcms5_content_tags` WHERE  `c_id` = 1089 LIMIT 20   [ RunTime:0.016376s ]
+[ sql ] [ SQL ] SELECT `c_id` FROM `ebcms5_content_tags` WHERE  `tag_id` IN (8)  AND `c_id` <> 1089 ORDER BY c_id desc LIMIT 20   [ RunTime:0.018941s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_category` [ RunTime:0.031635s ]
+[ sql ] [ SQL ] SELECT content.id,content.category_id,content.title,content.shorttitle,content.metatitle,content.keywords,content.description,content.thumb,content.tpl,content.ebcms_url,content.filename,content.ext,content.click,content.user_id,content.baidu,content.comment_able,content.update_time,content.create_time,content.sort,content.status,content.locked,content.color,content.size,content.bold,content.author,content.source,content.comment_count,category.id AS category__id,category.pid AS category__pid,category.name AS category__name,category.title AS category__title,category.metatitle AS category__metatitle,category.keywords AS category__keywords,category.description AS category__description,category.extend_id AS category__extend_id,category.pagenum AS category__pagenum,category.tpl AS category__tpl,category.tpl_detail AS category__tpl_detail,category.ebcms_url AS category__ebcms_url,category.datatype AS category__datatype,category.expire AS category__expire,category.order AS category__order,category.ext AS category__ext,category.update_time AS category__update_time,category.create_time AS category__create_time,category.sort AS category__sort,category.status AS category__status,category.locked AS category__locked FROM ebcms5_content_content content INNER JOIN ebcms5_content_category category ON content.category_id=category.id  WHERE  content.id IN (1094,1088,1080,1069,1067,1063,1062,1058,1040,1035,1025,997,994,993,987,982,979,977,964,959)  AND content.status = 1  AND category.status = 1  AND category.extend_id = 14 ORDER BY content.id desc LIMIT 20   [ RunTime:0.032453s ]
+[ sql ] [ SQL ] SELECT ebcms5_content_tag.*,pivot.c_id AS pivot__c_id,pivot.tag_id AS pivot__tag_id,pivot.cc_id AS pivot__cc_id FROM `ebcms5_content_tag` INNER JOIN ebcms5_content_tags pivot ON pivot.tag_id=ebcms5_content_tag.id  WHERE  pivot.c_id = 1089  [ RunTime:0.016798s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_navcate` WHERE  `status` = 1  AND `mark` = 'bottom' LIMIT 1   [ RunTime:0.015602s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_nav` WHERE  `category_id` = 2  AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.020581s ]
+[ sql ] [ SQL ] INSERT INTO `ebcms5_tongji` (`user_id` , `title` , `url` , `ip` , `create_time`) VALUES ('0' , 'Reigning Champ x adidas Ultra Boost 3.0 即将发售' , 'http://localhost/l7cms/index.php/News/Gym%20shoes/1089.html' , '0.0.0.0' , '1490840270')       [ RunTime:0.019666s ]
+[ sql ] [ SQL ] UPDATE `ebcms5_content_content`  SET `click`=click+1  WHERE  `id` = '1089'    [ RunTime:0.023420s ]
+
+---------------------------------------------------------------
+[ 2017-03-30T10:17:50+08:00 ] ::1 ::1 GET /l7cms/static/index/new/js/idangerous.swiper.min.js
+[ log ] localhost/l7cms/static/index/new/js/idangerous.swiper.min.js [运行时间：0.054549s][吞吐率：18.33req/s] [内存消耗：1,350.63kb] [文件加载：31]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'index',
+    2 => 'new',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => '*/*',
+  'referer' => 'http://localhost/l7cms/index.php/News/Gym%20shoes/1089.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490840245',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'idangerous.swiper.min.js',
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+
+---------------------------------------------------------------
+[ 2017-03-30T10:17:51+08:00 ] ::1 ::1 POST /l7cms/index.php/index/comment/index.html
+[ log ] localhost/l7cms/index.php/index/comment/index.html [运行时间：0.184132s][吞吐率：5.43req/s] [内存消耗：2,900.62kb] [文件加载：50]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'comment',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://localhost',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'referer' => 'http://localhost/l7cms/index.php/News/Gym%20shoes/1089.html',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490840245',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '22',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'size' => '5',
+  'tid' => '1089',
+)
+[ info ] [ RUN ] Method [ <user> public method index ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Comment.php 6 - 30
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.024964s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_user` [ RunTime:0.017095s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM ebcms5_content_comment comment LEFT JOIN ebcms5_user touser ON comment.touid=touser.id LEFT JOIN ebcms5_user user ON comment.uid=user.id  WHERE  comment.pid = 0  AND comment.tid = '1089' ORDER BY comment.id  desc LIMIT 1   [ RunTime:0.013303s ]
+[ sql ] [ SQL ] SELECT comment.id,comment.uid,comment.touid,comment.topid,comment.tid,comment.pid,comment.content,comment.update_time,comment.create_time,comment.create_date,comment.status,comment.locked,comment.sort,comment.ip,touser.id AS touser__id,touser.email AS touser__email,touser.nickname AS touser__nickname,touser.avatar AS touser__avatar,touser.motto AS touser__motto,touser.password AS touser__password,touser.login_times AS touser__login_times,touser.login_ip AS touser__login_ip,touser.jifen AS touser__jifen,touser.jinbi AS touser__jinbi,touser.login_time AS touser__login_time,touser.salt AS touser__salt,touser.safe_code AS touser__safe_code,touser.update_time AS touser__update_time,touser.create_time AS touser__create_time,touser.sort AS touser__sort,touser.status AS touser__status,touser.locked AS touser__locked,touser.ext AS touser__ext,touser.unionid AS touser__unionid,user.id AS user__id,user.email AS user__email,user.nickname AS user__nickname,user.avatar AS user__avatar,user.motto AS user__motto,user.password AS user__password,user.login_times AS user__login_times,user.login_ip AS user__login_ip,user.jifen AS user__jifen,user.jinbi AS user__jinbi,user.login_time AS user__login_time,user.salt AS user__salt,user.safe_code AS user__safe_code,user.update_time AS user__update_time,user.create_time AS user__create_time,user.sort AS user__sort,user.status AS user__status,user.locked AS user__locked,user.ext AS user__ext,user.unionid AS user__unionid FROM ebcms5_content_comment comment LEFT JOIN ebcms5_user touser ON comment.touid=touser.id LEFT JOIN ebcms5_user user ON comment.uid=user.id  WHERE  comment.pid = 0  AND comment.tid = '1089' ORDER BY comment.id  desc LIMIT 0,5   [ RunTime:0.027773s ]
+
+---------------------------------------------------------------
+[ 2017-03-30T17:56:03+08:00 ] ::1 ::1 GET /l7cms/index.php/News.html
+[ log ] localhost/l7cms/index.php/News.html [运行时间：0.343452s][吞吐率：2.91req/s] [内存消耗：3,974.68kb] [文件加载：67]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'content',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://localhost/l7cms/index.php',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490840271',
+)
+[ info ] [ PARAM ] array (
+  'id' => '1',
+)
+[ info ] [ RUN ] Method [ <user> public method index ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Content.php 7 - 105
+
+  - Parameters [1] {
+    Parameter #0 [ <required> $id ]
+  }
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ VIEW ] E:\workspace-php\l7cms\templates\default_mobile\content\index_news.html [ array (
+  0 => 'seo',
+  1 => 'tag_list',
+  2 => 'category',
+  3 => 'page',
+  4 => 'lists',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '9eb7bb9cdb123ee8e9df8cdae0d4484f_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Tongji @app_end [ RunTime:0.035858s ]
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.041664s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ebcms5_content_content` WHERE  `category_id` IN (7,8,9)  AND `status` = '1' ORDER BY sort desc,update_time desc,id desc LIMIT 1    [ RunTime:0.027997s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_content` WHERE  `category_id` IN (7,8,9)  AND `status` = '1' ORDER BY sort desc,update_time desc,id desc LIMIT 0,5    [ RunTime:0.023497s ]
+[ sql ] [ SQL ] select ct.tag,cts.c_id from ebcms5_content_tag ct,ebcms5_content_tags cts where ct.id = cts.tag_id [ RunTime:0.032207s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_navcate` WHERE  `status` = 1  AND `mark` = 'bottom' LIMIT 1   [ RunTime:0.033186s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_nav` WHERE  `category_id` = 2  AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.036811s ]
+[ sql ] [ SQL ] INSERT INTO `ebcms5_tongji` (`user_id` , `title` , `url` , `ip` , `create_time`) VALUES ('0' , '新闻' , 'http://localhost/l7cms/index.php/News.html' , '0.0.0.0' , '1490867762')       [ RunTime:0.031176s ]
+
+---------------------------------------------------------------
+[ 2017-03-30T17:56:03+08:00 ] ::1 ::1 GET /l7cms/static/index/mobile/js/weixin.js
+[ log ] localhost/l7cms/static/index/mobile/js/weixin.js [运行时间：0.058586s][吞吐率：17.07req/s] [内存消耗：1,351.66kb] [文件加载：31]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'index',
+    2 => 'mobile',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'accept' => '*/*',
+  'referer' => 'http://localhost/l7cms/index.php/News.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490840271',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'weixin.js',
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+
+---------------------------------------------------------------
+[ 2017-03-30T17:56:03+08:00 ] ::1 ::1 GET /l7cms/static/index/mobile/js/swiper/maps/swiper.min.js.map
+[ log ] localhost/l7cms/static/index/mobile/js/swiper/maps/swiper.min.js.map [运行时间：0.049338s][吞吐率：20.27req/s] [内存消耗：1,350.21kb] [文件加载：31]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'index',
+    2 => 'mobile',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490840271; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'swiper',
+  'maps' => 'swiper.min.js.map',
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+
+---------------------------------------------------------------
+[ 2017-03-30T17:56:03+08:00 ] ::1 ::1 GET /l7cms/static/index/mobile/js/weixin.js
+[ log ] localhost/l7cms/static/index/mobile/js/weixin.js [运行时间：0.059642s][吞吐率：16.77req/s] [内存消耗：1,350.56kb] [文件加载：31]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'index',
+    2 => 'mobile',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'accept' => '*/*',
+  'referer' => 'http://localhost/l7cms/index.php/News.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490840271; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'weixin.js',
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+
+---------------------------------------------------------------
+[ 2017-03-30T17:56:13+08:00 ] ::1 ::1 GET /l7cms/index.php/Special.html
+[ log ] localhost/l7cms/index.php/Special.html [运行时间：0.373163s][吞吐率：2.68req/s] [内存消耗：4,070.13kb] [文件加载：69]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'content',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'referer' => 'http://localhost/l7cms/index.php/News.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490867763',
+)
+[ info ] [ PARAM ] array (
+  'id' => '2',
+)
+[ info ] [ RUN ] Method [ <user> public method index ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Content.php 7 - 105
+
+  - Parameters [1] {
+    Parameter #0 [ <required> $id ]
+  }
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ VIEW ] E:\workspace-php\l7cms\templates\default_mobile\content\special_list.html [ array (
+  0 => 'seo',
+  1 => 'tag_list',
+  2 => 'category',
+  3 => 'page',
+  4 => 'lists',
+) ]
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '9eb7bb9cdb123ee8e9df8cdae0d4484f_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Tongji @app_end [ RunTime:0.044464s ]
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031602s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ebcms5_content_content` WHERE  `category_id` IN (10,11,12)  AND `status` = '1' ORDER BY sort desc,update_time desc,id desc LIMIT 1    [ RunTime:0.014727s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_content` WHERE  `category_id` IN (10,11,12)  AND `status` = '1' ORDER BY sort desc,update_time desc,id desc LIMIT 0,9    [ RunTime:0.022503s ]
+[ sql ] [ SQL ] select ct.tag,cts.c_id from ebcms5_content_tag ct,ebcms5_content_tags cts where ct.id = cts.tag_id [ RunTime:0.028030s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_recommendcate` WHERE  `mark` = 'index_zhuanti'  AND `status` = 1 LIMIT 1   [ RunTime:0.036116s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_recommend` WHERE  `category_id` = 1  AND `status` = 1 ORDER BY sort desc,id desc LIMIT 4   [ RunTime:0.028345s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_navcate` WHERE  `status` = 1  AND `mark` = 'bottom' LIMIT 1   [ RunTime:0.012369s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_nav` WHERE  `category_id` = 2  AND `status` = 1 ORDER BY sort desc,id asc  [ RunTime:0.029529s ]
+[ sql ] [ SQL ] INSERT INTO `ebcms5_tongji` (`user_id` , `title` , `url` , `ip` , `create_time`) VALUES ('0' , '专题' , 'http://localhost/l7cms/index.php/Special.html' , '0.0.0.0' , '1490867773')       [ RunTime:0.039156s ]
+
+---------------------------------------------------------------
+[ 2017-03-30T17:56:13+08:00 ] ::1 ::1 GET /l7cms/static/index/mobile/js/weixin.js
+[ log ] localhost/l7cms/static/index/mobile/js/weixin.js [运行时间：0.052692s][吞吐率：18.98req/s] [内存消耗：1,350.36kb] [文件加载：31]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'index',
+    2 => 'mobile',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'accept' => '*/*',
+  'referer' => 'http://localhost/l7cms/index.php/Special.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490867763',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'weixin.js',
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+
+---------------------------------------------------------------
+[ 2017-03-30T17:56:13+08:00 ] ::1 ::1 GET /l7cms/static/index/mobile/js/swiper/maps/swiper.min.js.map
+[ log ] localhost/l7cms/static/index/mobile/js/swiper/maps/swiper.min.js.map [运行时间：0.051378s][吞吐率：19.46req/s] [内存消耗：1,350.21kb] [文件加载：31]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'index',
+    2 => 'mobile',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490867763',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'swiper',
+  'maps' => 'swiper.min.js.map',
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+
+---------------------------------------------------------------
+[ 2017-03-30T17:56:14+08:00 ] ::1 ::1 GET /l7cms/static/index/mobile/js/weixin.js
+[ log ] localhost/l7cms/static/index/mobile/js/weixin.js [运行时间：0.072856s][吞吐率：13.73req/s] [内存消耗：1,350.36kb] [文件加载：31]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'static',
+    1 => 'index',
+    2 => 'mobile',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'user-agent' => 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_1 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13B143 Safari/601.1',
+  'accept' => '*/*',
+  'referer' => 'http://localhost/l7cms/index.php/Special.html',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; PHPSESSID=jmvel3pp6asf6p09v2q5c2sk95; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111,1490781555; Hm_lpvt_ed8ac418ac5e06a8c76d9a39d00132c8=1490867763',
+)
+[ info ] [ PARAM ] array (
+  'js' => 'weixin.js',
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+
+---------------------------------------------------------------

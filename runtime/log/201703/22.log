@@ -1,0 +1,180 @@
+[ 2017-03-22T18:22:01+08:00 ] ::1 ::1 GET /l7cms/index.php/index/Auth/wxOauth2?code=031u1TRo0WE8Fp1bkwTo0RDPRo0u1TRz&state=STATE
+[ log ] localhost/l7cms/index.php/index/Auth/wxOauth2?code=031u1TRo0WE8Fp1bkwTo0RDPRo0u1TRz&state=STATE [运行时间：0.422639s][吞吐率：2.37req/s] [内存消耗：1,797.60kb] [文件加载：41]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'Auth',
+    2 => 'wxOauth2',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; think_language=zh-CN; PHPSESSID=dgcg9tm1gk93thtvkfj82cdb27',
+)
+[ info ] [ PARAM ] array (
+  'code' => '031u1TRo0WE8Fp1bkwTo0RDPRo0u1TRz',
+  'state' => 'STATE',
+)
+[ info ] [ RUN ] Method [ <user> public method wxOauth2 ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Auth.php 102 - 164
+}
+
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ error ] [8]未定义索引: openid[E:\workspace-php\l7cms\application\index\controller\Auth.php:109]
+
+---------------------------------------------------------------
+[ 2017-03-22T18:22:35+08:00 ] ::1 ::1 GET /l7cms/index.php/index/Auth/wxOauth2?code=031u1TRo0WE8Fp1bkwTo0RDPRo0u1TRz&state=STATE
+[ log ] localhost/l7cms/index.php/index/Auth/wxOauth2?code=031u1TRo0WE8Fp1bkwTo0RDPRo0u1TRz&state=STATE [运行时间：0.436365s][吞吐率：2.29req/s] [内存消耗：1,650.97kb] [文件加载：33]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'Auth',
+    2 => 'wxOauth2',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; think_language=zh-CN; PHPSESSID=dgcg9tm1gk93thtvkfj82cdb27; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'code' => '031u1TRo0WE8Fp1bkwTo0RDPRo0u1TRz',
+  'state' => 'STATE',
+)
+[ info ] [ RUN ] Method [ <user> public method wxOauth2 ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Auth.php 102 - 165
+}
+
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+
+---------------------------------------------------------------
+[ 2017-03-22T18:27:49+08:00 ] ::1 ::1 GET /l7cms/index.php/index/Auth/wxOauth2?code=011GZdj81HwfXQ1nadj8173fj81GZdjI&state=STATE
+[ log ] localhost/l7cms/index.php/index/Auth/wxOauth2?code=011GZdj81HwfXQ1nadj8173fj81GZdjI&state=STATE [运行时间：1.755311s][吞吐率：0.57req/s] [内存消耗：1,796.49kb] [文件加载：41]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'Auth',
+    2 => 'wxOauth2',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; think_language=zh-CN; PHPSESSID=dgcg9tm1gk93thtvkfj82cdb27; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'code' => '011GZdj81HwfXQ1nadj8173fj81GZdjI',
+  'state' => 'STATE',
+)
+[ info ] [ RUN ] Method [ <user> public method wxOauth2 ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Auth.php 102 - 164
+}
+
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ error ] [8]未定义索引: openid[E:\workspace-php\l7cms\application\index\controller\Auth.php:110]
+
+---------------------------------------------------------------
+[ 2017-03-22T18:28:12+08:00 ] ::1 ::1 GET /l7cms/index.php/index/Auth/wxOauth2?code=011GZdj81HwfXQ1nadj8173fj81GZdjI&state=STATE
+[ log ] localhost/l7cms/index.php/index/Auth/wxOauth2?code=011GZdj81HwfXQ1nadj8173fj81GZdjI&state=STATE [运行时间：0.571787s][吞吐率：1.75req/s] [内存消耗：1,651.44kb] [文件加载：33]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'Auth',
+    2 => 'wxOauth2',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; think_language=zh-CN; PHPSESSID=dgcg9tm1gk93thtvkfj82cdb27; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'code' => '011GZdj81HwfXQ1nadj8173fj81GZdjI',
+  'state' => 'STATE',
+)
+[ info ] [ RUN ] Method [ <user> public method wxOauth2 ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Auth.php 102 - 165
+}
+
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+
+---------------------------------------------------------------

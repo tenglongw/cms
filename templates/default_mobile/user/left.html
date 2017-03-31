@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+    {ebcms:user return='user' /}
+    <div class="panel-body">
+        <div class="media">
+            <div class="media-left">
+            <a href="{:url('index/user/index')}">
+                <img class="media-object" src="{$user.avatar|thumb=80,80,3}" alt="...">
+            </a>
+            </div>
+            <div class="media-body">
+            <h4 class="media-heading">{$user.nickname} <a class="btn btn-danger btn-xs" href="{:url('index/user/notice')}">{$user.notice}</a></h4>
+            <p>{$user.motto|default='欢迎浏览我的空间！'}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{ebcms:nav mark='user' return='nav' tree='1' /}
+{foreach name="nav" item="vo" }
+<div class="panel panel-default">
+    <div class="panel-heading">{$vo.title}</div>
+    {notempty name='vo.rows'}
+    <div class="list-group">
+    {foreach name="vo.rows" item="subvo" }
+        <a class="list-group-item" href="{$subvo.url}">{$subvo.title}</a>
+    {/foreach}
+    </div>
+    {/notempty}
+</div>
+{/foreach}

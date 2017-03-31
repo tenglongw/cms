@@ -1,0 +1,138 @@
+<script>
+    Namespace.register("EBCMS.{$namespace}");
+    $(function(){
+        EBCMS.{$namespace}.queryParams = {
+            page:1,
+            rows:20,
+            order:{
+                'oplog.id':'desc',
+            },
+            model:'admin/oplog',
+            with:'user',
+        };
+        EBCMS.{$namespace}.refresh = function refresh(p){
+            if (p) {
+                $.each(p, function(index, val) {
+                    if (typeof val == 'object') {
+                        EBCMS.{$namespace}.queryParams[index] = $.extend(EBCMS.{$namespace}.queryParams[index], p[index]);
+                        delete p[index];
+                    };
+                });
+                $.extend(EBCMS.{$namespace}.queryParams, p);
+            };
+            EBCMS.CORE.api({
+                queryParams:EBCMS.{$namespace}.queryParams,
+                tpl:'{$namespace}-table',
+                target:'#{$namespace}_table',
+                compileAfter:function(p){
+                    EBCMS.FN.renderPage({
+                        namespace:'{$namespace}',
+                        total:p.data.total,
+                    });
+                    EBCMS.FN.renderFilter({
+                        namespace:'{$namespace}',
+                        filter:{
+                            search:{
+                                field:'oplog.title|oplog.url|oplog.ids|oplog.request',
+                                value:''
+                            },
+                            order:{
+                                filters:{'oplog.id':'id'}
+                            },
+                            rows:true,
+                        }
+                    });
+                },
+            });
+        };
+
+        EBCMS.{$namespace}.show = function(id){
+            EBCMS.CORE.get({
+                url:'{:url('admin/oplog/show')}',
+                queryParams:{
+                    id:id,
+                },
+                target:'#lgModal .modal-content',
+            });
+        };
+
+        EBCMS.CORE.compile({
+            tpl:'{$namespace}-box',
+            target:'#{$namespace}_box',
+            compileAfter:function(){
+                EBCMS.{$namespace}.refresh();
+            }
+        });
+    });
+</script>
+
+<script id="{$namespace}-box" type="text/html">
+    <div class="header">
+        <div class="header-title" onclick="EBCMS.{$namespace}.refresh();">操作日志管理</div>
+        <div id="{$namespace}_filter" class="footer-page"></div>
+        <div class="btn-group">
+            <button class="btn btn-primary" onclick="EBCMS.CORE.getconfig('{:eb_encrypt('name|system')}');">设置</button>
+        </div>
+    </div>
+    <div class="body">
+        <div id="{$namespace}_table" class="box"></div>
+    </div>
+    <div class="footer">
+        <div id="{$namespace}_page" class="footer-page"></div>
+        <div class="btn-group dropup">
+          <button type="button" class="btn btn-primary" onclick="EBCMS.FN.inverse('{$namespace}');">选中(反选)</button>
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="caret"></span>
+            <span class="sr-only">Toggle Dropdown</span>
+          </button>
+          <ul class="dropdown-menu">
+            [[if access('{:mca('delete')}',0)]]
+            <li><a href="###" onclick="EBCMS.ACT.dels('{:url('admin/oplog/delete')}','{$namespace}');">批量删除</a></li>
+            [[/if]]
+          </ul>
+        </div>
+    </div>
+</script>
+
+<script id="{$namespace}-table" type="text/html">
+    <table class="table table-bordered table-hover table-ebcms">
+        <tbody>
+            <tr>
+                <th style="width:70px;">id</th>
+                <th style="width:110px;">操作</th>
+                <th>用户</th>
+                <th>说明</th>
+                <th>时间</th>
+                <th>地址</th>
+                <th>ids</th>
+            </tr>
+            [[include '{$namespace}-table-item' data]]
+        </tbody>
+    </table>
+</script>
+
+<script id="{$namespace}-table-item" type="text/html">
+    [[each rows as v n]]
+        <tr>
+            <td><input type="checkbox" name="id" value="[[v.id]]" id="{$namespace}_item_[[v.id]]">[[v.id]]</td>
+            <td>
+                <div class="btn-group btn-group-sm">
+                [[if access('{:mca('delete')}',0)]]
+                <button class="btn btn-primary" onclick="EBCMS.ACT.del('{:url('admin/oplog/delete')}','[[v.id]]','{$namespace}');">删除</button>
+                [[/if]]
+                [[if access('{:mca('show')}',0)]]
+                <button class="btn btn-primary" onclick="EBCMS.{$namespace}.show('[[v.id]]');">详情</button>
+                [[/if]]
+                </div>
+            </td>
+            <td><button class="btn btn-xs" onclick="EBCMS.CORE.userinfo('[[v.user.id]]');">[[v.user.nickname]]</button></td>
+            <td>[[v.title]]</td>
+            <td>[[v.create_time]]</td>
+            <td>[[v.url]]</td>
+            <td>[[v.ids]]</td>
+        </tr>
+        [[if v.rows]]
+            [[include '{$namespace}-table-item' v]]
+        [[/if]]
+    [[/each]]
+</script>

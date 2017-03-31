@@ -1,0 +1,80 @@
+<section class="exhibition">
+		<div class="centerCon">
+			<div class="InWindow clearfloat">
+				<div class="text">
+					<div class="line"></div>
+					<div class="head" id="zhuanti_title">>seaker  <br/>release date </div>
+					<div class="time" id="zhuanti_time"></div>
+					<p id="zhuanti_description"></p>
+				</div>
+				<div class="imgC">
+					<img  id="zhuanti_img" src="">
+				</div>
+			</div>
+
+
+
+			<div class="slideSweiper">
+
+				<div class="swiper-container" id="exhibitionSwiper">
+
+					<div class="swiper-wrapper">
+
+					{content:category pid='2' return='subcates'/}
+              				{empty name='subcates'}
+               				{else/}
+               				
+               				{foreach name='subcates' item='subcate'}
+                    			{eq name='subcate.ebcms_url' value=''}
+                    			 {content:list category_id='$subcate.id' limit='5' return='lists'/}
+                        			{foreach name='lists' item='vs'}
+	                        			<div class="swiper-slide clearfloat" onclick="zhuantiInfo('{$vs.title}','{$vs.description|mb_substr=0,100}','{$vs.thumb|thumb=587,411}','{$vs.create_time}','{$vs.author}')">
+					        				<div class="wordin"><img src="{$vs.thumb|thumb=247,185}"><div class="pcn"><p>{$vs.title}</p></div></div>
+										</div>
+				        			{/foreach}
+				        		{/eq}
+                   			{/foreach}
+                   	 	{/empty}
+
+
+					</div>
+
+					<!-- 如果需要分页器 -->
+
+					<!-- <div class="swiper-pagination exhibitionPagination"></div> -->
+
+
+
+					<!-- 如果需要导航按钮 -->
+
+
+
+
+
+					<!-- 如果需要滚动条 -->
+
+					<!-- <div class="swiper-scrollbar"></div> -->
+
+				</div>
+
+				<div class="swiper-button-prev exhibitionPrev"></div>
+
+				<div class="swiper-button-next exhibitionNext"></div>
+
+			</div>
+
+
+
+			<div class="IndMore">
+
+				<a href="more">more</a>
+
+			</div>
+
+
+
+		</div>
+
+	</section>
+
+

@@ -1,0 +1,23 @@
+{ebcms:recommend mark='index_slide' limit='4' return='data'/}
+{notempty name='data'}
+	<section class="InBanner">
+		<div class="swiper-container" id="InBannerSwiper">
+			<div class="swiper-wrapper">
+				{foreach name='data' item='vo'}
+	                <div class="swiper-slide"><a href="{$vo.url}"><img src="{$vo.thumb|thumb=0,0}"></a></div>
+	            {/foreach}
+			</div>
+			<!-- 如果需要分页器 -->
+			<div class="swiper-pagination InBannerOnePagination"></div>
+			<!-- 如果需要导航按钮 -->
+			<div class="bocBotl">
+				<div class="swiper-button-prev InBannerOnePrev"></div>
+			</div>
+			<div class="bocBotr">
+				<div class="swiper-button-next InBannerOneNext"></div>
+			</div>
+			<!-- 如果需要滚动条 -->
+			<!-- <div class="swiper-scrollbar"></div> -->
+		</div>
+	</section>
+{/notempty}

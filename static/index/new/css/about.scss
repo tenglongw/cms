@@ -1,0 +1,305 @@
+@import 'style.scss';
+
+section.company{
+	p.info{
+		color: #c1c1c1;
+		line-height: 30px;
+		text-align: center;
+		padding-top: 30px;
+	}
+	div.more{
+		width: 600px;
+		margin:0 auto;
+		text-align: right;
+		>a{
+			font-size: 16px;
+			color: $zhutiColor;
+			text-transform: uppercase;
+		}
+	}
+	div.timeLine{
+		width: 1050px;
+		height: 440px;
+		margin:0 auto;
+		position: relative;
+		div.line{
+			width: 100%;
+			height: 20px;
+			background-image:url(../images/back/timeline.png);
+			position: absolute;
+			top: 40%;
+			left: 0;
+			ul.shijian{
+				width: 100%;
+				height: 100%;
+				position: relative;
+				li{
+					padding-left: 20px;
+					max-height: 180px;
+					max-width: 220px;
+					position: absolute;
+					h4{
+						color: $zhutiColor;
+						font-weight: bold;
+					}
+					p{
+						width: 100px;
+						font-size: 12px;
+						color: #999;
+						 word-wrap: break-word;
+					}
+					>img{
+						margin-top: 6px;
+						border: 1px solid  #fff;
+					}
+					div.lin{
+						position: absolute;
+						top: 0;
+						left: 10px;
+						height: 100%;
+						width: 1px;
+						background-color:#999;
+						>span{
+							display:block;
+							width: 5px;
+							height: 5px;
+							background-color:#999;
+							position: absolute;
+							left: -2px; 
+							border-radius:50%;
+						}
+					}
+				}
+				li:hover{
+					p{
+						color: $zhutiColor;
+					}
+					>img{
+						border: 1px solid  $zhutiColor;
+					}
+				}
+				li.T{
+					bottom: 30px;
+					div.lin{
+						>span{bottom: 0px;}
+					}
+				}
+				li.B{
+					top: 30px;
+					div.lin{
+						>span{top: 0px;}
+					}
+				}
+				li:nth-child(1){left:50px;}
+				li:nth-child(2){left:150px;}
+				li:nth-child(3){left:250px;}
+				li:nth-child(4){left:350px;}
+				li:nth-child(5){left:450px;}
+				li:nth-child(6){left:550px;}
+				li:nth-child(7){left:650px;}
+				li:nth-child(8){left:750px;}
+				li:nth-child(9){left:850px;}
+			}
+		}
+	}
+}
+
+section.Facts{
+	background-image: url(../images/back/fuyebank_02.jpg);
+	ul.indlist{
+		padding: 60px 60px 80px;;
+		>li{
+			width: 25%;
+			float: left;
+			text-align: center;
+			div.iconC{
+				i{
+					font-size: 30px;
+					color:  $zhutiColor;
+				}
+			}
+			div.ind{
+				padding-top:15px;
+				font-size: 30px;
+				color: #272727;
+				transition: all 0.5s;
+			}
+			p{
+				color: #999;
+				transition: all 0.5s;
+
+			}
+
+		}
+		>li:hover{
+			p,div.ind{
+				color: $zhutiColor;
+			}
+
+		}
+	}
+}
+
+
+
+section.Business{
+	div.BusinessMap{
+		margin-top: 30px;
+		width: 100%;
+		height: 500px;
+		overflow: hidden;
+	}
+
+	div.BusinessMapNav{
+		width: 100%;
+		height: 190px;
+		background-color: $zhutiColor;
+		ul.BusinessMaplist{
+			height: 100%;
+			>li{
+				width: 20%;
+				height: 100%;
+				text-align: center;
+				float: left;
+				padding-top:40px;
+				background-color: $zhutiColor;
+				transition: all 0.5s;
+
+				div.iconC{
+					
+					>i{
+						font-size: 60px;
+						color: #fff;
+					}
+
+				}
+				p{
+					text-transform: uppercase;
+					color: #fff;
+					font-size: 12px;
+				}
+			}
+			>li.active{
+				background-color: $tubHover;
+			}
+			>li:hover{
+				background-color: $tubHover;
+			}
+		}
+	}
+}
+
+
+section.Management{
+	ul.ManagementList{
+		padding: 60px 0;
+		>li{
+			float: left;
+			width: 378px;
+			height: 300px;
+			border: 1px solid $zhutiColor;
+			margin-left: 13px;
+			>a{
+				display: block;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+				div.title{
+					line-height: 90px;
+					text-align: center;
+					color: $zhutiColor;
+					font-size: 20px;
+					text-transform: uppercase;
+					background-color:#fff;
+					transition: all 0.5s;
+				}
+				div.imgC{
+					width: 100%;
+					>img{
+						max-width: 100%;
+					}
+				}
+			}
+			>a:hover{
+				div.title{
+					color: #fff;
+					background-color:$zhutiColor;
+				}
+			}
+		}
+		>li:nth-child(1){
+			margin-left: 0;
+		}
+	}
+}
+
+section.Responsibility{
+	background-color:#ececec;
+	p.info{
+		color: #333;
+		font-size: 12px;
+		font-weight: bold;
+		text-transform: uppercase;
+		text-align: center;
+		line-height: 34px;
+		margin-top: 20px;
+	}
+
+	ul.Responsibilitylist{
+		width: 100%;
+		padding:0 190px;
+		>li{
+			float: left;
+			width: 25%;
+			text-align: center;
+			padding-top:36px;
+			div.iconC{
+				width: 76px;
+				height: 76px;
+				margin:0 auto;
+				border-radius: 50%;
+				border:1px solid $zhutiColor;
+				line-height: 74px;
+				box-shadow: 0px 0px 15px $zhutiColor;
+				background-color:#fff;
+				transition: all 0.7s;
+				cursor: pointer;
+				>i{
+					font-size: 30px;
+					color: $zhutiColor;
+				}
+			}
+			div.iconC:hover{
+				background-color:$zhutiColor;
+				>i{
+					color:#fff;
+				}
+				
+			}
+			p{
+				padding-top:10px;
+				color: #c1c1c1;
+				font-size: 14px;
+			}
+
+		}
+	}
+	div.word{
+		padding:30px 225px 110px;
+		div.left{
+			float: left;
+			width: 190px;
+			color: #363838;
+			text-transform: uppercase;
+
+		}
+
+		div.Rig{
+			float: left;
+			width: 490px;
+			font-size: 14px;
+			color: #838a88;
+			line-height: 20px;
+		}
+	}
+}

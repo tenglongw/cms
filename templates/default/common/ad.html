@@ -1,0 +1,4 @@
+{ebcms:recommend mark='index_top_advice' limit='1' return='data'/}
+{foreach name='data' item='vo'}
+	<div class="InTopBanner"><a href="{$vo.url}"><img src="{$vo.thumb|thumb=1920,107}"></a></div>
+{/foreach}

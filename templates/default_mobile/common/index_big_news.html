@@ -1,0 +1,1 @@
+{ebcms:recommend mark='index_big_news' limit='1' return='data'/}  			{foreach name='data' item='vo'}      				<div id="advertisementWindow">					<div class="conImg">									<div class="cood"><i class="iconfont">&#xe614;</i></div>									<a href="{$vo.url}"><img src="{$vo.thumb|thumb=1000,620}"></a>								</div>							</div> 			{/foreach}

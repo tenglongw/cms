@@ -1,0 +1,1348 @@
+[ 2017-03-23T13:46:15+08:00 ] ::1 ::1 GET /l7cms/index.php/index/auth/updateUserInfo
+[ log ] localhost/l7cms/index.php/index/auth/updateUserInfo [运行时间：0.213942s][吞吐率：4.67req/s] [内存消耗：2,750.79kb] [文件加载：50]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'updateUserInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; PHPSESSID=b7oqq1nh24bpvql9ikggqkbmc7; think_language=zh-CN',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] Method [ <user> public method updateUserInfo ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Auth.php 133 - 167
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.097947s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_user` WHERE  `unionid` = '6f9bca5680fea56a580e684c334c4fbc' LIMIT 1   [ RunTime:0.017124s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_user` [ RunTime:0.014832s ]
+[ error ] [10501]SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'weixin' for key 'email'[E:\workspace-php\l7cms\thinkphp\library\think\db\Connection.php:400]
+
+---------------------------------------------------------------
+[ 2017-03-23T13:48:13+08:00 ] ::1 ::1 GET /l7cms/index.php/index/auth/updateUserInfo
+[ log ] localhost/l7cms/index.php/index/auth/updateUserInfo [运行时间：0.342334s][吞吐率：2.92req/s] [内存消耗：2,772.84kb] [文件加载：47]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'updateUserInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; PHPSESSID=b7oqq1nh24bpvql9ikggqkbmc7; think_language=zh-CN; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] Method [ <user> public method updateUserInfo ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Auth.php 133 - 167
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '9eb7bb9cdb123ee8e9df8cdae0d4484f_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Tongji @app_end [ RunTime:0.040034s ]
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.062095s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_user` WHERE  `unionid` = '6f9bca5680fea56a580e684c334c4fbc' LIMIT 1   [ RunTime:0.040019s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_user` [ RunTime:0.030398s ]
+[ sql ] [ SQL ] INSERT INTO `ebcms5_user` (`nickname` , `email` , `avatar` , `unionid` , `salt` , `password` , `create_time`) VALUES ('王腾龙' , 'weixin@qq.com' , '6f9bca5680fea56a580e684c334c4fbc' , '6f9bca5680fea56a580e684c334c4fbc' , 'weixin' , '30d46eba959c27a1ad56dd37eb9cbc33' , '1490248093')         [ RunTime:0.030782s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_auth_access` [ RunTime:0.035424s ]
+[ sql ] [ SQL ] INSERT INTO `ebcms5_auth_access` (`uid` , `group_id`) VALUES ('3' , '5')    [ RunTime:0.039250s ]
+[ sql ] [ SQL ] INSERT INTO `ebcms5_tongji` (`user_id` , `title` , `url` , `ip` , `create_time`) VALUES ('0' , '首页' , 'http://localhost/l7cms/index.php/index/auth/updateUserInfo' , '0.0.0.0' , '1490248093')       [ RunTime:0.034701s ]
+
+---------------------------------------------------------------
+[ 2017-03-23T13:48:48+08:00 ] ::1 ::1 GET /l7cms/index.php/index/auth/updateUserInfo
+[ log ] localhost/l7cms/index.php/index/auth/updateUserInfo [运行时间：0.173658s][吞吐率：5.76req/s] [内存消耗：2,743.13kb] [文件加载：50]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'updateUserInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; PHPSESSID=b7oqq1nh24bpvql9ikggqkbmc7; think_language=zh-CN; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] Method [ <user> public method updateUserInfo ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Auth.php 133 - 167
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.040283s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_user` WHERE  `unionid` = '6f9bca5680fea56a580e684c334c4fbc' LIMIT 1   [ RunTime:0.037316s ]
+[ error ] [10501]SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'nickname' at row 3[E:\workspace-php\l7cms\thinkphp\library\think\db\Connection.php:400]
+
+---------------------------------------------------------------
+[ 2017-03-23T13:50:44+08:00 ] ::1 ::1 GET /l7cms/index.php/index/auth/updateUserInfo
+[ log ] localhost/l7cms/index.php/index/auth/updateUserInfo [运行时间：0.131584s][吞吐率：7.60req/s] [内存消耗：2,765.07kb] [文件加载：47]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'updateUserInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; PHPSESSID=b7oqq1nh24bpvql9ikggqkbmc7; think_language=zh-CN; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] Method [ <user> public method updateUserInfo ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Auth.php 133 - 167
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '9eb7bb9cdb123ee8e9df8cdae0d4484f_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Tongji @app_end [ RunTime:0.022062s ]
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.018184s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_user` WHERE  `unionid` = '6f9bca5680fea56a580e684c334c4fbc' LIMIT 1   [ RunTime:0.017410s ]
+[ sql ] [ SQL ] UPDATE `ebcms5_user`  SET `nickname`='6f9bca5680fea56a580e684c334c4fbc',`login_times`='1',`login_time`='1490248244',`update_time`='1490248244'  WHERE  `unionid` = '6f9bca5680fea56a580e684c334c4fbc'       [ RunTime:0.013403s ]
+[ sql ] [ SQL ] INSERT INTO `ebcms5_tongji` (`user_id` , `title` , `url` , `ip` , `create_time`) VALUES ('0' , '首页' , 'http://localhost/l7cms/index.php/index/auth/updateUserInfo' , '0.0.0.0' , '1490248244')       [ RunTime:0.015339s ]
+
+---------------------------------------------------------------
+[ 2017-03-23T13:50:59+08:00 ] ::1 ::1 GET /l7cms/index.php/index/auth/updateUserInfo
+[ log ] localhost/l7cms/index.php/index/auth/updateUserInfo [运行时间：0.166240s][吞吐率：6.02req/s] [内存消耗：2,765.09kb] [文件加载：47]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'auth',
+    2 => 'updateUserInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; PHPSESSID=b7oqq1nh24bpvql9ikggqkbmc7; think_language=zh-CN; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] Method [ <user> public method updateUserInfo ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Auth.php 133 - 167
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '9eb7bb9cdb123ee8e9df8cdae0d4484f_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Tongji @app_end [ RunTime:0.039985s ]
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.026263s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_user` WHERE  `unionid` = '6f9bca5680fea56a580e684c334c4fbc' LIMIT 1   [ RunTime:0.029545s ]
+[ sql ] [ SQL ] UPDATE `ebcms5_user`  SET `login_times`='2',`login_time`='1490248259',`update_time`='1490248259'  WHERE  `unionid` = '6f9bca5680fea56a580e684c334c4fbc'      [ RunTime:0.017771s ]
+[ sql ] [ SQL ] INSERT INTO `ebcms5_tongji` (`user_id` , `title` , `url` , `ip` , `create_time`) VALUES ('0' , '首页' , 'http://localhost/l7cms/index.php/index/auth/updateUserInfo' , '0.0.0.0' , '1490248259')       [ RunTime:0.034959s ]
+
+---------------------------------------------------------------
+[ 2017-03-23T14:36:04+08:00 ] ::1 ::1 GET /l7cms/index.php/index/comment/index?tid=147
+[ log ] localhost/l7cms/index.php/index/comment/index?tid=147 [运行时间：0.122677s][吞吐率：8.15req/s] [内存消耗：2,705.55kb] [文件加载：46]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'comment',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; PHPSESSID=b7oqq1nh24bpvql9ikggqkbmc7; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'tid' => '147',
+)
+[ info ] [ RUN ] Method [ <user> public method index ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Comment.php 6 - 30
+}
+
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '9eb7bb9cdb123ee8e9df8cdae0d4484f_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Tongji @app_end [ RunTime:0.087504s ]
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.051997s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] INSERT INTO `ebcms5_tongji` (`user_id` , `title` , `url` , `ip` , `create_time`) VALUES ('0' , '首页' , 'http://localhost/l7cms/index.php/index/comment/index?tid=147' , '0.0.0.0' , '1490250963')       [ RunTime:0.019169s ]
+
+---------------------------------------------------------------
+[ 2017-03-23T14:36:13+08:00 ] ::1 ::1 GET /l7cms/index.php/index/comment/index?tid=997
+[ log ] localhost/l7cms/index.php/index/comment/index?tid=997 [运行时间：0.110674s][吞吐率：9.04req/s] [内存消耗：2,705.55kb] [文件加载：46]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'comment',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; PHPSESSID=b7oqq1nh24bpvql9ikggqkbmc7; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'tid' => '997',
+)
+[ info ] [ RUN ] Method [ <user> public method index ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Comment.php 6 - 30
+}
+
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '9eb7bb9cdb123ee8e9df8cdae0d4484f_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Tongji @app_end [ RunTime:0.076024s ]
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.033973s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] INSERT INTO `ebcms5_tongji` (`user_id` , `title` , `url` , `ip` , `create_time`) VALUES ('0' , '首页' , 'http://localhost/l7cms/index.php/index/comment/index?tid=997' , '0.0.0.0' , '1490250973')       [ RunTime:0.024560s ]
+
+---------------------------------------------------------------
+[ 2017-03-23T14:36:46+08:00 ] ::1 ::1 GET /l7cms/index.php/index/comment/index
+[ log ] localhost/l7cms/index.php/index/comment/index [运行时间：0.113803s][吞吐率：8.79req/s] [内存消耗：2,705.49kb] [文件加载：46]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'comment',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; PHPSESSID=b7oqq1nh24bpvql9ikggqkbmc7; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] Method [ <user> public method index ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Comment.php 6 - 30
+}
+
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '9eb7bb9cdb123ee8e9df8cdae0d4484f_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Tongji @app_end [ RunTime:0.079044s ]
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.031529s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] INSERT INTO `ebcms5_tongji` (`user_id` , `title` , `url` , `ip` , `create_time`) VALUES ('0' , '首页' , 'http://localhost/l7cms/index.php/index/comment/index' , '0.0.0.0' , '1490251006')       [ RunTime:0.032575s ]
+
+---------------------------------------------------------------
+[ 2017-03-23T14:36:50+08:00 ] ::1 ::1 GET /l7cms/index.php/index/comment/index
+[ log ] localhost/l7cms/index.php/index/comment/index [运行时间：0.145641s][吞吐率：6.87req/s] [内存消耗：2,705.61kb] [文件加载：46]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'comment',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; PHPSESSID=b7oqq1nh24bpvql9ikggqkbmc7; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] Method [ <user> public method index ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Comment.php 6 - 30
+}
+
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => '9eb7bb9cdb123ee8e9df8cdae0d4484f_',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ BEHAVIOR ] Run app\index\behavior\Tongji @app_end [ RunTime:0.109757s ]
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.035812s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] INSERT INTO `ebcms5_tongji` (`user_id` , `title` , `url` , `ip` , `create_time`) VALUES ('0' , '首页' , 'http://localhost/l7cms/index.php/index/comment/index' , '0.0.0.0' , '1490251010')       [ RunTime:0.059589s ]
+
+---------------------------------------------------------------
+[ 2017-03-23T17:20:20+08:00 ] ::1 ::1 GET /l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134
+[ log ] localhost/l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134 [运行时间：0.171028s][吞吐率：5.85req/s] [内存消耗：2,781.94kb] [文件加载：53]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'mobile',
+    2 => 'tag',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111',
+)
+[ info ] [ PARAM ] array (
+  'tag' => 'Nike',
+  'page' => '2',
+  'callback' => 'jQuery182011193420470079807_1490260426450',
+  '_' => '1490260434134',
+)
+[ info ] [ RUN ] Method [ <user> public method tag ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Mobile.php 30 - 80
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.043524s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tag` WHERE  `tag` = 'Nike' LIMIT 1   [ RunTime:0.020480s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_tags` [ RunTime:0.011372s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ebcms5_content_tags` WHERE  `tag_id` = 98 LIMIT 1   [ RunTime:0.013503s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tags` WHERE  `tag_id` = 98 LIMIT 1000,1000   [ RunTime:0.012051s ]
+[ error ] [8]未定义变量: categorys[E:\workspace-php\l7cms\application\index\controller\Mobile.php:75]
+
+---------------------------------------------------------------
+[ 2017-03-23T17:21:35+08:00 ] ::1 ::1 GET /l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134
+[ log ] localhost/l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134 [运行时间：0.130660s][吞吐率：7.65req/s] [内存消耗：2,781.42kb] [文件加载：53]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'mobile',
+    2 => 'tag',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'tag' => 'Nike',
+  'page' => '2',
+  'callback' => 'jQuery182011193420470079807_1490260426450',
+  '_' => '1490260434134',
+)
+[ info ] [ RUN ] Method [ <user> public method tag ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Mobile.php 30 - 81
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.017851s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tag` WHERE  `tag` = 'Nike' LIMIT 1   [ RunTime:0.012145s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_tags` [ RunTime:0.012828s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ebcms5_content_tags` WHERE  `tag_id` = 98 LIMIT 1   [ RunTime:0.011400s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tags` WHERE  `tag_id` = 98 LIMIT 1000,1000   [ RunTime:0.009763s ]
+[ error ] [8]未定义变量: categorys[E:\workspace-php\l7cms\application\index\controller\Mobile.php:73]
+
+---------------------------------------------------------------
+[ 2017-03-23T17:21:55+08:00 ] ::1 ::1 GET /l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134
+[ log ] localhost/l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134 [运行时间：0.237825s][吞吐率：4.20req/s] [内存消耗：2,638.13kb] [文件加载：45]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'mobile',
+    2 => 'tag',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'tag' => 'Nike',
+  'page' => '2',
+  'callback' => 'jQuery182011193420470079807_1490260426450',
+  '_' => '1490260434134',
+)
+[ info ] [ RUN ] Method [ <user> public method tag ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Mobile.php 30 - 81
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.084579s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tag` WHERE  `tag` = 'Nike' LIMIT 1   [ RunTime:0.045627s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_tags` [ RunTime:0.018527s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ebcms5_content_tags` WHERE  `tag_id` = 98 LIMIT 1   [ RunTime:0.012465s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tags` WHERE  `tag_id` = 98 LIMIT 1000,1000   [ RunTime:0.018146s ]
+
+---------------------------------------------------------------
+[ 2017-03-23T17:22:06+08:00 ] ::1 ::1 GET /l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134
+[ log ] localhost/l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134 [运行时间：0.185266s][吞吐率：5.40req/s] [内存消耗：2,638.13kb] [文件加载：45]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'mobile',
+    2 => 'tag',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'tag' => 'Nike',
+  'page' => '2',
+  'callback' => 'jQuery182011193420470079807_1490260426450',
+  '_' => '1490260434134',
+)
+[ info ] [ RUN ] Method [ <user> public method tag ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Mobile.php 30 - 81
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.032612s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tag` WHERE  `tag` = 'Nike' LIMIT 1   [ RunTime:0.015959s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_tags` [ RunTime:0.027250s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ebcms5_content_tags` WHERE  `tag_id` = 98 LIMIT 1   [ RunTime:0.028333s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tags` WHERE  `tag_id` = 98 LIMIT 1000,1000   [ RunTime:0.028104s ]
+
+---------------------------------------------------------------
+[ 2017-03-23T17:22:28+08:00 ] ::1 ::1 GET /l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134
+[ log ] localhost/l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134 [运行时间：0.402977s][吞吐率：2.48req/s] [内存消耗：2,638.34kb] [文件加载：45]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'mobile',
+    2 => 'tag',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'tag' => 'Nike',
+  'page' => '2',
+  'callback' => 'jQuery182011193420470079807_1490260426450',
+  '_' => '1490260434134',
+)
+[ info ] [ RUN ] Method [ <user> public method tag ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Mobile.php 30 - 81
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.131976s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tag` WHERE  `tag` = 'Nike' LIMIT 1   [ RunTime:0.117534s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_tags` [ RunTime:0.033525s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ebcms5_content_tags` WHERE  `tag_id` = 98 LIMIT 1   [ RunTime:0.035850s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tags` WHERE  `tag_id` = 98 LIMIT 1000,1000   [ RunTime:0.031020s ]
+
+---------------------------------------------------------------
+[ 2017-03-23T17:22:58+08:00 ] ::1 ::1 GET /l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134
+[ log ] localhost/l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134 [运行时间：0.219886s][吞吐率：4.55req/s] [内存消耗：2,756.57kb] [文件加载：49]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'mobile',
+    2 => 'tag',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'tag' => 'Nike',
+  'page' => '2',
+  'callback' => 'jQuery182011193420470079807_1490260426450',
+  '_' => '1490260434134',
+)
+[ info ] [ RUN ] Method [ <user> public method tag ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Mobile.php 30 - 81
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.056790s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tag` WHERE  `tag` = 'Nike' LIMIT 1   [ RunTime:0.026739s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_tags` [ RunTime:0.031503s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tags` WHERE  `tag_id` = 98  [ RunTime:0.036142s ]
+[ error ] [1]Call to a member function toArray() on a non-object[E:\workspace-php\l7cms\application\index\controller\Mobile.php:42]
+
+---------------------------------------------------------------
+[ 2017-03-23T17:23:16+08:00 ] ::1 ::1 GET /l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134
+[ log ] localhost/l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134 [运行时间：0.153690s][吞吐率：6.51req/s] [内存消耗：2,603.70kb] [文件加载：41]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'mobile',
+    2 => 'tag',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'tag' => 'Nike',
+  'page' => '2',
+  'callback' => 'jQuery182011193420470079807_1490260426450',
+  '_' => '1490260434134',
+)
+[ info ] [ RUN ] Method [ <user> public method tag ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Mobile.php 30 - 82
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.041780s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tag` WHERE  `tag` = 'Nike' LIMIT 1   [ RunTime:0.023825s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_tags` [ RunTime:0.018630s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tags` WHERE  `tag_id` = 98  [ RunTime:0.014310s ]
+
+---------------------------------------------------------------
+[ 2017-03-23T17:23:23+08:00 ] ::1 ::1 GET /l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134
+[ log ] localhost/l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134 [运行时间：1.037073s][吞吐率：0.96req/s] [内存消耗：2,673.23kb] [文件加载：49]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'mobile',
+    2 => 'tag',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'tag' => 'Nike',
+  'page' => '2',
+  'callback' => 'jQuery182011193420470079807_1490260426450',
+  '_' => '1490260434134',
+)
+[ info ] [ RUN ] Method [ <user> public method tag ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Mobile.php 30 - 80
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LANG ] E:\workspace-php\l7cms\thinkphp\lang\zh-cn.php
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.419385s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tag` WHERE  `tag` = 'Nike' LIMIT 1   [ RunTime:0.109169s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_tags` [ RunTime:0.182689s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tags` WHERE  `tag_id` = 98  [ RunTime:0.265761s ]
+[ error ] [8]未定义变量: datas[E:\workspace-php\l7cms\application\index\controller\Mobile.php:44]
+
+---------------------------------------------------------------
+[ 2017-03-23T17:23:59+08:00 ] ::1 ::1 GET /l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134
+[ log ] localhost/l7cms/index.php/index/mobile/tag?tag=Nike&page=2&callback=jQuery182011193420470079807_1490260426450&_=1490260434134 [运行时间：0.352210s][吞吐率：2.84req/s] [内存消耗：3,165.49kb] [文件加载：47]
+[ info ] [ CACHE ] INIT File:array (
+  'type' => 'File',
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\cache\\',
+  'prefix' => '',
+  'expire' => 0,
+)
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'index',
+    1 => 'mobile',
+    2 => 'tag',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'localhost',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.63 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate, sdch',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => 'AJSTAT_ok_times=1; a4883_times=1; bdshare_firstime=1465982800918; pgv_pvi=6812175360; Hm_lvt_7b43330a4da4a6f4353e553988ee8a62=1476788401; CNZZDATA1000200717=565765623-1467944709-%7C1479695857; MEIQIA_EXTRA_TRACK_ID=de632e18b2e111e69cb5020af009bdc2; CNZZDATA1259010002=1747616501-1478332169-%7C1480566561; Hm_lvt_ed8ac418ac5e06a8c76d9a39d00132c8=1489722888,1490102111; 3973856a85e2de67a45ef4dc37fbebef_think_var=zh-cn',
+)
+[ info ] [ PARAM ] array (
+  'tag' => 'Nike',
+  'page' => '2',
+  'callback' => 'jQuery182011193420470079807_1490260426450',
+  '_' => '1490260434134',
+)
+[ info ] [ RUN ] Method [ <user> public method tag ] {
+  @@ E:\workspace-php\l7cms\application\index\controller\Mobile.php 30 - 80
+}
+
+[ info ] [ DB ] INIT mysql:array (
+  'type' => 'mysql',
+  'dsn' => '',
+  'hostname' => '101.200.161.146',
+  'database' => 'ebcms',
+  'username' => 'root',
+  'password' => 'ycdy5211987',
+  'hostport' => '3306',
+  'params' => 
+  array (
+  ),
+  'charset' => 'utf8',
+  'prefix' => 'ebcms5_',
+  'debug' => true,
+  'deploy' => 0,
+  'rw_separate' => false,
+  'master_num' => 1,
+  'slave_no' => '',
+  'fields_strict' => true,
+  'auto_timestamp' => true,
+  'resultset_type' => 'array',
+  'sql_explain' => false,
+)
+[ info ] [ LOG ] INIT File: array (
+  'path' => 'E:\\workspace-php\\l7cms\\runtime\\log\\',
+  'level' => 
+  array (
+  ),
+)
+[ sql ] [ DB ] CONNECT:[ UseTime:0.053737s ] mysql:dbname=ebcms;host=101.200.161.146;port=3306;charset=utf8
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tag` WHERE  `tag` = 'Nike' LIMIT 1   [ RunTime:0.027794s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `ebcms5_content_tags` [ RunTime:0.058977s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_tags` WHERE  `tag_id` = 98  [ RunTime:0.041252s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `ebcms5_content_content` WHERE  `id` IN (117,123,128,122,7,490,130,138,140,143,160,173,175,180,181,187,189,193,197,198,199,200,201,203,204,208,212,215,236,248,251,253,256,260,265,263,280,293,305,314,323,335,337,340,346,386,394,403,407,409,410,414,423,431,433,445,458,460,461,462,467,468,471,473,480,483,493,494,498,509,510,516,521,540,543,555,558,561,563,566,574,580,586,583,595,599,606,630,638,642,643,647,652,657,662,664,665,668,675,680,683,686,689,691,697,702,705,708,710,719,720,727,745,746,748,752,753,760,759,764,766,767,788,790,791,793,794,799,800,802,804,805,807,810,812,816,821,828,831,845,848,851,854,859,863,865,877,878,906,907,912,913,916,917,918,919,926,930,932,937,948,950,952,958,961,969,971,974,976,984,996,999)  AND `status` = 1  AND `category_id` IN (1,2,3,4,5,7,8,9,10,11,12,14,15,26) ORDER BY id desc LIMIT 1   [ RunTime:0.034954s ]
+[ sql ] [ SQL ] SELECT * FROM `ebcms5_content_content` WHERE  `id` IN (117,123,128,122,7,490,130,138,140,143,160,173,175,180,181,187,189,193,197,198,199,200,201,203,204,208,212,215,236,248,251,253,256,260,265,263,280,293,305,314,323,335,337,340,346,386,394,403,407,409,410,414,423,431,433,445,458,460,461,462,467,468,471,473,480,483,493,494,498,509,510,516,521,540,543,555,558,561,563,566,574,580,586,583,595,599,606,630,638,642,643,647,652,657,662,664,665,668,675,680,683,686,689,691,697,702,705,708,710,719,720,727,745,746,748,752,753,760,759,764,766,767,788,790,791,793,794,799,800,802,804,805,807,810,812,816,821,828,831,845,848,851,854,859,863,865,877,878,906,907,912,913,916,917,918,919,926,930,932,937,948,950,952,958,961,969,971,974,976,984,996,999)  AND `status` = 1  AND `category_id` IN (1,2,3,4,5,7,8,9,10,11,12,14,15,26) ORDER BY id desc LIMIT 20,20   [ RunTime:0.053136s ]
+
+---------------------------------------------------------------

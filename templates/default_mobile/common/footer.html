@@ -1,0 +1,21 @@
+<footer class="footerPublic">
+	<div class="CoN">
+		<div class="imgC"><img src="{:get_root()}/static/index/mobile/images/public/logo2.png"></div>
+		<div class="nav">
+			{ebcms:nav mark='bottom' return='nav' tree='1' /}
+			{foreach name="nav" item="vo" }
+				<a href="{$vo.url}">{$vo.title}</a>
+			{/foreach}
+		</div>
+		<p></p>
+		<!-- <p>2016LONG7.COM ALL RIGHTS RESERVED / POWERED BY LONG7 PROFESSIONAL SNEAKER MEDIA 沪ICP备15526666号</p> -->
+	</div>
+	<script>  
+    /* $(function () {  
+        $('div.word img').each(function () {  
+            new RTP.PinchZoom($(this), {});  
+        });  
+    }) */  
+</script> 
+<script type="text/javascript" src="{:get_root()}/static/index/mobile/js/weixin.js"></script>
+</footer>

@@ -1,0 +1,14 @@
+{include file='common/header' /}
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="list-group">
+            {foreach name='lists' item='vo'}
+                <a href="{$vo.url}" class="list-group-item" style="{$vo.style}"> <strong>◀):</strong>&nbsp;&nbsp;{$vo.shorttitle}</a>
+            {/foreach}
+            </div>
+        </div>
+        {$page}
+    </div>
+</div>
+{include file='common/footer' /}
