@@ -92,26 +92,24 @@ class Auth extends \app\index\controller\Common
     	echo json_encode($result);exit;
     }
     
-    public function openOauth2(){
-    	include('JSSDK.php');
-    	$jssdk = new \JSSDK('wx094cb8caa0e2b77a', '380c61170ec343df389852621f612e0d');
-    	$source_url = $_GET['source_url'];
+    public function qqCallBack(){
     	if (isset($_GET['code'])){
-    		$res = $jssdk->getaccess_tken($_GET['code']);
-    		echo json_encode($res);exit;
-    		if($res['openid']){
-    			$userInfo = $jssdk->getUserInfo($res['access_token'],$res['openid']);
-    			$id = $this->updateUserInfo($userInfo);
+    		$qc = new \QC();
+    		$acess_toke = $qc->get_access_token();
+    		echo print_r($acess_toke);exti;
+    		if($acess_toke){
+    			$openid = $qc->get_openid();
+//     			$userInfo = $jssdk->getUserInfo($res['access_token'],$res['openid']);
+//     			$id = $this->updateUserInfo($userInfo);
     			// 清空session
     			\think\Session::clear();
     			// 写入新session
-    			session('user_id', $id);
-    			session('user_nickname', $row['nickname']);
-    			session('user_avatar', $row['headimgurl']);
-    			$this->assign('user',$row);
+//     			session('user_id', $id);
+//     			session('user_nickname', $row['nickname']);
+//     			session('user_avatar', $row['headimgurl']);
+//     			$this->assign('user',$row);
     			\think\Session::clear('go');
     			Header("HTTP/1.1 303 See Other");
-    			Header("Location: $source_url");exit;
     		}else{
     			$this->error('授权出错,请重新授权!');
     		}

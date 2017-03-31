@@ -1,4 +1,6 @@
 <?php
+use app\index\controller\Auth;
+
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
@@ -17,4 +19,11 @@ define('APP_PATH', __DIR__ . '/application/');
 define("QQ_CLASS_PATH",APP_PATH."Connect/");
 // 加载框架引导文件
 require __DIR__ . '/thinkphp/start.php';
-
+$code = $_GET['code'];
+$state = $_GET['state'];
+if(!empty($code) && !empty($state)){
+	require_once(APP_PATH."index/controller/Auth.php");
+	$au = new Auth();
+// 	$acess_toke = $qc->qq_callback();
+	$au->qqCallBack();
+}
