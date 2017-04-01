@@ -1,6 +1,4 @@
 <?php
-use app\index\controller\Auth;
-
 // +----------------------------------------------------------------------
 // | ThinkPHP [ WE CAN DO IT JUST THINK ]
 // +----------------------------------------------------------------------
@@ -19,3 +17,4 @@ define('APP_PATH', __DIR__ . '/application/');
 define("QQ_CLASS_PATH",APP_PATH."Connect/");
 // 加载框架引导文件
 require __DIR__ . '/thinkphp/start.php';
+
