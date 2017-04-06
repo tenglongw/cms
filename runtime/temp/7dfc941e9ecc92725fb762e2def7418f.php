@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:63:"E:\workspace-php\l7cms/application/admin\view\tongji\type1.html";i:1491451827;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:63:"E:\workspace-php\l7cms/application/admin\view\tongji\type1.html";i:1491459727;}*/ ?>
 <?php $namespace = ns(); ?>
 <div class="box" id="<?php echo $namespace; ?>_box"></div>
 <script>
@@ -29,6 +29,7 @@
                 tpl:'<?php echo $namespace; ?>-table',
                 target:'#<?php echo $namespace; ?>_table',
                 compileAfter:function(p){
+                	
                     EBCMS.FN.renderPage({
                         namespace:'<?php echo $namespace; ?>',
                         total:p.data.total,
@@ -46,6 +47,7 @@
                             rows:true,
                         }
                     });
+                    $('#total_num').html(p.data.total_num);
                 },
             });
         };
@@ -115,7 +117,6 @@
         <div id="<?php echo $namespace; ?>_filter" class="footer-page"></div>
         <div class="btn-group">
             <button class="btn btn-primary" onclick="EBCMS.CORE.getconfig('<?php echo eb_encrypt('name|tongji'); ?>');">设置</button>
-            <button class="btn btn-primary" onclick="delete EBCMS.<?php echo $namespace; ?>.queryParams.where;EBCMS.<?php echo $namespace; ?>.refresh();">全部</button>
         </div>
  		<div class="btn-group">
             <button class="btn btn-primary active" onclick="EBCMS.<?php echo $namespace; ?>.changetime('jinri',this);">今日统计</button>
@@ -161,6 +162,9 @@
 
 <script id="<?php echo $namespace; ?>-table" type="text/html">
     <table class="table table-bordered table-hover table-ebcms">
+		<tr>
+ 			<td>总数</td><td id="total_num"></td>
+        </tr>
         <tbody>
             <tr>
                 <th style="width:70px;">id</th>

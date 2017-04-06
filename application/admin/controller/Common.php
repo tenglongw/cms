@@ -46,7 +46,7 @@ class Common extends Controller
         }
         $i = [];
         $j = input('rows', 0, 'intval') ?: 1000;
-        $where = [];
+	    $where = [];
         if ($times = input('times')) {
         	switch ($times) {
         		case 'jinri':
@@ -88,11 +88,17 @@ class Common extends Controller
         			}
         			break;
         	}
+        	$result_total =$h::with($d['with'])->group('ip')->where($where)->field('ip')->select();
+        	$total_num = count($result_total);
+        }else{
+        	$where = $d['where'];
         }
         $i = $h::with($d['with'])->where($where)->paginate($j);
-        $result_total =  $h::with($d['with'])->where($where)->count();
         $i = $i->toArray();
         $i['rows'] = $i['data'];
+        if(!empty($total_num)){
+	        $i['total_num'] = $total_num;
+        }
         unset($i['data']);
         $this->success('获取成功！', '', $i);
     }
