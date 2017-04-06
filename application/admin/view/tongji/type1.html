@@ -10,6 +10,7 @@
                 'tongji.id':'desc',
             },
             model:'admin/tongji',
+            times:'jinri',
             with:'user',
         };
         EBCMS.{$namespace}.refresh = function refresh(p){
@@ -87,7 +88,15 @@
                 }
             });
         };
-
+        EBCMS.{$namespace}.changetime = function(times,dom){
+            if (dom) {
+                $(dom).addClass('active').siblings().removeClass('active');
+            };
+            EBCMS.{$namespace}.queryParams.page = 1;
+            EBCMS.{$namespace}.refresh({
+                times:times,
+            });
+        };
         EBCMS.CORE.compile({
             tpl:'{$namespace}-box',
             target:'#{$namespace}_box',
@@ -106,6 +115,17 @@
         <div class="btn-group">
             <button class="btn btn-primary" onclick="EBCMS.CORE.getconfig('{:eb_encrypt('name|tongji')}');">设置</button>
             <button class="btn btn-primary" onclick="delete EBCMS.{$namespace}.queryParams.where;EBCMS.{$namespace}.refresh();">全部</button>
+        </div>
+ 		<div class="btn-group">
+            <button class="btn btn-primary active" onclick="EBCMS.{$namespace}.changetime('jinri',this);">今日统计</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.changetime('zuori',this);">昨日统计</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.changetime('benzhou',this);">本周统计</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.changetime('shangzhou',this);">上周统计</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.changetime('1',this);">过去一天</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.changetime('3',this);">过去三日</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.changetime('7',this);">过去一周</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.changetime('30',this);">过去一月</button>
+            <button class="btn btn-primary" onclick="EBCMS.{$namespace}.changetime('',this);">历史数据</button>
         </div>
     </div>
     <div class="body">
@@ -153,7 +173,6 @@
         </tbody>
     </table>
 </script>
-
 <script id="{$namespace}-table-item" type="text/html">
     [[each rows as v n]]
         <tr>

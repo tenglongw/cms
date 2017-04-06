@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:63:"E:\workspace-php\l7cms/application/admin\view\tongji\type1.html";i:1472111959;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:63:"E:\workspace-php\l7cms/application/admin\view\tongji\type1.html";i:1491451827;}*/ ?>
 <?php $namespace = ns(); ?>
 <div class="box" id="<?php echo $namespace; ?>_box"></div>
 <script>
@@ -11,6 +11,7 @@
                 'tongji.id':'desc',
             },
             model:'admin/tongji',
+            times:'jinri',
             with:'user',
         };
         EBCMS.<?php echo $namespace; ?>.refresh = function refresh(p){
@@ -88,7 +89,15 @@
                 }
             });
         };
-
+        EBCMS.<?php echo $namespace; ?>.changetime = function(times,dom){
+            if (dom) {
+                $(dom).addClass('active').siblings().removeClass('active');
+            };
+            EBCMS.<?php echo $namespace; ?>.queryParams.page = 1;
+            EBCMS.<?php echo $namespace; ?>.refresh({
+                times:times,
+            });
+        };
         EBCMS.CORE.compile({
             tpl:'<?php echo $namespace; ?>-box',
             target:'#<?php echo $namespace; ?>_box',
@@ -107,6 +116,17 @@
         <div class="btn-group">
             <button class="btn btn-primary" onclick="EBCMS.CORE.getconfig('<?php echo eb_encrypt('name|tongji'); ?>');">设置</button>
             <button class="btn btn-primary" onclick="delete EBCMS.<?php echo $namespace; ?>.queryParams.where;EBCMS.<?php echo $namespace; ?>.refresh();">全部</button>
+        </div>
+ 		<div class="btn-group">
+            <button class="btn btn-primary active" onclick="EBCMS.<?php echo $namespace; ?>.changetime('jinri',this);">今日统计</button>
+            <button class="btn btn-primary" onclick="EBCMS.<?php echo $namespace; ?>.changetime('zuori',this);">昨日统计</button>
+            <button class="btn btn-primary" onclick="EBCMS.<?php echo $namespace; ?>.changetime('benzhou',this);">本周统计</button>
+            <button class="btn btn-primary" onclick="EBCMS.<?php echo $namespace; ?>.changetime('shangzhou',this);">上周统计</button>
+            <button class="btn btn-primary" onclick="EBCMS.<?php echo $namespace; ?>.changetime('1',this);">过去一天</button>
+            <button class="btn btn-primary" onclick="EBCMS.<?php echo $namespace; ?>.changetime('3',this);">过去三日</button>
+            <button class="btn btn-primary" onclick="EBCMS.<?php echo $namespace; ?>.changetime('7',this);">过去一周</button>
+            <button class="btn btn-primary" onclick="EBCMS.<?php echo $namespace; ?>.changetime('30',this);">过去一月</button>
+            <button class="btn btn-primary" onclick="EBCMS.<?php echo $namespace; ?>.changetime('',this);">历史数据</button>
         </div>
     </div>
     <div class="body">
@@ -154,7 +174,6 @@
         </tbody>
     </table>
 </script>
-
 <script id="<?php echo $namespace; ?>-table-item" type="text/html">
     [[each rows as v n]]
         <tr>

@@ -46,7 +46,51 @@ class Common extends Controller
         }
         $i = [];
         $j = input('rows', 0, 'intval') ?: 1000;
-        $i = $h::with($d['with'])->where($d['where'])->paginate($j);
+        $where = [];
+        if ($times = input('times')) {
+        	switch ($times) {
+        		case 'jinri':
+        			$start = strtotime(date('Y-m-d'));
+        			$where = [
+        					'tongji.create_time' => ['between', [$start, time()]],
+        			];
+        			break;
+        		case 'zuori':
+        			$start = strtotime(date('Y-m-d') . ' -1 days');
+        			$end = strtotime(date('Y-m-d'));
+        			$where = [
+        					'tongji.create_time' => ['between', [$start, $end]],
+        			];
+        			break;
+        		case 'benzhou':
+        			$date = date('Y-m-d');
+        			$w = date('w', strtotime($date));
+        			$start = strtotime("$date -" . ($w ? $w - 1 : 6) . ' days');
+        			$where = [
+        					'tongji.create_time' => ['between', [$start, time()]],
+        			];
+        			break;
+        		case 'shangzhou':
+        			$date = date('Y-m-d');
+        			$w = date('w', strtotime($date));
+        			$end = strtotime("$date -" . ($w ? $w - 1 : 6) . ' days');
+        			$start = $end - 7 * 24 * 3600;
+        			$where = [
+        					'tongji.create_time' => ['between', [$start, $end]],
+        			];
+        			break;
+        
+        		default:
+        			if ($times && is_numeric($times)) {
+        				$where = [
+        						'tongji.create_time' => ['gt', time() - 3600 * 24 * $times]
+        				];
+        			}
+        			break;
+        	}
+        }
+        $i = $h::with($d['with'])->where($where)->paginate($j);
+        $result_total =  $h::with($d['with'])->where($where)->count();
         $i = $i->toArray();
         $i['rows'] = $i['data'];
         unset($i['data']);
