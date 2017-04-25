@@ -4,7 +4,9 @@
 		src="{:get_root()}/static/index/mobile/images/public/logo.png"></a>
 		{notempty name='category'}
 		{neq name='category.title' value='Digger'}
-		<span class="title"><span class="cn">{$category.title}</span><br/><span class="en">{$category.name}</span></span>
+			{empty name='type'}
+				<span class="title"><span class="cn">{$category.title}</span><br/><span class="en">{$category.name}</span></span>
+			{/empty}
 		{/neq}
 		{/notempty}
 	<div class="but clearfloat">

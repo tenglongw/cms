@@ -153,9 +153,10 @@ class Content extends \app\index\controller\Common
                 ]);
                 $category = array('title'=>$content['title'],'id'=>$content['category_id'],'name'=>$categorys[$content['category_id']]['name']);
                 $this->assign('content', $content);
-                if(!request()->isMobile()){
+//                 if(!request()->isMobile()){
 	                $this->assign('category', $category);
-                }
+	                $this->assign('type', 'content');
+//                 }
                 
                 $qc = new \QC();
                 $login_url = $qc->qq_login();
