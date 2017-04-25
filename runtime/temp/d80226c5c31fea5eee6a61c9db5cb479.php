@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:64:"E:\workspace-php\l7cms\templates\default\content\index_news.html";i:1488174970;s:57:"E:\workspace-php\l7cms\templates\default\common\head.html";i:1488795468;s:59:"E:\workspace-php\l7cms\templates\default\common\header.html";i:1489038618;s:59:"E:\workspace-php\l7cms\templates\default\common\footer.html";i:1487844022;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:64:"E:\workspace-php\l7cms\templates\default\content\index_news.html";i:1490929952;s:57:"E:\workspace-php\l7cms\templates\default\common\head.html";i:1488795468;s:59:"E:\workspace-php\l7cms\templates\default\common\header.html";i:1489038618;s:59:"E:\workspace-php\l7cms\templates\default\common\footer.html";i:1487844022;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -142,7 +142,10 @@
 				                            <?php echo $tag['tag']; endif; endforeach; endif; else: echo "" ;endif; ?>
 										</div>
 										<div class="title"><?php echo $vs['title']; ?></div>
-										<div class="time">By <?php echo $vs['author']; ?> <!--  .  <span name="_time"><?php echo $vs['create_time']; ?></span> day ago --></div>
+										<div class="time"><?php  
+												$obj = json_decode($vs,true);
+												echo date('Y-m-d',$obj['create_time']); 
+											 ?> By <?php echo $vs['author']; ?></div>
 										<p><?php echo $vs['description']; ?></p>
 									</div>
 								</a>

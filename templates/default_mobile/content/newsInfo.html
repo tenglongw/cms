@@ -15,7 +15,7 @@
 
 
 		<ul class="Recommendlist">
-			{foreach name='content.relation' item='vo'}				<li>					<a href="{$vo.url}">						<div class="imgC"><img src="{$vo.thumb|thumb=710,535}"></div>						<div class="word">							<div class="name">								{foreach name='content.tag' item='vs'}								{$vs.tag}								{/foreach}							</div>							<div class="title">{$vo.title}</div>							<div class="time"> {php} 													$obj = json_decode($vo,true);													echo date('Y-m-d',$obj['create_time']); 												{/php}  &nbsp;By {$vo.author}</div>						</div>					</a>				</li>            {/foreach}
+			{foreach name='content.relation' item='vo'}				<li>					<a href="{$vo.url}">						<div class="imgC"><img src="{$vo.thumb|thumb=0,0}"></div>						<div class="word">							<div class="name">								{foreach name='content.tag' item='vs'}								{$vs.tag}								{/foreach}							</div>							<div class="title">{$vo.title}</div>							<div class="time"> {php} 													$obj = json_decode($vo,true);													echo date('Y-m-d',$obj['create_time']); 												{/php}  &nbsp;By {$vo.author}</div>						</div>					</a>				</li>            {/foreach}
 		</ul>
 	</section>
 	<!-- section.Recommend end -->

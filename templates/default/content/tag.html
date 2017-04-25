@@ -40,11 +40,14 @@
 				{foreach name='lists' item='vs'}
                 	<li>
 						<a class="clearfloat" href="{$vs.url}">
-							<div class="imgC"><img src="{$vs.thumb|thumb=350,262}"></div>
+							<div class="imgC"><img src="{$vs.thumb|thumb=0,0}"></div>
 							<div class="word">
 								<div class="zhuoz">{$tag.tag}</div>
 								<div class="title">{$vs.title}</div>
-								<div class="time">By {$vs.author}  .  <span name="_time">{$vs.create_time}</span> day ago</div>
+								<div class="time">{php} 
+												$obj = json_decode($vs,true);
+												echo date('Y-m-d',$obj['create_time']); 
+											{/php} By {$vs.author}</div>
 								<p>{$vs.shorttitle}</p>
 							</div>
 						</a>
