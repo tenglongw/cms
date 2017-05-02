@@ -54,6 +54,20 @@ class Tree
         }
         return $res;
     }
+    
+    // 获取所有子id
+    public static function subtreeidStr($data, $pid = 0)
+    {
+    	$res = self::subtreeid($data,$pid);
+    	$str = '';
+    	foreach ($res as $key => $val){
+    		$str = $str . $val;
+    		if($key < count($res)-1 ){
+    			$str = $str.',';
+    		}
+    	}
+    	return $str;
+    }
 
     // 子节点
     public static function sub($arr = [], $pid = 0, $pidfield = 'pid')

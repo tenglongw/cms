@@ -9,6 +9,7 @@ class Tag extends \app\admin\controller\Common
             $this->success('', '', $this->fetch());
         }
     }
+    
 
     public function add()
     {

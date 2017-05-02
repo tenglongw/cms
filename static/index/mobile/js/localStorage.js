@@ -1,2 +1,0 @@
-localStorage.indexName = titleIndex;
-
