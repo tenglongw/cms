@@ -10,6 +10,9 @@
 	$(function(){
 		var wiloginUrl = 'https://open.weixin.qq.com/connect/qrconnect?appid=wx4e8abf24c91b1877&redirect_uri=http://www.long7.com/index.php/index/Auth/wxOauth2?source_url='+href+'&response_type=code&scope=snsapi_login&state=STATE#wechat_redirect';
 		$('.wx').attr('href',wiloginUrl);
+		
+		var qqloginUrl = $('.qq').attr('href');
+		$('.qq').attr('href',qqloginUrl.replace('QQAuth/index.php','QQAuth/index.php?source_url='+href));
 	});
 </script>
 <section class="comment">

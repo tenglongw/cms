@@ -50,8 +50,15 @@ class Oauth{
         return $login_url;
     }
 
-    public function get_user_info(){
-    	
+    public function get_user_info($openid){
+    	$token = $this->recorder->read("access_token");
+    	$appid = $this->recorder->readInc("appid");
+    	$user_info_url = 'https://graph.qq.com/user/get_user_info?'.'access_token=' . $token
+    			. '&oauth_consumer_key=' . $appid
+    			. '&openid=' . $openid
+    			. '&format=json';
+    			$info = json_decode($this->urlUtils->get_contents($user_info_url), TRUE);
+    	return $info;
     }
     
     public function qq_callback(){

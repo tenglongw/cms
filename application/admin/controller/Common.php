@@ -47,12 +47,16 @@ class Common extends Controller
         $i = [];
         $j = input('rows', 0, 'intval') ?: 1000;
 	    $where = [];
+	    $where1 = [];
         if ($times = input('times')) {
         	switch ($times) {
         		case 'jinri':
         			$start = strtotime(date('Y-m-d'));
         			$where = [
         					'tongji.create_time' => ['between', [$start, time()]],
+        			];
+        			$where1 = [
+        					'create_time' => ['between', [$start, time()]],
         			];
         			break;
         		case 'zuori':
@@ -61,6 +65,9 @@ class Common extends Controller
         			$where = [
         					'tongji.create_time' => ['between', [$start, $end]],
         			];
+        			$where1 = [
+        					'create_time' => ['between', [$start, $end]],
+        			];
         			break;
         		case 'benzhou':
         			$date = date('Y-m-d');
@@ -68,6 +75,9 @@ class Common extends Controller
         			$start = strtotime("$date -" . ($w ? $w - 1 : 6) . ' days');
         			$where = [
         					'tongji.create_time' => ['between', [$start, time()]],
+        			];
+        			$where1 = [
+        					'create_time' => ['between', [$start, time()]],
         			];
         			break;
         		case 'shangzhou':
@@ -78,6 +88,9 @@ class Common extends Controller
         			$where = [
         					'tongji.create_time' => ['between', [$start, $end]],
         			];
+        			$where1 = [
+        					'create_time' => ['between', [$start, $end]],
+        			];
         			break;
         
         		default:
@@ -85,15 +98,20 @@ class Common extends Controller
         				$where = [
         						'tongji.create_time' => ['gt', time() - 3600 * 24 * $times]
         				];
+        				$where1 = [
+        						'create_time' => ['gt', time() - 3600 * 24 * $times]
+        				];
         			}
         			break;
         	}
-        	$result_total =$h::with($d['with'])->group('ip')->where($where)->field('ip')->select();
-        	$total_num = count($result_total);
         }else{
         	$where = $d['where'];
+        	$where1 = $d['where'];
         }
         $i = $h::with($d['with'])->where($where)->paginate($j);
+//         $total_num =$h::with($d['with'])->where($where)->field('count(ip) num')->select();
+        $total_num = count(\think\Db::name('tongji')->group('ip')->where($where1)->field('ip')->select());
+//         $total_num = $h::with($d['with'])->where($where)->count();
         $i = $i->toArray();
         $i['rows'] = $i['data'];
         if(!empty($total_num)){

@@ -10,6 +10,9 @@
 	$(function(){
 		var wiloginUrl = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx037f50b90883a846&redirect_uri=http://www.long7.com/wxAuth?source='+href+'&response_type=code&scope=snsapi_userinfo&state=STATE&connect_redirect=1#wechat_redirect';
 		$('.wx').attr('href',wiloginUrl);
+		
+		var qqloginUrl = $('.qq').attr('href');
+		$('.qq').attr('href',qqloginUrl.replace('QQAuth/index.php','QQAuth/index.php?source_url='+href));
 	});
 </script>
 	<section class="comment">
@@ -19,7 +22,7 @@
 			<div class="exit"><i class="iconfont">&#xe66c;</i></div>
 			<div class="logoinCon">
 
-				<a class="qq" href="#">使用QQ直接登录</a>
+				<a class="qq" href="{$qq_url}">使用QQ直接登录</a>
 
 				<a class="wx" href="#">使用微信直接登录</a>
 

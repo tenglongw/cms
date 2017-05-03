@@ -152,11 +152,40 @@ class Auth extends \app\index\controller\Common
     }
     
     public function qqLogin(){
-    	$qc = new \QC();
-    	$login_url = $qc->qq_login();
-//     	print_r($login_url);exit;
-    	Header("HTTP/1.1 303 See Other");
-    	Header("Location:$login_url");
+    	include('QQSDK.php');
+    	$qqsdk = new \QQSDK();
+    	$source = $_GET['source'];
+    	if(empty($source)){
+    		$source = 'http://www.long7.com';
+    	}
+    	if (isset($_GET['code'])){
+    		$token = $qqsdk->get_access_token($_GET['code']);
+    		$openid = $qqsdk->get_open_id($token['access_token']);
+    		if ($openid) {
+    			$user = $qqsdk->get_user_info($token['access_token'], $openid['openid']);
+    			$row = array();
+    			$row['nickname'] = $user['nickname'];
+    			$row['headimgurl'] = $user['figureurl_qq_2'];
+    			$row['openid'] = $openid['openid'];
+    			$id = $this->updateUserInfo($row);
+    			// 清空session
+    			\think\Session::clear();
+    			// 写入新session
+    			session('user_id', $id);
+    			session('user_nickname', $row['nickname']);
+    			session('user_avatar', $row['headimgurl']);
+    			$this->assign('user',$row);
+    			\think\Session::clear('go');
+    			Header("HTTP/1.1 303 See Other");
+    			Header("Location: $source");exit;
+    		}else{
+    			$this->error('授权出错,请重新授权!');
+    		}
+    	}else{
+    		echo "NO CODE";
+    	}
+    	$result['data'] = $data;
+    	echo json_encode($result);exit;
     }
     
     public function wxLogin(){
