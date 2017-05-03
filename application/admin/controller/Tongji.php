@@ -54,7 +54,6 @@ class Tongji extends \app\admin\controller\Common
                 }
             }
             $result = \think\Db::name('tongji')->group('url,title')->where($where)->field('count(*) as num,url,title')->order('num desc')->paginate($rows, true);
-            
             $result_total = \think\Db::name('tongji')->where($where)->field('count(*) as total')->select();
             $result = $result->toArray();
             $result['rows']['data'] = $result['data'];
