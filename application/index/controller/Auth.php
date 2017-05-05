@@ -128,6 +128,7 @@ class Auth extends \app\index\controller\Common
     		$res=(json_decode($res, true));
     		$row=$weixin->get_user_info($res['openid'],$res['access_token']);
     		if ($row['openid']) {
+    			$row['email'] = 'weixin@qq.com';
     			$id = $this->updateUserInfo($row);
     			// 清空session
     			\think\Session::clear();
@@ -167,6 +168,7 @@ class Auth extends \app\index\controller\Common
     			$row['nickname'] = $user['nickname'];
     			$row['headimgurl'] = $user['figureurl_qq_2'];
     			$row['openid'] = $openid['openid'];
+    			$row['email'] = 'QQ@qq.com';
     			$id = $this->updateUserInfo($row);
     			// 清空session
     			\think\Session::clear();
@@ -188,6 +190,45 @@ class Auth extends \app\index\controller\Common
     	echo json_encode($result);exit;
     }
     
+    public function sinaCallback(){
+    }
+    
+    public function sinaLogin(){
+    	include( 'sinaAuth/config.php' );
+    	include( 'sinaAuth/saetv2.ex.class.php' );
+    	
+    	$source = 'http://www.long7.com';
+    	if (isset($_GET['code'])){
+	    	$c = new \SaeTClientV2( WB_AKEY , WB_SKEY , $_GET['token'] );
+//     		echo json_encode(WB_AKEY.':'.WB_SKEY.':'.$_GET['access_token']);exit;
+    		$ms  = $c->home_timeline(); // done
+			$uid_get = $c->get_uid();
+			$uid = $uid_get['uid'];
+			$user = $c->show_user_by_id( $uid);//根据ID获取用户等基本信息
+    			$row = array();
+    			$row['nickname'] = $user['name'];
+    			$row['headimgurl'] = $user['profile_image_url'];
+    			$row['openid'] = $user['name'].$user['id'];
+    			$row['email'] = 'sina@sina.com';
+    			$id = $this->updateUserInfo($row);
+    			// 清空session
+    			\think\Session::clear();
+    			// 写入新session
+    			session('user_id', $id);
+    			session('user_nickname', $row['nickname']);
+    			session('user_avatar', $row['headimgurl']);
+    			$this->assign('user',$row);
+    			\think\Session::clear('go');
+    			Header("HTTP/1.1 303 See Other");
+    			Header("Location: $source");exit;
+    	}else{
+    		echo "NO CODE";
+    	}
+    	$result['data'] = $data;
+    	echo json_encode($result);exit;
+    }
+    
+    
     public function wxLogin(){
     	include('class_weixin_adv.php');
     	$redirect_uri = 'http://120.26.192.83/index.php/index/auth/wxOauth2';
@@ -206,6 +247,7 @@ class Auth extends \app\index\controller\Common
 			$res=(json_decode($res, true));
 			$row=$weixin->get_user_info($res['openid'],$res['access_token']);
 			if ($row['openid']) {
+				$row['email'] = 'weixin@qq.com';
 				$id = $this->updateUserInfo($row);
 				// 清空session
 				\think\Session::clear();
@@ -243,6 +285,7 @@ class Auth extends \app\index\controller\Common
     				'nickname' => $row['nickname'],
     				'avatar' => $row['headimgurl']
     		);
+//     		echo json_encode($user);exit;
     		$user->save($data1);
     		
     		$id = $user['id'];
@@ -251,7 +294,7 @@ class Auth extends \app\index\controller\Common
     		$salt = md5(rand());
     		$data = array(
     				'nickname' => $row['nickname'],
-    				'email' => 'weixin@qq.com',
+    				'email' => $row['email'],
     				'avatar' => $row['headimgurl'],
     				'openid' => $row['openid'],
     				'salt' => 'weixin',

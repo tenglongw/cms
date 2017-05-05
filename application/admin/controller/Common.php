@@ -104,14 +104,12 @@ class Common extends Controller
         			}
         			break;
         	}
+	        $total_num = count(\think\Db::name('tongji')->group('ip')->where($where1)->field('ip')->select());
         }else{
         	$where = $d['where'];
         	$where1 = $d['where'];
         }
         $i = $h::with($d['with'])->where($where)->paginate($j);
-//         $total_num =$h::with($d['with'])->where($where)->field('count(ip) num')->select();
-        $total_num = count(\think\Db::name('tongji')->group('ip')->where($where1)->field('ip')->select());
-//         $total_num = $h::with($d['with'])->where($where)->count();
         $i = $i->toArray();
         $i['rows'] = $i['data'];
         if(!empty($total_num)){
