@@ -3,54 +3,50 @@ namespace app\index\controller;
 
 class Mobile extends \app\index\controller\Common
 {
-	/**
-	 * 首页
-	 */
+	
 	public function index(){
+
 		$baseUrl = 'https://'.$_SERVER['HTTP_HOST'].'';
 		//首页轮播
 		$lists_recommend = \think\Db::name('recommend')->field("content_id,thumb")->where('category_id', 2)->select();
 		$carousel_temp = $this->imagePathHand($lists_recommend,$baseUrl,750,325);
 		$carousel = $this->carouselHandle($carousel_temp);
-		$categorys = get_content_category();
+		$titleArray = array('平台类型','产品类型');
+		$lists_recommendCate = \think\Db::name('recommendcate')->field("id,group,title,image")->where(array('group'=>['in', $titleArray]))->select();
 		$resultList = array();
 		$index = 0;
-		foreach ($categorys as $key=>$val){
-			//判断一级菜单
-			if($val['pid'] == 0){
-				$subTree = \ebcms\Tree::subtree($categorys, $val['id']);
-				$parent = array();
-				$parent['title'] = $val['title'];
-				$parent['size'] = count($subTree); 
-				if($index == 0){
-					$parent['isActive'] = true;
-				}else{
-					$parent['isActive'] = false;
-				}
-				$index ++;
-				//找出二级菜单下文章列表
-				foreach ($subTree as $skey=>$sval){
-					$sub = array();
-					$list = \app\content\model\Content::field("id,title,thumb")->where(['category_id' => $sval['id'], 'status' => 1])->order('sort desc,update_time desc')->select();
-					$dataList = $this->imagePathHand($list,$baseUrl,150,150);
-					$sub['title'] = $sval['title'];
-					$sub['description'] = $sval['description'];
-					if(!empty($sval['ext']) && !empty($sval['ext']['image'])){
-						$sub['image'] = $baseUrl.thumb($sval['ext']['image'],40,40);
-					}
-					$sub['size'] = count($dataList); 
-					$sub['list'] = $dataList;
-					$parent['advice'][] = $sub;
-				}
-				$resultList[] = $parent;
+		$adviceList = array();
+		foreach ($titleArray as $key => $val){
+			$parent = array();
+			$parent['title'] = $val;
+			if($index == 0){
+				$parent['isActive'] = true;
+			}else{
+				$parent['isActive'] = false;
 			}
+			$index ++;
+			//循环二级菜单
+			foreach ($lists_recommendCate as $ckey=>$cval){
+				if($cval['group'] == $val){
+					//查询二级菜单下的新闻列表
+					$lists_recommend = \think\Db::name('recommend')->field("content_id,title,thumb")->where('category_id', $cval['id'])->select();
+					$dataList = $this->imagePathHand($lists_recommend,$baseUrl,150,150);
+					$secondLevelMenu = array();
+					$secondLevelMenu['title'] = $cval['title'];
+					$secondLevelMenu['image'] = $baseUrl.thumb($cval['image'],40,40);
+					$secondLevelMenu['size'] = count($dataList);
+					$secondLevelMenu['list'] = $dataList;
+					$parent['advice'][] = $secondLevelMenu;
+				}
+			}
+			$adviceList[] = $parent;
 		}
 		$result = array();
 		$result['carousel'] = $carousel;
-		$result['adviceList'] = $resultList;
+		$result['adviceList'] = $adviceList;
 		echo json_encode($result);
-//         $callback = $_GET['callback'];
-//         echo $callback.'('.json_encode($result).')';exit;
+		//         $callback = $_GET['callback'];
+		//         echo $callback.'('.json_encode($result).')';exit;
 	}
 	
 	/**
@@ -63,7 +59,7 @@ class Mobile extends \app\index\controller\Common
 		$cateList = \app\content\model\Recommendcate::field("id,title,mark")->where(['group' => '重点产品', 'status' => 1])->order('sort desc,update_time desc')->select();
 		//查询分类对应的新闻广告
 		foreach ($cateList as $key => $val){
-			$list = \app\content\model\Recommend::field("content_id,thumb,title")->where(['category_id' => $val['id'], 'status' => 1])->order('sort desc,update_time desc')->select();
+			$list = \app\content\model\Recommend::field("content_id,thumb,title")->where(['category_id' => $val['id'], 'status' => 1])->order('RAND()')->limit(5)->select();
 // 			$list = $this->imagePathHand($list,$baseUrl,107,107);
 			$temp = array();
 			foreach ($list as $lkey=>$lval){
