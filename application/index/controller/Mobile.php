@@ -103,7 +103,7 @@ class Mobile extends \app\index\controller\Common
 		$cateArray = array();
 		foreach ($cateList as $key => $val){
 			if(!empty($val['image'])){
-				$imagePath = $baseUrl.$val['image'];
+				$imagePath = $baseUrl.'/upload'.$val['image'];
 			}else{
 				$imagePath = $val['image'];
 			}
@@ -215,31 +215,42 @@ class Mobile extends \app\index\controller\Common
 	}
 	
 	private function contentHandler($content,$baseUrl){
-		$body = $content['ext']['body'];
-		$ext = $content['ext'];
-		$ext['product'] = $baseUrl.'/upload'.$ext['product'];
-		if(!isset($ext['thumbnail'])){
-			$ext['thumbnail'] = $baseUrl.thumb($ext['thumbnail']);
-		}
-		unset($ext['body']);
-		// 			echo json_encode($ext);exit;
-		// 			var_dump(json_decode(json_encode($body['__config__']),true));exit;
-		$config = json_decode(json_encode($body['__config__']),true);
 		$array = array();
-		foreach ($config as $key => $val){
-		
-			if(isset($body[$key])){
-				$temp = array();
-				$temp['type'] = $val;
-				if($val == 'file'){
-					$temp['data'] = $baseUrl.thumb($body[$key]);
-				}else{
-					$temp['data'] = $body[$key];
+		$ext = array();
+		$isVideo = false;
+		if(!empty($content['ext']) && !empty($content['ext']['body'])){
+			$body = $content['ext']['body'];
+			$ext = $content['ext'];
+			if(!empty($ext['product'])){
+				$ext['product'] = $baseUrl.'/upload'.$ext['product'];
+			}
+			if(!empty($ext['thumbnail'])){
+				$ext['thumbnail'] = $baseUrl.thumb($ext['thumbnail']);
+				$isVideo = true;
+			}
+			if(!empty($ext['downImage'])){
+				$ext['downImage'] = $baseUrl.'/upload'.$ext['downImage'];
+			}
+			unset($ext['body']);
+			// 			echo json_encode($ext);exit;
+			// 			var_dump(json_decode(json_encode($body['__config__']),true));exit;
+			$config = json_decode(json_encode($body['__config__']),true);
+			foreach ($config as $key => $val){
+			
+				if(isset($body[$key])){
+					$temp = array();
+					$temp['type'] = $val;
+					if($val == 'file'){
+						$temp['data'] = $baseUrl.thumb($body[$key]);
+					}else{
+						$temp['data'] = $body[$key];
+					}
+					$array[] = $temp;
 				}
-				$array[] = $temp;
 			}
 		}
 		$ext['body'] = $array;
+		$ext['isVideo'] = $isVideo;
 		$content['ext'] = $ext;
 		return $content;
 	}
@@ -264,7 +275,7 @@ class Mobile extends \app\index\controller\Common
 	 * @param unknown $data_list
 	 */
 	private function list_hand($data_list,$baseUrl,$with,$height){
-		$imagePath = array($baseUrl.'/static/image/video.png',$baseUrl.'/static/image/file.png');
+		$imagePath = array($baseUrl.'/static/index/image/video.png',$baseUrl.'/static/index/image/file.png');
 		$cateImageArray = $this->categoryImageArray($baseUrl);
 		$result = array();
 		foreach ($data_list as $key=>$val){
@@ -272,7 +283,7 @@ class Mobile extends \app\index\controller\Common
 			$temp['title'] = $val['title'];
 			$temp['tagImage'] = $imagePath[$val['isVideo']];
 			$temp['cateImage'] = $cateImageArray[$val['category_id']];
-			$temp['id'] = $val['id'];
+			$temp['id'] = $val['content_id'];
 			$temp['create_time'] =$val['create_time'];
 			$temp['description'] = $val['description'];
 			$result[] = $temp;
