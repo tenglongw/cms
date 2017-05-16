@@ -3,16 +3,15 @@ namespace app\index\controller;
 
 class Mobile extends \app\index\controller\Common
 {
-	
 	public function index(){
 
 		$baseUrl = 'https://'.$_SERVER['HTTP_HOST'].'';
 		//首页轮播
 		$lists_recommend = \think\Db::name('recommend')->field("content_id,thumb")->where('category_id', 2)->select();
-		$carousel_temp = $this->imagePathHand($lists_recommend,$baseUrl,750,325);
+		$carousel_temp = $this->imagePathHand($lists_recommend,$baseUrl,750,330);
 		$carousel = $this->carouselHandle($carousel_temp);
 		$titleArray = array('平台类型','产品类型');
-		$lists_recommendCate = \think\Db::name('recommendcate')->field("id,group,title,image")->where(array('group'=>['in', $titleArray]))->select();
+		$lists_recommendCate = \think\Db::name('recommendcate')->field("id,group,title,image,color")->where(array('group'=>['in', $titleArray]))->select();
 		$resultList = array();
 		$index = 0;
 		$adviceList = array();
@@ -29,10 +28,11 @@ class Mobile extends \app\index\controller\Common
 			foreach ($lists_recommendCate as $ckey=>$cval){
 				if($cval['group'] == $val){
 					//查询二级菜单下的新闻列表
-					$lists_recommend = \think\Db::name('recommend')->field("content_id,title,thumb")->where('category_id', $cval['id'])->select();
-					$dataList = $this->imagePathHand($lists_recommend,$baseUrl,150,150);
+					$lists_recommend = \think\Db::name('recommend')->field("content_id id,title,thumb")->where('category_id', $cval['id'])->select();
+					$dataList = $this->imagePathHand($lists_recommend,$baseUrl,160,240);
 					$secondLevelMenu = array();
 					$secondLevelMenu['title'] = $cval['title'];
+					$secondLevelMenu['color'] = $cval['color'];
 					$secondLevelMenu['image'] = $baseUrl.thumb($cval['image'],40,40);
 					$secondLevelMenu['size'] = count($dataList);
 					$secondLevelMenu['list'] = $dataList;
@@ -59,18 +59,19 @@ class Mobile extends \app\index\controller\Common
 		$cateList = \app\content\model\Recommendcate::field("id,title,mark")->where(['group' => '重点产品', 'status' => 1])->order('sort desc,update_time desc')->select();
 		//查询分类对应的新闻广告
 		foreach ($cateList as $key => $val){
-			$list = \app\content\model\Recommend::field("content_id,thumb,title")->where(['category_id' => $val['id'], 'status' => 1])->order('RAND()')->limit(5)->select();
+			$list = \app\content\model\Recommend::field("content_id,thumb,title,isVideo")->where(['category_id' => $val['id'], 'status' => 1])->order('RAND()')->limit(5)->select();
 // 			$list = $this->imagePathHand($list,$baseUrl,107,107);
 			$temp = array();
 			foreach ($list as $lkey=>$lval){
 				if(count($list)-1 == $lkey){
-					$with = 236;
-					$height = 236;
+					$with = 290;
+					$height = 290;
 				}else{
-					$with = 107;
-					$height = 107;
+					$with = 130;
+					$height = 130;
 				}
 				$lval['thumb'] = $baseUrl.thumb($lval['thumb'],$with,$height);
+				
 				$temp[] = $lval;
 			}
 			$val['list'] = $temp;
@@ -79,36 +80,70 @@ class Mobile extends \app\index\controller\Common
 		echo json_encode($result);
 	}
 	
+	public function majorProductList(){
+		$baseUrl = 'https://'.$_SERVER['HTTP_HOST'].'';
+		$where = [
+				'status' => 1,
+				'category_id' => $_GET['category_id']
+		];
+		
+		$cache = \ebcms\Config::get('content.search_cache') ?: false;
+		$lists = \app\content\model\Recommend::where($where)->order('id desc')->cache($cache)->paginate(20);
+		$count =  \app\content\model\Recommend::where($where)->count();
+		// 路径
+		$data_list = $this->list_hand($lists,$baseUrl,160,240);
+		$result['lists'] = $data_list;
+		$result['page'] = $lists->getPage();
+		$result['total'] = $count;
+		echo json_encode($result);exit;
+	}
+	
+	private function categoryImageArray($baseUrl){
+		$cateList = \app\content\model\Recommendcate::field("id,image")->where(['status' => 1])->select();
+		$cateArray = array();
+		foreach ($cateList as $key => $val){
+			if(!empty($val['image'])){
+				$imagePath = $baseUrl.$val['image'];
+			}else{
+				$imagePath = $val['image'];
+			}
+			$cateArray[$val['id']] = $imagePath;
+		}
+		return $cateArray;
+	}
 	
 	/**
-	 * 搜索页面
+	 * 保存用户信息
 	 */
-	public function getSearch(){
+	public function saveUser(){
 		$result = array();
-		$tag = new \app\content\model\Tag();
-		//热门搜索
-		$hotword = \app\content\model\Hotword::field("tag,id")->where(['status' => 1])->order('sort desc,update_time desc')->select();
-		$result['hotword'] = $hotword;
-		//分类标签
-		$categorys = get_content_category();
-		foreach ($categorys as $key=>$val){
-			if($val['pid'] == 0){
-				$tagTemp = array();
-				$subTreeId = \ebcms\Tree::subtreeidStr($categorys, $val['id']);
-				$tag_list = $tag->query("select t.id,t.tag from ebcms5_content_tag t join ebcms5_content_tags ts on t.id = ts.tag_id where ts.cc_id in(".$subTreeId.")");
-				$tagTemp['title'] = $val['title'];
-				$tagTemp['tagList'] = $tag_list;
-				$result['tag'][] = $tagTemp;
-			}
+		$user = \think\Db::name('user');
+		$data = array(
+			'nickname' => $_GET['nickname'],
+			'email' => 'wexin@qq.com',
+			'salt' => 'wechat',
+			'password' => crypt_pwd('111111', 'tencent'),
+			'create_time' => time(),
+		);
+		$id = $this->updateUserInfo($data);
+		if($id){
+			$result['status'] = 1;
+			$result['data'] = $id;
+		}else{
+			$result['status'] = 0;
+			$result['data'] = '保存失败';
 		}
 		echo json_encode($result);exit;
 	}
+	
+	public function updateUserInfo($row){;}
 	
 	/**
 	 * 搜索
 	 */
 	public function search()
 	{
+		$baseUrl = 'https://'.$_SERVER['HTTP_HOST'].'';
 		if (request()->isGet()) {
 			$result = array();
 			$q = input('q');
@@ -117,50 +152,26 @@ class Mobile extends \app\index\controller\Common
 				$q = trim($q);
 				$where = [
 						'status' => 1,
-						'title|keywords|description' => ['like', '%' . $q . '%']
+						'title|description' => ['like', '%' . $q . '%']
 				];
-				$categorys = get_content_category();
-				$category_ids = [];
-				if(!empty($category)){
-					$category_ids = \ebcms\Tree::subid2($categorys, $category);
-				}else{
-					foreach ($categorys as $key => $value) {
-						$category_ids[] = $value['id'];
-					}
-				}
-	
-				if ($extend_id = input('extend_id',0,'intval')) {
-					$extendids = get_content_category('extend');
-					$where['category_id'] = ['in',array_intersect($category_ids, $extendids[$extend_id])];
-				}elseif ($category_id = input('category_id',0,'intval')) {
-					$where['category_id'] = ['in',array_intersect($category_ids, (array)$category_id)];
-				}else{
-					$where['category_id'] = ['in',$category_ids];
-				}
 	
 				$cache = \ebcms\Config::get('content.search_cache') ?: false;
-				$lists = \app\content\model\Content::where($where)->order('id desc')->cache($cache)->paginate(20, false, [
+				$lists = \app\content\model\Recommend::where($where)->order('id desc')->cache($cache)->paginate(20, false, [
 						'query' => ['q' => $q],
 				]);
-				$count =  \app\content\model\Content::where($where)->count();
-	
-				$tag = new \app\content\model\Tag();
-				$tag_list = $tag->query("select ct.tag,cts.c_id from ebcms5_content_tag ct,ebcms5_content_tags cts where ct.id = cts.tag_id");
-				$this->assign('tag_list', $tag_list);
-	
+				$count =  \app\content\model\Recommend::where($where)->count();
 				// 路径
-				$baseUrl = '/';
-				$data_list = $this->list_hand($lists,$categorys,$baseUrl,$tag_list);
+				$data_list = $this->list_hand($lists,$baseUrl,160,240);
 				$result['lists'] = $data_list;
 				$result['page'] = $lists->getPage();
 				$result['total'] = $count;
 				// seo设置
+			}else {
+				//热门搜索
+				$hotword = \app\content\model\Hotword::field("tag,id")->where(['status' => 1])->order('sort desc,update_time desc')->select();
+				$result['hotword'] = $hotword;
 			}
-			$result['q'] = $q;
-			$result[category] = $category;
-			//     		echo json_encode($result);exit;
-			$callback = $_GET['callback'];
-			echo $callback.'('.json_encode($result).')';exit;
+			echo json_encode($result);exit;
 		}
 	}
 	
@@ -169,7 +180,8 @@ class Mobile extends \app\index\controller\Common
 	 * 文章详情
 	 */
 	public function detail(){
-
+		$baseUrl = 'https://'.$_SERVER['HTTP_HOST'];
+		$result = array();
 		if ($filename = input('filename')) {
 			$where = [
 					'filename' => $filename
@@ -179,64 +191,57 @@ class Mobile extends \app\index\controller\Common
 					'id' => input('id', 0, 'intval')
 			];
 		}
-		if ($content = \app\content\model\Content::where($where)->find()) {
+		if ($content = \app\content\model\Content::field("id,title,description,ext,status")->where($where)->find()) {
 			if (1 != $content['status']) {
-				$this->error('内容未审核！');
+				$result['data'] = '内容未审核！';
+				$result['status'] = 0;
 			}
-		
-			if ($content['category']['status'] != 1) {
-				$this->error('内容未审核！');
-			}
-		
+			//内容处理
+			$content = $this->contentHandler($content, $baseUrl);
 		
 			// 统计点击次数
 			if (\ebcms\Config::get('content.click_record')) {
 				\think\Hook::add('app_end', 'app\\index\\behavior\\Click');
 			}
-		
-			if (request()->isGet()) {
-				// 路径
-				$categorys = get_content_category('all');
-				$pdatas = \ebcms\Tree::parent_data($categorys, $content['category_id']);
-				config('topcateid',$pdatas?$pdatas[0]['id']:$content['category']['id']);
-				foreach ($pdatas as $value) {
-					\ebcms\Position::add(['title' => $value['title'], 'url' => $value['url']]);
-				}
-				\ebcms\Position::add(['title' => $categorys[$content['category_id']]['title'], 'url' => $categorys[$content['category_id']]['url']]);
-				\ebcms\Position::add(['title' => $content['title'], 'url' => $content['url']]);
-		
-				// seo设置
-				$this->assign('seo', [
-						'title' => $content['title'] . ' - ' . $this->seo['sitename'],
-						'keywords' => $content['keywords'],
-						'description' => $content['description'],
-				]);
-				$category = array('title'=>$content['title'],'id'=>$content['category_id'],'name'=>$categorys[$content['category_id']]['name']);
-				$this->assign('content', $content);
-				if(!request()->isMobile()){
-					$this->assign('category', $category);
-				}
-		
-				$qc = new \QC();
-				$login_url = $qc->qq_login();
-				$this->assign('qq_url', $login_url);
-				$catetpl = isset($categorys[$content['category_id']]) ? $categorys[$content['category_id']]['tpl_detail'] : '';
-				return $this->fetch($content['tpl'] ?: $catetpl);
-			} elseif (request()->isPost()) {
-				$res = [
-						'seo' => [
-								'title' => $content['metatitle'] . ' - ' . $this->seo['sitename'],
-								'keywords' => $content['keywords'],
-								'description' => $content['description'],
-						],
-						'content' => $content
-				];
-				return $res;
-			}
+			
+// 			$body = \app\content\model\Body::field("body")->where(array('id'=>input('id', 0, 'intval')))->find();
+			$result['data'] = $content;
+			$result['status'] = 1;
 		} else {
-			$this->error('内容不存在');
+			$result['data'] = '内容不存在';
+			$result['status'] = 0;
 		}
+		echo json_encode($result);exit;
+	}
+	
+	private function contentHandler($content,$baseUrl){
+		$body = $content['ext']['body'];
+		$ext = $content['ext'];
+		$ext['product'] = $baseUrl.'/upload'.$ext['product'];
+		if(!isset($ext['thumbnail'])){
+			$ext['thumbnail'] = $baseUrl.thumb($ext['thumbnail']);
+		}
+		unset($ext['body']);
+		// 			echo json_encode($ext);exit;
+		// 			var_dump(json_decode(json_encode($body['__config__']),true));exit;
+		$config = json_decode(json_encode($body['__config__']),true);
+		$array = array();
+		foreach ($config as $key => $val){
 		
+			if(isset($body[$key])){
+				$temp = array();
+				$temp['type'] = $val;
+				if($val == 'file'){
+					$temp['data'] = $baseUrl.thumb($body[$key]);
+				}else{
+					$temp['data'] = $body[$key];
+				}
+				$array[] = $temp;
+			}
+		}
+		$ext['body'] = $array;
+		$content['ext'] = $ext;
+		return $content;
 	}
 	
 	private function carouselHandle($dataList){
@@ -253,73 +258,23 @@ class Mobile extends \app\index\controller\Common
 		return $tempList;
 	}
 	
-	public function tag()
-	{
-			if ($tag = input('tag')) {
-				// 查看详细标签
-				if ($data = \app\content\model\Tag::where('tag', $tag)->find()) {
-	
-					if (!$data['status']) {
-						$this->error('标签不存在！');
-					}
-	
-					$lists_tag = \think\Db::name('content_tags')->where('tag_id', $data['id'])->select();
-// 					$this->assign('page', $lists->render());
-					$ids = [];
-					$cc_ids = [];
-					foreach ($lists_tag as $value) {
-						$ids[] = $value['c_id'];
-						$cc_ids[] = $value['cc_id'];
-					}
-					if ($ids) {
-	
-						$where = [
-								'id' => ['in', $ids],
-								'status' => ['eq', 1],
-						];
-						$categorys = get_content_category();
-						$category_ids = [];
-						foreach ($categorys as $key => $value) {
-							$category_ids[] = $value['id'];
-						}
-						$where['category_id'] = ['in',$category_ids];
-						$lists = \app\content\model\Content::where($where)->order('id desc')->paginate(20);
-						$page = $lists->getPage();
-					} else {
-						$lists = [];
-					}
-// 					$category_id = $cc_ids[0];
-// 					$tag = $data;
-// 					return $this->fetch();
-				} else {
-					$this->error('tag不存在！');
-				}
-			}
-			
-			$result = array();
-			$baseUrl = '/index.php/';
-			$data_list = $this->list_hand($lists,$categorys,$baseUrl,291,212,$data['tag']);
-			$result['lists'] = $data_list;
-			$result['page'] = $page;
-			$callback = $_GET['callback'];
-			echo $callback.'('.json_encode($result).')';exit;
-	}
-	
 	
 	/**
 	 * 获取数据图片，以及跳转地址
 	 * @param unknown $data_list
 	 */
-	private function list_hand($data_list,$categorys,$baseUrl,$with,$height){
+	private function list_hand($data_list,$baseUrl,$with,$height){
+		$imagePath = array($baseUrl.'/static/image/video.png',$baseUrl.'/static/image/file.png');
+		$cateImageArray = $this->categoryImageArray($baseUrl);
 		$result = array();
 		foreach ($data_list as $key=>$val){
-			$temp['thumb'] = thumb($val['thumb'],$with,$height);
-			$temp['url'] = $baseUrl.$this->getUrlPath($categorys, $val['category_id']).'/'.$val['id'].'.html';
+			$temp['thumb'] = $baseUrl.thumb($val['thumb'],$with,$height);
 			$temp['title'] = $val['title'];
-			$temp['author'] = $val['author'];
+			$temp['tagImage'] = $imagePath[$val['isVideo']];
+			$temp['cateImage'] = $cateImageArray[$val['category_id']];
+			$temp['id'] = $val['id'];
 			$temp['create_time'] =$val['create_time'];
 			$temp['description'] = $val['description'];
-			$temp['position'] = $categorys[$val['category_id']]['title'];
 			$result[] = $temp;
 		}
 		return $result;
@@ -341,13 +296,5 @@ class Mobile extends \app\index\controller\Common
 			$resutl[] = $val;
 		}
 		return $resutl;
-	}
-	public function menuList(){
-		$result = array();
-		//获取分类
-		$categorys = get_content_category();
-		$result['categorys'] = $categorys;
-		$tree = \ebcms\Tree::subtree(get_content_category(),0);
-		echo json_encode($tree);exit;
 	}
 }

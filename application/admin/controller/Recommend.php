@@ -89,6 +89,9 @@ class Recommend extends \app\admin\controller\Common
                         if(!empty($content['ext']) && !empty($content['ext']['pic'])){
 	                        $input['video_first_image'] = $content['ext']['pic'];
                         }
+                        if(!empty($content['ext']) && !empty($content['ext']['thumbnail'])){
+                        	$input['isVideo'] = 1;
+                        }
                         $data[] = $input;
                     }
                     if (empty($data) || false !== \think\Db::name('recommend')->insertAll($data)) {
