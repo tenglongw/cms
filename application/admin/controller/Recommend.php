@@ -89,8 +89,10 @@ class Recommend extends \app\admin\controller\Common
                         if(!empty($content['ext']) && !empty($content['ext']['pic'])){
 	                        $input['video_first_image'] = $content['ext']['pic'];
                         }
-                        if(!empty($content['ext']) && !empty($content['ext']['thumbnail'])){
-                        	$input['isVideo'] = 1;
+                        if(!empty($content['ext']) && !empty($content['ext']['product'])){
+                        	if(strpos($content['ext']['product'], '.mp4') !== false){
+                        		$input['isVideo'] = 1;
+                        	}
                         }
                         $data[] = $input;
                     }

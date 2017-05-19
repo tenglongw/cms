@@ -11,7 +11,7 @@ class Mobile extends \app\index\controller\Common
 		$carousel_temp = $this->imagePathHand($lists_recommend,$baseUrl,750,330);
 		$carousel = $this->carouselHandle($carousel_temp);
 		$titleArray = array('平台类型','产品类型');
-		$lists_recommendCate = \think\Db::name('recommendcate')->field("id,group,title,image,color")->where(array('group'=>['in', $titleArray]))->select();
+		$lists_recommendCate = \think\Db::name('recommendcate')->field("id,group,title,image,color")->where(array('group'=>['in', $titleArray]))->order('sort desc')->select();
 		$resultList = array();
 		$index = 0;
 		$adviceList = array();
@@ -56,7 +56,7 @@ class Mobile extends \app\index\controller\Common
 		$baseUrl = 'https://'.$_SERVER['HTTP_HOST'].'';
 		$result = array();
 		//获取所有推荐分类
-		$cateList = \app\content\model\Recommendcate::field("id,title,mark")->where(['group' => '重点产品', 'status' => 1])->order('sort desc,update_time desc')->select();
+		$cateList = \app\content\model\Recommendcate::field("id,title,mark,image")->where(['group' => '重点产品', 'status' => 1])->order('sort desc,update_time desc')->select();
 		//查询分类对应的新闻广告
 		foreach ($cateList as $key => $val){
 			$list = \app\content\model\Recommend::field("content_id,thumb,title,isVideo")->where(['category_id' => $val['id'], 'status' => 1])->order('RAND()')->limit(5)->select();
@@ -74,6 +74,7 @@ class Mobile extends \app\index\controller\Common
 				
 				$temp[] = $lval;
 			}
+			$val['image'] = $baseUrl.thumb($val['image'],290,290);
 			$val['list'] = $temp;
 			$result['data'][] = $val;
 		}
@@ -88,7 +89,7 @@ class Mobile extends \app\index\controller\Common
 		];
 		
 		$cache = \ebcms\Config::get('content.search_cache') ?: false;
-		$lists = \app\content\model\Recommend::where($where)->order('id desc')->cache($cache)->paginate(20);
+		$lists = \app\content\model\Recommend::where($where)->order('sort desc')->cache($cache)->paginate(20);
 		$count =  \app\content\model\Recommend::where($where)->count();
 		// 路径
 		$data_list = $this->list_hand($lists,$baseUrl,160,240);
@@ -99,9 +100,10 @@ class Mobile extends \app\index\controller\Common
 	}
 	
 	private function categoryImageArray($baseUrl){
-		$cateList = \app\content\model\Recommendcate::field("id,image")->where(['status' => 1])->select();
+		$cateList = \app\content\model\Recommendcate::field("id,image")->where(['status' => 1,'group'=>array('neq','重点产品')])->select();
 		$cateArray = array();
 		foreach ($cateList as $key => $val){
+			
 			if(!empty($val['image'])){
 				$imagePath = $baseUrl.'/upload'.$val['image'];
 			}else{
@@ -156,7 +158,7 @@ class Mobile extends \app\index\controller\Common
 				];
 	
 				$cache = \ebcms\Config::get('content.search_cache') ?: false;
-				$lists = \app\content\model\Recommend::where($where)->order('id desc')->cache($cache)->paginate(20, false, [
+				$lists = \app\content\model\Recommend::where($where)->order('sort desc')->cache($cache)->paginate(20, false, [
 						'query' => ['q' => $q],
 				]);
 				$count =  \app\content\model\Recommend::where($where)->count();
@@ -224,9 +226,12 @@ class Mobile extends \app\index\controller\Common
 			if(!empty($ext['product'])){
 				$ext['product'] = $baseUrl.'/upload'.$ext['product'];
 			}
+			
 			if(!empty($ext['thumbnail'])){
 				$ext['thumbnail'] = $baseUrl.thumb($ext['thumbnail']);
-				$isVideo = true;
+				if(strpos($ext['product'], '.mp4') !== false){
+					$isVideo = true;
+				}
 			}
 			if(!empty($ext['downImage'])){
 				$ext['downImage'] = $baseUrl.'/upload'.$ext['downImage'];
@@ -282,7 +287,11 @@ class Mobile extends \app\index\controller\Common
 			$temp['thumb'] = $baseUrl.thumb($val['thumb'],$with,$height);
 			$temp['title'] = $val['title'];
 			$temp['tagImage'] = $imagePath[$val['isVideo']];
-			$temp['cateImage'] = $cateImageArray[$val['category_id']];
+			if(!empty($cateImageArray[$val['category_id']])){
+				$temp['cateImage'] = $cateImageArray[$val['category_id']];
+			}else{
+				$temp['cateImage'] = '';
+			}
 			$temp['id'] = $val['content_id'];
 			$temp['create_time'] =$val['create_time'];
 			$temp['description'] = $val['description'];

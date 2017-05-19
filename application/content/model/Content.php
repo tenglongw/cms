@@ -68,7 +68,7 @@ class Content extends Model
     // 设置缩略图
     public function setThumbAttr($value, $data)
     {
-        if (!$value) {
+    	if (!$value && !empty($value)) {
             $pattern = "/<[img|IMG].*?src=[\'|\"]" . preg_quote(get_root(true) . '/upload', '/') . "(.*?(?:[\.gif|\.jpg]))[\'|\"].*?[\/]?>/";
             if (preg_match($pattern, htmlspecialchars_decode($data['body']['body']), $match)) {
                 if ($pos = strpos($match[1], '!')) {

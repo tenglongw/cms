@@ -316,9 +316,9 @@ class Common extends Controller
                                 case 'hasone':
                                     $ee['validate'] = isset($ee['validate_scene']) ? $dd . '.' . $ee['validate_scene'] : $dd;
                                     $ee['allowfield'] = isset($ee['allowfield']) ? $ee['allowfield'] : true;
-                                    if (false === $h->{$dd}->allowField($ee['allowfield'])->validate($ee['validate'])->save($bb[$dd])) {
-                                        $this->error($h->{$dd}->getError());
-                                    }
+//                                     if (false === $h->{$dd}->allowField($ee['allowfield'])->validate($ee['validate'])->save($bb[$dd])) {
+//                                         $this->error($h->{$dd}->getError());
+//                                     }
                                     break;
                                 case 'hasmany':
                                     $h->{$dd}()->delete();
