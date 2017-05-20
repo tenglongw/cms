@@ -59,7 +59,7 @@ class Mobile extends \app\index\controller\Common
 		$cateList = \app\content\model\Recommendcate::field("id,title,mark,image")->where(['group' => '重点产品', 'status' => 1])->order('sort desc,update_time desc')->select();
 		//查询分类对应的新闻广告
 		foreach ($cateList as $key => $val){
-			$list = \app\content\model\Recommend::field("content_id,thumb,title,isVideo")->where(['category_id' => $val['id'], 'status' => 1])->order('RAND()')->limit(5)->select();
+			$list = \app\content\model\Recommend::field("content_id,thumb,title,isVideo,thumb_down")->where(['category_id' => $val['id'], 'status' => 1])->order('RAND()')->limit(5)->select();
 // 			$list = $this->imagePathHand($list,$baseUrl,107,107);
 			$temp = array();
 			foreach ($list as $lkey=>$lval){
@@ -100,7 +100,9 @@ class Mobile extends \app\index\controller\Common
 	}
 	
 	private function categoryImageArray($baseUrl){
-		$cateList = \app\content\model\Recommendcate::field("id,image")->where(['status' => 1,'group'=>array('neq','重点产品')])->select();
+		//查询所属分类
+		$cateList = \app\content\model\Recommendcate::query("select r.content_id,c.id,c.image from ebcms5_recommend r join ebcms5_recommendcate c on r.category_id = c.id where c.status = 1 ");
+// 		$cateList = \app\content\model\Recommendcate::field("id,image")->where(['status' => 1,'group'=>array('neq','重点产品')])->select();
 		$cateArray = array();
 		foreach ($cateList as $key => $val){
 			
@@ -109,8 +111,9 @@ class Mobile extends \app\index\controller\Common
 			}else{
 				$imagePath = $val['image'];
 			}
-			$cateArray[$val['id']] = $imagePath;
+			$cateArray[$val['content_id']][] = $imagePath;
 		}
+// 		echo json_encode($cateArray);exit;
 		return $cateArray;
 	}
 	
@@ -158,10 +161,10 @@ class Mobile extends \app\index\controller\Common
 				];
 	
 				$cache = \ebcms\Config::get('content.search_cache') ?: false;
-				$lists = \app\content\model\Recommend::where($where)->order('sort desc')->cache($cache)->paginate(20, false, [
+				$lists = \app\content\model\Content::where($where)->order('sort desc')->cache($cache)->paginate(20, false, [
 						'query' => ['q' => $q],
 				]);
-				$count =  \app\content\model\Recommend::where($where)->count();
+				$count =  \app\content\model\Content::where($where)->count();
 				// 路径
 				$data_list = $this->list_hand($lists,$baseUrl,160,240);
 				$result['lists'] = $data_list;
@@ -286,15 +289,22 @@ class Mobile extends \app\index\controller\Common
 		foreach ($data_list as $key=>$val){
 			$temp['thumb'] = $baseUrl.thumb($val['thumb'],$with,$height);
 			$temp['title'] = $val['title'];
-			$temp['tagImage'] = $imagePath[$val['isVideo']];
-			if(!empty($cateImageArray[$val['category_id']])){
-				$temp['cateImage'] = $cateImageArray[$val['category_id']];
-			}else{
-				$temp['cateImage'] = '';
+			$isVideo = 1;
+			if(!empty($val['ext']['thumbnail'])){
+				if(strpos($val['ext']['product'], '.mp4') !== false){
+					$isVideo = 0;
+				}
 			}
-			$temp['id'] = $val['content_id'];
+			$temp['tagImage'] = $imagePath[$isVideo];
+			if(!empty($cateImageArray[$val['id']])){
+				$temp['cateImage'] = $cateImageArray[$val['id']];
+			}else{
+				$temp['cateImage'] = array();
+			}
+			$temp['id'] = $val['id'];
 			$temp['create_time'] =$val['create_time'];
 			$temp['description'] = $val['description'];
+			$temp['thumb_down'] = $val['thumb_down'];
 			$result[] = $temp;
 		}
 		return $result;

@@ -85,9 +85,35 @@
                 tpl:'{$namespace}temp-recommendtype-table',
                 target:'#{$namespace}temp_recommendtypecontainer',
             });
+            console.log(111111);
+            $("input[type='checkbox']").click(function(){ 
+            	var isChecked = $(this).is(":checked");
+            	console.log(siChecked);
+        	});
         };
         EBCMS.{$namespace}temp.recommendtyperefresh();
+        
+        
     });
+    
+    function removePush(obj){
+    	var val = $(obj).val();
+    	var isChecked = $(obj).is(":checked");
+    	var content_id = '{:input('id')}';
+    	console.log('{:input('id')}');
+    	if(!isChecked){
+    		//勾除删除已经推送的内容
+    		$.ajax({
+    			type: 'GET',
+    			data:{content_id:content_id,category_id:val},
+    			dataType:'json',
+    			url:'{:url('admin/recommend/deleteChecked')}',
+    			success:function(data,textStatus){
+    				console.log(textStatus);
+    			},
+    		});
+    	}
+    }
 </script>
 <script id="{$namespace}temp-recommendtype-table" type="text/html">
     <div class="table-responsive">
@@ -112,7 +138,7 @@
     [[each rows as v n]]
         <tr>
             <td>
-                <input type="checkbox" name="category_ids[]" value="[[v.id]]" [[if v.checked]]checked[[/if]]>
+                <input type="checkbox" onclick="removePush(this)" name="category_ids[]" value="[[v.id]]" [[if v.checked]]checked[[/if]]>
             </td>
             <td>[[v.title]]</td>
             <td>[[v.mark]]</td>

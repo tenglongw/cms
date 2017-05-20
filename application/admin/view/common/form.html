@@ -1132,13 +1132,13 @@ forms = {};}EBCMS.Form.config = forms['__config__']||{};delete forms['__config__
 								name="<?php echo $_field['field']; ?>" value="1"<?php
 								if($_field['value'] == '1'): ?>checked<?php endif; if($_field['config']['disabled'] == '1'): ?>
 								disabled<?php endif; if($_field['config']['readonly'] == '1'): ?>
-								readonly<?php endif; ?>> 是</label><label class="radio-inline"
+								readonly<?php endif; ?>> 上半部分</label><label class="radio-inline"
 								for="<?php echo $_ns; ?>_0"><input type="radio"
 								id="<?php echo $_ns; ?>_0"
 								name="<?php echo $_field['field']; ?>" value="0"<?php
 								if($_field['value'] == '0'): ?>checked<?php endif; if($_field['config']['disabled'] == '1'): ?>
 								disabled<?php endif; if($_field['config']['readonly'] == '1'): ?>
-								readonly<?php endif; ?>> 否</label>
+								readonly<?php endif; ?>> 下半部分</label>
 							<?php break; case "select": 
 $_temps = explode("\r\n",$_field['config']['values']);$_field['config']['editable'] = isset($_field['config']['editable'])?$_field['config']['editable']:0;if($_field['config']['editable'] == '1'): ?>
 							<div class="row">

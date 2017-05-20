@@ -47,6 +47,15 @@ class Recommend extends \app\admin\controller\Common
             $this->ebdelete();
         }
     }
+    
+    public function deleteChecked()
+    {
+    	//删除勾除的数据
+    	$content_id = $_GET['content_id'];
+    	$category_id =  $_GET['category_id'];
+    	//echo json_encode($content_id."".$category_id);exit;
+    	\think\Db::name('recommend')->where(array('content_id' => $content_id, 'category_id' =>$category_id))->delete();
+    }
 
     public function push()
     {
@@ -79,6 +88,7 @@ class Recommend extends \app\admin\controller\Common
                         $input['push_url'] = $content['url'];
                         $input['author'] = $content['author'];
                         $input['source'] = $content['source'];
+                        $input['thumb_down'] = $content['thumb_down'];
                         $input['create_time'] = $content['create_time'];
                         if(!empty($content['ext']) && !empty($content['ext']['video_pc'])){
 	                        $input['video_pc'] = $content['ext']['video_pc'];
