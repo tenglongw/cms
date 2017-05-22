@@ -36,7 +36,9 @@ class Mobile extends \app\index\controller\Common
 					$secondLevelMenu['image'] = $baseUrl.thumb($cval['image'],40,40);
 					$secondLevelMenu['size'] = count($dataList);
 					$secondLevelMenu['list'] = $dataList;
-					$parent['advice'][] = $secondLevelMenu;
+					if(!empty($dataList)){
+						$parent['advice'][] = $secondLevelMenu;
+					}
 				}
 			}
 			$adviceList[] = $parent;
@@ -63,7 +65,7 @@ class Mobile extends \app\index\controller\Common
 // 			$list = $this->imagePathHand($list,$baseUrl,107,107);
 			$temp = array();
 			foreach ($list as $lkey=>$lval){
-				if(count($list)-1 == $lkey){
+				if(2 == $lkey){
 					$with = 290;
 					$height = 290;
 				}else{
@@ -93,7 +95,7 @@ class Mobile extends \app\index\controller\Common
 // 		$lists = \app\content\model\Recommend::where($where)->order('sort desc')->cache($cache)->paginate(20);
 		$count =  \app\content\model\Recommend::where($where)->count();
 		// 路径
-		$data_list = $this->list_hand($lists,$baseUrl,160,240);
+		$data_list = $this->list_hand($lists,$baseUrl,245,368);
 		$result['lists'] = $data_list;
 		$result['total'] = $count;
 		echo json_encode($result);exit;
@@ -101,7 +103,7 @@ class Mobile extends \app\index\controller\Common
 	
 	private function categoryImageArray($baseUrl){
 		//查询所属分类
-		$cateList = \app\content\model\Recommendcate::query("select r.content_id,c.id,c.image from ebcms5_recommend r join ebcms5_recommendcate c on r.category_id = c.id where c.status = 1 and c.group != '重点产品'");
+		$cateList = \app\content\model\Recommendcate::query("select r.content_id,c.id,c.image from ebcms5_recommend r join ebcms5_recommendcate c on r.category_id = c.id where c.status = 1 and c.group != '重点产品' order BY c.group desc");
 // 		$cateList = \app\content\model\Recommendcate::field("id,image")->where(['status' => 1,'group'=>array('neq','重点产品')])->select();
 		$cateArray = array();
 		foreach ($cateList as $key => $val){
@@ -164,9 +166,8 @@ class Mobile extends \app\index\controller\Common
 				$lists = \app\content\model\Content::where($where)->order('sort desc')->cache($cache)->select();
 				$count =  \app\content\model\Content::where($where)->count();
 				// 路径
-				$data_list = $this->list_hand($lists,$baseUrl,160,240);
+				$data_list = $this->list_hand($lists,$baseUrl,245,368);
 				$result['lists'] = $data_list;
-				$result['page'] = $lists->getPage();
 				$result['total'] = $count;
 				// seo设置
 			}else {
@@ -251,8 +252,8 @@ class Mobile extends \app\index\controller\Common
 				if(isset($body[$key])){
 					$temp = array();
 					$temp['type'] = $val;
-					if($val == 'file'){
-						$temp['data'] = $baseUrl.thumb($body[$key]);
+					if($val == 'text'){
+						$temp['data'] = $body[$key];
 					}else{
 						$temp['data'] = $body[$key];
 					}
@@ -286,7 +287,7 @@ class Mobile extends \app\index\controller\Common
 	 * @param unknown $data_list
 	 */
 	private function list_hand($data_list,$baseUrl,$with,$height){
-		$imagePath = array($baseUrl.'/static/index/image/video.png',$baseUrl.'/static/index/image/file.png');
+// 		$imagePath = array($baseUrl.'/static/index/image/video.png',$baseUrl.'/static/index/image/file.png');
 		$cateImageArray = $this->categoryImageArray($baseUrl);
 		$result = array();
 		foreach ($data_list as $key=>$val){
@@ -296,13 +297,13 @@ class Mobile extends \app\index\controller\Common
 				$temp['thumb'] = $baseUrl.thumb($val['thumb'],0,0);
 			}
 			$temp['title'] = $val['title'];
-			$isVideo = 1;
-			if(!empty($val['ext']['thumbnail'])){
-				if(strpos($val['ext']['product'], '.mp4') !== false){
-					$isVideo = 0;
-				}
-			}
-			$temp['tagImage'] = $imagePath[$isVideo];
+// 			$isVideo = 1;
+// 			if(!empty($val['ext']['thumbnail'])){
+// 				if(strpos($val['ext']['product'], '.mp4') !== false){
+// 					$isVideo = 0;
+// 				}
+// 			}
+// 			$temp['tagImage'] = $imagePath[$isVideo];
 			if(!empty($cateImageArray[$val['id']])){
 				$temp['cateImage'] = $cateImageArray[$val['id']];
 			}else{
