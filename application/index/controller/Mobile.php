@@ -89,19 +89,19 @@ class Mobile extends \app\index\controller\Common
 		];
 		
 		$cache = \ebcms\Config::get('content.search_cache') ?: false;
-		$lists = \app\content\model\Recommend::where($where)->order('sort desc')->cache($cache)->paginate(20);
+		$lists = \app\content\model\Recommend::query("select c.* from ebcms5_recommend r join ebcms5_content_content c on r.content_id = c.id where r.category_id = '".$_GET['category_id']."' and c.`status` = '1' ");
+// 		$lists = \app\content\model\Recommend::where($where)->order('sort desc')->cache($cache)->paginate(20);
 		$count =  \app\content\model\Recommend::where($where)->count();
 		// 路径
 		$data_list = $this->list_hand($lists,$baseUrl,160,240);
 		$result['lists'] = $data_list;
-		$result['page'] = $lists->getPage();
 		$result['total'] = $count;
 		echo json_encode($result);exit;
 	}
 	
 	private function categoryImageArray($baseUrl){
 		//查询所属分类
-		$cateList = \app\content\model\Recommendcate::query("select r.content_id,c.id,c.image from ebcms5_recommend r join ebcms5_recommendcate c on r.category_id = c.id where c.status = 1 ");
+		$cateList = \app\content\model\Recommendcate::query("select r.content_id,c.id,c.image from ebcms5_recommend r join ebcms5_recommendcate c on r.category_id = c.id where c.status = 1 and c.group != '重点产品'");
 // 		$cateList = \app\content\model\Recommendcate::field("id,image")->where(['status' => 1,'group'=>array('neq','重点产品')])->select();
 		$cateArray = array();
 		foreach ($cateList as $key => $val){
@@ -161,9 +161,7 @@ class Mobile extends \app\index\controller\Common
 				];
 	
 				$cache = \ebcms\Config::get('content.search_cache') ?: false;
-				$lists = \app\content\model\Content::where($where)->order('sort desc')->cache($cache)->paginate(20, false, [
-						'query' => ['q' => $q],
-				]);
+				$lists = \app\content\model\Content::where($where)->order('sort desc')->cache($cache)->select();
 				$count =  \app\content\model\Content::where($where)->count();
 				// 路径
 				$data_list = $this->list_hand($lists,$baseUrl,160,240);
@@ -223,10 +221,12 @@ class Mobile extends \app\index\controller\Common
 		$array = array();
 		$ext = array();
 		$isVideo = false;
+		$productPath;
 		if(!empty($content['ext']) && !empty($content['ext']['body'])){
 			$body = $content['ext']['body'];
 			$ext = $content['ext'];
 			if(!empty($ext['product'])){
+				$productPath = '/upload'.$ext['product'];
 				$ext['product'] = $baseUrl.'/upload'.$ext['product'];
 			}
 			
@@ -236,6 +236,9 @@ class Mobile extends \app\index\controller\Common
 					$isVideo = true;
 				}
 			}
+// 			if(!$isVideo){
+// 				$ext['productAttr'] = getImageAttr($productPath);
+// 			}
 			if(!empty($ext['downImage'])){
 				$ext['downImage'] = $baseUrl.'/upload'.$ext['downImage'];
 			}
@@ -287,7 +290,11 @@ class Mobile extends \app\index\controller\Common
 		$cateImageArray = $this->categoryImageArray($baseUrl);
 		$result = array();
 		foreach ($data_list as $key=>$val){
-			$temp['thumb'] = $baseUrl.thumb($val['thumb'],$with,$height);
+			if(!empty($val['thumb'])){
+				$temp['thumb'] = $baseUrl.thumb($val['thumb'],$with,$height);
+			}else{
+				$temp['thumb'] = $baseUrl.thumb($val['thumb'],0,0);
+			}
 			$temp['title'] = $val['title'];
 			$isVideo = 1;
 			if(!empty($val['ext']['thumbnail'])){
@@ -322,7 +329,11 @@ class Mobile extends \app\index\controller\Common
 	private function imagePathHand($dataList,$url,$with=0,$height=0){
 		$resutl = array();
 		foreach ($dataList as $key=>$val){
-			$val['thumb'] = $url.thumb($val['thumb'],$with,$height);
+			if(!empty($val['thumb'])){
+				$val['thumb'] = $url.thumb($val['thumb'],$with,$height);
+			}else{
+				$val['thumb'] = $url.thumb($val['thumb'],0,0);
+			}
 			$resutl[] = $val;
 		}
 		return $resutl;

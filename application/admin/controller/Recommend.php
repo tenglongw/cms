@@ -45,6 +45,12 @@ class Recommend extends \app\admin\controller\Common
     {
         if (request()->isPost()) {
             $this->ebdelete();
+        }else{
+        	//删除勾除的数据
+        	$content_id = $_GET['content_id'];
+        	$category_id =  $_GET['category_id'];
+        	//echo json_encode($content_id."".$category_id);exit;
+        	\think\Db::name('recommend')->where(array('content_id' => $content_id, 'category_id' =>$category_id))->delete();
         }
     }
     

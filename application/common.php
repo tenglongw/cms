@@ -207,7 +207,7 @@ function thumb($file, $width = 0, $height = 0, $type = 3)
         if (is_file('./upload' . $file)) {
             return $base . '/upload' . $file;
         }
-        return get_root() . '/static/index/image/nopic.gif"';
+        return get_root() . '/static/index/image/nopic.gif';
     } else {
         $res = $base . '/upload' . $file . '!' . $width . '_' . $height . '_' . $type . '.' . pathinfo($file, PATHINFO_EXTENSION);
         $thumbfile = './upload' . $file . '!' . $width . '_' . $height . '_' . $type . '.' . pathinfo($file, PATHINFO_EXTENSION);
@@ -218,7 +218,7 @@ function thumb($file, $width = 0, $height = 0, $type = 3)
             if ($width && $height) {
                 return get_root() . '/static/index/image/nopic.gif" width="' . $width . '" height="' . $height;
             } else {
-                return get_root() . '/static/index/image/nopic.gif" ';
+                return get_root() . '/static/index/image/nopic.gif';
             }
         } else {
             \think\Image::open($file)->thumb($width, $height, $type)->save($thumbfile, null, 100);
@@ -226,7 +226,13 @@ function thumb($file, $width = 0, $height = 0, $type = 3)
     }
     return $res;
 }
-
+function  getImageAttr($imagePath){
+	$base = get_root();
+	$size = getimagesize($imagePath.$imagePath);
+	$result['with'] = $size[0];
+	$result['heigth'] = $size[1];
+	return $result;
+}
 /**
  * 用户名密码加密
  *
