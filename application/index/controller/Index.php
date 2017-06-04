@@ -12,7 +12,8 @@ class Index extends \app\index\controller\Common
             'keywords' => $this->seo['keywords'],
             'description' => $this->seo['description'],
         ]);
-        return $this->fetch();
+//         return $this->fetch();
+        $this->redirect('admin/index/index');
     }
 
 }

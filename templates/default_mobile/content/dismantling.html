@@ -1,95 +1,95 @@
-<!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<body>{include file='common/header' /}
-	<section id="Max_Con">
-			<!-- section广告 -->
-			<section class="advertisement">
-				<img class="" src="{$content.ext.banner|thumb=750,324}">
-			</section>
-			<!-- section广告 -->			<!--section.DismantlinginfoVideo -->
-			<section class="DismantlinginfoVideo">
+<!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<body>{include file='common/header' /}
+	<section id="Max_Con">
+			<!-- section广告 -->
+			<section class="advertisement">
+				<img class="" src="{$content.ext.banner|thumb=750,324}">
+			</section>
+			<!-- section广告 -->			<!--section.DismantlinginfoVideo -->
+			<section class="DismantlinginfoVideo">
 				<div class="head">{$content.title}</div><input id="content_title" style="display:none" value="{$content.title}"></input>			<input id="content_des" style="display:none" value="{$content.description}"></input>			<input id="content_image" style="display:none" value="{$content.thumb|thumb=0,0}"></input>
-				<div class="tiem">{php}$obj = json_decode($content,true);													echo date('Y-m-d',$obj['create_time']); 												{/php}  &nbsp;By {$content.author}</div>
-				<div class="word">
-					{$content.body.body|htmlspecialchars_decode}
-				</div>
-				<div class="VidCon" id="video_iframe">
-					
+				<div class="tiem">{php}$obj = json_decode($content,true);													echo date('Y-m-d',$obj['create_time']); 												{/php}  &nbsp;By {$content.author}</div>
+				<div class="word">
+					{$content.body.body|htmlspecialchars_decode}
+				</div>
+				<div class="VidCon" id="video_iframe">
+					
 				</div>				<input id="mobile_iframe_url" value="{$content.ext.video_mobile}" type="hidden">
-			</section>
-
-			<!--section.DismantlinginfoVideo -->
-
-			<section class="DismantlingQH">
-				<div class="infoCn ">
-					<div class="Wd" id="title1"></div>
-					<div class="imgc">
-						<img id="image1" src="">
-					</div>
-				</div>
-
-				<div class="DismantlingQHNav">
-					<div class="swiper-container" id="DismantlingQHNav">
-						<div class="swiper-wrapper" id="QHNavCon">							{foreach name='content.ext.images_1' item='vs'}								<div class="swiper-slide" imageUrl='{$vs.img|thumb=535,379}' des='{$vs.description}' title ='{$vs.title}' ><div class="butomUc active"><img src="{$vs.img|thumb=128,73}"></div></div>							{/foreach}						</div>					</div>
-					<!-- 如果需要导航按钮 -->
-					<div class="QHNavbutton-prev"></div>
-					<div class="QHNavbutton-next"></div>
-				</div>
-
-			</section>
-			<section class="DismantlingBobu">
-
-				<div class="DismantlingBobuSwei">
-					<div class="swiper-container" id="DismantlingBobuSwei">
-						<div class="swiper-wrapper">							{foreach name='content.ext.images_2' item='vs'}								<div class="swiper-slide" data-ind="{$vs.description}"><img src="{$vs.img|thumb=618,347}"></div>							{/foreach}
-						</div>
-					</div>
-				</div>
+			</section>
 
-				<div class="text" id="DismantlingBobuSweiText">DH2并没有在中底布上做文章，将其撕开之后，全部的缓震科技暴露在眼前。前掌的R-PAD和后掌的梯度缓震实际上是两块不同颜色的缓震泡棉。在实际穿着过程中，DH 2的缓震性算不上出色，但中规中矩可以满足正常强度的实战对抗。
-				</div>
+			<!--section.DismantlinginfoVideo -->
+
+			<section class="DismantlingQH">
+				<div class="infoCn ">
+					<div class="Wd" id="title1"></div>
+					<div class="imgc">
+						<img id="image1" src="">
+					</div>
+				</div>
+
+				<div class="DismantlingQHNav">
+					<div class="swiper-container" id="DismantlingQHNav">
+						<div class="swiper-wrapper" id="QHNavCon">							{foreach name='content.ext.images_1' item='vs'}								<div class="swiper-slide" imageUrl='{$vs.img|thumb=535,379}' des='{$vs.description}' title ='{$vs.title}' ><div class="butomUc active"><img src="{$vs.img|thumb=128,73}"></div></div>							{/foreach}						</div>					</div>
+					<!-- 如果需要导航按钮 -->
+					<div class="QHNavbutton-prev"></div>
+					<div class="QHNavbutton-next"></div>
+				</div>
+
+			</section>
+			<section class="DismantlingBobu">
+
+				<div class="DismantlingBobuSwei">
+					<div class="swiper-container" id="DismantlingBobuSwei">
+						<div class="swiper-wrapper">							{foreach name='content.ext.images_2' item='vs'}								<div class="swiper-slide" data-ind="{$vs.description}"><img src="{$vs.img|thumb=618,347}"></div>							{/foreach}
+						</div>
+					</div>
+				</div>
+
+				<div class="text" id="DismantlingBobuSweiText">DH2并没有在中底布上做文章，将其撕开之后，全部的缓震科技暴露在眼前。前掌的R-PAD和后掌的梯度缓震实际上是两块不同颜色的缓震泡棉。在实际穿着过程中，DH 2的缓震性算不上出色，但中规中矩可以满足正常强度的实战对抗。
+				</div>
 			</section>{notempty name='content.ext.image_last'}
-			<section class="overBot">
-				<div class="centerCon">
-					<img src="{$content.ext.image_last|thumb=750,480}">
-				</div>
-			</section>			{/notempty}
-			<section class="Summary">
-				<div class="head">总结</div>
+			<section class="overBot">
+				<div class="centerCon">
+					<img src="{$content.ext.image_last|thumb=750,480}">
+				</div>
+			</section>			{/notempty}
+			<section class="Summary">
+				<div class="head">总结</div>
 				<div class="text">					{$content.ext.summary}				</div>			</section>			{notempty name='content.ext.ad'}			<div class="guangg">				<a href="#"><img src="{$content.ext.ad|thumb=750,79}"></a>			</div>			{/notempty}	<!-- section.comment -->	{if condition="$content['comment_able'] && ebconfig('content.comment_able')"}       {include file='content/detail_comment' tid='$content.id' /}   	{/if}
-	<!-- section.comment -->	<!-- section.Recommend -->	<section class="Recommend">		<div class="InHeader"><span>相关推荐</span></div>		<ul class="Recommendlist">			{foreach name='content.relation' item='vo'}				<li>					<a href="{$vo.url}">						<div class="imgC"><img src="{$vo.thumb|thumb=710,535}"></div>						<div class="word">							<div class="name">								{foreach name='content.tag' item='vs'}								{$vs.tag}								{/foreach}							</div>							<div class="title">{$vo.title}</div>							<div class="time">{php}$obj = json_decode($vo,true);													echo date('Y-m-d',$obj['create_time']); 												{/php}  &nbsp;By {$vo.author}</div>						</div>					</a>				</li>            {/foreach}		</ul>
-	</section>
-	<!-- section.Recommend end -->
-{include file='common/footer' /}
-</section>
-<script type="text/javascript">
-	$(function () {		addVideo();		function addVideo(){			var iframeHtml = $('#mobile_iframe_url').val();			$('#video_iframe').html(iframeHtml);		}		function QHNavCon(){
-			var DismantlingQHNavSwiper = new Swiper ('#DismantlingQHNav', {
-					// direction: 'vertical',
-			    // loop: true,
-			    slidesPerView : 4,
-			    nextButton: '.QHNavbutton-next',
-			    prevButton: '.QHNavbutton-prev',
-			})   
-			$('#QHNavCon').on('click','.swiper-slide',function(){
-				$(this).siblings().find('.butomUc').removeClass('active');
-				$(this).find('.butomUc').addClass('active');								$('#title1').html($(this).attr('title'));				$('#image1').attr('src',$(this).attr('imageUrl'));
+	<!-- section.comment -->	<!-- section.Recommend -->	<section class="Recommend">		<div class="InHeader"><span>相关推荐</span></div>		<ul class="Recommendlist">			{foreach name='content.relation' item='vo'}				<li>					<a href="{$vo.url}">						<div class="imgC"><img src="{$vo.thumb|thumb=710,535}"></div>						<div class="word">							<div class="name">								{foreach name='content.tag' item='vs'}								{$vs.tag}								{/foreach}							</div>							<div class="title">{$vo.title}</div>							<div class="time">{php}$obj = json_decode($vo,true);													echo date('Y-m-d',$obj['create_time']); 												{/php}  &nbsp;By {$vo.author}</div>						</div>					</a>				</li>            {/foreach}		</ul>
+	</section>
+	<!-- section.Recommend end -->
+{include file='common/footer' /}
+</section>
+<script type="text/javascript">
+	$(function () {		addVideo();		function addVideo(){			var iframeHtml = $('#mobile_iframe_url').val();			$('#video_iframe').html(iframeHtml);		}		function QHNavCon(){
+			var DismantlingQHNavSwiper = new Swiper ('#DismantlingQHNav', {
+					// direction: 'vertical',
+			    // loop: true,
+			    slidesPerView : 4,
+			    nextButton: '.QHNavbutton-next',
+			    prevButton: '.QHNavbutton-prev',
+			})   
+			$('#QHNavCon').on('click','.swiper-slide',function(){
+				$(this).siblings().find('.butomUc').removeClass('active');
+				$(this).find('.butomUc').addClass('active');								$('#title1').html($(this).attr('title'));				$('#image1').attr('src',$(this).attr('imageUrl'));
 			});			$('#QHNavCon').find('.swiper-slide').eq(0).click();
-		}
-		QHNavCon();		addHtml();		function addHtml(){			var tet = $('#DismantlingBobuSwei').find('.swiper-slide').eq(0).attr('data-ind');			$('#DismantlingBobuSweiText').html(tet);		}		function DismantlingBobuSwei(){
-
-			var DismantlingQHNavSwiper = new Swiper ('#DismantlingBobuSwei', {
-					// loop: true,
-
-					nextButton: '.BobuSweinext',
-					prevButton: '.BobuSweiprev',
-					onSlideChangeEnd: function(swiper){
-						var tet = $(swiper.slides[swiper.activeIndex]).attr('data-ind');
-						$('#DismantlingBobuSweiText').html(tet)
-					}
-
-				})   
-		}
-		DismantlingBobuSwei();
-	})
-</script>
-</body>
+		}
+		QHNavCon();		addHtml();		function addHtml(){			var tet = $('#DismantlingBobuSwei').find('.swiper-slide').eq(0).attr('data-ind');			$('#DismantlingBobuSweiText').html(tet);		}		function DismantlingBobuSwei(){
+
+			var DismantlingQHNavSwiper = new Swiper ('#DismantlingBobuSwei', {
+					// loop: true,
+
+					nextButton: '.BobuSweinext',
+					prevButton: '.BobuSweiprev',
+					onSlideChangeEnd: function(swiper){
+						var tet = $(swiper.slides[swiper.activeIndex]).attr('data-ind');
+						$('#DismantlingBobuSweiText').html(tet)
+					}
+
+				})   
+		}
+		DismantlingBobuSwei();
+	})
+</script>
+</body>
 </html>

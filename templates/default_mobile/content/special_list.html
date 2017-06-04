@@ -1,28 +1,28 @@
 <!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<script type="text/javascript" src="{:get_root()}/static/index/mobile/js/pulldownload/pulldownload.js"></script><body>{include file='common/header' /}
 	<section id="Max_Con" style="background:#f2f2f2;">		<input type="hidden" id="category_id" value="{$category.id}"/>	
-		<div class="specialTopic">
-            <div class="swiper-container specialTopic_d">
+		<div class="specialTopic">
+            <div class="swiper-container specialTopic_d">
                 <div class="swiper-wrapper">					{include file='common/special_slide' /}
-                </div>
-                <!-- Add Pagination -->
-                <div class="swiper-pagination"></div>
-            </div>        
-            <ul class="specialTopic_ul" id="data_list">
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+            </div>        
+            <ul class="specialTopic_ul" id="data_list">
 
-            </ul>
-        </div>
-		{include file='common/footer' /}
-	</section>
-    <script>
-		var swiper = new Swiper('.swiper-container', {
-			pagination: '.swiper-pagination',
-			nextButton: '.swiper-button-next',
-			prevButton: '.swiper-button-prev',
-			paginationClickable: true,
-			spaceBetween: 0,
-			centeredSlides: true,
-			autoplay: 2500,
-			autoplayDisableOnInteraction: false
-		});
+            </ul>
+        </div>
+		{include file='common/footer' /}
+	</section>
+    <script>
+		var swiper = new Swiper('.swiper-container', {
+			pagination: '.swiper-pagination',
+			nextButton: '.swiper-button-next',
+			prevButton: '.swiper-button-prev',
+			paginationClickable: true,
+			spaceBetween: 0,
+			centeredSlides: true,
+			autoplay: 2500,
+			autoplayDisableOnInteraction: false
+		});
     </script><script type="text/javascript">var url = 'http://120.26.192.83/index.php/index/comment/list_data?pid='+$('#category_id').val()+'&page=';//添加Htmlfunction addIndexHtml(data){	var html = '';	for(var i=0;i < data.length;i++){		html+= '<li><a href="'+data[i].url+'">'			+ '<img class="specialTopic_ul_img" src="'+data[i].thumb+'">'			+ '<div class="specialTopic_ul_d">'			+ '   <P class="specialTopic_ul_p1">'+data[i].title+'</P>'			+ '   <P class="specialTopic_ul_p2">'+data[i].description+'</P>'			+ '</div>'			+ '</a></li>';	}	$('#data_list').append(html);}</script>
 </body></html>

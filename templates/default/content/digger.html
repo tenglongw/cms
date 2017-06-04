@@ -1,11 +1,11 @@
-<!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<body>{include file='common/header' /}	<!-- header end -->
-	<!-- section��� -->
+<!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<body>{include file='common/header' /}	<!-- header end -->
+	<!-- section��� -->
 	<section class="advertisement">		{ebcms:recommend mark='digger' limit='1' return='data'/}		{notempty name='data'}		{foreach name='data' item='vo'}	       <a href="{$vo.url}"><img class="imgban" src="{$vo.thumb|thumb=0,0}"></a>			<div class="com">					<div class="Digger"></div>					<div class="headOne">{$vo.title}</div>					<div class="text">{$vo.description}</div>				</div>	    {/foreach}		{/notempty}		
-	</section>
-
-	<!-- section��� -->
-
-
-	<!-- Digger -->
-	<section class="Digger">		<div class="centerCon">			<div class="InHeader"><span>往期回顾</span></div>			<p class="info">{$category.description}</p>			<div class="TimeNav" id="TimeNav">				<span class="left"><i class="iconfont">&#xe61f;</i></span>				<span class="ll">2016</span>				<span class="cc">2017</span>				<span class="rr">2018</span>				<span class="right"><i class="iconfont">&#xe624;</i></span>			</div>			<ul id="digger_list" class="Diggerlist clearfloat">				{foreach name='lists' item='vs'}						<li style="display: none;" name="{$vs.ext.date|mb_substr=0,4}">							<a target="_blank" href="{$vs.url}" {notempty name='vs.ext.attachment_windows'}class="active"{/notempty}>								<img src="{$vs.thumb|thumb=192,266}">								<div class="men"><p class="title">{$vs.title}</p><p class="time">{$vs.ext.date}</p></div>								<div class="bel"></div>							</a>						</li>		        {/foreach}			</ul>		</div>	</section>
+	</section>
+
+	<!-- section��� -->
+
+
+	<!-- Digger -->
+	<section class="Digger">		<div class="centerCon">			<div class="InHeader"><span>往期回顾</span></div>			<p class="info">{$category.description}</p>			<div class="TimeNav" id="TimeNav">				<span class="left"><i class="iconfont">&#xe61f;</i></span>				<span class="ll">2016</span>				<span class="cc">2017</span>				<span class="rr">2018</span>				<span class="right"><i class="iconfont">&#xe624;</i></span>			</div>			<ul id="digger_list" class="Diggerlist clearfloat">				{foreach name='lists' item='vs'}						<li style="display: none;" name="{$vs.ext.date|mb_substr=0,4}">							<a target="_blank" href="{$vs.url}" {notempty name='vs.ext.attachment_windows'}class="active"{/notempty}>								<img src="{$vs.thumb|thumb=192,266}">								<div class="men"><p class="title">{$vs.title}</p><p class="time">{$vs.ext.date}</p></div>								<div class="bel"></div>							</a>						</li>		        {/foreach}			</ul>		</div>	</section>
 	{include file='common/footer' /}	<script type="text/javascript" src="{:get_root()}/static/index/new/js/digger.js"></script>

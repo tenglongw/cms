@@ -29,7 +29,7 @@ class Mobile extends \app\index\controller\Common
 				if($cval['group'] == $val){
 					//查询二级菜单下的新闻列表
 					$lists_recommend = \think\Db::name('recommend')->field("content_id id,title,thumb")->where('category_id', $cval['id'])->select();
-					$dataList = $this->imagePathHand($lists_recommend,$baseUrl,160,240);
+					$dataList = $this->imagePathHand($lists_recommend,$baseUrl,0,0);
 					$secondLevelMenu = array();
 					$secondLevelMenu['title'] = $cval['title'];
 					$secondLevelMenu['color'] = $cval['color'];
@@ -61,23 +61,23 @@ class Mobile extends \app\index\controller\Common
 		$cateList = \app\content\model\Recommendcate::field("id,title,mark,image")->where(['group' => '重点产品', 'status' => 1])->order('sort desc,update_time desc')->select();
 		//查询分类对应的新闻广告
 		foreach ($cateList as $key => $val){
-			$list = \app\content\model\Recommend::field("content_id,thumb,title,isVideo,thumb_down")->where(['category_id' => $val['id'], 'status' => 1])->order('RAND()')->limit(5)->select();
-// 			$list = $this->imagePathHand($list,$baseUrl,107,107);
-			$temp = array();
-			foreach ($list as $lkey=>$lval){
-				if(2 == $lkey){
-					$with = 290;
-					$height = 290;
-				}else{
-					$with = 130;
-					$height = 130;
-				}
-				$lval['thumb'] = $baseUrl.thumb($lval['thumb'],$with,$height);
+// 			$list = \app\content\model\Recommend::field("content_id,thumb,title,isVideo,thumb_down")->where(['category_id' => $val['id'], 'status' => 1])->order('RAND()')->limit(5)->select();
+// // 			$list = $this->imagePathHand($list,$baseUrl,107,107);
+// 			$temp = array();
+// 			foreach ($list as $lkey=>$lval){
+// // 				if(2 == $lkey){
+// // 					$with = 290;
+// // 					$height = 435;
+// // 				}else{
+// // 					$with = 130;
+// // 					$height = 218;
+// // 				}
+// 				$lval['thumb'] = $baseUrl.thumb($lval['thumb'],0,0);
 				
-				$temp[] = $lval;
-			}
-			$val['image'] = $baseUrl.thumb($val['image'],290,290);
-			$val['list'] = $temp;
+// 				$temp[] = $lval;
+// 			}
+			$val['image'] = $baseUrl.thumb($val['image'],0,0);
+// 			$val['list'] = $temp;
 			$result['data'][] = $val;
 		}
 		echo json_encode($result);
@@ -91,11 +91,11 @@ class Mobile extends \app\index\controller\Common
 		];
 		
 		$cache = \ebcms\Config::get('content.search_cache') ?: false;
-		$lists = \app\content\model\Recommend::query("select c.* from ebcms5_recommend r join ebcms5_content_content c on r.content_id = c.id where r.category_id = '".$_GET['category_id']."' and c.`status` = '1' ");
+		$lists = \app\content\model\Recommend::query("select c.* from ebcms5_recommend r join ebcms5_content_content c on r.content_id = c.id where r.category_id = '".$_GET['category_id']."' and c.status = '1' order by r.sort desc");
 // 		$lists = \app\content\model\Recommend::where($where)->order('sort desc')->cache($cache)->paginate(20);
 		$count =  \app\content\model\Recommend::where($where)->count();
 		// 路径
-		$data_list = $this->list_hand($lists,$baseUrl,245,368);
+		$data_list = $this->list_hand($lists,$baseUrl,0,0);
 		$result['lists'] = $data_list;
 		$result['total'] = $count;
 		echo json_encode($result);exit;
@@ -157,18 +157,17 @@ class Mobile extends \app\index\controller\Common
 			$category = input('category');
 			if ($q) {
 				$q = trim($q);
-				$where = [
-						'status' => 1,
-						'title|description' => ['like', '%' . $q . '%']
-				];
+				$where = "c.status = 1 and ( c.title like '%".$q."%' or c.description like '%".$q."%' or rc.group like '%".$q."%')";
 	
-				$cache = \ebcms\Config::get('content.search_cache') ?: false;
-				$lists = \app\content\model\Content::where($where)->order('sort desc')->cache($cache)->select();
-				$count =  \app\content\model\Content::where($where)->count();
+				//$cache = \ebcms\Config::get('content.search_cache') ?: false;
+// 				$lists = \app\content\model\Content::where($where)->order('sort desc')->cache($cache)->select();
+				$lists = \app\content\model\Recommend::query("select DISTINCT c.* from ebcms5_recommend r join ebcms5_content_content c on r.content_id = c.id join ebcms5_recommendcate rc on r.category_id = rc.id where ".$where."order by c.sort desc");
+// 				$count =  \app\content\model\Content::where($where)->count();
+// 				echo json_encode($lists);exit;
 				// 路径
-				$data_list = $this->list_hand($lists,$baseUrl,245,368);
+				$data_list = $this->list_hand($lists,$baseUrl,0,0);
 				$result['lists'] = $data_list;
-				$result['total'] = $count;
+// 				$result['total'] = $count;
 				// seo设置
 			}else {
 				//热门搜索

@@ -66,14 +66,7 @@ class Hotword extends \app\admin\controller\Common
     public function delete()
     {
         if (request()->isPost()) {
-            $config = [
-                'relation' => [
-                    'content' => [
-                        'type' => 'manytomany',
-                    ],
-                ],
-            ];
-            $this->ebdelete($config);
+            $this->ebdelete();
 
         }
     }
@@ -121,13 +114,13 @@ class Hotword extends \app\admin\controller\Common
                     // 获取内容id集
                     $tag_ids = $tag1_ids;
                     $tag_ids[] = $tag2_id;
-                    $c_ids = \think\Db::name('content_hotwords')->where('tag_id', 'in', $tag_ids)->column('c_id');
+                    $c_ids = \think\Db::name('content_hotword')->where('tag_id', 'in', $tag_ids)->column('c_id');
                     $c_ids = array_unique($c_ids);
 
                     // 如果有关联内容id的话就删掉管理数据并添加新数据
                     if ($c_ids) {
                         // 删除旧数据 关联表
-                        \think\Db::name('content_hotwords')->where('tag_id', 'in', $tag_ids)->delete();
+                        \think\Db::name('content_hotword')->where('tag_id', 'in', $tag_ids)->delete();
                         // 插入新数据 关联表
                         $ins = [];
                         foreach ($c_ids as $value) {
@@ -136,7 +129,7 @@ class Hotword extends \app\admin\controller\Common
                                 'c_id' => $value,
                             ];
                         }
-                        \think\Db::name('content_hotwords')->insertAll($ins);
+                        \think\Db::name('content_hotword')->insertAll($ins);
                         // 更新tag表
                         \think\Db::name('content_hotword')->where(['id' => $tag2_id])->setField('count', count($c_ids));
                     }

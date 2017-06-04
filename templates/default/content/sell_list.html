@@ -1,46 +1,46 @@
-<!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<body>{include file='common/header' /}
-	<!-- header end -->
-	<section class="Sell">		<div class="centerCon clearfloat">			<div class="LCn">				{ebcms:recommend mark='sell_list_advice' limit='5' return='data'/}	  			{foreach name='data' item='vo'}					<div class="linkImg">						<a href="{$vo.url}"><img src="{$vo.thumb|thumb=240,320}"></a>					</div>	 			{/foreach}			</div>			<div class="RightCn">				<div class="top clearfloat">					<div class="head">发售列表</div>					<div class="calendar" id="MyCalendar">						<div class="year" id="Year">							<span class="ll"><i class="iconfont">&#xe61f;</i></span>							<span class="befoer">2016</span>							<span class="center">2017</span>							<span class="after">2018</span>							<span class="rr"><i class="iconfont">&#xe624;</i></span>						</div>						<div class="month" id="Month">							<div class="head">								<span class="ll"><i class="iconfont">&#xe61f;</i></span>								<span class="Monthind">12</span><span>月</span>								<span class="rr"><i class="iconfont">&#xe624;</i></span>							</div>							<ul class="nav clearfloat">								<li>日</li>								<li>一</li>								<li>二</li>								<li>三</li>								<li>四</li>								<li>五</li>								<li>六</li>							</ul>							<ul class="monthCobn clearfloat"></ul>						</div>					</div>				</div>				<ul class="SellLs" id="SellLs">				</ul>			</div>		</div>	</section>
+<!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<body>{include file='common/header' /}
+	<!-- header end -->
+	<section class="Sell">		<div class="centerCon clearfloat">			<div class="LCn">				{ebcms:recommend mark='sell_list_advice' limit='5' return='data'/}	  			{foreach name='data' item='vo'}					<div class="linkImg">						<a href="{$vo.url}"><img src="{$vo.thumb|thumb=240,320}"></a>					</div>	 			{/foreach}			</div>			<div class="RightCn">				<div class="top clearfloat">					<div class="head">发售列表</div>					<div class="calendar" id="MyCalendar">						<div class="year" id="Year">							<span class="ll"><i class="iconfont">&#xe61f;</i></span>							<span class="befoer">2016</span>							<span class="center">2017</span>							<span class="after">2018</span>							<span class="rr"><i class="iconfont">&#xe624;</i></span>						</div>						<div class="month" id="Month">							<div class="head">								<span class="ll"><i class="iconfont">&#xe61f;</i></span>								<span class="Monthind">12</span><span>月</span>								<span class="rr"><i class="iconfont">&#xe624;</i></span>							</div>							<ul class="nav clearfloat">								<li>日</li>								<li>一</li>								<li>二</li>								<li>三</li>								<li>四</li>								<li>五</li>								<li>六</li>							</ul>							<ul class="monthCobn clearfloat"></ul>						</div>					</div>				</div>				<ul class="SellLs" id="SellLs">				</ul>			</div>		</div>	</section>
 	<!-- footer -->{include file='common/footer' /}
-	<script type="text/javascript" src="{:get_root()}/static/index/new/js/calendar/calendar.js"></script>
-
-
-	<script type="text/javascript">
-		$(function () {
-
-
-			function QHNavCon(){
-
-				var DismantlingQHNavSwiper = new Swiper ('#DismantlingQHNav', {
-					direction: 'vertical',
-			    // loop: true,
-			    slidesPerView : 4,
-			    
-			    nextButton: '.QHNavbutton-next',
-			    prevButton: '.QHNavbutton-prev',
-			    
-			})   
-				$('#QHNavCon').on('click','.swiper-slide',function(){
-					$(this).siblings().find('.butomUc').removeClass('active');
-
-					$(this).find('.butomUc').addClass('active');
-				})
-			}
-			QHNavCon();			function DismantlingBobuSwei(){
-
-				var DismantlingQHNavSwiper = new Swiper ('#DismantlingBobuSwei', {
-					loop: true,
-
-					nextButton: '.BobuSweinext',
-					prevButton: '.BobuSweiprev',
-
-				})   
-				$('#QHNavCon').on('click','.swiper-slide',function(){
-					$(this).siblings().find('.butomUc').removeClass('active');
-
-					$(this).find('.butomUc').addClass('active');
-				})
-			}
-			DismantlingBobuSwei();
-		})
+	<script type="text/javascript" src="{:get_root()}/static/index/new/js/calendar/calendar.js"></script>
+
+
+	<script type="text/javascript">
+		$(function () {
+
+
+			function QHNavCon(){
+
+				var DismantlingQHNavSwiper = new Swiper ('#DismantlingQHNav', {
+					direction: 'vertical',
+			    // loop: true,
+			    slidesPerView : 4,
+			    
+			    nextButton: '.QHNavbutton-next',
+			    prevButton: '.QHNavbutton-prev',
+			    
+			})   
+				$('#QHNavCon').on('click','.swiper-slide',function(){
+					$(this).siblings().find('.butomUc').removeClass('active');
+
+					$(this).find('.butomUc').addClass('active');
+				})
+			}
+			QHNavCon();			function DismantlingBobuSwei(){
+
+				var DismantlingQHNavSwiper = new Swiper ('#DismantlingBobuSwei', {
+					loop: true,
+
+					nextButton: '.BobuSweinext',
+					prevButton: '.BobuSweiprev',
+
+				})   
+				$('#QHNavCon').on('click','.swiper-slide',function(){
+					$(this).siblings().find('.butomUc').removeClass('active');
+
+					$(this).find('.butomUc').addClass('active');
+				})
+			}
+			DismantlingBobuSwei();
+		})
 	</script>

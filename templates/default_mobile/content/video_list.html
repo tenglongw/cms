@@ -1,11 +1,11 @@
-<!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<script type="text/javascript" src="{:get_root()}/static/index/mobile/js/pulldownload/pulldownload.js"></script><body>{include file='common/header' /}
+<!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<script type="text/javascript" src="{:get_root()}/static/index/mobile/js/pulldownload/pulldownload.js"></script><body>{include file='common/header' /}
 	<section id="Max_Con">	<input type="hidden" id="category_id" value="{$category.id}"/>	
 		<div class="videoList">			{include file='common/video_selection' /}
 
-             <div class="videoList_h3">            {content:category pid='3' return='data'/}			<a {if ($category.id == '3')}	        		class='cur'	        	{/if} href="{:url('../Video')}" >最新</a>		        {foreach name='data' item='vo'}		        {if ($vo.title != '精选视频')}		         	<a {if ($category.id == $vo.id)}	        		class='cur'	        	{/if} href="{$vo.url}" >{$vo.title}</a>	        	{/if}		        {/foreach}	        	<div class="clear"></div>                        </div>
-            <ul class="videoList_ul" id="data_list">
-            </ul>
-        </div>
-		{include file='common/footer' /}		<script type="text/javascript">			var url = 'http://120.26.192.83/index.php/index/comment/list_data?pid='+$('#category_id').val()+'&page=';			//添加Html			function addIndexHtml(data){				var html = '';				for(var i=0;i < data.length;i++){					html+= '<li><a href="'+data[i].url+'">'						+ '<img class="videoList_ul_img" src="'+data[i].thumb+'">'						+ '   <P class="videoList_ul_p">'+data[i].title+'</P>'						+ '</a></li>';				}				$('#data_list').append(html);			}		</script>
-</body>
+             <div class="videoList_h3">            {content:category pid='3' return='data'/}			<a {if ($category.id == '3')}	        		class='cur'	        	{/if} href="{:url('../Video')}" >最新</a>		        {foreach name='data' item='vo'}		        {if ($vo.title != '精选视频')}		         	<a {if ($category.id == $vo.id)}	        		class='cur'	        	{/if} href="{$vo.url}" >{$vo.title}</a>	        	{/if}		        {/foreach}	        	<div class="clear"></div>                        </div>
+            <ul class="videoList_ul" id="data_list">
+            </ul>
+        </div>
+		{include file='common/footer' /}		<script type="text/javascript">			var url = 'http://120.26.192.83/index.php/index/comment/list_data?pid='+$('#category_id').val()+'&page=';			//添加Html			function addIndexHtml(data){				var html = '';				for(var i=0;i < data.length;i++){					html+= '<li><a href="'+data[i].url+'">'						+ '<img class="videoList_ul_img" src="'+data[i].thumb+'">'						+ '   <P class="videoList_ul_p">'+data[i].title+'</P>'						+ '</a></li>';				}				$('#data_list').append(html);			}		</script>
+</body>
 </html>

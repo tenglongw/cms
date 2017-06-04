@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="zh-CN">{include file='common/head' /}<body>{include file='common/header' /}	<section id="Max_Con" style="background:#f2f2f2;">		<div class="specialTopic">            <div class="digger_d">                  {ebcms:recommend mark='digger' limit='1' return='data'/}					{notempty name='data'}					{foreach name='data' item='vo'}				       <div class="digger_ban" style="background-image: url({$vo.thumb|thumb=750,317});">		                	<P class="digger_ban_p1"><span>Digger</span>{$vo.title}</P>		                    <P class="digger_ban_p2"><span>{$vo.description}</span></P>		                </div>				    {/foreach}					{/notempty}                <div class="digger_d_d">                     <h5>往期回顾</h5>                    <p class="c1_p1" style="float: left;width: 100%">{$category.description}</p>                    <div class="clear"></div>                </div>            </div>            <div class="calendar">                        <div class="year" id="TimeNav">                    <div class="ll"><i class="iconfont">&#xe61f;</i></div>                    <div class="befoer">2016</div>                    <div class="center">2017</div>                    <div class="after">2018</div>                    <div class="rr"><i class="iconfont">&#xe624;</i></div>                </div>            </div>            <ul id="digger_list" class="digger_ul" >				{foreach name='lists' item='vs'}					<li style="display: none;" name="{$vs.ext.date|mb_substr=0,4}">					<a href="{$vs.url}">                    <img src="{$vs.thumb|thumb=450,626}" height="626" width="450">                    <div class="xia">                    	<p class="zuo"><span>Digger</span>{$vs.title}</p>                        <p class="you">{$vs.ext.date}</p>                    </div>					 {notempty name='vs.ebcms_url'}                    <img class="digger_ul_img" src="{:get_root()}/static/index/mobile/images/ku2/digger_07.png">					{/notempty}                </a></li>		        {/foreach}
-            </ul>        </div>		{include file='common/footer' /}
-    <script type="text/javascript" src="{:get_root()}/static/index/mobile/js/Digger.js"></script>
-
-	</section>
-</body>
+            </ul>        </div>		{include file='common/footer' /}
+    <script type="text/javascript" src="{:get_root()}/static/index/mobile/js/Digger.js"></script>
+
+	</section>
+</body>
 </html>
