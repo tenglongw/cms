@@ -28,7 +28,7 @@ class Mobile extends \app\index\controller\Common
 			foreach ($lists_recommendCate as $ckey=>$cval){
 				if($cval['group'] == $val){
 					//查询二级菜单下的新闻列表
-					$lists_recommend = \think\Db::name('recommend')->field("content_id id,title,thumb")->where('category_id', $cval['id'])->select();
+					$lists_recommend = \think\Db::name('recommend')->field("content_id id,title,thumb")->where('category_id', $cval['id'])->order('sort desc')->select();
 					$dataList = $this->imagePathHand($lists_recommend,$baseUrl,0,0);
 					$secondLevelMenu = array();
 					$secondLevelMenu['title'] = $cval['title'];
@@ -124,18 +124,17 @@ class Mobile extends \app\index\controller\Common
 	 */
 	public function saveUser(){
 		$result = array();
-		$user = \think\Db::name('user');
+		$user = \think\Db::name('openid');
 		$data = array(
 			'nickname' => $_GET['nickname'],
-			'email' => 'wexin@qq.com',
-			'salt' => 'wechat',
-			'password' => crypt_pwd('111111', 'tencent'),
+			'avatar' => $_GET['avatar'],
+			'openid' => $_GET['openid'],
 			'create_time' => time(),
 		);
-		$id = $this->updateUserInfo($data);
+		$id = $user->insertGetId($data);
 		if($id){
 			$result['status'] = 1;
-			$result['data'] = $id;
+			$result['data'] = '保存成功';
 		}else{
 			$result['status'] = 0;
 			$result['data'] = '保存失败';
@@ -143,7 +142,6 @@ class Mobile extends \app\index\controller\Common
 		echo json_encode($result);exit;
 	}
 	
-	public function updateUserInfo($row){;}
 	
 	/**
 	 * 搜索
