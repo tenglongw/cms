@@ -1,6 +1,5 @@
 <?php
 namespace app\index\controller;
-require_once(QQ_CLASS_PATH."API/class/QC.class.php");
 class Auth extends \app\index\controller\Common
 {
 

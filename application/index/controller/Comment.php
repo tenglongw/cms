@@ -176,7 +176,7 @@ class Comment extends \app\index\controller\Common
     	}
     	// 0表示不缓存
     	$category['expire'] = $category['expire'] ? $category['expire'] : false;
-    	$baseUrl = ''.$category['name'].'/';
+    	$baseUrl = 'l7cms/'.$category['name'].'/';
 //     	$lists = \app\content\model\Content::where(['category_id' => $id, 'status' => 1])->order($category['sell_time'])->cache($category['expire'])->paginate($category['pagenum'] ?: 20);
     	$lists = \app\content\model\Content::query("select id,title,thumb,description,ext,sell_time,sell_time_mm from ebcms5_content_content where status=1 and category_id = 4 and sell_time_mm = '".$date_."' order by sell_time desc");
     	$date = array();
@@ -313,7 +313,7 @@ class Comment extends \app\index\controller\Common
     		$tag_list = $tag->query("select distinct ct.* from ebcms5_content_tag ct,ebcms5_content_tags cts where ct.id = cts.tag_id and cts.cc_id = '".$category_id."' order by ct.tag asc");
     	}
     	$result = array();
-    	$baseUrl = '/tag/';
+    	$baseUrl = '/l7cms/tag/';
     	foreach ($tag_list as $key=>$val){
     		$val['url'] = $baseUrl.$val['tag'].'.html';
     		$result[] = $val;
@@ -368,7 +368,7 @@ class Comment extends \app\index\controller\Common
     			$this->assign('tag_list', $tag_list);
     
     			// 路径
-    			$baseUrl = '/';
+    			$baseUrl = '/l7cms/';
     			$data_list = $this->list_hand($lists,$categorys,$baseUrl,$tag_list);
     			$result['lists'] = $data_list;
     			$result['page'] = $lists->getPage();

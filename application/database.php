@@ -14,7 +14,7 @@ return [
     // 服务器地址
     'hostname' => '101.200.161.146',
     // 数据库名
-    'database' => 'ebcms',
+    'database' => 'ebcms_dev',
     // 用户名
     'username' => 'root',
     // 密码
