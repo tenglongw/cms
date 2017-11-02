@@ -25,6 +25,32 @@
   width: 1000px;
   margin: 0 auto;
   position: relative; }
+  .centerCon div.imgC {
+    width: 100px;
+    margin: 0 auto; }
+    .centerCon div.imgC img {
+      width: 100%; }
+
+#upTop {
+  position: fixed;
+  bottom: 100px;
+  right: 100px;
+  width: 60px;
+  height: 80px;
+  line-height: 80px;
+  text-align: center;
+  opacity: 1;
+  transition: all 0.7s;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  cursor: pointer;
+  z-index: 60;
+  display: none; }
+  #upTop > i {
+    font-size: 60px;
+    color: #0075bd; }
 
 .videoCon {
   width: 100%;
@@ -51,7 +77,7 @@
       width: 30px;
       height: 30px;
       position: absolute;
-      top: 0;
+      top: -35px;
       right: 0;
       color: #fff;
       text-align: content;
@@ -72,15 +98,15 @@
     height: 30px;
     width: 150px;
     text-align: center;
-    border: 2px solid #be0d23;
-    color: #be0d23;
+    border: 2px solid #0075bd;
+    color: #0075bd;
     font-size: 12px;
     text-transform: uppercase;
     transition: all 0.3s;
     font-family: 'English'; }
   .IndMore > a:hover {
-    color: #fa8190;
-    border: 2px solid #fa8190; }
+    color: #0075bd;
+    border: 2px solid #0075bd; }
   .IndMore > span.download {
     display: inline-block;
     color: #666;
@@ -105,7 +131,7 @@
     color: #666;
     font-size: 20px; }
   .DownloadCon > a:hover {
-    color: #be0d23; }
+    color: #0075bd; }
 
 .InHeader {
   width: 100%;
@@ -115,12 +141,12 @@
     font-size: 32px;
     color: #363636;
     line-height: 56px;
-    border-bottom: 2px solid #be0d23; }
+    border-bottom: 2px solid #0075bd; }
 
 .IdheadTow {
   width: 100%;
   line-height: 31px;
-  border-left: 3px solid #be0d23;
+  border-left: 3px solid #0075bd;
   font-size: 30px;
   color: #000;
   padding-left: 8px; }
@@ -148,7 +174,10 @@ header#header {
   border-bottom: 1px solid #d6d6d6; }
   header#header div.Logo {
     float: left;
-    height: 100%; }
+    height: 100%;
+    padding-top: 10px; }
+    header#header div.Logo img {
+      width: 160px; }
   header#header div.NavAndSearch {
     float: right;
     height: 50px; }
@@ -169,10 +198,10 @@ header#header {
         letter-spacing: -1px;
         font-weight: normal; }
       header#header div.NavAndSearch nav > a:hover {
-        color: #be0d23; }
+        color: #0075bd; }
       header#header div.NavAndSearch nav > a.active {
-        border-bottom: 3px solid #be0d23;
-        color: #be0d23; }
+        border-bottom: 3px solid #0075bd;
+        color: #0075bd; }
     header#header div.NavAndSearch form.Search {
       width: 150px;
       height: 100%;
@@ -255,14 +284,17 @@ section.InBanner {
   section.InBanner .swiper-pagination-switch {
     width: 64px;
     height: 4px;
-    background-color: rgba(255, 255, 255, 0.95);
+    background-color: white;
     margin: 0 12px;
     border-radius: 0;
-    display: inline-block; }
+    display: inline-block;
+    opacity: 0.6;
+    cursor: pointer; }
   section.InBanner .swiper-active-switch {
     width: 64px;
     height: 4px;
-    background-color: #be0d24; }
+    background-color: #0075bd;
+    opacity: 1; }
   section.InBanner .InBannerOnePrev, section.InBanner .InBannerOneNext {
     position: absolute;
     top: 50%;
@@ -291,7 +323,7 @@ section.InBanner {
     height: 10px;
     text-align: center; }
   section.InBanner .bocBotl, section.InBanner .bocBotr {
-    width: 150px;
+    width: 250px;
     height: 100%;
     position: absolute;
     top: 0;
@@ -318,7 +350,7 @@ section.exhibition {
       section.exhibition a.InWindow div.text div.line {
         width: 40px;
         height: 11px;
-        background-color: #c30d23; }
+        background-color: #0075bd; }
       section.exhibition a.InWindow div.text div.head {
         margin-top: 20px;
         font-size: 44px;
@@ -430,7 +462,7 @@ section.exhibition {
       transform: scale(1.1); }
 
 section.InVideo {
-  padding-top: 80px;
+  padding-top: 65px;
   padding-bottom: 40px;
   background-color: #f2f2f2; }
   section.InVideo div.VideoCn {
@@ -628,10 +660,10 @@ section.SpecialList {
       font-size: 24px;
       padding: 0 5px; }
     section.SpecialList nav.nav > a:hover {
-      color: #be0d23; }
+      color: #0075bd; }
     section.SpecialList nav.nav > a.active {
-      border-bottom: 2px solid #be0d23;
-      color: #be0d23; }
+      border-bottom: 2px solid #0075bd;
+      color: #0075bd; }
   section.SpecialList ul.list {
     width: 100%;
     padding: 30px 25px 0;
@@ -707,7 +739,7 @@ section.NewsList {
           font-size: 16px;
           float: left; }
         section.NewsList div.leftC div.Na nav > a.active {
-          color: #be0d23; }
+          color: #0075bd; }
       section.NewsList div.leftC div.Na div.line {
         padding: 0 18px 0 15px; }
         section.NewsList div.leftC div.Na div.line > span {
@@ -733,7 +765,7 @@ section.NewsList {
             border-bottom: 1px solid #fff;
             font-family: 'English'; }
         section.NewsList div.leftC div.Na ul > li.active {
-          border-left: 2px solid #be0d23; }
+          border-left: 2px solid #0075bd; }
           section.NewsList div.leftC div.Na ul > li.active > a {
             color: #222222;
             border-bottom: 1px solid #eeeeee; }
@@ -769,7 +801,7 @@ section.NewsList {
             float: right; }
             section.NewsList div.RightC > ul.newslistN > li > a div.word div.zhuoz {
               font-size: 14px;
-              color: #be0d23;
+              color: #0075bd;
               font-family: 'English'; }
             section.NewsList div.RightC > ul.newslistN > li > a div.word div.title {
               font-size: 26px;
@@ -815,9 +847,9 @@ section.NewsList {
           font-family: 'number';
           color: #9d9d9d; }
       section.NewsList div.RightC div.fengye span:hover {
-        color: #be0d23; }
+        color: #0075bd; }
       section.NewsList div.RightC div.fengye span.active {
-        color: #be0d23; }
+        color: #0075bd; }
       section.NewsList div.RightC div.fengye ul.pagination {
         width: 100%;
         text-align: center; }
@@ -827,7 +859,7 @@ section.NewsList {
             display: inline-block;
             line-height: 30px;
             padding: 0 8px;
-            margin: 0 20px;
+            margin: 0 10px;
             font-size: 24px;
             font-family: 'number';
             color: #9d9d9d; }
@@ -836,14 +868,14 @@ section.NewsList {
               font-family: 'number';
               color: #9d9d9d; }
           section.NewsList div.RightC div.fengye ul.pagination > li > a.active {
-            color: #be0d23; }
+            color: #0075bd; }
           section.NewsList div.RightC div.fengye ul.pagination > li > a:hover {
-            color: #be0d23; }
+            color: #0075bd; }
           section.NewsList div.RightC div.fengye ul.pagination > li span.active {
-            color: #be0d23; }
+            color: #0075bd; }
 
 section.Digger {
-  padding-top: 70px; }
+  padding-top: 65px; }
   section.Digger p.info {
     text-align: center;
     margin-top: 40px;
@@ -865,14 +897,14 @@ section.Digger {
     section.Digger div.TimeNav span.rr {
       width: 60px;
       height: 24px;
-      border: 1px solid #b41d24;
-      color: #b41d24;
+      border: 1px solid #0075bd;
+      color: #0075bd;
       line-height: 20px;
       font-size: 14px;
       margin: 0 5px;
       font-family: 'number'; }
     section.Digger div.TimeNav span.cc {
-      background-color: #b41d24;
+      background-color: #0075bd;
       color: #fff; }
     section.Digger div.TimeNav span.right, section.Digger div.TimeNav span.left {
       margin: 0 10px;
@@ -1020,10 +1052,10 @@ section.VideoList {
         font-size: 24px;
         padding: 0 5px; }
       section.VideoList div.listTwo nav.nav > a:hover {
-        color: #be0d23; }
+        color: #0075bd; }
       section.VideoList div.listTwo nav.nav > a.active {
-        border-bottom: 2px solid #be0d23;
-        color: #be0d23; }
+        border-bottom: 2px solid #0075bd;
+        color: #0075bd; }
     section.VideoList div.listTwo ul.wolist {
       width: 100%; }
       section.VideoList div.listTwo ul.wolist > li {
@@ -1087,7 +1119,7 @@ section.SearchList {
     margin: 0 auto;
     width: 300px;
     height: 34px;
-    border: 1px solid #be0d23;
+    border: 1px solid #0075bd;
     position: relative; }
     section.SearchList form.SearchForm > input {
       width: 100%;
@@ -1104,7 +1136,7 @@ section.SearchList {
       right: 0px;
       width: 80px;
       height: 100%;
-      background-color: #be0d23;
+      background-color: #0075bd;
       color: #fff;
       line-height: 32px;
       color: #fff;
@@ -1128,7 +1160,7 @@ section.SearchList {
       height: 100%;
       text-align: center; }
     section.SearchList nav.SearchNav > a.active {
-      border-top: 2px solid #be0d23;
+      border-top: 2px solid #0075bd;
       background-color: #fff; }
   section.SearchList div.Searchinf {
     width: 100%;
@@ -1138,7 +1170,7 @@ section.SearchList {
     background-color: #fff;
     border-bottom: 1px solid #eee; }
     section.SearchList div.Searchinf > span {
-      color: #be0d23; }
+      color: #0075bd; }
   section.SearchList ul.Searchinfo {
     width: 740px;
     border-right: 1px solid #eee;
@@ -1164,7 +1196,7 @@ section.SearchList {
           width: 430px; }
           section.SearchList ul.Searchinfo > li > a div.word div.lei {
             font-size: 12px;
-            color: #be0d23; }
+            color: #0075bd; }
           section.SearchList ul.Searchinfo > li > a div.word div.title {
             margin-top: 8px;
             font-size: 26px;
@@ -1201,7 +1233,7 @@ section.SearchList {
       padding-left: 20px; }
       section.SearchList div.RigCon div.total span {
         font-size: 50px;
-        color: #be0d23; }
+        color: #0075bd; }
 
 section.DiggerBaner {
   height: 580px; }
@@ -1344,7 +1376,7 @@ section.comment div.butC {
     width: 60px;
     height: 26px;
     color: #fff;
-    background-color: #be0d23;
+    background-color: #0075bd;
     text-align: center;
     line-height: 26px;
     cursor: pointer;
@@ -1406,6 +1438,7 @@ section.EvaluationOne {
   section.EvaluationOne div.head {
     width: 100%;
     font-size: 40px;
+    letter-spacing: 2px;
     line-height: 60px;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -1458,13 +1491,18 @@ section.EvaluationOne {
       height: 91px;
       background-repeat: no-repeat;
       background-size: 100% 100%;
-      opacity: 1; }
+      opacity: 0;
+      transition: all 0.5s; }
     section.EvaluationOne div.swiper_cn .NewsInfoLs_prev {
       background-image: url(../images/public/Prev.png);
-      left: 10px; }
+      left: 10px;
+      cursor: pointer; }
     section.EvaluationOne div.swiper_cn .NewsInfoLs_next {
       background-image: url(../images/public/Next.png);
-      right: 10px; }
+      right: 10px;
+      cursor: pointer; }
+  section.EvaluationOne div.swiper_cn:hover .NewsInfoLs_prev, section.EvaluationOne div.swiper_cn:hover .NewsInfoLs_next {
+    opacity: 1; }
   section.EvaluationOne div.word {
     line-height: 32px;
     font-size: 20px; }
@@ -1518,7 +1556,7 @@ section.Recommend {
           width: 600px;
           float: right; }
           section.Recommend ul.Recommendlist > li > a div.word > div.name {
-            color: #be0d23;
+            color: #0075bd;
             font-size: 14px; }
           section.Recommend ul.Recommendlist > li > a div.word > div.title {
             font-size: 40px;
@@ -1565,7 +1603,7 @@ section.VideoInfo {
       section.VideoInfo div.MoreToLove > div.head h3 {
         font-size: 20px;
         line-height: 20px;
-        border-left: 4px solid #be0d23;
+        border-left: 4px solid #0075bd;
         padding-left: 8px; }
     section.VideoInfo div.MoreToLove .div_scroll {
       margin-top: 10px;
@@ -1604,7 +1642,7 @@ section.VideoInfo {
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical; }
       section.VideoInfo div.MoreToLove ul.MoreToLovels > li:hover div.text div.title {
-        color: #be0d23; }
+        color: #0075bd; }
 
 section.DismantlinginfoVideo {
   padding-top: 20px;
@@ -1788,7 +1826,7 @@ section.Sell {
         height: 32px;
         font-size: 32px;
         line-height: 32px;
-        border-left: 3px solid #be0d23;
+        border-left: 3px solid #0075bd;
         padding-left: 10px; }
       section.Sell div.RightCn div.top div.calendar {
         float: right;
@@ -1814,10 +1852,10 @@ section.Sell {
               font-size: 12px; }
           section.Sell div.RightCn div.top div.calendar div.year span.befoer, section.Sell div.RightCn div.top div.calendar div.year span.center, section.Sell div.RightCn div.top div.calendar div.year span.after {
             width: 60px;
-            border: 1px solid #be0d23;
-            color: #be0d23; }
+            border: 1px solid #0075bd;
+            color: #0075bd; }
           section.Sell div.RightCn div.top div.calendar div.year span.center {
-            background-color: #be0d23;
+            background-color: #0075bd;
             color: #fff; }
         section.Sell div.RightCn div.top div.calendar div.month {
           width: 188px;
@@ -1888,7 +1926,7 @@ section.Sell {
               color: #000;
               cursor: pointer; }
             section.Sell div.RightCn div.top div.calendar div.month ul.monthCobn li.current {
-              color: #be0d23;
+              color: #0075bd;
               cursor: pointer; }
       section.Sell div.RightCn div.top div.calendar:hover div.month {
         display: block; }
@@ -1937,7 +1975,7 @@ ul.SellLs {
           display: block;
           width: 100%;
           height: 100%;
-          background-color: #be0d23;
+          background-color: #0075bd;
           border-radius: 50px; }
       ul.SellLs > li div.Time div.Con {
         width: 130px;
@@ -2094,7 +2132,7 @@ div#advertisementWindow {
     border-radius: 20px;
     height: 620px;
     overflow: hidden;
-    border: 2px solid #be0d23; }
+    border: 2px solid #0075bd; }
     div#advertisementWindow div.conImg > a {
       display: block;
       width: 100%; }
