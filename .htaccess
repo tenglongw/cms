@@ -1,8 +1,9 @@
 <IfModule mod_rewrite.c>
-	RewriteEngine on
-	RewriteCond %{HTTPS} off
-	RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
-	RewriteCond %{REQUEST_FILENAME} !-f
-	RewriteCond %{REQUEST_FILENAME} !-d
-	RewriteRule . index.php
+  Options +FollowSymlinks -Multiviews
+  RewriteEngine On
+
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  #RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+  RewriteRule ^(.*)$ index.php [QSA,PT,L,E=PATH_INFO:$1]
 </IfModule>
