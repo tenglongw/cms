@@ -12,13 +12,13 @@ return [
     // 数据库类型
     'type' => 'mysql',
     // 服务器地址
-    'hostname' => '101.200.161.146',
+    'hostname' => 'localhost',
     // 数据库名
-    'database' => 'ebcms_dev',
+    'database' => 'ebcms',
     // 用户名
     'username' => 'root',
     // 密码
-    'password' => 'ycdy5211987',
+    'password' => 'root',
     // 端口
     'hostport' => '3306',
     // 连接dsn
