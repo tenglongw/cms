@@ -8,19 +8,7 @@
 				{content:category tree='1' return='data'/}
 					<a name="index" {if ('' == $category.id)} class="active" {/if} href="{:url('index/index/index')}">首页</a>
 					{foreach name='data' item='vo'}
-	                    {if ($vo.title == '专题')}
-	                        <a name="{$vo.name}" {if (10 == $category.id || 11 == $category.id || 12 == $category.id)} class="active" {/if} href="{:url('/Special/Special')}" >{$vo.title}</a>
-	                        {else}
-	                         {if ($vo.title == '新闻')}
-	                         	<a name="{$vo.name}" {if ($vo.id == $category.id || 7 == $category.id || 8 == $category.id || 9 == $category.id)} class="active" {/if} href="{$vo.url}" >{$vo.title}</a>
-	                         	{else}
-	                         		{if ($vo.title == '视频')}
-			                         	<a name="{$vo.name}" {if ($vo.id == $category.id || 14 == $category.id || 15 == $category.id || 26 == $category.id)} class="active" {/if} href="{$vo.url}" >{$vo.title}</a>
-			                         	{else}
-					                    <a name="{$vo.name}" {if ($vo.id == $category.id)} class="active" {/if} href="{$vo.url}" >{$vo.title}</a>
-			                         {/if}
-	                         {/if}
-			        	{/if} 
+					    <a name="{$vo.name}" {if ($vo.id == $category.id)} class="active" {/if} href="{$vo.url}" >{$vo.title}</a>
                      {/foreach}
 				</nav>
                      <form id="head_search" class="Search" role="search" method="get" action="{:url('index/content/search')}">
