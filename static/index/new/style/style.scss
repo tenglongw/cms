@@ -1,0 +1,39 @@
+@import 'http://at.alicdn.com/t/font_398386_enhjwyfsng0hpvi.css';
+
+
+$themeColor: #bad115;
+$fuThemeColor: #fcc800;
+
+$levelShadow: linear-gradient(to left, #d4d736, #b2cf0b);
+$levelShadowLast: linear-gradient(to left, #b2cf0b, #d4d736);
+$verticalShadow: linear-gradient(to bottom, #b2cf0b, #d4d736);
+
+// background: $verticalShadow;
+
+.clearfloat:after{display:block;clear:both;content:"";visibility:hidden;height:0} 
+.clearfloat{zoom:1} 
+
+
+
+@mixin line-clamp ($line) {
+	overflow : hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: $line;
+	-webkit-box-orient: vertical;
+}
+
+
+
+@mixin clearfloat {
+	zoom:1;
+	&:after{
+		display:block;clear:both;content:"";visibility:hidden;height:0
+	}
+}
+// @include line-clamp(2);
+
+
+
+
+

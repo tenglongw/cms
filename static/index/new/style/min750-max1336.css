@@ -1,0 +1,30 @@
+@import "http://at.alicdn.com/t/font_398386_enhjwyfsng0hpvi.css";
+.clearfloat:after {
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0; }
+
+.clearfloat {
+  zoom: 1; }
+
+@media screen and (max-width: 1336px) and (min-width: 751px) {
+  div.HomeBannerCon {
+    height: 600px; }
+    div.HomeBannerCon div.swiper-container img {
+      height: 100%;
+      width: 1336px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -668px; }
+    div.HomeBannerCon div.wordCn div.word div.title {
+      top: 80px;
+      font-size: 60px; }
+    div.HomeBannerCon div.wordCn div.word div.dist {
+      top: 280px; }
+    div.HomeBannerCon div.wordCn div.word a.link {
+      top: 460px; } }
+
+/*# sourceMappingURL=min750-max1336.css.map */

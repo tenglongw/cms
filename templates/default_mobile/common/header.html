@@ -3,11 +3,9 @@
 	<a href="{:url('index/index/index')}" class="logo"><img
 		src="{:get_root()}/static/index/mobile/images/public/logo.png"></a>
 		{notempty name='category'}
-		{neq name='category.title' value='Digger'}
 			{empty name='type'}
 				<span class="title"><span class="cn">{$category.title}</span><br/><span class="en">{$category.name}</span></span>
 			{/empty}
-		{/neq}
 		{/notempty}
 	<div class="but clearfloat">
 		<a class="nav" href="javascript:void(0);"><i class="iconfont">&#xe648;</i></a>

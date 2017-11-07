@@ -1,0 +1,1166 @@
+@import "http://at.alicdn.com/t/font_398386_enhjwyfsng0hpvi.css";
+.clearfloat:after {
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0; }
+
+.clearfloat {
+  zoom: 1; }
+
+@media screen and (max-width: 750px) and (min-width: 320px) {
+  body {
+    padding-top: 100px; }
+
+  #MaxCon {
+    width: 750px;
+    padding-top: 100px; }
+
+  .Content {
+    width: 100%;
+    margin: 0 auto; }
+
+  div.moduleTitle {
+    font-size: 24px;
+    color: #333;
+    text-align: left;
+    letter-spacing: 1px;
+    border-left: 16px solid #bad115;
+    padding-left: 15px; }
+    div.moduleTitle span {
+      color: #fcc800; }
+
+  div.Public_VideoCon div.videoCn span.close {
+    top: -80px;
+    right: -0px; }
+
+  header.headerCn {
+    height: 100px; }
+    header.headerCn .Content {
+      width: 100%; }
+      header.headerCn .Content > a.logo {
+        padding: 20px; }
+        header.headerCn .Content > a.logo > img {
+          height: 100%; }
+      header.headerCn .Content > div.Rn {
+        display: none; }
+      header.headerCn .Content > div.MRn {
+        display: block;
+        float: right;
+        height: 100%;
+        zoom: 1; }
+        header.headerCn .Content > div.MRn:after {
+          display: block;
+          clear: both;
+          content: "";
+          visibility: hidden;
+          height: 0; }
+        header.headerCn .Content > div.MRn span.btn {
+          display: block;
+          width: 100px;
+          height: 100px;
+          text-align: center;
+          line-height: 100px;
+          float: right; }
+          header.headerCn .Content > div.MRn span.btn i {
+            font-size: 50px;
+            color: #fbc908; }
+    header.headerCn div.Mnav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding-top: 100px;
+      z-index: -1; }
+      header.headerCn div.Mnav div.MnCn {
+        background-color: rgba(0, 0, 0, 0.6);
+        width: 100%;
+        height: 100%;
+        zoom: 1; }
+        header.headerCn div.Mnav div.MnCn:after {
+          display: block;
+          clear: both;
+          content: "";
+          visibility: hidden;
+          height: 0; }
+        header.headerCn div.Mnav div.MnCn div.LCn {
+          width: 305px;
+          height: 100%;
+          float: left;
+          background-color: #fbc90d; }
+          header.headerCn div.Mnav div.MnCn div.LCn div.MSearch {
+            padding: 20px 16px 0;
+            position: relative; }
+            header.headerCn div.Mnav div.MnCn div.LCn div.MSearch input {
+              width: 100%;
+              height: 60px;
+              border-radius: 30px;
+              border: none;
+              padding-left: 60px;
+              font-size: 24px; }
+            header.headerCn div.Mnav div.MnCn div.LCn div.MSearch div.btn {
+              position: absolute;
+              width: 60px;
+              height: 60px;
+              text-align: center;
+              line-height: 60px;
+              top: 20px;
+              left: 16px; }
+              header.headerCn div.Mnav div.MnCn div.LCn div.MSearch div.btn i {
+                font-size: 30px;
+                color: #999; }
+          header.headerCn div.Mnav div.MnCn div.LCn ul.list {
+            width: 100%;
+            margin-top: 30px; }
+            header.headerCn div.Mnav div.MnCn div.LCn ul.list > li {
+              height: 86px;
+              font-size: 30px;
+              color: #000;
+              position: relative;
+              padding-right: 46px; }
+              header.headerCn div.Mnav div.MnCn div.LCn ul.list > li div.ToNavTwo {
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 46px;
+                height: 86px;
+                line-height: 86px;
+                text-align: center; }
+                header.headerCn div.Mnav div.MnCn div.LCn ul.list > li div.ToNavTwo i {
+                  font-size: 30px;
+                  color: #fff; }
+              header.headerCn div.Mnav div.MnCn div.LCn ul.list > li a {
+                display: block;
+                color: inherit;
+                width: 100%;
+                height: 100%;
+                line-height: 86px;
+                text-align: center;
+                text-transform: uppercase; }
+            header.headerCn div.Mnav div.MnCn div.LCn ul.list > li.active {
+              color: #fbc90d;
+              background-color: #000; }
+          header.headerCn div.Mnav div.MnCn div.LCn div.lange {
+            margin-top: 140px;
+            width: 100%;
+            height: 28px;
+            zoom: 1; }
+            header.headerCn div.Mnav div.MnCn div.LCn div.lange:after {
+              display: block;
+              clear: both;
+              content: "";
+              visibility: hidden;
+              height: 0; }
+            header.headerCn div.Mnav div.MnCn div.LCn div.lange > span {
+              display: block;
+              width: 50%;
+              height: 100%;
+              text-align: center;
+              line-height: 28px;
+              color: #000;
+              float: left;
+              font-size: 26px;
+              text-transform: uppercase; }
+            header.headerCn div.Mnav div.MnCn div.LCn div.lange > span:nth-child(1) {
+              border-right: 1px solid #000; }
+        header.headerCn div.Mnav div.MnCn div.RCn {
+          float: left;
+          width: 445px;
+          height: 100%;
+          overflow-y: auto;
+          background-color: #fff; }
+          header.headerCn div.Mnav div.MnCn div.RCn ul.One {
+            width: 100%; }
+            header.headerCn div.Mnav div.MnCn div.RCn ul.One > li {
+              height: 90px;
+              overflow: hidden;
+              position: relative; }
+              header.headerCn div.Mnav div.MnCn div.RCn ul.One > li div.jian {
+                position: absolute;
+                width: 90px;
+                height: 90px;
+                text-align: center;
+                line-height: 90px;
+                top: 0;
+                right: 0;
+                z-index: 9;
+                transform: rotate(90deg); }
+                header.headerCn div.Mnav div.MnCn div.RCn ul.One > li div.jian i {
+                  font-size: 30px; }
+              header.headerCn div.Mnav div.MnCn div.RCn ul.One > li > a {
+                display: block;
+                width: 100%;
+                height: 90px;
+                line-height: 90px;
+                text-align: center;
+                font-size: 26px;
+                text-transform: capitalize; }
+              header.headerCn div.Mnav div.MnCn div.RCn ul.One > li > ul > li {
+                width: 100%;
+                background-color: #e9e9e9; }
+                header.headerCn div.Mnav div.MnCn div.RCn ul.One > li > ul > li > a {
+                  display: block;
+                  width: 100%;
+                  height: 100px;
+                  line-height: 100px;
+                  text-align: center;
+                  font-size: 26px;
+                  text-transform: capitalize; }
+            header.headerCn div.Mnav div.MnCn div.RCn ul.One > li.active {
+              height: auto;
+              background-color: #d3d3d3; }
+              header.headerCn div.Mnav div.MnCn div.RCn ul.One > li.active div.jian {
+                transform: rotate(-90deg); }
+    header.headerCn form.searchCon {
+      display: none; }
+
+  footer.footerCn {
+    background-color: #333431;
+    padding-top: 20px; }
+    footer.footerCn div.describe {
+      line-height: 50px;
+      height: 50px; }
+    footer.footerCn div.title {
+      margin-top: 0; }
+    footer.footerCn ul.nav {
+      display: none; }
+    footer.footerCn div.linkCn {
+      margin-top: 40px;
+      text-align: center; }
+      footer.footerCn div.linkCn > a {
+        display: inline-block;
+        width: 40px;
+        margin: 0 20px;
+        height: 40px;
+        border-radius: 50%;
+        border: 2px solid #bad115;
+        line-height: 36px;
+        text-align: center; }
+        footer.footerCn div.linkCn > a i {
+          font-size: 22px;
+          color: #fff; }
+    footer.footerCn div.swiperCn {
+      width: 710px;
+      margin: 40px auto 0;
+      position: relative; }
+      footer.footerCn div.swiperCn .FooterSwiperNext,
+      footer.footerCn div.swiperCn .FooterSwiperPrev {
+        background-image: none;
+        line-height: 44px;
+        text-align: center; }
+        footer.footerCn div.swiperCn .FooterSwiperNext i,
+        footer.footerCn div.swiperCn .FooterSwiperPrev i {
+          font-size: 40px;
+          color: #fff; }
+      footer.footerCn div.swiperCn .swiper-container {
+        width: 600px;
+        margin: 0 auto; }
+        footer.footerCn div.swiperCn .swiper-container .swiper-slide {
+          width: 200px; }
+          footer.footerCn div.swiperCn .swiper-container .swiper-slide > a {
+            margin: 0 auto;
+            display: block;
+            width: 160px;
+            height: 160px; }
+            footer.footerCn div.swiperCn .swiper-container .swiper-slide > a > img {
+              width: 100%; }
+
+  div.publicMoreBtnCn a.more {
+    width: 160px;
+    height: 56px;
+    line-height: 56px;
+    font-size: 24px;
+    border-radius: 28px; }
+
+  div.HomeBannerCon {
+    height: 405px; }
+    div.HomeBannerCon div.swiper-container .swiper-pagination .swiper-pagination-bullet {
+      width: 14px;
+      height: 14px; }
+    div.HomeBannerCon div.swiper-container .swiper-pagination .swiper-pagination-bullet-active {
+      border-radius: 1px;
+      position: relative;
+      background-color: #dfe41e; }
+      div.HomeBannerCon div.swiper-container .swiper-pagination .swiper-pagination-bullet-active:after {
+        width: 7px;
+        height: 7px;
+        top: -3px;
+        left: 3px; }
+    div.HomeBannerCon div.swiper-container img {
+      width: 750px;
+      margin-left: -375px; }
+    div.HomeBannerCon div.wordCn {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      left: 0;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.3); }
+      div.HomeBannerCon div.wordCn div.word {
+        width: 540px; }
+        div.HomeBannerCon div.wordCn div.word div.title {
+          top: 100px;
+          font-size: 30px; }
+        div.HomeBannerCon div.wordCn div.word div.dist {
+          top: 170px;
+          font-size: 24px; }
+        div.HomeBannerCon div.wordCn div.word a.link {
+          top: 300px;
+          width: 150px;
+          height: 40px;
+          line-height: 40px;
+          border-radius: 20px;
+          font-size: 24px; }
+
+  div.HomeSpecialNews {
+    padding: 20px 0 0; }
+    div.HomeSpecialNews .Content {
+      padding: 0 20px; }
+    div.HomeSpecialNews .HomeSpecialNewsCn {
+      zoom: 1;
+      margin-top: 18px; }
+      div.HomeSpecialNews .HomeSpecialNewsCn:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+    div.HomeSpecialNews div.LCn {
+      width: 100%;
+      float: left; }
+      div.HomeSpecialNews div.LCn a.imgC {
+        height: 310px; }
+        div.HomeSpecialNews div.LCn a.imgC div.time {
+          width: 86px;
+          height: 86px; }
+          div.HomeSpecialNews div.LCn a.imgC div.time div.day {
+            line-height: 60px;
+            font-size: 46px; }
+          div.HomeSpecialNews div.LCn a.imgC div.time div.date {
+            font-size: 14px; }
+      div.HomeSpecialNews div.LCn div.tit {
+        font-size: 28px;
+        margin-top: 15px; }
+      div.HomeSpecialNews div.LCn p.describe {
+        margin-top: 30px;
+        font-size: 24px; }
+    div.HomeSpecialNews ul.RCn {
+      width: 100%;
+      margin-top: 45px;
+      border-top: 1px solid #e1e1e1; }
+      div.HomeSpecialNews ul.RCn > li {
+        border-bottom: 1px solid #e1e1e1; }
+        div.HomeSpecialNews ul.RCn > li > a {
+          height: 205px;
+          padding-top: 50px; }
+          div.HomeSpecialNews ul.RCn > li > a div.time {
+            width: 100px;
+            color: #8a8a8a;
+            float: left; }
+            div.HomeSpecialNews ul.RCn > li > a div.time div.day {
+              width: 100%;
+              line-height: 80px;
+              font-size: 64px; }
+            div.HomeSpecialNews ul.RCn > li > a div.time div.date {
+              font-size: 20px; }
+          div.HomeSpecialNews ul.RCn > li > a div.word {
+            width: 570px;
+            float: right; }
+            div.HomeSpecialNews ul.RCn > li > a div.word h3 {
+              font-size: 28px; }
+            div.HomeSpecialNews ul.RCn > li > a div.word p {
+              font-size: 20px;
+              margin-top: 20px; }
+      div.HomeSpecialNews ul.RCn > li:nth-child(1) a {
+        height: 205px;
+        padding-top: 50px; }
+
+  div.HomeCorporateProfile {
+    height: 390px;
+    background-image: url(../images/index_16.png);
+    background-position: center 70px;
+    background-repeat: no-repeat;
+    padding: 20px; }
+    div.HomeCorporateProfile div.moduleTitle {
+      color: #333; }
+    div.HomeCorporateProfile p {
+      font-size: 24px;
+      text-align: left;
+      margin-top: 50px;
+      line-height: 36px; }
+
+  div.HomeCompanyBusiness {
+    width: 100%;
+    padding: 20px;
+    margin-top: 0px; }
+    div.HomeCompanyBusiness div.moduleTitle {
+      margin-top: 20px;
+      color: #333; }
+    div.HomeCompanyBusiness div.clectCon {
+      overflow-x: auto;
+      width: 100%;
+      margin-top: 20px;
+      height: 295px; }
+    div.HomeCompanyBusiness ul.HomeCompanyBusinessList {
+      width: 1152px;
+      margin: 0px auto 0;
+      zoom: 1; }
+      div.HomeCompanyBusiness ul.HomeCompanyBusinessList:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      div.HomeCompanyBusiness ul.HomeCompanyBusinessList > li {
+        width: 288px;
+        height: 295px;
+        padding: 60px 20px 20px; }
+        div.HomeCompanyBusiness ul.HomeCompanyBusinessList > li div.iconC i {
+          font-size: 60px; }
+        div.HomeCompanyBusiness ul.HomeCompanyBusinessList > li div.tit {
+          font-size: 26px;
+          margin-top: 0px;
+          color: #fff; }
+        div.HomeCompanyBusiness ul.HomeCompanyBusinessList > li p.describe {
+          font-size: 24px;
+          margin-top: 10px; }
+
+  div.HomeCorporateSocialResponsibility {
+    background-position: center 70px;
+    background-repeat: no-repeat;
+    background-size: 1900px 690px;
+    height: 670px;
+    padding: 20px;
+    overflow: hidden; }
+    div.HomeCorporateSocialResponsibility div.swiperCn {
+      width: 425px;
+      height: 540px;
+      margin: 50px auto 0; }
+      div.HomeCorporateSocialResponsibility div.swiperCn div.swiper-container {
+        width: 100%;
+        overflow: initial; }
+        div.HomeCorporateSocialResponsibility div.swiperCn div.swiper-container .swiper-slide {
+          width: 100%;
+          transform: scale(0.9);
+          transition: all 0.7s; }
+        div.HomeCorporateSocialResponsibility div.swiperCn div.swiper-container .swiper-slide-active {
+          transform: scale(1); }
+      div.HomeCorporateSocialResponsibility div.swiperCn div.slideCon {
+        margin: 0 auto;
+        width: 400px;
+        height: 540px;
+        border-radius: 20px; }
+        div.HomeCorporateSocialResponsibility div.swiperCn div.slideCon div.imgC {
+          height: 260px; }
+          div.HomeCorporateSocialResponsibility div.swiperCn div.slideCon div.imgC > img {
+            width: 100%; }
+        div.HomeCorporateSocialResponsibility div.swiperCn div.slideCon div.tit {
+          font-size: 26px;
+          margin-top: 30px; }
+        div.HomeCorporateSocialResponsibility div.swiperCn div.slideCon div.describe {
+          font-size: 24px;
+          margin-top: 30px; }
+
+  div.HomeRecruitment {
+    width: 100%;
+    padding: 20px; }
+    div.HomeRecruitment div.HomeRecruitmentCon {
+      width: 100%;
+      height: 480px;
+      margin: 20px auto 0;
+      overflow-x: auto; }
+    div.HomeRecruitment ul.HomeRecruitmentList {
+      width: 1336px; }
+      div.HomeRecruitment ul.HomeRecruitmentList > li {
+        width: 284px;
+        margin: 0 20px; }
+        div.HomeRecruitment ul.HomeRecruitmentList > li > a .iconC {
+          width: 100%; }
+          div.HomeRecruitment ul.HomeRecruitmentList > li > a .iconC i {
+            font-size: 150px; }
+        div.HomeRecruitment ul.HomeRecruitmentList > li > a .name {
+          font-size: 28px;
+          margin-top: 20px; }
+        div.HomeRecruitment ul.HomeRecruitmentList > li > a .dist {
+          margin-top: 20px;
+          padding: 0 40px;
+          font-size: 20px; }
+        div.HomeRecruitment ul.HomeRecruitmentList > li > a .describe {
+          margin-top: 15px;
+          font-size: 20px; }
+        div.HomeRecruitment ul.HomeRecruitmentList > li > a .money {
+          margin-top: 30px;
+          font-size: 24px; }
+
+  div.HomeSubsidiariesAndContactUs {
+    padding: 30px 0;
+    height: 1050px; }
+    div.HomeSubsidiariesAndContactUs ul.nav > li {
+      width: 240px;
+      font-size: 22px; }
+    div.HomeSubsidiariesAndContactUs div.Subsidiaries {
+      height: 450px;
+      margin-top: 50px;
+      position: relative; }
+      div.HomeSubsidiariesAndContactUs div.Subsidiaries .SubsidiariesNext,
+      div.HomeSubsidiariesAndContactUs div.Subsidiaries .SubsidiariesPrev {
+        display: none; }
+      div.HomeSubsidiariesAndContactUs div.Subsidiaries .Cn {
+        width: 750px;
+        padding-top: 30px; }
+      div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide {
+        width: 310px;
+        height: 400px;
+        background-color: #fff;
+        border-radius: 20px;
+        text-align: center;
+        transition: all 0.5s;
+        z-index: 1; }
+        div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn {
+          padding: 60px 40px 0; }
+          div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn div.title {
+            font-size: 24px; }
+          div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn div.address {
+            font-size: 18px; }
+          div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn p.describe {
+            margin-top: 20px;
+            font-size: 20px;
+            line-height: 24px; }
+          div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn div.bottomCn a.link {
+            width: 130px;
+            height: 40px;
+            border-radius: 20px;
+            font-size: 18px;
+            line-height: 40px; }
+          div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn div.bottomCn img {
+            margin-top: 10px; }
+    div.HomeSubsidiariesAndContactUs div.ContactUs {
+      height: 400px;
+      margin-top: 100px;
+      padding: 0 50px; }
+      div.HomeSubsidiariesAndContactUs div.ContactUs div.Ln div.title {
+        font-size: 26px;
+        margin-bottom: 30px; }
+      div.HomeSubsidiariesAndContactUs div.ContactUs div.Ln p {
+        font-size: 24px;
+        line-height: 30px; }
+    div.HomeSubsidiariesAndContactUs div.HomeKeyFigures {
+      margin-top: 60px;
+      padding-top: 30px; }
+      div.HomeSubsidiariesAndContactUs div.HomeKeyFigures .Title {
+        font-size: 30px; }
+      div.HomeSubsidiariesAndContactUs div.HomeKeyFigures div.HomeKeyFiguresList {
+        width: 750px;
+        height: 278px;
+        margin-top: 20px;
+        overflow-x: auto; }
+        div.HomeSubsidiariesAndContactUs div.HomeKeyFigures div.HomeKeyFiguresList > ul {
+          width: 1670px; }
+          div.HomeSubsidiariesAndContactUs div.HomeKeyFigures div.HomeKeyFiguresList > ul > li {
+            width: 334px;
+            padding-top: 60px; }
+            div.HomeSubsidiariesAndContactUs div.HomeKeyFigures div.HomeKeyFiguresList > ul > li div.index {
+              font-size: 60px; }
+            div.HomeSubsidiariesAndContactUs div.HomeKeyFigures div.HomeKeyFiguresList > ul > li p {
+              font-size: 24px;
+              margin-top: 20px; }
+
+  div.HomePhotos {
+    padding: 0px 20px 40px; }
+    div.HomePhotos ul.nav {
+      width: 100%;
+      text-align: left;
+      margin-top: 20px; }
+      div.HomePhotos ul.nav > li {
+        height: 50px;
+        width: 200px;
+        line-height: 50px;
+        font-size: 24px; }
+    div.HomePhotos div.photolist {
+      margin-top: 30px;
+      width: 100%;
+      overflow-x: auto; }
+      div.HomePhotos div.photolist ul {
+        width: 1408px;
+        zoom: 1; }
+        div.HomePhotos div.photolist ul:after {
+          display: block;
+          clear: both;
+          content: "";
+          visibility: hidden;
+          height: 0; }
+        div.HomePhotos div.photolist ul > li {
+          width: 460px;
+          height: 370px;
+          margin-left: 14px; }
+          div.HomePhotos div.photolist ul > li div.word {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 50px 30px; }
+            div.HomePhotos div.photolist ul > li div.word div.text {
+              height: 200px; }
+              div.HomePhotos div.photolist ul > li div.word div.text div.title {
+                font-size: 26px;
+                line-height: 40px; }
+              div.HomePhotos div.photolist ul > li div.word div.text p {
+                font-size: 22px;
+                line-height: 28px; }
+            div.HomePhotos div.photolist ul > li div.word div.link {
+              padding: 0 30px 20px; }
+              div.HomePhotos div.photolist ul > li div.word div.link a {
+                width: 160px;
+                height: 44px;
+                border-radius: 22px;
+                font-size: 22px;
+                line-height: 44px; }
+    div.HomePhotos div.btnCn {
+      display: none; }
+
+  div.HomeVideoAndKay {
+    height: 1050px;
+    background-position: center 600px;
+    padding: 20px; }
+    div.HomeVideoAndKay .Video,
+    div.HomeVideoAndKay .Kay {
+      width: 100%;
+      float: left; }
+    div.HomeVideoAndKay .Kay {
+      margin-top: 70px; }
+      div.HomeVideoAndKay .Kay .kayIndex {
+        margin: 80px auto 0;
+        background-image: url(../images/index_07_10.png);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 440px;
+        height: 380px;
+        color: #bad115;
+        padding-top: 40px;
+        text-align: center; }
+        div.HomeVideoAndKay .Kay .kayIndex .p1 {
+          font-size: 36px;
+          font-weight: bold; }
+        div.HomeVideoAndKay .Kay .kayIndex .p2 {
+          font-size: 24px;
+          margin-top: 24px; }
+        div.HomeVideoAndKay .Kay .kayIndex .p3 {
+          margin-top: 30px;
+          font-size: 24px; }
+
+  div.AboutUsCompanyProfile {
+    padding: 20px; }
+    div.AboutUsCompanyProfile div.CompanyProfileCn {
+      zoom: 1; }
+      div.AboutUsCompanyProfile div.CompanyProfileCn:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      div.AboutUsCompanyProfile div.CompanyProfileCn div.imgC {
+        text-align: center;
+        width: 100%;
+        padding-top: 50px; }
+        div.AboutUsCompanyProfile div.CompanyProfileCn div.imgC > img {
+          width: 435px; }
+      div.AboutUsCompanyProfile div.CompanyProfileCn div.word {
+        width: 100%;
+        padding-right: 0px;
+        padding: 50px; }
+        div.AboutUsCompanyProfile div.CompanyProfileCn div.word > p {
+          width: 100%;
+          float: left;
+          font-size: 24px;
+          line-height: 34px; }
+        div.AboutUsCompanyProfile div.CompanyProfileCn div.word div.link {
+          margin-top: 20px;
+          font-size: 24px; }
+          div.AboutUsCompanyProfile div.CompanyProfileCn div.word div.link a i {
+            margin-right: 20px; }
+        div.AboutUsCompanyProfile div.CompanyProfileCn div.word div.btnC {
+          margin-top: 20px; }
+          div.AboutUsCompanyProfile div.CompanyProfileCn div.word div.btnC a {
+            width: 160px;
+            height: 48px;
+            line-height: 48px;
+            border-radius: 24px;
+            font-size: 24px; }
+
+  div.AboutUsCompanyHistory {
+    padding: 20px;
+    background-color: #fff; }
+    div.AboutUsCompanyHistory div.CompanyHistoryCn {
+      height: 980px;
+      width: 100%;
+      margin: 50px auto 0; }
+      div.AboutUsCompanyHistory div.CompanyHistoryCn .mCSB_scrollTools .mCSB_draggerRail {
+        width: 100%;
+        background-color: #f0f0f0; }
+      div.AboutUsCompanyHistory div.CompanyHistoryCn .mCS-rounded.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+      div.AboutUsCompanyHistory div.CompanyHistoryCn .mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+      div.AboutUsCompanyHistory div.CompanyHistoryCn .mCS-rounded-dots.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+      div.AboutUsCompanyHistory div.CompanyHistoryCn .mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+        width: 100%;
+        background-color: #cdcdcd;
+        margin: 0; }
+      div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list {
+        margin: 0 auto;
+        position: relative;
+        width: 420px;
+        zoom: 1; }
+        div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list:after {
+          display: block;
+          clear: both;
+          content: "";
+          visibility: hidden;
+          height: 0; }
+        div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list:before {
+          display: none; }
+        div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li {
+          width: 417px;
+          height: 270px;
+          padding-right: 0px;
+          margin-top: 10px; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.date {
+            position: relative;
+            height: 56px;
+            width: 100%; }
+            div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.date:after {
+              display: none; }
+            div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.date span.time {
+              width: 100px;
+              font-size: 30px;
+              line-height: 56px; }
+            div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.date div.dian {
+              width: 56px;
+              height: 56px;
+              left: 115px;
+              border-radius: 50%; }
+              div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.date div.dian > span {
+                width: 18px;
+                height: 18px;
+                margin-left: -9px;
+                margin-top: -9px; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.photo {
+            width: 100%;
+            text-align: right;
+            padding-top: 17px; }
+            div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.photo div.imgC {
+              width: 300px;
+              height: 200px; }
+            div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.photo div.word {
+              margin-top: 20px;
+              font-size: 24px; }
+        div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2) {
+          margin-top: 10px; }
+        div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2n) {
+          padding-left: 0px;
+          float: left; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2n) div.date {
+            text-align: left; }
+            div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2n) div.date div.dian {
+              left: 115px; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2n) div.photo {
+            text-align: right; }
+            div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2n) div.photo div.imgC:after {
+              border-top: 1px solid #bad115;
+              border-right: none;
+              border-left: 1px solid #bad115;
+              left: 20px;
+              transform: rotate(45deg) skewX(20deg); }
+
+  div.AboutUsCriticalData {
+    padding: 20px 20px 0; }
+    div.AboutUsCriticalData div.CriticalDataCn {
+      width: 750px;
+      margin-left: -20px;
+      overflow-x: auto;
+      height: 200px; }
+      div.AboutUsCriticalData div.CriticalDataCn ul {
+        width: 1200px;
+        height: 200px;
+        zoom: 1; }
+        div.AboutUsCriticalData div.CriticalDataCn ul:after {
+          display: block;
+          clear: both;
+          content: "";
+          visibility: hidden;
+          height: 0; }
+        div.AboutUsCriticalData div.CriticalDataCn ul > li div.name {
+          font-size: 24px; }
+
+  div.AboutUsTheSompanyBusiness {
+    display: none; }
+
+  div.AboutUs_CompanyAdminister {
+    padding: 20px 0px 20px 20px; }
+    div.AboutUs_CompanyAdminister div.AdministerCn {
+      margin-top: 0px;
+      overflow-x: auto;
+      height: 490px;
+      padding: 25px 0; }
+      div.AboutUs_CompanyAdminister div.AdministerCn ul > li div.title {
+        font-size: 24px; }
+
+  div.AboutUs_TheSocialResponsibility {
+    padding: 20px 20px 40px;
+    background-color: #fff; }
+    div.AboutUs_TheSocialResponsibility div.describe {
+      padding: 0 40px;
+      font-size: 22px;
+      line-height: 32px; }
+    div.AboutUs_TheSocialResponsibility ul.label {
+      padding: 20px 40px 0; }
+      div.AboutUs_TheSocialResponsibility ul.label > li {
+        margin-top: 30px;
+        width: 50%; }
+        div.AboutUs_TheSocialResponsibility ul.label > li div.title {
+          font-size: 22px;
+          color: #bad115;
+          margin-top: 15px; }
+
+  div.investors_news {
+    padding: 20px;
+    background-color: #fff; }
+    div.investors_news .publicMoreBtnCn {
+      width: 100%; }
+    div.investors_news ul.newslist {
+      width: 100%;
+      margin: 20px auto; }
+      div.investors_news ul.newslist > li {
+        margin-top: 30px;
+        padding: 0 20px;
+        width: 100%;
+        border-bottom: 1px solid #e1e1e1; }
+        div.investors_news ul.newslist > li > a div.imgC {
+          width: 100%;
+          height: 330px; }
+        div.investors_news ul.newslist > li > a div.word {
+          width: 100%;
+          height: auto;
+          padding-bottom: 50px;
+          padding-top: 20px; }
+          div.investors_news ul.newslist > li > a div.word div.title {
+            font-size: 30px; }
+          div.investors_news ul.newslist > li > a div.word div.describe {
+            font-size: 24px; }
+          div.investors_news ul.newslist > li > a div.word div.time {
+            font-size: 24px; }
+
+  div.investors_feature {
+    padding: 20px 0 80px; }
+
+  div.investors_StockInformation {
+    padding: 0px; }
+    div.investors_StockInformation .head {
+      padding: 0 20px; }
+    div.investors_StockInformation div.StockCon ul {
+      width: 100%; }
+    div.investors_StockInformation div.navlistCn {
+      width: 100%;
+      overflow-x: auto;
+      margin: -100px auto 0; }
+      div.investors_StockInformation div.navlistCn ul {
+        width: 1040px; }
+        div.investors_StockInformation div.navlistCn ul > li div.name {
+          font-size: 24px;
+          color: #234300;
+          margin-top: 30px; }
+
+  div.AboutUs_Financial {
+    padding: 20px 0 0; }
+    div.AboutUs_Financial .head {
+      padding: 0 20px; }
+    div.AboutUs_Financial div.FinancialCn {
+      margin-top: 20px;
+      height: 280px; }
+      div.AboutUs_Financial div.FinancialCn ul {
+        width: 100%;
+        padding-top: 60px; }
+        div.AboutUs_Financial div.FinancialCn ul > li div.title {
+          font-size: 26px; }
+        div.AboutUs_Financial div.FinancialCn ul > li div.describe {
+          font-size: 20px; }
+        div.AboutUs_Financial div.FinancialCn ul > li a.download {
+          width: 160px;
+          height: 56px;
+          border-radius: 28px;
+          font-size: 18px;
+          line-height: 56px; }
+
+  div.AboutUs_publications {
+    padding: 20px 20px 40px; }
+    div.AboutUs_publications ul.publicationsList {
+      margin-top: 0px;
+      width: 100%;
+      zoom: 1; }
+      div.AboutUs_publications ul.publicationsList:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      div.AboutUs_publications ul.publicationsList > li {
+        width: 50%;
+        float: left;
+        padding-top: 40px;
+        text-align: center; }
+        div.AboutUs_publications ul.publicationsList > li > a {
+          display: block; }
+        div.AboutUs_publications ul.publicationsList > li div.iconC i {
+          font-size: 110px;
+          color: #bad115; }
+        div.AboutUs_publications ul.publicationsList > li div.name {
+          color: #333;
+          margin-top: 20px;
+          font-size: 18px; }
+        div.AboutUs_publications ul.publicationsList > li div.size {
+          color: #666;
+          margin-top: 15px;
+          font-size: 14px; }
+
+  div.News_Announcement {
+    padding: 20px; }
+    div.News_Announcement ul.newslist {
+      margin: 30px auto 0;
+      width: 100%; }
+      div.News_Announcement ul.newslist > li {
+        border-bottom: 1px solid #e1e1e1;
+        padding: 20px 0; }
+        div.News_Announcement ul.newslist > li > a {
+          display: block;
+          zoom: 1; }
+          div.News_Announcement ul.newslist > li > a:after {
+            display: block;
+            clear: both;
+            content: "";
+            visibility: hidden;
+            height: 0; }
+          div.News_Announcement ul.newslist > li > a div.L {
+            float: left;
+            width: 540px; }
+            div.News_Announcement ul.newslist > li > a div.L div.title {
+              font-size: 20px;
+              color: #333; }
+            div.News_Announcement ul.newslist > li > a div.L div.source {
+              display: none; }
+          div.News_Announcement ul.newslist > li > a div.R {
+            float: right;
+            width: 130px;
+            font-size: 20px;
+            color: #818181; }
+    div.News_Announcement .publicMoreBtnCn {
+      margin: 40px auto 0;
+      width: 100%; }
+
+  div.News_video {
+    padding-top: 20px; }
+    div.News_video .head {
+      padding: 0 20px; }
+    div.News_video div.VideoBack {
+      margin-top: 20px; }
+      div.News_video div.VideoBack div.playCn p {
+        font-size: 24px; }
+
+  div.Research_GeneralSituation {
+    padding: 20px; }
+    div.Research_GeneralSituation div.describe {
+      margin-top: 20px;
+      text-align: left;
+      line-height: 34px;
+      font-size: 24px;
+      padding: 0 0px;
+      color: #666; }
+    div.Research_GeneralSituation div.listCn {
+      overflow-x: auto;
+      width: 750px;
+      margin-left: -20px; }
+
+  div.Research_photo {
+    padding: 20px;
+    background-color: #fff; }
+    div.Research_photo ul.photoList {
+      padding: 0 65px; }
+      div.Research_photo ul.photoList > li {
+        margin: 40px 15px 0;
+        width: 550px;
+        height: 584px; }
+        div.Research_photo ul.photoList > li div.word {
+          padding: 20px 40px; }
+        div.Research_photo ul.photoList > li div.imgC {
+          height: 420px; }
+          div.Research_photo ul.photoList > li div.imgC > img {
+            width: 100%; }
+        div.Research_photo ul.photoList > li div.name {
+          font-size: 26px; }
+        div.Research_photo ul.photoList > li div.describe {
+          font-size: 22px;
+          margin-top: 20px; }
+
+  div.Research_mechanism {
+    padding: 20px; }
+    div.Research_mechanism div.describe {
+      margin-top: 30px;
+      text-align: center;
+      font-size: 18px; }
+    div.Research_mechanism div.MapCon {
+      text-align: center; }
+      div.Research_mechanism div.MapCon img {
+        width: 100%; }
+
+  div.Product_Select {
+    padding: 20px; }
+    div.Product_Select a.porduct div.iconC {
+      width: 140px;
+      height: 140px;
+      line-height: 140px; }
+      div.Product_Select a.porduct div.iconC i {
+        font-size: 80px;
+        line-height: 140px; }
+    div.Product_Select a.porduct div.imgC img {
+      width: 400px;
+      height: 400px; }
+    div.Product_Select a.porduct div.name {
+      font-size: 30px;
+      margin-top: 40px; }
+    div.Product_Select a.porduct div.describe {
+      margin-top: 20px;
+      font-size: 24px; }
+    div.Product_Select div.PorductSwiper {
+      display: none; }
+    div.Product_Select div.PorductList {
+      display: block; }
+      div.Product_Select div.PorductList li {
+        margin-top: 50px; }
+      div.Product_Select div.PorductList div.publicMoreBtnCn {
+        margin-top: 40px; }
+
+  div.Product_product {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #fff; }
+    div.Product_product .head {
+      padding: 0 20px; }
+    div.Product_product div.RroductNav {
+      width: 100%;
+      height: 58px;
+      margin: 30px auto 0;
+      background-color: #ededed;
+      padding: 14px;
+      position: relative;
+      zoom: 1; }
+      div.Product_product div.RroductNav:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      div.Product_product div.RroductNav div.functionC {
+        float: right;
+        height: 100%;
+        line-height: 30px;
+        padding-left: 8px;
+        border-left: none;
+        font-size: 24px;
+        color: #666; }
+      div.Product_product div.RroductNav select {
+        font-size: 24px;
+        width: 120px;
+        height: 30px; }
+    div.Product_product ul.PorductList {
+      width: 100%;
+      margin: 20px auto;
+      padding: 0 20px; }
+      div.Product_product ul.PorductList > li {
+        width: 328px;
+        height: 338px;
+        border-radius: 20px;
+        border: 1px solid #e1e1e1;
+        background-color: #fff;
+        float: left;
+        margin-right: 45px;
+        margin-top: 30px; }
+        div.Product_product ul.PorductList > li > a {
+          display: block;
+          width: 100%;
+          padding: 16px; }
+          div.Product_product ul.PorductList > li > a div.imgC {
+            height: 220px;
+            border-radius: 20px;
+            overflow: hidden; }
+            div.Product_product ul.PorductList > li > a div.imgC > img {
+              width: 100%; }
+          div.Product_product ul.PorductList > li > a div.name {
+            text-align: center;
+            font-size: 18px;
+            color: #333;
+            margin-top: 30px; }
+      div.Product_product ul.PorductList > li:nth-child(3n) {
+        margin-right: 45px; }
+      div.Product_product ul.PorductList > li:nth-child(2n) {
+        margin-right: 0; }
+    div.Product_product div.btnCn span i {
+      font-size: 40px; }
+
+  div.Product_SellWell {
+    padding: 20px 0; }
+    div.Product_SellWell .head {
+      padding: 0 20px; }
+    div.Product_SellWell div.SellWellList {
+      margin-top: 40px;
+      width: 750px;
+      overflow-x: auto; }
+      div.Product_SellWell div.SellWellList ul {
+        width: 1720px; }
+      div.Product_SellWell div.SellWellList li {
+        width: 430px;
+        height: 750px;
+        text-align: center;
+        padding: 35px;
+        background-color: #fff;
+        float: left; }
+        div.Product_SellWell div.SellWellList li div.imgC {
+          width: 300px;
+          height: 300px; }
+        div.Product_SellWell div.SellWellList li div.name {
+          font-size: 34px; }
+        div.Product_SellWell div.SellWellList li div.describe {
+          height: 200px;
+          font-size: 24px;
+          line-height: 32px; }
+        div.Product_SellWell div.SellWellList li a.link {
+          width: 160px;
+          height: 56px;
+          border-radius: 28px;
+          font-size: 24px;
+          line-height: 56px; }
+
+  div.Artcle_Content {
+    padding: 50px 20px;
+    min-height: 1000px; }
+    div.Artcle_Content div.wordCN {
+      width: 100%;
+      margin: 0 auto; }
+      div.Artcle_Content div.wordCN div.title {
+        font-size: 32px;
+        text-align: left; }
+      div.Artcle_Content div.wordCN div.textCn {
+        margin-top: 50px;
+        font-size: 16px;
+        color: #777;
+        line-height: 26px;
+        zoom: 1; }
+        div.Artcle_Content div.wordCN div.textCn:after {
+          display: block;
+          clear: both;
+          content: "";
+          visibility: hidden;
+          height: 0; }
+        div.Artcle_Content div.wordCN div.textCn p {
+          float: left;
+          width: 100%; }
+        div.Artcle_Content div.wordCN div.textCn img {
+          margin-top: 30px;
+          max-width: 100%; } }
+
+/*# sourceMappingURL=max750.css.map */

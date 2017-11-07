@@ -24,11 +24,11 @@ class Auth extends Controller
             ]);
             return $this->fetch();
         } elseif (request()->isPost()) {
-            // 验证验证码
-            $verify = new \org\Verify([]);
-            if (!$verify->check(input('verify'), 1)) {
-                $this->error('验证码错误！', '', 'verify');
-            }
+//             // 验证验证码
+//             $verify = new \org\Verify([]);
+//             if (!$verify->check(input('verify'), 1)) {
+//                 $this->error('验证码错误！', '', 'verify');
+//             }
             // 读取该账户
             $where = array(
                 'email' => input('email'),

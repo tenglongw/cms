@@ -1,0 +1,2054 @@
+@import "http://at.alicdn.com/t/font_398386_enhjwyfsng0hpvi.css";
+.clearfloat:after {
+  display: block;
+  clear: both;
+  content: "";
+  visibility: hidden;
+  height: 0; }
+
+.clearfloat {
+  zoom: 1; }
+
+body {
+  padding-top: 79px; }
+
+#MaxCon {
+  width: 100%;
+  overflow-x: hidden;
+  padding-top: 79px; }
+
+.Content {
+  width: 1200px;
+  margin: 0 auto;
+  zoom: 1; }
+  .Content:after {
+    display: block;
+    clear: both;
+    content: "";
+    visibility: hidden;
+    height: 0; }
+
+section#goTop {
+  position: fixed;
+  bottom: 170px;
+  right: 30px;
+  width: 64px;
+  text-align: center;
+  z-index: 99;
+  display: none; }
+  section#goTop p {
+    font-size: 20px;
+    color: rgba(255, 255, 255, 0.8); }
+  section#goTop a.icon {
+    display: block;
+    width: 64px;
+    height: 64px;
+    border-radius: 50px;
+    background-color: #82b541;
+    line-height: 60px; }
+    section#goTop a.icon i {
+      font-size: 30px;
+      color: #fff; }
+
+div.moduleTitle {
+  width: 100%;
+  font-size: 30px;
+  color: #333;
+  text-align: center;
+  letter-spacing: 4px; }
+  div.moduleTitle span {
+    color: #fcc800; }
+
+div.Public_VideoCon {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  background-color: rgba(0, 0, 0, 0.5); }
+  div.Public_VideoCon div.videoCn {
+    width: 680px;
+    height: 500px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -340px;
+    margin-top: -250px; }
+    div.Public_VideoCon div.videoCn span.close {
+      width: 60px;
+      height: 60px;
+      display: block;
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      border-radius: 50%;
+      background-color: #fff;
+      line-height: 60px;
+      text-align: center;
+      color: #666;
+      cursor: pointer; }
+      div.Public_VideoCon div.videoCn span.close i {
+        font-size: 30px; }
+    div.Public_VideoCon div.videoCn span.play {
+      width: 78px;
+      height: 78px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -39px;
+      margin-top: -39px;
+      cursor: pointer;
+      line-height: 74px;
+      text-align: center; }
+      div.Public_VideoCon div.videoCn span.play i {
+        font-size: 30px;
+        color: #fff; }
+
+header.headerCn {
+  width: 100%;
+  height: 78px;
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 99; }
+  header.headerCn .Content {
+    width: 1200px;
+    margin: 0 auto;
+    height: 100%;
+    zoom: 1; }
+    header.headerCn .Content:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0; }
+    header.headerCn .Content div.Mnav {
+      display: none; }
+    header.headerCn .Content > a.logo {
+      float: left;
+      height: 100%;
+      display: block;
+      padding: 20px 0 20px 45px; }
+    header.headerCn .Content > div.Rn {
+      float: right;
+      height: 100%;
+      padding-right: 40px;
+      position: relative;
+      zoom: 1; }
+      header.headerCn .Content > div.Rn:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      header.headerCn .Content > div.Rn ul.nav {
+        height: 100%;
+        zoom: 1;
+        float: left;
+        padding-right: 60px; }
+        header.headerCn .Content > div.Rn ul.nav:after {
+          display: block;
+          clear: both;
+          content: "";
+          visibility: hidden;
+          height: 0; }
+        header.headerCn .Content > div.Rn ul.nav > li {
+          padding: 17px 0;
+          float: left;
+          margin: 0 20px; }
+          header.headerCn .Content > div.Rn ul.nav > li > a {
+            display: block;
+            padding: 0 8px;
+            border-bottom: 2px solid #fff;
+            font-size: 16px;
+            line-height: 40px;
+            color: #333;
+            position: relative; }
+            header.headerCn .Content > div.Rn ul.nav > li > a:after {
+              content: '\e62a';
+              position: absolute;
+              font-family: 'iconfont';
+              top: 0px;
+              right: -27px;
+              color: #bad115;
+              font-size: 12px; }
+          header.headerCn .Content > div.Rn ul.nav > li > a:hover,
+          header.headerCn .Content > div.Rn ul.nav > li > a.active {
+            border-bottom: 2px solid #bad115;
+            color: #bad115; }
+            header.headerCn .Content > div.Rn ul.nav > li > a:hover:after,
+            header.headerCn .Content > div.Rn ul.nav > li > a.active:after {
+              display: none; }
+        header.headerCn .Content > div.Rn ul.nav > li:nth-last-child(1) > a:after {
+          display: none; }
+      header.headerCn .Content > div.Rn div.functionCon {
+        width: 74px;
+        height: 78px;
+        background-color: #efefef;
+        float: right;
+        text-align: center;
+        zoom: 1; }
+        header.headerCn .Content > div.Rn div.functionCon:after {
+          display: block;
+          clear: both;
+          content: "";
+          visibility: hidden;
+          height: 0; }
+        header.headerCn .Content > div.Rn div.functionCon div.Togle {
+          float: left;
+          height: 100%;
+          width: 43px;
+          font-size: 14px;
+          color: #666;
+          padding: 10px 10px;
+          line-height: 30px;
+          cursor: pointer; }
+          header.headerCn .Content > div.Rn div.functionCon div.Togle span {
+            display: block;
+            width: 100%; }
+          header.headerCn .Content > div.Rn div.functionCon div.Togle span:hover {
+            color: #bad115; }
+          header.headerCn .Content > div.Rn div.functionCon div.Togle span.line {
+            border-top: 1px solid #999; }
+        header.headerCn .Content > div.Rn div.functionCon div.searchBtn {
+          float: left;
+          width: 31px;
+          height: 100%;
+          background: linear-gradient(to bottom, #b2cf0b, #d4d736);
+          cursor: pointer; }
+          header.headerCn .Content > div.Rn div.functionCon div.searchBtn span {
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-image: url(../images/index_06.png);
+            background-repeat: no-repeat;
+            background-position: center;
+            opacity: 0.5; }
+          header.headerCn .Content > div.Rn div.functionCon div.searchBtn span:hover {
+            opacity: 1; }
+      header.headerCn .Content > div.Rn div.pullDown {
+        position: absolute;
+        top: 100%;
+        right: 114px;
+        width: 655px;
+        display: none;
+        zoom: 1; }
+        header.headerCn .Content > div.Rn div.pullDown:after {
+          display: block;
+          clear: both;
+          content: "";
+          visibility: hidden;
+          height: 0; }
+        header.headerCn .Content > div.Rn div.pullDown ul.navOne {
+          float: left;
+          width: 300px;
+          padding: 40px 0;
+          background-color: rgba(0, 0, 0, 0.7); }
+          header.headerCn .Content > div.Rn div.pullDown ul.navOne > li {
+            height: 40px;
+            line-height: 40px; }
+            header.headerCn .Content > div.Rn div.pullDown ul.navOne > li a {
+              display: block;
+              width: 100%;
+              height: 100%;
+              line-height: 40px;
+              color: #fff;
+              padding: 0 35px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-line-clamp: 1;
+              -webkit-box-orient: vertical; }
+            header.headerCn .Content > div.Rn div.pullDown ul.navOne > li a.pull {
+              position: relative; }
+              header.headerCn .Content > div.Rn div.pullDown ul.navOne > li a.pull:after {
+                content: '\e62a';
+                position: absolute;
+                font-family: 'iconfont';
+                top: 0px;
+                right: 20px;
+                color: #fff; }
+          header.headerCn .Content > div.Rn div.pullDown ul.navOne > li.active {
+            background: linear-gradient(to left, #d4d736, #b2cf0b); }
+        header.headerCn .Content > div.Rn div.pullDown ul.navTwo {
+          float: left;
+          width: 355px;
+          padding: 40px 0;
+          background-color: rgba(0, 0, 0, 0.2); }
+          header.headerCn .Content > div.Rn div.pullDown ul.navTwo > li {
+            height: 40px;
+            line-height: 40px; }
+            header.headerCn .Content > div.Rn div.pullDown ul.navTwo > li a {
+              display: block;
+              width: 100%;
+              height: 100%;
+              line-height: 40px;
+              color: #fff;
+              padding: 0 35px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              display: -webkit-box;
+              -webkit-line-clamp: 1;
+              -webkit-box-orient: vertical; }
+            header.headerCn .Content > div.Rn div.pullDown ul.navTwo > li a.pull {
+              position: relative; }
+              header.headerCn .Content > div.Rn div.pullDown ul.navTwo > li a.pull:after {
+                content: '\e62a';
+                position: absolute;
+                font-family: 'iconfont';
+                top: 0px;
+                right: 20px;
+                color: #fff; }
+          header.headerCn .Content > div.Rn div.pullDown ul.navTwo > li.active {
+            background: linear-gradient(to left, #d4d736, #b2cf0b); }
+    header.headerCn .Content > div.MRn {
+      display: none; }
+  header.headerCn div.Mnav {
+    display: none; }
+  header.headerCn form.searchCon {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(204, 213, 44, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0; }
+    header.headerCn form.searchCon div.Con {
+      width: 1200px;
+      height: 100%;
+      margin: 0 auto;
+      zoom: 1; }
+      header.headerCn form.searchCon div.Con:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      header.headerCn form.searchCon div.Con div.form {
+        float: right;
+        padding: 19px; }
+        header.headerCn form.searchCon div.Con div.form span.close {
+          display: block;
+          float: right;
+          display: inline-block;
+          width: 40px;
+          height: 40px;
+          border: 1px solid #fff;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 40px;
+          cursor: pointer;
+          color: #fff; }
+          header.headerCn form.searchCon div.Con div.form span.close i {
+            font-size: 20px; }
+        header.headerCn form.searchCon div.Con div.form input {
+          display: block;
+          float: right;
+          width: 520px;
+          height: 40px;
+          border-radius: 20px;
+          border: none;
+          padding: 0 20px;
+          font-size: 16px; }
+        header.headerCn form.searchCon div.Con div.form button {
+          display: block;
+          float: right;
+          width: 90px;
+          height: 40px;
+          color: #fff;
+          font-size: 18px;
+          border-radius: 20px;
+          border: none;
+          margin-left: 30px;
+          margin-right: 40px;
+          cursor: pointer;
+          background-color: #93a600; }
+
+footer.footerCn {
+  background-color: #333431;
+  padding-top: 45px; }
+  footer.footerCn div.describe {
+    text-align: center;
+    line-height: 40px;
+    height: 40px;
+    background-color: #21221f;
+    color: #cbcbcb;
+    font-size: 12px;
+    margin-top: 40px; }
+  footer.footerCn ul.nav {
+    text-align: center; }
+    footer.footerCn ul.nav > li {
+      display: inline-block;
+      padding-left: 15px;
+      position: relative;
+      margin: 0 10px; }
+      footer.footerCn ul.nav > li:after {
+        position: absolute;
+        top: 50%;
+        margin-top: -2px;
+        left: 0;
+        width: 5px;
+        height: 5px;
+        content: '';
+        background-color: #bad115;
+        border-radius: 50%; }
+      footer.footerCn ul.nav > li a {
+        color: #fff; }
+  footer.footerCn div.title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #bad115;
+    text-align: center;
+    margin-top: 40px; }
+  footer.footerCn div.linkCn {
+    margin-top: 40px;
+    text-align: center; }
+    footer.footerCn div.linkCn > a {
+      display: inline-block;
+      width: 40px;
+      margin: 0 20px;
+      height: 40px;
+      border-radius: 50%;
+      border: 2px solid #bad115;
+      line-height: 36px;
+      text-align: center; }
+      footer.footerCn div.linkCn > a i {
+        font-size: 22px;
+        color: #fff; }
+  footer.footerCn div.swiperCn {
+    width: 1100px;
+    margin: 40px auto 0;
+    position: relative; }
+    footer.footerCn div.swiperCn .FooterSwiperNext,
+    footer.footerCn div.swiperCn .FooterSwiperPrev {
+      background-image: none;
+      line-height: 44px;
+      text-align: center; }
+      footer.footerCn div.swiperCn .FooterSwiperNext i,
+      footer.footerCn div.swiperCn .FooterSwiperPrev i {
+        font-size: 40px;
+        color: #fff; }
+    footer.footerCn div.swiperCn .swiper-container {
+      width: 850px;
+      margin: 0 auto; }
+      footer.footerCn div.swiperCn .swiper-container .swiper-slide {
+        width: 170px; }
+        footer.footerCn div.swiperCn .swiper-container .swiper-slide > a {
+          margin: 0 auto;
+          display: block;
+          width: 140px;
+          height: 140px; }
+          footer.footerCn div.swiperCn .swiper-container .swiper-slide > a > img {
+            width: 100%; }
+
+div.publicBanner {
+  height: 200px;
+  background-repeat: no-repeat;
+  background-position: center 0;
+  background-image: url(../images/publicBanner.jpg); }
+  div.publicBanner h2 {
+    line-height: 200px;
+    color: #fff;
+    font-size: 36px;
+    text-shadow: 1px 3px 5px rgba(0, 0, 0, 0.8);
+    text-align: center; }
+
+div.publicMoreBtnCn {
+  text-align: right; }
+  div.publicMoreBtnCn a.more {
+    display: inline-block;
+    width: 115px;
+    height: 36px;
+    background: linear-gradient(to left, #d4d736, #b2cf0b);
+    line-height: 36px;
+    font-size: 14px;
+    color: #234300;
+    text-align: center;
+    border-radius: 18px; }
+
+div.PublicMoreCenterCn {
+  padding-top: 40px; }
+  div.PublicMoreCenterCn > a {
+    display: block;
+    margin: 0 auto;
+    width: 160px;
+    height: 60px;
+    background: linear-gradient(to left, #d4d736, #b2cf0b);
+    line-height: 60px;
+    text-align: center;
+    color: #fff;
+    font-size: 24px; }
+
+div.HomeBannerCon {
+  width: 100%;
+  height: 860px;
+  overflow: hidden; }
+  div.HomeBannerCon div.swiper-container {
+    width: 100%;
+    height: 100%; }
+    div.HomeBannerCon div.swiper-container .swiper-wrapper {
+      height: 100%; }
+    div.HomeBannerCon div.swiper-container .swiper-pagination {
+      width: 100%;
+      bottom: 40px; }
+      div.HomeBannerCon div.swiper-container .swiper-pagination .swiper-pagination-bullet {
+        background-color: rgba(255, 255, 255, 0.5);
+        opacity: 1;
+        width: 10px;
+        height: 10px; }
+      div.HomeBannerCon div.swiper-container .swiper-pagination .swiper-pagination-bullet-active {
+        border-radius: 1px;
+        position: relative;
+        background-color: #dfe41e; }
+        div.HomeBannerCon div.swiper-container .swiper-pagination .swiper-pagination-bullet-active:after {
+          content: '';
+          position: absolute;
+          width: 6px;
+          height: 6px;
+          background-color: #dfe41e;
+          transform: rotate(45deg);
+          top: -2px;
+          left: 2px; }
+    div.HomeBannerCon div.swiper-container .swiper-slide {
+      width: 100%;
+      height: 100%;
+      overflow: hidden; }
+    div.HomeBannerCon div.swiper-container img {
+      height: 100%;
+      width: 1920px;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      margin-left: -960px; }
+  div.HomeBannerCon div.wordCn {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    left: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); }
+    div.HomeBannerCon div.wordCn div.word {
+      width: 1200px;
+      margin: 0 auto;
+      height: 100%;
+      position: relative;
+      color: #fff; }
+      div.HomeBannerCon div.wordCn div.word div.title {
+        position: absolute;
+        left: 0;
+        top: 150px;
+        font-size: 72px; }
+      div.HomeBannerCon div.wordCn div.word div.dist {
+        position: absolute;
+        left: 0;
+        top: 440px;
+        font-size: 30px; }
+      div.HomeBannerCon div.wordCn div.word a.link {
+        position: absolute;
+        top: 660px;
+        left: 0;
+        width: 200px;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        border-radius: 30px;
+        background: linear-gradient(to left, #d4d736, #b2cf0b);
+        font-size: 30px;
+        color: #234300; }
+
+div.HomeSpecialNews {
+  width: 100%;
+  background-color: #fff;
+  padding: 100px 0; }
+  div.HomeSpecialNews .Content {
+    padding: 0 45px; }
+  div.HomeSpecialNews .HomeSpecialNewsCn {
+    zoom: 1;
+    margin-top: 70px; }
+    div.HomeSpecialNews .HomeSpecialNewsCn:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0; }
+  div.HomeSpecialNews div.LCn {
+    width: 490px;
+    float: left; }
+    div.HomeSpecialNews div.LCn a.imgC {
+      display: block;
+      width: 100%;
+      height: 210px;
+      overflow: hidden;
+      position: relative; }
+      div.HomeSpecialNews div.LCn a.imgC > img {
+        width: 100%; }
+      div.HomeSpecialNews div.LCn a.imgC div.time {
+        width: 60px;
+        height: 60px;
+        background-color: #bad115;
+        color: #fff;
+        position: absolute;
+        top: 0;
+        left: 0;
+        text-align: center; }
+        div.HomeSpecialNews div.LCn a.imgC div.time div.day {
+          width: 100%;
+          line-height: 40px;
+          font-size: 24px; }
+        div.HomeSpecialNews div.LCn a.imgC div.time div.date {
+          font-size: 12px; }
+    div.HomeSpecialNews div.LCn div.tit {
+      font-size: 18px;
+      margin-top: 25px; }
+    div.HomeSpecialNews div.LCn p.describe {
+      margin-top: 20px;
+      font-size: 16px;
+      color: #777; }
+  div.HomeSpecialNews ul.RCn {
+    width: 540px;
+    float: right; }
+    div.HomeSpecialNews ul.RCn > li {
+      border-bottom: 1px solid #e1e1e1; }
+      div.HomeSpecialNews ul.RCn > li > a {
+        display: block;
+        height: 115px;
+        padding-top: 30px;
+        zoom: 1; }
+        div.HomeSpecialNews ul.RCn > li > a:after {
+          display: block;
+          clear: both;
+          content: "";
+          visibility: hidden;
+          height: 0; }
+        div.HomeSpecialNews ul.RCn > li > a div.time {
+          width: 60px;
+          color: #8a8a8a;
+          float: left; }
+          div.HomeSpecialNews ul.RCn > li > a div.time div.day {
+            width: 100%;
+            line-height: 50px;
+            font-size: 50px; }
+          div.HomeSpecialNews ul.RCn > li > a div.time div.date {
+            font-size: 14px; }
+        div.HomeSpecialNews ul.RCn > li > a div.word {
+          width: 450px;
+          float: right; }
+          div.HomeSpecialNews ul.RCn > li > a div.word h3 {
+            font-size: 18px;
+            color: #000; }
+          div.HomeSpecialNews ul.RCn > li > a div.word p {
+            color: #777;
+            font-size: 16px;
+            margin-top: 10px; }
+    div.HomeSpecialNews ul.RCn > li:nth-child(1) a {
+      height: 90px;
+      padding-top: 0; }
+
+div.HomeCorporateProfile {
+  width: 100%;
+  height: 550px;
+  background-image: url(../images/index_16.png);
+  background-position: center;
+  padding-top: 40px; }
+  div.HomeCorporateProfile div.moduleTitle {
+    color: #fff; }
+  div.HomeCorporateProfile p {
+    color: #fff;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 50px;
+    line-height: 30px; }
+
+div.HomeCompanyBusiness {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 60px;
+  margin-top: -300px; }
+  div.HomeCompanyBusiness div.moduleTitle {
+    color: #fff; }
+  div.HomeCompanyBusiness ul.HomeCompanyBusinessList {
+    width: 1040px;
+    margin: 20px auto 0;
+    zoom: 1; }
+    div.HomeCompanyBusiness ul.HomeCompanyBusinessList:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0; }
+    div.HomeCompanyBusiness ul.HomeCompanyBusinessList > li {
+      width: 25%;
+      height: 260px;
+      background: linear-gradient(to left, #d4d736, #b2cf0b);
+      float: left;
+      text-align: center;
+      padding: 40px 10px 10px;
+      transition: all 0.5s; }
+      div.HomeCompanyBusiness ul.HomeCompanyBusinessList > li div.iconC {
+        font-size: 60px; }
+        div.HomeCompanyBusiness ul.HomeCompanyBusinessList > li div.iconC i {
+          font-size: 60px;
+          color: #fff; }
+      div.HomeCompanyBusiness ul.HomeCompanyBusinessList > li div.tit {
+        font-size: 20px;
+        color: #1b3300;
+        margin-top: 20px; }
+      div.HomeCompanyBusiness ul.HomeCompanyBusinessList > li p.describe {
+        font-size: 12px;
+        margin-top: 20px; }
+    div.HomeCompanyBusiness ul.HomeCompanyBusinessList > li:hover {
+      background: linear-gradient(to left, #b2cf0b, #d4d736); }
+
+div.HomeCorporateSocialResponsibility {
+  background-image: url(../images/index_03_03.png);
+  background-size: 100% 100%;
+  height: 560px;
+  padding-top: 25px; }
+  div.HomeCorporateSocialResponsibility div.swiperCn {
+    width: 100%;
+    height: 380px;
+    margin-top: 50px; }
+    div.HomeCorporateSocialResponsibility div.swiperCn div.swiper-container {
+      width: 100%; }
+      div.HomeCorporateSocialResponsibility div.swiperCn div.swiper-container .swiper-slide {
+        width: 300px; }
+    div.HomeCorporateSocialResponsibility div.swiperCn div.slideCon {
+      margin: 0 auto;
+      width: 284px;
+      height: 380px;
+      border-radius: 20px;
+      overflow: hidden;
+      background-color: #fff;
+      text-align: center; }
+      div.HomeCorporateSocialResponsibility div.swiperCn div.slideCon div.imgC {
+        width: 100%;
+        height: 186px;
+        overflow: hidden;
+        border-radius: 20px 20px 0 0; }
+        div.HomeCorporateSocialResponsibility div.swiperCn div.slideCon div.imgC > img {
+          width: 100%;
+          transition: all 0.5s;
+          transform: scale(1); }
+      div.HomeCorporateSocialResponsibility div.swiperCn div.slideCon div.tit {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-top: 20px;
+        padding: 0 15px; }
+      div.HomeCorporateSocialResponsibility div.swiperCn div.slideCon div.describe {
+        font-size: 16px;
+        padding: 0 15px;
+        color: #666;
+        margin-top: 20px; }
+    div.HomeCorporateSocialResponsibility div.swiperCn div.slideCon:hover div.imgC > img {
+      transform: scale(1.1); }
+
+div.HomeRecruitment {
+  width: 100%;
+  padding-top: 60px;
+  padding-bottom: 90px; }
+  div.HomeRecruitment div.HomeRecruitmentCon {
+    width: 1036px;
+    margin: 40px auto 0; }
+  div.HomeRecruitment ul.HomeRecruitmentList {
+    width: 1036px;
+    zoom: 1; }
+    div.HomeRecruitment ul.HomeRecruitmentList:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0; }
+    div.HomeRecruitment ul.HomeRecruitmentList > li {
+      width: 182px;
+      float: left;
+      margin: 0 38px; }
+      div.HomeRecruitment ul.HomeRecruitmentList > li > a {
+        display: block;
+        width: 100%;
+        text-align: center; }
+        div.HomeRecruitment ul.HomeRecruitmentList > li > a .iconC {
+          width: 100%; }
+          div.HomeRecruitment ul.HomeRecruitmentList > li > a .iconC i {
+            font-size: 110px;
+            color: #bad115; }
+        div.HomeRecruitment ul.HomeRecruitmentList > li > a .name {
+          font-size: 22px;
+          margin-top: 10px;
+          color: #333; }
+        div.HomeRecruitment ul.HomeRecruitmentList > li > a .dist {
+          margin-top: 10px;
+          zoom: 1;
+          font-size: 14px;
+          color: #696969; }
+          div.HomeRecruitment ul.HomeRecruitmentList > li > a .dist:after {
+            display: block;
+            clear: both;
+            content: "";
+            visibility: hidden;
+            height: 0; }
+          div.HomeRecruitment ul.HomeRecruitmentList > li > a .dist div.address {
+            float: left; }
+          div.HomeRecruitment ul.HomeRecruitmentList > li > a .dist div.time {
+            float: right; }
+        div.HomeRecruitment ul.HomeRecruitmentList > li > a .describe {
+          margin-top: 10px;
+          font-size: 12px;
+          color: #999; }
+        div.HomeRecruitment ul.HomeRecruitmentList > li > a .money {
+          margin-top: 20px;
+          color: #bad115;
+          font-size: 24px;
+          color: #c5d323; }
+
+div.HomeSubsidiariesAndContactUs {
+  padding-top: 60px;
+  height: 950px;
+  background-repeat: no-repeat;
+  background-size: 1920px 780px;
+  background-position: center 0;
+  background-image: url(../images/index_03_06.png); }
+  div.HomeSubsidiariesAndContactUs ul.nav {
+    text-align: center; }
+    div.HomeSubsidiariesAndContactUs ul.nav > li {
+      display: inline-block;
+      width: 160px;
+      height: 60px;
+      border: 2px solid #fff;
+      color: #fff;
+      margin: 0 20px;
+      line-height: 56px;
+      font-size: 18px;
+      cursor: pointer; }
+    div.HomeSubsidiariesAndContactUs ul.nav > li.active {
+      background-color: #000;
+      color: #fff;
+      border: 2px solid #000; }
+  div.HomeSubsidiariesAndContactUs div.Subsidiaries {
+    height: 450px;
+    position: relative;
+    margin-top: 40px;
+    position: relative; }
+    div.HomeSubsidiariesAndContactUs div.Subsidiaries .SubsidiariesNext,
+    div.HomeSubsidiariesAndContactUs div.Subsidiaries .SubsidiariesPrev {
+      background-image: none;
+      line-height: 44px;
+      text-align: center; }
+      div.HomeSubsidiariesAndContactUs div.Subsidiaries .SubsidiariesNext i,
+      div.HomeSubsidiariesAndContactUs div.Subsidiaries .SubsidiariesPrev i {
+        font-size: 30px;
+        color: #bad115; }
+    div.HomeSubsidiariesAndContactUs div.Subsidiaries .Cn {
+      width: 930px;
+      margin: 0 auto;
+      overflow: hidden;
+      height: 100%;
+      padding-top: 30px; }
+    div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-container {
+      width: 310px;
+      height: 400px;
+      margin: 0 auto 0;
+      overflow: initial; }
+    div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide {
+      width: 310px;
+      height: 400px;
+      background-color: #fff;
+      border-radius: 20px;
+      text-align: center;
+      transition: all 0.5s;
+      z-index: 1; }
+      div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn {
+        width: 100%;
+        height: 100%;
+        padding: 60px 40px 0;
+        position: relative;
+        transform: scale(1); }
+        div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn div.label {
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          width: 80px;
+          height: 80px;
+          font-size: 10px;
+          background-image: url(../images/index_09_10_03.png);
+          background-repeat: no-repeat;
+          background-position: center center;
+          text-align: center;
+          color: #fff;
+          line-height: 80px; }
+        div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn div.title {
+          font-size: 18px; }
+        div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn div.address {
+          font-size: 12px;
+          margin-top: 20px;
+          color: #999; }
+          div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn div.address i {
+            margin-right: 10px; }
+        div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn p.describe {
+          margin-top: 20px;
+          font-size: 14px;
+          line-height: 22px;
+          color: #999; }
+        div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn div.bottomCn {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 100%;
+          padding-bottom: 10px; }
+          div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn div.bottomCn a.link {
+            display: block;
+            width: 100px;
+            height: 30px;
+            border-radius: 15px;
+            font-size: 14px;
+            color: #fff;
+            background: #000;
+            margin: 0 auto 0;
+            line-height: 30px; }
+          div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide div.SubsidiariesCn div.bottomCn img {
+            margin-top: 30px;
+            height: 30px; }
+    div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide-active {
+      z-index: 2;
+      transform: scale(1.1);
+      box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.5); }
+      div.HomeSubsidiariesAndContactUs div.Subsidiaries div.swiper-slide-active div.SubsidiariesCn div.bottomCn a.link {
+        background: linear-gradient(to left, #d4d736, #b2cf0b); }
+  div.HomeSubsidiariesAndContactUs div.ContactUs {
+    margin-top: 150px;
+    padding: 0 200px;
+    height: 300px;
+    zoom: 1; }
+    div.HomeSubsidiariesAndContactUs div.ContactUs:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0; }
+    div.HomeSubsidiariesAndContactUs div.ContactUs div.Ln {
+      width: 50%;
+      color: #fff;
+      float: left;
+      padding-left: 20px; }
+      div.HomeSubsidiariesAndContactUs div.ContactUs div.Ln div.title {
+        font-size: 18px;
+        margin-bottom: 30px; }
+      div.HomeSubsidiariesAndContactUs div.ContactUs div.Ln p {
+        font-size: 16px;
+        line-height: 24px; }
+  div.HomeSubsidiariesAndContactUs div.HomeKeyFigures {
+    padding-top: 30px; }
+    div.HomeSubsidiariesAndContactUs div.HomeKeyFigures .Title {
+      color: #fff;
+      text-align: center;
+      font-size: 30px;
+      font-weight: bold; }
+    div.HomeSubsidiariesAndContactUs div.HomeKeyFigures div.HomeKeyFiguresList {
+      width: 1200px;
+      height: 200px;
+      margin-top: 20px; }
+      div.HomeSubsidiariesAndContactUs div.HomeKeyFigures div.HomeKeyFiguresList > ul {
+        width: 100%;
+        height: 100%;
+        display: flex; }
+        div.HomeSubsidiariesAndContactUs div.HomeKeyFigures div.HomeKeyFiguresList > ul > li {
+          width: 20%;
+          height: 100%;
+          background: linear-gradient(to left, #d4d736, #b2cf0b);
+          float: left;
+          padding-top: 40px;
+          text-align: center; }
+          div.HomeSubsidiariesAndContactUs div.HomeKeyFigures div.HomeKeyFiguresList > ul > li div.index {
+            font-size: 46px;
+            color: #fff; }
+          div.HomeSubsidiariesAndContactUs div.HomeKeyFigures div.HomeKeyFiguresList > ul > li p {
+            font-size: 16px;
+            color: #234300;
+            margin-top: 20px; }
+
+div.HomePhotos {
+  padding-top: 60px;
+  padding-bottom: 60px; }
+  div.HomePhotos ul.nav {
+    width: 100%;
+    text-align: center;
+    margin-top: 40px; }
+    div.HomePhotos ul.nav > li {
+      display: inline-block;
+      height: 30px;
+      width: 130px;
+      text-align: center;
+      line-height: 30px;
+      margin: 10px;
+      border-radius: 15px;
+      background-color: #eeeeee;
+      font-size: 16px;
+      color: #234300;
+      cursor: pointer; }
+    div.HomePhotos ul.nav > li.active {
+      background-color: #000;
+      color: #fff; }
+  div.HomePhotos div.photolist {
+    margin-top: 50px;
+    width: 100%; }
+    div.HomePhotos div.photolist ul {
+      width: 100%;
+      zoom: 1; }
+      div.HomePhotos div.photolist ul:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      div.HomePhotos div.photolist ul > li {
+        width: 390px;
+        height: 315px;
+        border-radius: 20px;
+        overflow: hidden;
+        position: relative;
+        float: left;
+        margin-left: 14px; }
+        div.HomePhotos div.photolist ul > li img {
+          width: 100%;
+          transition: all 0.5s; }
+        div.HomePhotos div.photolist ul > li div.word {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 2;
+          background-color: rgba(0, 0, 0, 0.2);
+          width: 100%;
+          height: 100%;
+          padding: 50px 30px;
+          transition: all 0.5s; }
+          div.HomePhotos div.photolist ul > li div.word div.text {
+            position: absolute;
+            bottom: 90px;
+            left: 0;
+            padding: 0 30px;
+            height: 40px;
+            color: #fff;
+            overflow: hidden;
+            transition: all 0.5s; }
+            div.HomePhotos div.photolist ul > li div.word div.text div.title {
+              font-size: 20px;
+              line-height: 40px; }
+            div.HomePhotos div.photolist ul > li div.word div.text p {
+              font-size: 12px;
+              line-height: 20px;
+              margin-top: 60px; }
+          div.HomePhotos div.photolist ul > li div.word div.link {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 0 30px 15px; }
+            div.HomePhotos div.photolist ul > li div.word div.link a {
+              display: block;
+              width: 120px;
+              height: 36px;
+              border-radius: 18px;
+              font-size: 14px;
+              background: linear-gradient(to left, #d4d736, #b2cf0b);
+              text-align: center;
+              line-height: 36px; }
+      div.HomePhotos div.photolist ul > li:hover img {
+        transform: scale(1.1); }
+      div.HomePhotos div.photolist ul > li:hover div.word {
+        background-color: rgba(0, 0, 0, 0.5); }
+        div.HomePhotos div.photolist ul > li:hover div.word div.text {
+          height: 170px; }
+      div.HomePhotos div.photolist ul > li:nth-child(1) {
+        margin-left: 0; }
+  div.HomePhotos div.btnCn {
+    text-align: center;
+    color: #bad115;
+    text-align: center;
+    margin-top: 50px; }
+    div.HomePhotos div.btnCn span {
+      font-size: 30px;
+      margin: 0 10px;
+      cursor: pointer; }
+      div.HomePhotos div.btnCn span i {
+        font-size: 40px; }
+
+div.HomeVideoAndKay {
+  height: 505px;
+  background-image: url(../images/bottomBack.png);
+  background-repeat: no-repeat;
+  background-position: center 0;
+  padding-top: 50px; }
+  div.HomeVideoAndKay .Content {
+    zoom: 1; }
+    div.HomeVideoAndKay .Content:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0; }
+  div.HomeVideoAndKay .Video,
+  div.HomeVideoAndKay .Kay {
+    width: 50%;
+    float: left; }
+  div.HomeVideoAndKay .Video .imgC {
+    margin: 0 auto;
+    width: 590px;
+    height: 408px;
+    background-image: url(../images/index_22_1.png);
+    background-repeat: no-repeat;
+    position: relative; }
+    div.HomeVideoAndKay .Video .imgC div.play {
+      width: 80px;
+      height: 80px;
+      cursor: pointer;
+      position: absolute;
+      top: 130px;
+      left: 205px;
+      z-index: 9; }
+  div.HomeVideoAndKay .Kay .kayIndex {
+    margin: 20px auto 0;
+    background-image: url(../images/index_07_10.png);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    width: 440px;
+    height: 380px;
+    color: #bad115;
+    padding-top: 40px;
+    text-align: center; }
+    div.HomeVideoAndKay .Kay .kayIndex .p1 {
+      font-size: 36px;
+      font-weight: bold; }
+    div.HomeVideoAndKay .Kay .kayIndex .p2 {
+      font-size: 24px;
+      margin-top: 24px; }
+    div.HomeVideoAndKay .Kay .kayIndex .p3 {
+      margin-top: 30px;
+      font-size: 24px; }
+
+div.AboutUsCompanyProfile {
+  padding-top: 70px;
+  padding-bottom: 50px; }
+  div.AboutUsCompanyProfile div.CompanyProfileCn {
+    zoom: 1; }
+    div.AboutUsCompanyProfile div.CompanyProfileCn:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0; }
+    div.AboutUsCompanyProfile div.CompanyProfileCn div.imgC {
+      float: left; }
+    div.AboutUsCompanyProfile div.CompanyProfileCn div.word {
+      float: right;
+      width: 750px;
+      padding-right: 130px;
+      padding-top: 50px; }
+      div.AboutUsCompanyProfile div.CompanyProfileCn div.word > p {
+        font-size: 14px;
+        color: #5e5e5e;
+        line-height: 24px; }
+      div.AboutUsCompanyProfile div.CompanyProfileCn div.word div.link {
+        margin-top: 10px;
+        font-size: 14px; }
+        div.AboutUsCompanyProfile div.CompanyProfileCn div.word div.link a {
+          display: block;
+          color: #434343; }
+          div.AboutUsCompanyProfile div.CompanyProfileCn div.word div.link a i {
+            color: #bad115;
+            margin-right: 20px; }
+      div.AboutUsCompanyProfile div.CompanyProfileCn div.word div.btnC {
+        margin-top: 20px; }
+        div.AboutUsCompanyProfile div.CompanyProfileCn div.word div.btnC a {
+          width: 120px;
+          height: 36px;
+          line-height: 36px;
+          text-align: center;
+          border-radius: 18px;
+          background: linear-gradient(to left, #d4d736, #b2cf0b);
+          font-size: 14px;
+          color: #234300;
+          display: block; }
+
+div.AboutUsCompanyHistory {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  background-color: #f7f7f7; }
+  div.AboutUsCompanyHistory div.CompanyHistoryCn {
+    height: 760px;
+    width: 950px;
+    margin: 50px auto 0; }
+    div.AboutUsCompanyHistory div.CompanyHistoryCn .mCSB_scrollTools .mCSB_draggerRail {
+      width: 100%;
+      background-color: #f0f0f0; }
+    div.AboutUsCompanyHistory div.CompanyHistoryCn .mCS-rounded.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+    div.AboutUsCompanyHistory div.CompanyHistoryCn .mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+    div.AboutUsCompanyHistory div.CompanyHistoryCn .mCS-rounded-dots.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+    div.AboutUsCompanyHistory div.CompanyHistoryCn .mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
+      width: 100%;
+      background-color: #cdcdcd;
+      margin: 0; }
+    div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list {
+      margin: 0 auto;
+      position: relative;
+      width: 680px;
+      zoom: 1; }
+      div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list:before {
+        position: absolute;
+        content: '';
+        width: 3px;
+        height: 100%;
+        left: 50%;
+        top: 0px;
+        background-color: #f0f0f0; }
+      div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li {
+        width: 340px;
+        height: 225px;
+        padding-right: 20px;
+        float: left; }
+        div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.date {
+          position: relative;
+          height: 40px;
+          width: 100%; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.date:after {
+            width: 140px;
+            height: 3px;
+            background-color: #f0f0f0;
+            position: absolute;
+            top: 20px;
+            left: 156px;
+            content: ''; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.date span.time {
+            display: inline-block;
+            width: 80px;
+            font-size: 24px;
+            color: #000;
+            line-height: 40px; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.date div.dian {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(to left, #d4d736, #b2cf0b);
+            position: absolute;
+            left: 80px;
+            top: 0;
+            border-radius: 50%; }
+            div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.date div.dian > span {
+              width: 14px;
+              height: 14px;
+              display: block;
+              background-color: #fff;
+              border-radius: 50%;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              margin-left: -7px;
+              margin-top: -7px; }
+        div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.photo {
+          width: 100%;
+          text-align: right;
+          padding-top: 17px; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.photo div.imgC {
+            display: inline-block;
+            width: 240px;
+            height: 160px;
+            border: 1px solid #bad115;
+            text-align: center;
+            padding: 20px;
+            color: #f7ba5b;
+            position: relative;
+            transition: all 0.5s;
+            cursor: pointer;
+            background-color: #fff; }
+            div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.photo div.imgC:after {
+              content: '';
+              width: 20px;
+              height: 15px;
+              border-top: 1px solid #bad115;
+              border-left: 1px solid #bad115;
+              position: absolute;
+              top: -10px;
+              left: 20px;
+              background-color: inherit;
+              transform: rotate(45deg) skewX(20deg); }
+            div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.photo div.imgC:hover {
+              background-color: #d3f599; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.photo div.word {
+            margin-top: 20px; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li div.photo img {
+            margin-top: 30px; }
+      div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2) {
+        margin-top: 100px; }
+      div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2n) {
+        padding-left: 20px;
+        float: right;
+        padding-right: 0px; }
+        div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2n) div.date {
+          text-align: right; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2n) div.date:after {
+            left: 15px; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2n) div.date div.dian {
+            left: 192px; }
+        div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2n) div.photo {
+          text-align: left; }
+          div.AboutUsCompanyHistory div.CompanyHistoryCn ul.list > li:nth-child(2n) div.photo div.imgC:after {
+            border-top: 1px solid #bad115;
+            border-left: none;
+            border-right: 1px solid #bad115;
+            position: absolute;
+            top: -10px;
+            left: 188px;
+            transform: rotate(-45deg) skewX(-20deg); }
+
+div.AboutUsCriticalData {
+  padding: 60px 0 40px; }
+  div.AboutUsCriticalData div.CriticalDataCn {
+    margin-top: 20px;
+    width: 100%;
+    height: 200px; }
+    div.AboutUsCriticalData div.CriticalDataCn ul {
+      width: 1200px;
+      height: 200px;
+      zoom: 1; }
+      div.AboutUsCriticalData div.CriticalDataCn ul:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      div.AboutUsCriticalData div.CriticalDataCn ul > li {
+        width: 300px;
+        height: 200px;
+        background: linear-gradient(to left, #d4d736, #b2cf0b);
+        text-align: center;
+        padding-top: 50px;
+        float: left; }
+        div.AboutUsCriticalData div.CriticalDataCn ul > li div.number {
+          color: #fff;
+          font-size: 46px; }
+        div.AboutUsCriticalData div.CriticalDataCn ul > li div.name {
+          font-size: 16px;
+          color: #234300;
+          margin-top: 20px; }
+
+div.AboutUsTheSompanyBusiness {
+  padding-top: 50px;
+  padding-bottom: 40px;
+  background-color: #f7f7f7; }
+  div.AboutUsTheSompanyBusiness div.BusinessCon {
+    margin-top: 30px;
+    height: 590px;
+    position: relative; }
+    div.AboutUsTheSompanyBusiness div.BusinessCon div.Map {
+      height: 452px; }
+    div.AboutUsTheSompanyBusiness div.BusinessCon ul.nav {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 138px;
+      background-color: #000;
+      zoom: 1; }
+      div.AboutUsTheSompanyBusiness div.BusinessCon ul.nav:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      div.AboutUsTheSompanyBusiness div.BusinessCon ul.nav > li {
+        width: 240px;
+        height: 100%;
+        background: linear-gradient(to left, #d4d736, #b2cf0b);
+        float: left;
+        text-align: center;
+        cursor: pointer;
+        opacity: 0.8; }
+        div.AboutUsTheSompanyBusiness div.BusinessCon ul.nav > li div.iconC {
+          padding-top: 20px; }
+          div.AboutUsTheSompanyBusiness div.BusinessCon ul.nav > li div.iconC i {
+            font-size: 60px;
+            color: #fff; }
+        div.AboutUsTheSompanyBusiness div.BusinessCon ul.nav > li div.name {
+          line-height: 30px;
+          font-size: 16px;
+          color: #234300; }
+      div.AboutUsTheSompanyBusiness div.BusinessCon ul.nav > li:hover,
+      div.AboutUsTheSompanyBusiness div.BusinessCon ul.nav > li.active {
+        opacity: 1; }
+
+div.AboutUs_CompanyAdminister {
+  padding-top: 50px;
+  padding-bottom: 50px; }
+  div.AboutUs_CompanyAdminister div.AdministerCn {
+    width: 100%;
+    margin-top: 50px;
+    height: 450px; }
+    div.AboutUs_CompanyAdminister div.AdministerCn ul {
+      width: 1200px;
+      height: 100%; }
+      div.AboutUs_CompanyAdminister div.AdministerCn ul > li {
+        width: 350px;
+        height: 100%;
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.5);
+        text-align: center;
+        float: left;
+        margin: 0 25px; }
+        div.AboutUs_CompanyAdminister div.AdministerCn ul > li div.imgC {
+          width: 100%;
+          height: 340px;
+          border-radius: 15px;
+          overflow: hidden; }
+          div.AboutUs_CompanyAdminister div.AdministerCn ul > li div.imgC img {
+            width: 100%;
+            transition: all 0.5s; }
+        div.AboutUs_CompanyAdminister div.AdministerCn ul > li div.title {
+          font-size: 18px;
+          color: #333;
+          line-height: 60px; }
+      div.AboutUs_CompanyAdminister div.AdministerCn ul > li:hover div.imgC img {
+        transform: scale(1.1); }
+      div.AboutUs_CompanyAdminister div.AdministerCn ul > li:hover div.title {
+        color: #bad115; }
+
+div.AboutUs_TheSocialResponsibility {
+  padding: 50px 0;
+  background-color: #f7f7f7; }
+  div.AboutUs_TheSocialResponsibility div.describe {
+    padding: 0 285px;
+    font-size: 14px;
+    color: #5e5e5e;
+    margin-top: 30px;
+    line-height: 26px; }
+  div.AboutUs_TheSocialResponsibility ul.label {
+    padding: 20px 285px 0;
+    zoom: 1; }
+    div.AboutUs_TheSocialResponsibility ul.label:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0; }
+    div.AboutUs_TheSocialResponsibility ul.label > li {
+      width: 25%;
+      text-align: center;
+      float: left;
+      cursor: pointer;
+      transition: all 0.3s; }
+      div.AboutUs_TheSocialResponsibility ul.label > li div.iconC {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        color: #bad115;
+        line-height: 80px;
+        margin: 0 auto; }
+        div.AboutUs_TheSocialResponsibility ul.label > li div.iconC i {
+          font-size: 50px; }
+      div.AboutUs_TheSocialResponsibility ul.label > li div.title {
+        font-size: 16px;
+        color: #234300;
+        margin-top: 5px; }
+    div.AboutUs_TheSocialResponsibility ul.label > li:hover div.iconC {
+      color: #fff;
+      background: linear-gradient(to left, #d4d736, #b2cf0b); }
+
+div.investors_news {
+  padding-top: 50px;
+  padding-bottom: 40px;
+  background-color: #f7f7f7; }
+  div.investors_news .publicMoreBtnCn {
+    width: 770px;
+    margin: 0 auto; }
+  div.investors_news ul.newslist {
+    width: 770px;
+    margin: 50px auto; }
+    div.investors_news ul.newslist > li {
+      width: 100%;
+      margin-top: 20px; }
+      div.investors_news ul.newslist > li > a {
+        display: block;
+        width: 100%;
+        zoom: 1; }
+        div.investors_news ul.newslist > li > a:after {
+          display: block;
+          clear: both;
+          content: "";
+          visibility: hidden;
+          height: 0; }
+        div.investors_news ul.newslist > li > a div.imgC {
+          float: left;
+          width: 330px;
+          height: 160px;
+          overflow: hidden; }
+          div.investors_news ul.newslist > li > a div.imgC > img {
+            width: 100%; }
+        div.investors_news ul.newslist > li > a div.word {
+          float: right;
+          width: 400px;
+          height: 160px;
+          padding-top: 20px;
+          position: relative; }
+          div.investors_news ul.newslist > li > a div.word div.title {
+            font-size: 18px;
+            color: #000;
+            font-weight: bold; }
+          div.investors_news ul.newslist > li > a div.word div.describe {
+            font-size: 14px;
+            color: #999;
+            margin-top: 10px; }
+          div.investors_news ul.newslist > li > a div.word div.time {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            font-size: 14px;
+            font-weight: bold; }
+
+div.investors_feature {
+  padding: 40px 0 80px; }
+  div.investors_feature div.TuXingC {
+    width: 300px;
+    height: 290px;
+    margin: 100px auto 0;
+    position: relative; }
+    div.investors_feature div.TuXingC a.yuan {
+      display: block;
+      width: 110px;
+      height: 110px;
+      border: 1px solid #7e7f81;
+      text-align: center;
+      line-height: 108px;
+      color: #fff;
+      font-size: 60px;
+      position: absolute;
+      margin-left: -55px;
+      margin-top: -55px;
+      border-radius: 50%; }
+      div.investors_feature div.TuXingC a.yuan span.text {
+        font-size: 26px;
+        color: #59b194;
+        position: absolute;
+        top: 30px;
+        line-height: 34px;
+        display: block;
+        width: 160px; }
+    div.investors_feature div.TuXingC a.l span.text {
+      right: 130px;
+      text-align: right; }
+    div.investors_feature div.TuXingC a.r span.text {
+      left: 130px;
+      text-align: left; }
+    div.investors_feature div.TuXingC a.yuan:nth-child(2) {
+      top: 0px;
+      left: 50%;
+      background-color: rgba(140, 200, 104, 0.8); }
+    div.investors_feature div.TuXingC a.yuan:nth-child(3) {
+      top: 110px;
+      left: 300px;
+      background-color: rgba(93, 141, 200, 0.8); }
+    div.investors_feature div.TuXingC a.yuan:nth-child(4) {
+      top: 290px;
+      left: 245px;
+      background-color: rgba(231, 173, 47, 0.8); }
+    div.investors_feature div.TuXingC a.yuan:nth-child(5) {
+      top: 290px;
+      left: 60px;
+      background-color: rgba(44, 181, 241, 0.8); }
+    div.investors_feature div.TuXingC a.yuan:nth-child(6) {
+      top: 110px;
+      left: 0;
+      background-color: rgba(220, 52, 147, 0.8); }
+
+div.investors_StockInformation {
+  padding: 50px 0; }
+  div.investors_StockInformation div.StockCon {
+    margin-top: 20px;
+    padding-top: 50px;
+    height: 360px;
+    background-image: url(../images/investors_13.png);
+    background-position: center 0;
+    background-repeat: no-repeat; }
+    div.investors_StockInformation div.StockCon ul {
+      width: 780px;
+      margin: 0 auto;
+      zoom: 1;
+      color: #fff;
+      text-align: center; }
+      div.investors_StockInformation div.StockCon ul:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      div.investors_StockInformation div.StockCon ul > li {
+        margin-top: 20px;
+        line-height: 50px;
+        width: 50%;
+        float: left; }
+      div.investors_StockInformation div.StockCon ul .p1 {
+        font-size: 30px; }
+      div.investors_StockInformation div.StockCon ul .p2 {
+        font-size: 30px;
+        font-weight: bold; }
+      div.investors_StockInformation div.StockCon ul .p3 {
+        font-size: 24px; }
+  div.investors_StockInformation div.navlistCn {
+    width: 1040px;
+    margin: -100px auto 0; }
+    div.investors_StockInformation div.navlistCn ul {
+      width: 1040px; }
+      div.investors_StockInformation div.navlistCn ul > li {
+        width: 260px;
+        height: 260px;
+        float: left;
+        background: linear-gradient(to left, #d4d736, #b2cf0b);
+        text-align: center;
+        padding-top: 50px; }
+        div.investors_StockInformation div.navlistCn ul > li div.iconC i {
+          font-size: 70px;
+          color: #fff; }
+        div.investors_StockInformation div.navlistCn ul > li div.name {
+          font-size: 16px;
+          color: #234300;
+          margin-top: 30px; }
+
+div.AboutUs_Financial {
+  padding: 50px 0 0; }
+  div.AboutUs_Financial div.FinancialCn {
+    margin-top: 50px;
+    height: 520px;
+    background-image: url(../images/investors_15.png);
+    background-position: center 0; }
+    div.AboutUs_Financial div.FinancialCn ul {
+      width: 850px;
+      margin: 0 auto;
+      padding-top: 200px;
+      zoom: 1; }
+      div.AboutUs_Financial div.FinancialCn ul:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      div.AboutUs_Financial div.FinancialCn ul > li {
+        width: 50%;
+        float: left;
+        color: #fff;
+        text-align: center; }
+        div.AboutUs_Financial div.FinancialCn ul > li div.title {
+          font-size: 24px; }
+        div.AboutUs_Financial div.FinancialCn ul > li div.describe {
+          margin-top: 30px;
+          font-size: 16px; }
+        div.AboutUs_Financial div.FinancialCn ul > li a.download {
+          margin-top: 30px;
+          width: 120px;
+          height: 36px;
+          border-radius: 18px;
+          background: linear-gradient(to left, #d4d736, #b2cf0b);
+          text-align: center;
+          color: #234300;
+          font-size: 14px;
+          line-height: 36px;
+          display: inline-block; }
+
+div.AboutUs_publications {
+  padding: 50px 0; }
+  div.AboutUs_publications ul.publicationsList {
+    margin-top: 30px;
+    width: 100%;
+    zoom: 1; }
+    div.AboutUs_publications ul.publicationsList:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0; }
+    div.AboutUs_publications ul.publicationsList > li {
+      width: 25%;
+      float: left;
+      padding-top: 40px;
+      text-align: center; }
+      div.AboutUs_publications ul.publicationsList > li > a {
+        display: block; }
+      div.AboutUs_publications ul.publicationsList > li div.iconC i {
+        font-size: 110px;
+        color: #bad115; }
+      div.AboutUs_publications ul.publicationsList > li div.name {
+        color: #333;
+        margin-top: 20px;
+        font-size: 18px; }
+      div.AboutUs_publications ul.publicationsList > li div.size {
+        color: #666;
+        margin-top: 15px;
+        font-size: 14px; }
+
+div.News_Announcement {
+  padding: 50px 0; }
+  div.News_Announcement ul.newslist {
+    margin: 30px auto 0;
+    width: 900px; }
+    div.News_Announcement ul.newslist > li {
+      border-bottom: 1px solid #e1e1e1;
+      padding: 20px 0; }
+      div.News_Announcement ul.newslist > li > a {
+        display: block;
+        zoom: 1; }
+        div.News_Announcement ul.newslist > li > a:after {
+          display: block;
+          clear: both;
+          content: "";
+          visibility: hidden;
+          height: 0; }
+        div.News_Announcement ul.newslist > li > a div.L {
+          float: left;
+          width: 750px; }
+          div.News_Announcement ul.newslist > li > a div.L div.title {
+            font-size: 20px;
+            color: #333; }
+          div.News_Announcement ul.newslist > li > a div.L div.source {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #999; }
+        div.News_Announcement ul.newslist > li > a div.R {
+          float: right;
+          width: 110px;
+          font-size: 20px;
+          color: #818181; }
+  div.News_Announcement .publicMoreBtnCn {
+    margin: 40px auto 0;
+    width: 900px; }
+
+div.News_video {
+  padding-top: 50px; }
+  div.News_video div.VideoBack {
+    margin-top: 50px;
+    height: 460px;
+    background-image: url(../images/newsroom.jpg);
+    background-repeat: no-repeat;
+    background-position: center 0;
+    position: relative; }
+    div.News_video div.VideoBack div.playCn {
+      width: 100px;
+      text-align: center;
+      position: absolute;
+      top: 150px;
+      left: 50%;
+      margin-left: -50px; }
+      div.News_video div.VideoBack div.playCn span.play {
+        display: block;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid #fff;
+        line-height: 94px;
+        cursor: pointer; }
+        div.News_video div.VideoBack div.playCn span.play i {
+          color: #fff;
+          font-size: 40px; }
+      div.News_video div.VideoBack div.playCn p {
+        font-size: 20px;
+        margin-top: 30px;
+        color: #fff; }
+
+div.Research_GeneralSituation {
+  padding: 50px 0; }
+  div.Research_GeneralSituation div.describe {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 14px;
+    padding: 0 145px;
+    color: #666; }
+  div.Research_GeneralSituation div.listCn {
+    width: 100%;
+    margin-top: 50px;
+    height: 200px; }
+    div.Research_GeneralSituation div.listCn ul {
+      width: 1200px;
+      zoom: 1; }
+      div.Research_GeneralSituation div.listCn ul:after {
+        display: block;
+        clear: both;
+        content: "";
+        visibility: hidden;
+        height: 0; }
+      div.Research_GeneralSituation div.listCn ul > li {
+        width: 200px;
+        height: 200px;
+        float: left;
+        background: linear-gradient(to left, #d4d736, #b2cf0b);
+        text-align: center;
+        padding-top: 25px;
+        color: #fff; }
+        div.Research_GeneralSituation div.listCn ul > li div.iconC i {
+          font-size: 50px;
+          color: #fff; }
+        div.Research_GeneralSituation div.listCn ul > li div.number {
+          margin-top: 30px;
+          font-size: 30px; }
+        div.Research_GeneralSituation div.listCn ul > li div.name {
+          color: #234300;
+          font-size: 14px;
+          margin-top: 10px; }
+
+div.Research_photo {
+  padding: 50px 0;
+  background-color: #f7f7f7; }
+  div.Research_photo ul.photoList {
+    width: 100%;
+    zoom: 1;
+    padding: 0 25px; }
+    div.Research_photo ul.photoList:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0; }
+    div.Research_photo ul.photoList > li {
+      margin: 40px 15px 0;
+      width: 353px;
+      height: 366px;
+      float: left;
+      border-radius: 20px;
+      border: 1px solid #e1e1e1;
+      cursor: pointer;
+      overflow: hidden;
+      background-color: #fff; }
+      div.Research_photo ul.photoList > li div.word {
+        padding: 10px 20px;
+        background-color: #fff; }
+      div.Research_photo ul.photoList > li div.imgC {
+        width: 100%;
+        height: 265px;
+        border-radius: 20px 20px 0 0;
+        overflow: hidden; }
+        div.Research_photo ul.photoList > li div.imgC > img {
+          width: 100%;
+          transition: all 0.5s; }
+      div.Research_photo ul.photoList > li div.name {
+        font-size: 16px;
+        color: #333; }
+      div.Research_photo ul.photoList > li div.describe {
+        font-size: 14px;
+        margin-top: 10px;
+        color: #999; }
+    div.Research_photo ul.photoList > li:hover div.imgC > img {
+      transform: scale(1.1); }
+
+div.Research_mechanism {
+  padding: 50px 0; }
+  div.Research_mechanism div.describe {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 18px; }
+  div.Research_mechanism div.MapCon {
+    text-align: center; }
+
+div.Product_Select {
+  padding-top: 50px;
+  padding-bottom: 50px; }
+  div.Product_Select a.porduct {
+    width: 100%;
+    display: block;
+    text-align: center; }
+    div.Product_Select a.porduct div.iconC {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      margin: 0 auto;
+      line-height: 90px;
+      background: linear-gradient(to left, #d4d736, #b2cf0b); }
+      div.Product_Select a.porduct div.iconC i {
+        font-size: 50px;
+        line-height: 90px;
+        color: #fff; }
+    div.Product_Select a.porduct div.imgC {
+      margin-top: 30px; }
+      div.Product_Select a.porduct div.imgC img {
+        width: 200px;
+        height: 200px; }
+    div.Product_Select a.porduct div.name {
+      font-size: 24px;
+      color: #333;
+      margin-top: 20px; }
+    div.Product_Select a.porduct div.describe {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #696969; }
+  div.Product_Select .ProductSwiperNext,
+  div.Product_Select .ProductSwiperPrev {
+    background-image: none;
+    line-height: 44px;
+    text-align: center; }
+    div.Product_Select .ProductSwiperNext i,
+    div.Product_Select .ProductSwiperPrev i {
+      font-size: 40px;
+      color: #bad115; }
+  div.Product_Select div.PorductSwiper {
+    margin-top: 50px;
+    position: relative; }
+    div.Product_Select div.PorductSwiper div#PorductSwiperOne {
+      width: 100%; }
+      div.Product_Select div.PorductSwiper div#PorductSwiperOne .swiper-slide {
+        width: 400px;
+        padding: 0 20px; }
+  div.Product_Select div.PorductList {
+    display: none; }
+
+div.Product_product {
+  padding-top: 50px;
+  background-color: #f7f7f7;
+  padding-bottom: 50px; }
+  div.Product_product div.RroductNav {
+    width: 1080px;
+    height: 58px;
+    margin: 30px auto 0;
+    background-color: #ededed;
+    padding: 14px;
+    position: relative;
+    zoom: 1; }
+    div.Product_product div.RroductNav:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0; }
+    div.Product_product div.RroductNav div.functionC {
+      float: right;
+      height: 100%;
+      line-height: 30px;
+      padding-left: 8px;
+      border-left: 1px solid #ababab;
+      color: #666; }
+    div.Product_product div.RroductNav select {
+      width: 120px;
+      height: 30px; }
+  div.Product_product ul.PorductList {
+    width: 1080px;
+    margin: 40px auto;
+    zoom: 1; }
+    div.Product_product ul.PorductList:after {
+      display: block;
+      clear: both;
+      content: "";
+      visibility: hidden;
+      height: 0; }
+    div.Product_product ul.PorductList > li {
+      width: 328px;
+      height: 338px;
+      border-radius: 20px;
+      border: 1px solid #e1e1e1;
+      background-color: #fff;
+      float: left;
+      margin-right: 45px;
+      margin-top: 30px; }
+      div.Product_product ul.PorductList > li > a {
+        display: block;
+        width: 100%;
+        padding: 16px; }
+        div.Product_product ul.PorductList > li > a div.imgC {
+          height: 220px;
+          border-radius: 20px;
+          overflow: hidden; }
+          div.Product_product ul.PorductList > li > a div.imgC > img {
+            width: 100%; }
+        div.Product_product ul.PorductList > li > a div.name {
+          text-align: center;
+          font-size: 18px;
+          color: #333;
+          margin-top: 30px; }
+    div.Product_product ul.PorductList > li:nth-child(3n) {
+      margin-right: 0; }
+    div.Product_product ul.PorductList > li:hover {
+      border: 1px solid #bad115; }
+  div.Product_product div.btnCn {
+    text-align: center;
+    color: #bad115;
+    text-align: center;
+    margin-top: 50px; }
+    div.Product_product div.btnCn span {
+      font-size: 30px;
+      margin: 0 10px;
+      cursor: pointer; }
+      div.Product_product div.btnCn span i {
+        font-size: 40px; }
+
+div.Product_SellWell {
+  padding: 50px 0; }
+  div.Product_SellWell div.SellWellList {
+    margin-top: 40px; }
+    div.Product_SellWell div.SellWellList ul {
+      width: 100%; }
+    div.Product_SellWell div.SellWellList li {
+      width: 300px;
+      height: 535px;
+      text-align: center;
+      padding: 35px;
+      background-color: #fff;
+      float: left; }
+      div.Product_SellWell div.SellWellList li div.imgC {
+        margin: 0 auto;
+        width: 200px;
+        height: 200px; }
+      div.Product_SellWell div.SellWellList li div.name {
+        height: 70px;
+        border-bottom: 1px solid #fcc800;
+        line-height: 70px;
+        font-size: 24px;
+        color: #333; }
+      div.Product_SellWell div.SellWellList li div.describe {
+        height: 155px;
+        padding-top: 16px;
+        font-size: 14px;
+        color: #777;
+        line-height: 22px; }
+      div.Product_SellWell div.SellWellList li a.link {
+        display: block;
+        width: 120px;
+        height: 36px;
+        border-radius: 18px;
+        font-size: 14px;
+        background: linear-gradient(to left, #d4d736, #b2cf0b);
+        text-align: center;
+        line-height: 36px;
+        margin: 0 auto; }
+    div.Product_SellWell div.SellWellList li:hover {
+      background-color: #bbb; }
+      div.Product_SellWell div.SellWellList li:hover div.name {
+        border-bottom: 1px solid #000;
+        color: #fff; }
+      div.Product_SellWell div.SellWellList li:hover div.describe {
+        color: #fff; }
+      div.Product_SellWell div.SellWellList li:hover a.link {
+        background: #fff; }
+
+div.Artcle_Content {
+  padding: 50px 0;
+  min-height: 700px; }
+  div.Artcle_Content div.wordCN {
+    width: 830px;
+    margin: 0 auto; }
+    div.Artcle_Content div.wordCN div.title {
+      font-size: 20px;
+      text-align: center; }
+    div.Artcle_Content div.wordCN div.textCn {
+      margin-top: 50px;
+      font-size: 16px;
+      color: #777;
+      line-height: 26px; }
+      div.Artcle_Content div.wordCN div.textCn img {
+        margin-top: 30px;
+        max-width: 100%; }
+
+/*# sourceMappingURL=communal.css.map */

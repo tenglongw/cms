@@ -1,0 +1,70 @@
+@font-face { 
+  font-family: 'cgtn'; 
+  src: url(../fontFamily/PFDinTextPro-Regular.ttf); 
+} 
+
+@font-face { 
+  font-family: 'cgtnBold'; 
+  src: url(../fontFamily/PFDinTextPro-Bold.ttf); 
+} 
+
+@font-face { 
+  font-family: 'cgtnMedium'; 
+  src: url(../fontFamily/PFDinTextPro-Medium.ttf); 
+} 
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  font-family: "Microsoft YaHei","Apple LiGothic Medium","SimHei","SimSun",sans-serif;
+
+}
+
+
+
+
+
+*:focus {outline: none;}
+html,body {
+  width: 100%;
+  height: 100%;
+}
+body -webkit-scrollbar {
+  width: 0;
+}
+img {
+  border: none;
+  vertical-align: bottom;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+input[type=button],
+input[type=submit] {
+  -webkit-appearance: none;
+  outline: none;
+}
+/*清除浮动*/
+.clear {
+  display: block;
+  clear: both;
+}
+/*隐藏元素*/
+.hide {
+  display: none;
+}
+ul li {
+  list-style: none;
+}
+i,b{font-style: normal;font-weight: normal;}
+h1,h2,h3,h4,h5{
+  font-weight: normal;
+}
+
+
+@import 'http://at.alicdn.com/t/font_398386_iitfrjxl1ba6pqfr.css';

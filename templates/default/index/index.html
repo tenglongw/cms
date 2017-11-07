@@ -1,37 +1,457 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 {include file='common/head' /}
-<body>
-<div class="videoCon" id="videoCon">
+<section id="goTop">
+	<a href="javascript:void(0);" class="icon"><i class="iconfont">&#xe608;</i></a>
+	<p>TOP</p>
+</section>
 
-		<div class="Cn" id="video_embed">
-
-			<div class="guanbi" id="guanbi"><i class="iconfont">&#xe614;</i></div>
-			
-
-		</div>
+<div class="Public_VideoCon">
+	<div class="videoCn">
+		<span class="close"><i class="iconfont">&#xe603;</i></span>
+		<span class="play"><i class="iconfont">&#xe654;</i></span>
+		<img src="{:get_root()}/static/index/new/images/video_back.jpg">
 	</div>
-{include file='common/ad'/}
+</div>
 {include file='common/header' /}
-<!-- 首页弹出广告 -->
-{include file='common/index_big_news' /}
- <!-- 轮播 -->
+
+<!-- 轮播 -->
+<scetion id="MaxCon">
 {include file='common/slide' /}
-<!-- 专题 -->
+		
+<!-- 专题 新闻-->
 {include file='common/index_special' /}
-<!-- section精选视频 -->
- {include file='common/index_video_selection' /}
-<!-- section精选视频 end -->
+		
 
-<!-- section广告 -->
-{include file='common/index_digger' /}
-<!-- section广告 -->
+		<!-- 企业简介 -->
 
-<!-- section拆解评测 -->
-	
-{include file='common/index_chaijie_pingce' /}
-	<!-- section拆解评测 end -->
+		<div class="HomeCorporateProfile">
+			<div class="Content">
+				<div class="moduleTitle">企业<span>简介</span></div>
+			</div>
+			<div class="Content">
+				<p>了解更多关于我们公司的历史和使命，通过战略提升人们的生活在这个不断变化、充满活力的世界里，医疗保健领域的投资和创新。更多地了<br/>解我们公司的历史和使命，通过战略来提高人们的生活水平。在这个不断变化、充满活力的世界中，医疗保健的投资和创新。</p>
+			</div>
+		</div>
+		<!-- 企业简介 end-->
 
-<!-- 页脚 -->
-{include file='common/footer' /}
-<script type="text/javascript" src="{:get_root()}/static/index/new/js/index.js"></script>
+		<!-- 公司业务 -->
+		<div class="HomeCompanyBusiness">
+			<div class="Content">
+				<div class="moduleTitle">公司<span>业务</span></div>
+
+			</div>
+
+			<div class="Content">
+				<div class="clectCon">
+					<ul class="HomeCompanyBusinessList">
+						<li>
+							<div class="iconC"><i class="iconfont">&#xe653;</i></div>
+							<div class="tit">药物</div>
+							<p class="describe">该公司还投资于潜在的制药公司</p>
+						</li>
+
+						<li>
+							<div class="iconC"><i class="iconfont">&#xe611;</i></div>
+							<div class="tit">医院</div>
+							<p class="describe">该公司还投资于潜在的制药公司</p>
+						</li>
+
+						<li>
+							<div class="iconC"><i class="iconfont">&#xe629;</i></div>
+							<div class="tit">国际公司</div>
+							<p class="describe">该公司还投资于潜在的制药公司</p>
+						</li>
+
+						<li>
+							<div class="iconC"><i class="iconfont">&#xe63e;</i></div>
+							<div class="tit">新技术</div>
+							<p class="describe">该公司还投资于潜在的制药公司</p>
+						</li>
+					</ul>
+
+				</div>
+			</div>
+		</div>
+		<!-- 公司业务 -->
+
+
+		<!-- 企业 社会责任 -->
+		<div class="HomeCorporateSocialResponsibility">
+			<div class="Content">
+				<div class="moduleTitle">企业<span>社会责任</span></div>
+				<div class="swiperCn">
+					<div class="swiper-container" id="HomeCorporateSocialResponsibility">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="slideCon">
+									<div class="imgC"><img src="{:get_root()}/static/index/new/images/index_22.png"></div>
+									<div class="tit">过去的贡献</div>
+									<div class="describe">中华生物制药我有限公司</div>
+								</div>
+							</div>
+
+							<div class="swiper-slide">
+								<div class="slideCon">
+									<div class="imgC"><img src="{:get_root()}/static/index/new/images/index_22.png"></div>
+									<div class="tit">社会基金</div>
+									<div class="describe">中华生物制药我有限公司</div>
+								</div>
+							</div>
+
+							<div class="swiper-slide">
+								<div class="slideCon">
+									<div class="imgC"><img src="{:get_root()}/static/index/new/images/index_22.png"></div>
+									<div class="tit">环境保护</div>
+									<div class="describe">中华生物制药我有限公司</div>
+								</div>
+							</div>
+
+							<div class="swiper-slide">
+								<div class="slideCon">
+									<div class="imgC"><img src="{:get_root()}/static/index/new/images/index_22.png"></div>
+									<div class="tit">质量和安全</div>
+									<div class="describe">中华生物制药我有限公司</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 企业 社会责任 end -->
+
+
+
+		<!-- 招聘 -->
+		<div class="HomeRecruitment">
+			<div class="Content">
+				<div class="moduleTitle">招聘<span></span></div>
+				<div class="HomeRecruitmentCon">
+					<ul class="HomeRecruitmentList">
+						<li>
+							<a href="#">
+								<div class="iconC"><i class="iconfont">&#xe739;</i></div>
+								<div class="name">销售员</div>
+								<div class="dist">
+									<div class="address"><i class="iconfont">&#xe748;</i> 北京</div>
+									<div class="time"><i class="iconfont">&#xe641;</i> 3年</div>
+								</div>
+								<div class="describe">根据部门总体市场策略编制自己分管的市场的销售计划。全面掌握本市解市场结构...</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="iconC"><i class="iconfont">&#xe739;</i></div>
+								<div class="name">销售员</div>
+								<div class="dist">
+									<div class="address"><i class="iconfont">&#xe748;</i> 北京</div>
+									<div class="time"><i class="iconfont">&#xe641;</i> 3年</div>
+								</div>
+								<div class="describe">根据部门总体市场策略编制自己分管的市场的销售计划。全面掌握本市解市场结构...</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="iconC"><i class="iconfont">&#xe739;</i></div>
+								<div class="name">销售员</div>
+								<div class="dist">
+									<div class="address"><i class="iconfont">&#xe748;</i> 北京</div>
+									<div class="time"><i class="iconfont">&#xe641;</i> 3年</div>
+								</div>
+								<div class="describe">根据部门总体市场策略编制自己分管的市场的销售计划。全面掌握本市解市场结构...</div>
+							</a>
+						</li>
+						<li>
+							<a href="#">
+								<div class="iconC"><i class="iconfont">&#xe739;</i></div>
+								<div class="name">销售员</div>
+								<div class="dist">
+									<div class="address"><i class="iconfont">&#xe748;</i> 北京</div>
+									<div class="time"><i class="iconfont">&#xe641;</i> 3年</div>
+								</div>
+								<div class="describe">根据部门总体市场策略编制自己分管的市场的销售计划。全面掌握本市解市场结构...</div>
+							</a>
+						</li>
+
+					</ul>
+				</div>
+				<div class="PublicMoreCenterCn">
+					<a href="#">更多</a>
+				</div>
+
+
+			</div>
+		</div>
+		<!-- 招聘 end -->
+
+
+		<!-- 附属公司-联系我们 -->
+		<div class="HomeSubsidiariesAndContactUs">
+			<div class="Content">
+				<ul class="nav" id="HomeSubsidiariesAndContactUsNav">
+					<li class="active">附属公司</li>
+					<li>联系我们</li>
+				</ul>
+
+				<div class="Subsidiaries" id="SubsidiariesHomeCn">
+					<div class="Cn">
+						<div class="swiper-container" id="HomeSubsidiariesSwiper">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<div class="SubsidiariesCn">
+										<div class="label">最著名公司</div>
+										<div class="title">正大天晴</div>
+										<div class="address"><i class="iconfont">&#xe748;</i>南京</div>
+										<p class="describe">中国生物制药有限公司（“公司”）及其子公司（“集团”）中国生物制药有限公司（“公司”）及其子公司（“集团”）2016年度销售额超过1亿元的最畅销产品</p>
+
+										<div class="bottomCn">
+											<a href="#" class="link">查看更多</a>
+
+											<img src="{:get_root()}/static/index/new/images/index_03.png" class="logo">
+
+										</div>
+									</div>
+								</div>
+
+
+								<div class="swiper-slide">
+									<div class="SubsidiariesCn">
+										<div class="label">最著名公司</div>
+										<div class="title">正大天晴</div>
+										<div class="address"><i class="iconfont">&#xe748;</i>南京</div>
+										<p class="describe">中国生物制药有限公司（“公司”）及其子公司（“集团”）中国生物制药有限公司（“公司”）及其子公司（“集团”）2016年度销售额超过1亿元的最畅销产品</p>
+
+										<div class="bottomCn">
+											<a href="#" class="link">查看更多</a>
+
+											<img src="{:get_root()}/static/index/new/images/index_03.png" class="logo">
+
+										</div>
+									</div>
+								</div>
+
+
+								<div class="swiper-slide">
+									<div class="SubsidiariesCn">
+										<div class="label">最著名公司</div>
+										<div class="title">正大天晴</div>
+										<div class="address"><i class="iconfont">&#xe748;</i>南京</div>
+										<p class="describe">中国生物制药有限公司（“公司”）及其子公司（“集团”）中国生物制药有限公司（“公司”）及其子公司（“集团”）2016年度销售额超过1亿元的最畅销产品</p>
+
+										<div class="bottomCn">
+											<a href="#" class="link">查看更多</a>
+
+											<img src="{:get_root()}/static/index/new/images/index_03.png" class="logo">
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+
+						</div>
+
+					</div>
+					<div class="swiper-button-prev SubsidiariesPrev"><i class="iconfont">&#xe61c;</i></div>
+					<div class="swiper-button-next SubsidiariesNext"><i class="iconfont">&#xe66a;</i></div>
+
+				</div>
+
+				<div class="ContactUs"  style="display: none;" id="ContactUsHoemCn">
+					<div class="Ln">
+						<div class="title">HEAD OFFICE HONG KONG</div>
+						<p>Rm 4109, Office Tower,</p>
+						<p>Convention Plaza, 1 Harbour Road,</p>
+						<p>Wanchai, Hong Kong</p>
+						<p>Tel.: (+852) 2802 9886</p>
+						<p>Fax: (+852) 2880 0847</p>
+						<p>E-mail: info@sino-biopharm.com</p>
+					</div>
+					<div class="Ln">
+						<div class="title">HEAD OFFICE HONG KONG</div>
+						<p>Rm 4109, Office Tower,</p>
+						<p>Convention Plaza, 1 Harbour Road,</p>
+						<p>Wanchai, Hong Kong</p>
+						<p>Tel.: (+852) 2802 9886</p>
+						<p>Fax: (+852) 2880 0847</p>
+						<p>E-mail: info@sino-biopharm.com</p>
+					</div>
+				</div>
+			</div>
+
+
+			<!-- Key figures -->
+			<div class="Content HomeKeyFigures" id="HomeKeyFigures">
+				<div class="Title">关键数字</div>
+				<div class="HomeKeyFiguresList">
+					<ul>
+						<li>
+							<div class="index"><span id="HomeKeyFigures_1">10.1</span>%</div>
+							<p class="describe">研发赞销售额</p>
+						</li>
+						<li>
+							<div class="index"><span id="HomeKeyFigures_2">22.4</span>%</div>
+							<p class="describe">肝病药市场占有率</p>
+						</li>
+						<li>
+							<div class="index"><span id="HomeKeyFigures_3">28</span></div>
+							<p class="describe">产品销售超亿元</p>
+						</li>
+						<li>
+							<div class="index"><span id="HomeKeyFigures_4">18163</span></div>
+							<p class="describe">员工</p>
+						</li>
+						<li>
+							<div class="index"><span id="HomeKeyFigures_5">15.82</span></div>
+							<p class="describe">销售额（亿港元）</p>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- Key figures end -->
+		</div>
+		<!-- 附属公司-联系我们 -->
+
+
+		<!-- 公司照片 -->
+		<div class="HomePhotos">
+			<div class="Content">
+				<div class="moduleTitle">公司照片<span></span></div>
+				<ul class="nav">
+					<li class="active">生成</li>
+					<li>生成</li>
+					<li>生成</li>
+					<li>生成</li>
+					<li>生成</li>
+				</ul>
+
+				<div class="photolist">
+					<ul>
+						<li>
+							<div class="imgC">
+								<img src="{:get_root()}/static/index/new/images/index_42.png">
+								<div class="word">
+									<div class="text">
+										<div class="title">制造畅销产品销售</div>
+										<p>2016年度销售额超过1亿元的最畅销产品，中国生物制药有限公司（“公司”）</p>
+									</div>
+									<div class="link"><a href="#">查看详情</a></div>
+								</div>
+							</div>
+						</li>
+
+						<li>
+							<div class="imgC">
+								<img src="{:get_root()}/static/index/new/images/index_42.png">
+								<div class="word">
+									<div class="text">
+										<div class="title">制造畅销产品销售</div>
+										<p>2016年度销售额超过1亿元的最畅销产品，中国生物制药有限公司（“公司”）</p>
+									</div>
+									<div class="link"><a href="#">查看详情</a></div>
+								</div>
+							</div>
+						</li>
+
+						<li>
+							<div class="imgC">
+								<img src="{:get_root()}/static/index/new/images/index_42.png">
+								<div class="word">
+									<div class="text">
+										<div class="title">制造畅销产品销售</div>
+										<p>2016年度销售额超过1亿元的最畅销产品，中国生物制药有限公司（“公司”）</p>
+									</div>
+									<div class="link"><a href="#">查看详情</a></div>
+								</div>
+							</div>
+						</li>
+
+					</ul>
+
+				</div>
+
+				<div class="btnCn">
+					<span class="btn"><i class="iconfont">&#xe61c;</i></span>
+					<span class="btn"><i class="iconfont">&#xe66a;</i></span>
+				</div>
+			</div>
+		</div>
+		<!-- 公司照片 end-->
+
+
+		<!-- 视频 股票 -->
+		<div class="HomeVideoAndKay">
+			<div class="Content">
+				<div class="Video">
+					<div class="moduleTitle">视频<span></span></div>
+					<div class="imgC">
+						<div class="play"></div>
+					</div>
+				</div>
+				<div class="Kay">
+					<div class="moduleTitle">股票价格<span></span></div>
+					
+					<div class="kayIndex">
+						<p class="p1">HK＄6.910</p>
+						<p class="p2">中国生物制药  (1177)</p>
+						<p class="p2">+ 0.120 | + 1.767%</p>
+						<p class="p3">2017/07/07 11:44:35</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- 视频 股票 end-->
+
+
+		<footer class="footerCn">
+			<div class="Content">
+				<ul class="nav">
+					<li><a href="#">关于我们</a></li>
+					<li><a href="#">关于我们</a></li>
+					<li><a href="#">关于我们</a></li>
+					<li><a href="#">关于我们</a></li>
+					<li><a href="#">关于我们</a></li>
+					<li><a href="#">关于我们</a></li>
+				</ul>
+				<div class="title">友情链接</div>
+
+				<div class="swiperCn">
+					<div class="swiper-container" id="footerSwiper">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide"><a href="#"><img src="{:get_root()}/static/index/new/images/bottomBack_01.png"></a></div>
+							<div class="swiper-slide"><a href="#"><img src="{:get_root()}/static/index/new/images/bottomBack_01.png"></a></div>
+							<div class="swiper-slide"><a href="#"><img src="{:get_root()}/static/index/new/images/bottomBack_01.png"></a></div>
+							<div class="swiper-slide"><a href="#"><img src="{:get_root()}/static/index/new/images/bottomBack_01.png"></a></div>
+							<div class="swiper-slide"><a href="#"><img src="{:get_root()}/static/index/new/images/bottomBack_01.png"></a></div>
+							<div class="swiper-slide"><a href="#"><img src="{:get_root()}/static/index/new/images/bottomBack_01.png"></a></div>
+							<div class="swiper-slide"><a href="#"><img src="{:get_root()}/static/index/new/images/bottomBack_01.png"></a></div>
+							<div class="swiper-slide"><a href="#"><img src="{:get_root()}/static/index/new/images/bottomBack_01.png"></a></div>
+							<div class="swiper-slide"><a href="#"><img src="{:get_root()}/static/index/new/images/bottomBack_01.png"></a></div>
+						</div>
+						
+					</div>
+
+					<!-- 如果需要导航按钮 -->
+					<div class="swiper-button-prev FooterSwiperPrev"><i class="iconfont">&#xe61c;</i></div>
+					<div class="swiper-button-next FooterSwiperNext"><i class="iconfont">&#xe66a;</i></div>
+
+				</div>
+
+				<div class="linkCn">
+					<a href="#"><i class="iconfont">&#xe658;</i></a>
+					<a href="#"><i class="iconfont">&#xe609;</i></a>
+					<a href="#"><i class="iconfont">&#xe673;</i></a>
+				</div>
+			</div>
+			<div class="describe">© 2017 正大制药集团  版权所有</div>
+		</footer>
+
+
+	</scetion>
+	<script type="text/javascript" src="{:get_root()}/static/index/new/script/public.js"></script>
+	<script type="text/javascript" src="{:get_root()}/static/index/new/script/page/index.js"></script>
+
+</body>

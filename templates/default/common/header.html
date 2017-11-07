@@ -1,78 +1,127 @@
-	<header id="header">
-		<div class="centerCon clearfloat">
-			<div class="Logo">
-				<a href="#"><img src="{:get_root()}/static/index/new/images/public/Logo.jpg"></a>
+	<header class="headerCn" id="header">
+		<div class="Content">
+			<a class="logo" href="#"><img src="{:get_root()}/static/index/new/images/index_03.png" alt=""></a>
+				{ebcms:nav mark='topnav' return='nav' pid='0' tree='1' /}
+			<div class="Rn">
+				<ul class="nav">
+	             {foreach name="nav" item="vo" }
+	            	 <li><a class="active" href="{$vo.url}">{$vo.title}</a></li>
+	             {/foreach}
+				</ul>
+
+				<div class="functionCon">
+					<div class="Togle"><span>中</span><span class="line">en</span></div>
+					<div class="searchBtn"><span></span></div>
+				</div>
+				<div class="pullDown">
+					<ul class="navOne">
+						<li class="active"><a href="#" class="pull">Open New Page</a></li>
+						<li><a href="#" class="pull">Open New Page</a></li>
+						<li><a href="#" class="pull">Open New Page</a></li>
+						<li><a href="#" class="pull">Open New Page</a></li>
+						<li><a href="#" class="pull">Open New Page</a></li>
+					</ul>
+					<ul class="navTwo">
+						<li class="active"><a href="#" class="pull">Open New Page</a></li>
+						<li><a href="#" class="pull">Open New Page</a></li>
+						<li><a href="#" class="pull">Open New Page</a></li>
+						<li><a href="#" class="pull">Open New Page</a></li>
+						<li><a href="#" class="pull">Open New Page</a></li>
+					</ul>
+
+				</div>
+
 			</div>
-			<div class="NavAndSearch clearfloat">
-				<nav class="clearfloat" id="nav">
-				{content:category tree='1' return='data'/}
-					<a name="index" {if ('' == $category.id)} class="active" {/if} href="{:url('index/index/index')}">首页</a>
-					{foreach name='data' item='vo'}
-	                    {if ($vo.title == '专题')}
-	                        <a name="{$vo.name}" {if (10 == $category.id || 11 == $category.id || 12 == $category.id)} class="active" {/if} href="{:url('/Special/Special')}" >{$vo.title}</a>
-	                        {else}
-	                         {if ($vo.title == '新闻')}
-	                         	<a name="{$vo.name}" {if ($vo.id == $category.id || 7 == $category.id || 8 == $category.id || 9 == $category.id)} class="active" {/if} href="{$vo.url}" >{$vo.title}</a>
-	                         	{else}
-	                         		{if ($vo.title == '视频')}
-			                         	<a name="{$vo.name}" {if ($vo.id == $category.id || 14 == $category.id || 15 == $category.id || 26 == $category.id)} class="active" {/if} href="{$vo.url}" >{$vo.title}</a>
-			                         	{else}
-					                    <a name="{$vo.name}" {if ($vo.id == $category.id)} class="active" {/if} href="{$vo.url}" >{$vo.title}</a>
-			                         {/if}
-	                         {/if}
-			        	{/if} 
-                     {/foreach}
-				</nav>
-                     <form id="head_search" class="Search" role="search" method="get" action="{:url('index/content/search')}">
-						<input id="SearchInupt" type="text" name="q" >
-						<button type="button" id="showSearch" class="iconCn"><i class="iconfont">&#xe63c;</i></button>
-					</form>
+
+			<div class="MRn">
+				<span class="btn" id="toggleNav"><i class="iconfont">&#xe61a;</i></span>
+			</div>
+
+
+		</div>
+		<div class="Mnav">
+			<div class="MnCn">
+				<div class="LCn">
+					<div class="MSearch">
+						<input type="text" name="" placeholder="搜索">
+						<div class="btn"><i class="iconfont">&#xe630;</i></div>
+					</div>
+
+					<ul class="list">
+						<li class="active"><a href="index.html">home</a></li>
+						<li><a href="aboutUs.html">aboutus</a><div class="ToNavTwo"><i class="iconfont">&#xe62a;</i></div></li>
+						<li><a href="research.html">research</a><div class="ToNavTwo"><i class="iconfont">&#xe62a;</i></div></li>
+						<li><a href="investors.html">investors</a><div class="ToNavTwo"><i class="iconfont">&#xe62a;</i></div></li>
+						<li><a href="product.html">product</a><div class="ToNavTwo"><i class="iconfont">&#xe62a;</i></div></li>
+						<li><a href="newsroom.html">newsroom</a><div class="ToNavTwo"><i class="iconfont">&#xe62a;</i></div></li>
+						
+					</ul>
+
+
+					<div class="lange">
+						<span>En</span>
+						<span>中文</span>
+					</div>
+				</div>
+
+				<div class="RCn">
+					<ul class="One">
+						<li>
+							<div class="jian"><i class="iconfont">&#xe62a;</i></div>
+							<a href="#">home</a>
+							<ul class="Two">
+								<li><a href="#">home</a></li>
+								<li><a href="#">home</a></li>
+								<li><a href="#">home</a></li>
+								<li><a href="#">home</a></li>
+							</ul>
+						</li>
+						<li>
+							<div class="jian"><i class="iconfont">&#xe62a;</i></div>
+							<a href="#">home</a>
+							<ul class="Two">
+								<li><a href="#">home</a></li>
+								<li><a href="#">home</a></li>
+								<li><a href="#">home</a></li>
+								<li><a href="#">home</a></li>
+							</ul>
+						</li>
+						<li>
+							<div class="jian"><i class="iconfont">&#xe62a;</i></div>
+							<a href="#">home</a>
+							<ul class="Two">
+								<li><a href="#">home</a></li>
+								<li><a href="#">home</a></li>
+								<li><a href="#">home</a></li>
+								<li><a href="#">home</a></li>
+							</ul>
+						</li>
+						<li>
+							<div class="jian"><i class="iconfont">&#xe62a;</i></div>
+							<a href="#">home</a>
+							<ul class="Two">
+								<li><a href="#">home</a></li>
+								<li><a href="#">home</a></li>
+								<li><a href="#">home</a></li>
+								<li><a href="#">home</a></li>
+							</ul>
+						</li>
+
+					</ul>
+				</div>
 			</div>
 		</div>
-	</header>
-    <!-- 
-        <div class="row">
-            <div class="col-md-4">
-                <div style="padding:10px;width: 250px;">
-                    <img src="{:get_root()}/static/index/image/logo.png">
-                </div>
-            </div>
-            <div class="col-md-8">
-            </div>
-        </div> -->
-        <!-- �Ƿ��¼ -->
-        <!-- 
-        {if condition="session('?user_id')"}
-        <li class="dropdown" id="x_userinfo" style="display:none;">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{:mb_substr(session('user_nickname'),0,10)}&nbsp;<span class="caret"></span></a>
-            <ul class="dropdown-menu">
-                <li><a href="{:url('index/user/index')}">��Ա����</a></li>
-                <li><a href="{:url('index/user/notice')}">��Ϣ&nbsp;<span class="badge">{$Think.session.user_notice}</span></a></li>
-                <li role="separator" class="divider"></li>
-                <li><a href="{:url('index/auth/logout')}">�˳�</a></li>
-            </ul>
-        </li>
-        {else /}
-        <li id="x_userinfo" style="display:none;"><a href="{:url('index/auth/login')}">��¼</a></li>
-        {/if}
-        <script>
-            $(function() {
-                $('#x_userinfo').appendTo('#user_info').show();
-            });
-        </script>
- -->
 
-        <!-- ��ǰλ�� -->
-       <!--  {ebcms:position return='position'/}
-        {if condition="count($position) > 1"}
-        <div class="row">
-            <div class="col-md-12">
-                <ol class="breadcrumb">
-                {foreach name='position' item='vo'}
-                    <li><a href="{$vo.url}">{$vo.title}</a></li>
-                {/foreach}
-                </ol>
-            </div>
-        </div>
-        {/if}
-         -->
+		<form class="searchCon">
+			<div class="Con">
+				<div class="form">
+					<span class="close"><i class="iconfont">&#xe603;</i></span>
+
+					<button type="button">搜索</button>
+
+					<input type="text" name="">
+
+				</div>
+			</div>
+		</form>
+	</header>

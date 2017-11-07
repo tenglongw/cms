@@ -1,0 +1,39 @@
+@import 'style.scss';
+
+@media screen and (max-width: 1336px) and (min-width:751px) {
+
+
+	div.HomeBannerCon{
+		height:600px;
+		div.swiper-container{
+
+
+			img{
+				height: 100%;
+				width: 1336px;
+				position: absolute;
+				top: 0;
+				left: 50%;
+				margin-left: -668px;
+			}
+		}
+		div.wordCn{
+			
+			div.word{
+				div.title{
+					top: 80px;
+					font-size: 60px;
+
+				}
+				div.dist{
+					top: 280px;
+				}
+				a.link{
+					top: 460px;
+					
+				}
+
+			}
+		}
+	}
+}

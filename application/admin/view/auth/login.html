@@ -36,8 +36,8 @@
                         window.location.href=res.url; 
                     }else{
                         alert(res.msg);
-                        change_verify('verifyimage');
-                        $('#verify').val('');
+                        //change_verify('verifyimage');
+                        //$('#verify').val('');
                         // $('#loginform')[0].reset();
                     };
                 }
@@ -64,13 +64,13 @@
                     <input type="password" name="password" class="form-control" id="password" placeholder="">
                 </div>
             </div>
-            <div class="form-group form-group-lg">
+           <!--  <div class="form-group form-group-lg">
                 <div class="input-group">
                     <div class="input-group-addon">验 证 码:</div>
                     <input type="text" name="verify" class="form-control" id="verify" placeholder="">
                     <div class="input-group-addon" style="width:150px;padding:0px;"><img class="img-rounded" id="verifyimage" onclick="change_verify('verifyimage');" src="{:url('index/api/verify')}" alt="验证码" style="width:150px;height:44px;cursor: pointer; "></div>
                 </div>
-            </div>
+            </div> -->
             <hr>
             <button type="submit" class="btn btn-danger btn-lg btn-block">登陆</button>
         </form>

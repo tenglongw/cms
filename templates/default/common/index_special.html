@@ -1,75 +1,51 @@
-		{ebcms:recommend mark='index_special' return='data'/}
-<!-- section展示 -->
-	<section class="exhibition">
-		<div class="centerCon">
-		{foreach name='data' item='vo'}
-			{eq name='vo.locked' value='1'}
-			<a href="{$vo.url}" class="InWindow clearfloat">
+		{ebcms:recommend mark='index_special' limit='5' return='data'/}
+		<!-- 专题新闻 -->
+		<div class="HomeSpecialNews">
+			<div class="Content">
+				<div class="moduleTitle">专题<span>新闻</span></div>
 
-				<div class="text">
-
-					<div class="line"></div>
-
-					<div class="head">{$vo.title} </div>
-
-					<div class="time">
-						{php} 
-								$obj = json_decode($vo,true);
-								echo date('Y-m-d',$obj['create_time']); 
-							{/php}  &nbsp; By {$vo.author} &nbsp; 
-							{notempty name='vo.source'}
-							Via {$vo.source}
-							{/notempty}
-					
-					</div>
-
-					<p>{$vo.description}</p>
-
-				</div>
-
-				<div class="imgC">
-
-					<img src="{$vo.thumb|thumb=490,370}">
-
-				</div>
-
-			</a>
-			{/eq}
-        {/foreach}
-
-			<div class="slideSweiper">
-
-				<div class="swiper-container" id="exhibitionSwiper">
-
-					<div class="swiper-wrapper">
+						<div class="HomeSpecialNewsCn">
+					{foreach name='data' item='vo'}
+						{eq name='vo.locked' value='1'}
+						
+							<div class="LCn">
+								<a href="{$vo.url}" class="imgC">
+									<img src="{$vo.thumb|thumb=0,0}"/>
+									<div class="time">
+										<div class="day">28</div>
+										<div class="date">2017-08</div>
+									</div>
+		
+								</a>
+		
+								<div class="tit">{$vo.title}</div>
+								<p class="describe">{$vo.description}</p>
+							</div>
+						{/eq}
+						{/foreach}
+							<ul class="RCn">
 							{foreach name='data' item='vo'}
 								{eq name='vo.locked' value='0'}
-								<div class="swiper-slide clearfloat">
-
-									<a href="{$vo.url}" class="wordin"><img src="{$vo.thumb|thumb=206,154}"><div class="pcn"><p>{$vo.title}</p></div></a>
-		
-								</div>
+									<li>
+										<a href="{$vo.url}">
+											<div class="time">
+												<div class="day">20</div>
+												<div class="date">2017-08</div>
+											</div>
+											<div class="word">
+												<h3>{$vo.title}</h3>
+												<p class="describe" >{$vo.description}</p>
+											</div>
+										</a>
+									</li>
 								{/eq}
-					        {/foreach}
-
+								
+							{/foreach}
+							</ul>
 					</div>
-
+				<div class="PublicMoreCenterCn">
+					<a href="#">更多</a>
 				</div>
-
-				<div class="swiper-button-prev exhibitionPrev"></div>
-
-				<div class="swiper-button-next exhibitionNext"></div>
-				
-
 			</div>
-			<div class="IndMore">
-
-				<a href="http://www.long7.com/index.php/news">more</a>
-
-			</div>
-
 		</div>
-
-	</section>
-
-	<!-- section展示 -->
+		<!-- 专题新闻 End -->

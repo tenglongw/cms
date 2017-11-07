@@ -1,0 +1,1703 @@
+@import 'style.scss';
+
+@media screen and (max-width: 750px) and (min-width:320px) {
+
+	body{
+		padding-top:100px;
+	}
+
+	#MaxCon{
+		width: 750px;
+		padding-top:100px;
+
+	}
+	.Content{
+		width:100%;
+		margin: 0 auto;
+	}
+
+	div.moduleTitle{
+		font-size:24px;
+		color:#333;
+		text-align: left;
+		letter-spacing:1px;
+		border-left:16px solid $themeColor;
+		padding-left: 15px;
+		span{
+			color: $fuThemeColor;
+		}
+	}
+
+
+	div.Public_VideoCon{
+		div.videoCn{
+			span.close{
+				top: -80px;
+				right: -0px;
+				
+			}
+		}
+	}
+
+	header.headerCn{
+		height:100px;
+		.Content{
+			width: 100%;
+			>a.logo{
+				padding: 20px;
+				>img{
+					height: 100%;
+				}
+			}
+			>div.Rn{
+				display: none;
+			}
+			>div.MRn{
+				display: block;
+				float: right;
+				height: 100%;
+				@include clearfloat;
+				span.btn{
+					display: block;
+					width: 100px;
+					height: 100px;
+					text-align: center;
+					line-height: 100px;
+					float: right;
+					i{
+						font-size: 50px;
+						color: #fbc908;
+					}
+				}
+			}
+
+
+		}
+		div.Mnav{
+			position: fixed;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom:0;
+			padding-top:100px;
+			z-index: -1;
+			div.MnCn{
+				background-color:rgba(0,0,0,0.6);
+				width: 100%;
+				height: 100%;
+				@include clearfloat;
+				div.LCn{
+					width: 305px;
+					height: 100%;
+					float: left;
+					background-color: #fbc90d;
+
+					div.MSearch{
+						padding:20px 16px 0;
+						position: relative;
+						input{
+							width: 100%;
+							height: 60px;
+							border-radius: 30px;
+							border: none;
+							padding-left: 60px;
+							font-size: 24px;
+						}
+
+						div.btn{
+							position: absolute;
+							width: 60px;
+							height: 60px;
+							text-align: center;
+							line-height: 60px;
+							top: 20px;
+							left: 16px;
+							i{
+								font-size: 30px;
+								color: #999;
+							}
+						}
+					}
+
+					ul.list{
+						width: 100%;
+						margin-top: 30px;
+						>li{
+							height: 86px;
+							font-size: 30px;
+							color: #000;
+							position: relative;
+							padding-right:46px;
+							div.ToNavTwo{
+								position: absolute;
+								top: 0;
+								right: 0;
+								width: 46px;
+								height: 86px;
+								line-height: 86px;
+								text-align: center;
+								i{
+									font-size: 30px;
+									color: #fff;
+								}
+							}
+							a{
+								display: block;
+								color: inherit;
+								width: 100%;
+								height: 100%;
+								line-height: 86px;
+								text-align: center;
+								text-transform: uppercase;
+							}
+						}
+						>li.active{
+							color: #fbc90d;
+							background-color: #000;
+						}
+					}
+					div.lange{
+						margin-top: 140px;
+						width: 100%;
+						height: 28px;
+						@include clearfloat;
+						>span{
+							display: block;
+							width: 50%;
+							height: 100%;
+							text-align: center;
+							line-height: 28px;
+							color: #000;
+							float: left;
+							font-size: 26px;
+							text-transform: uppercase;
+						}
+						>span:nth-child(1){
+							border-right: 1px solid #000;
+						}
+					}
+				}
+				div.RCn{
+					float: left;
+					width: 445px;
+					height: 100%;
+					overflow-y: auto;
+					background-color: #fff;
+					ul.One{
+						width: 100%;
+						>li{
+							height: 90px;
+							overflow: hidden;
+							position: relative;
+							div.jian{
+								position: absolute;
+								width: 90px;
+								height: 90px;
+								text-align: center;
+								line-height: 90px;
+								top: 0;
+								right: 0;
+								z-index: 9;
+								transform: rotate(90deg);
+
+								i{
+									font-size: 30px;
+								}
+							}
+							>a{
+								display: block;
+								width: 100%;
+								height: 90px;
+								line-height: 90px;
+								text-align: center;
+								font-size: 26px;
+								text-transform: capitalize;
+							}
+							>ul{
+								>li{
+									width: 100%;
+									background-color:#e9e9e9;
+									>a{
+										display: block;
+										width: 100%;
+										height: 100px;
+										line-height: 100px;
+										text-align: center;
+										font-size: 26px;
+										text-transform: capitalize;
+									}
+								}
+							}
+						}
+						>li.active{
+							height: auto;
+							background-color:#d3d3d3;
+							div.jian{
+								transform: rotate(-90deg);
+							}
+						}
+					}
+
+				}
+			}
+		}
+
+		form.searchCon{
+			display: none;
+		}
+	}
+
+
+	footer.footerCn{
+		background-color:#333431;
+		padding-top:20px;
+
+		div.describe{
+			line-height: 50px;
+			height: 50px;
+
+		}
+		div.title{
+			margin-top: 0;
+		}
+		ul.nav{
+			display: none;
+		}
+
+
+		div.linkCn{
+			margin-top: 40px;
+			text-align: center;
+			>a{
+				display: inline-block;
+				width: 40px;
+				margin: 0 20px;
+				height: 40px;
+				border-radius: 50%;
+				border:2px solid $themeColor;
+				line-height: 36px;
+				text-align: center;
+				i{
+					font-size: 22px;
+					color: #fff;
+				}
+			}
+		}
+
+		div.swiperCn{
+			width: 710px;
+			margin: 40px auto 0;
+			position: relative;
+			.FooterSwiperNext,
+			.FooterSwiperPrev{
+				background-image: none;
+				line-height: 44px;
+				text-align: center;
+				i{
+					font-size: 40px;
+					color: #fff;
+				}
+
+			}	
+			.swiper-container{
+				width: 600px;
+				margin:0 auto;
+
+
+				.swiper-slide{
+					width: 200px;
+					>a{
+						margin: 0 auto;
+						display: block;
+						width: 160px;
+						height: 160px;
+						>img{
+							width: 100%;
+
+						}
+					}
+				}
+			}
+		}
+	}
+
+	div.publicMoreBtnCn{
+		a.more{
+			width: 160px;
+			height: 56px;
+			line-height: 56px;
+			font-size: 24px;
+			border-radius: 28px;
+		}
+	}
+
+
+	div.HomeBannerCon{
+		height:405px;
+		div.swiper-container{
+			.swiper-pagination{
+				.swiper-pagination-bullet{
+					width: 14px;
+					height: 14px;
+				}
+				.swiper-pagination-bullet-active{
+					border-radius:1px;
+					position: relative;
+					background-color:#dfe41e;
+					&:after{
+						width: 7px;
+						height: 7px;
+						top: -3px;
+						left: 3px;
+					}
+				}
+			}
+			img{
+				width: 750px;
+				margin-left: -375px;
+			}
+		}
+		div.wordCn{
+			position: absolute;
+			top: 0;
+			width: 100%;
+			left: 0;
+			height: 100%;
+			background-color: rgba(0,0,0,0.3);
+			div.word{
+				width: 540px;
+				div.title{
+					top: 100px;
+					font-size: 30px;
+
+				}
+				div.dist{
+					top: 170px;
+					font-size: 24px;
+				}
+				a.link{
+					top: 300px;
+					width: 150px;
+					height: 40px;
+					line-height: 40px;
+					border-radius:20px;
+					font-size: 24px;
+				}
+
+			}
+		}
+	}
+
+
+
+	div.HomeSpecialNews{
+		padding:20px 0 0;
+		.Content{
+			padding:0 20px;
+		}
+
+		.HomeSpecialNewsCn{
+			@include clearfloat;
+			margin-top: 18px;
+		}
+
+		div.LCn{
+			width: 100%;
+			float: left;
+			a.imgC{
+				height: 310px;
+				div.time{
+					width: 86px;
+					height: 86px;
+					div.day{
+						line-height: 60px;
+						font-size: 46px;
+					}
+					div.date{
+						font-size: 14px;
+					}
+				}
+			}
+			div.tit{
+				font-size: 28px;
+				margin-top: 15px;
+			}
+
+			p.describe{
+				margin-top: 30px;
+				font-size: 24px;
+			}
+		}
+
+
+		ul.RCn{
+			width: 100%;
+			margin-top: 45px;
+			border-top:1px solid #e1e1e1;
+			>li{
+				border-bottom:1px solid #e1e1e1;
+				>a{
+					height: 205px;
+					padding-top:50px;
+					div.time{
+						width: 100px;
+						color: #8a8a8a;
+						float: left;
+						div.day{
+							width: 100%;
+							line-height: 80px;
+							font-size: 64px;
+						}
+						div.date{
+							font-size: 20px;
+						}
+					}
+
+					div.word{
+						width: 570px;
+						float: right;
+						h3{
+							font-size: 28px;
+						}
+						p{
+							font-size: 20px;
+							margin-top: 20px;
+						}
+					}
+
+				}
+			}
+			>li:nth-child(1){
+				a{
+					height: 205px;
+					padding-top:50px;
+				}
+			}
+		}
+
+	}
+
+
+
+
+
+
+
+
+	div.HomeCorporateProfile{
+		height:390px;
+		background-image: url(../images/index_16.png);
+		background-position: center 70px;
+		background-repeat: no-repeat;
+		padding:20px;
+		div.moduleTitle{
+			color: #333;
+		}
+
+		p{
+			font-size: 24px;
+			text-align: left;
+			margin-top: 50px;
+			line-height: 36px;
+		}
+	}
+
+
+
+	div.HomeCompanyBusiness{
+		width: 100%;
+		padding:20px;
+
+		margin-top: 0px;
+		div.moduleTitle{
+			margin-top: 20px;
+			color: #333;
+		}
+		div.clectCon{
+			overflow-x: auto;
+			width: 100%;
+			margin-top: 20px;
+			height: 295px;
+		}
+
+		ul.HomeCompanyBusinessList{
+			width: 1152px;
+			margin: 0px auto 0;
+			@include clearfloat;
+			>li{
+				width: 288px;
+				height: 295px;
+
+				padding: 60px 20px 20px;
+				div.iconC{
+					i{
+						font-size: 60px;
+					}
+				}
+				div.tit{
+					font-size: 26px;
+					margin-top: 0px;
+					color: #fff;
+				}
+				p.describe{
+					font-size: 24px;
+					margin-top: 10px;
+				}
+			}
+		}
+	}
+
+
+
+	div.HomeCorporateSocialResponsibility{
+		background-position: center 70px;
+		background-repeat: no-repeat;
+		background-size: 1900px 690px;
+		height:670px;
+		padding:20px;
+		overflow: hidden;
+
+		div.swiperCn{
+			width: 425px;
+			height: 540px;
+			margin: 50px auto 0;
+			div.swiper-container{
+				width: 100%;
+				overflow: initial;
+
+				.swiper-slide{
+					width: 100%;
+					transform: scale(0.9);
+					transition: all 0.7s;
+
+				}
+				.swiper-slide-active{
+					transform: scale(1);
+				}
+
+			}
+
+
+			div.slideCon{
+				margin:0 auto;
+				width: 400px;
+				height: 540px;
+				border-radius:20px;
+				div.imgC{
+					height: 260px;
+					>img{
+						width: 100%;
+					}
+				}
+				div.tit{
+					font-size: 26px;
+					margin-top: 30px;
+				}
+				div.describe{
+					font-size: 24px;
+					margin-top: 30px;
+				}
+			}
+		}
+	}
+
+
+	div.HomeRecruitment{
+		width: 100%;
+		padding:20px;
+		div.HomeRecruitmentCon{
+			width: 100%;
+			height: 480px;
+			margin:20px auto 0;
+			overflow-x: auto;
+		}
+		ul.HomeRecruitmentList{
+			width: 1336px;
+			>li{
+				width: 284px;
+				margin:0 20px;
+				>a{
+					.iconC{
+						width: 100%;
+						i{
+							font-size: 150px;
+						}
+					}
+					.name{
+						font-size: 28px;
+						margin-top: 20px;
+					}
+					.dist{
+						margin-top: 20px;
+						padding: 0 40px;
+						font-size: 20px;
+					}
+					.describe{
+						margin-top: 15px;
+						font-size: 20px;
+					}
+					.money{
+						margin-top: 30px;
+						font-size: 24px;
+					}
+				}
+			}
+		}
+	}
+
+
+
+
+	div.HomeSubsidiariesAndContactUs{
+		padding:30px 0;
+		height:1050px;
+		ul.nav{
+			>li{
+				width: 240px;
+				font-size: 22px;
+			}
+		}
+
+		div.Subsidiaries{
+			height: 450px;
+			margin-top: 50px;
+			position: relative;
+			.SubsidiariesNext,
+			.SubsidiariesPrev{
+				display: none;
+			}
+
+			.Cn{
+				width: 750px;
+				padding-top:30px;
+			}
+
+
+
+			div.swiper-slide{
+				width: 310px;
+				height: 400px;
+				background-color: #fff;
+				border-radius: 20px;
+				text-align: center;
+				transition: all 0.5s;
+				z-index: 1;	
+
+				div.SubsidiariesCn{
+					padding: 60px 40px 0;
+
+					div.title{
+						font-size: 24px;
+					}
+					div.address{
+						font-size: 18px;
+					}
+					p.describe{
+						margin-top: 20px;
+						font-size: 20px;
+						line-height: 24px;
+					}
+
+					div.bottomCn{
+						a.link{
+							width: 130px;
+							height: 40px;
+							border-radius: 20px;
+							font-size: 18px;
+							line-height: 40px;
+						}
+						img{
+							margin-top: 10px;
+						}
+					}
+
+				}
+			}
+
+		}
+
+		div.ContactUs{
+			height: 400px;
+			margin-top: 100px;
+			padding: 0 50px;
+			div.Ln{
+				div.title{
+					font-size: 26px;
+					margin-bottom: 30px;
+				}
+
+				p{
+					font-size: 24px;
+					line-height: 30px;
+				}
+			}
+		}
+
+
+		div.HomeKeyFigures{
+			margin-top: 60px;
+			padding-top:30px;
+			.Title{
+				font-size: 30px;
+			}
+
+			div.HomeKeyFiguresList{
+				width: 750px;
+				height: 278px;
+				margin-top: 20px;
+				overflow-x: auto;
+				>ul{
+					width: 1670px;
+					>li{
+						width: 334px;
+						padding-top:60px;
+						div.index{
+							font-size: 60px;
+						}
+						p{
+							font-size: 24px;
+							margin-top: 20px;
+						}
+					}
+				}
+			}
+		}
+
+	}
+
+
+
+
+
+	div.HomePhotos{
+		padding:0px 20px 40px;
+		ul.nav{
+			width: 100%;
+			text-align: left;
+			margin-top: 20px;
+			>li{
+				height: 50px;
+				width: 200px;
+				line-height: 50px;
+				font-size: 24px;
+			}
+		}
+
+		div.photolist{
+			margin-top: 30px;
+			width: 100%;
+
+			overflow-x: auto;
+			ul{
+				width: 1408px;
+				@include clearfloat;
+				>li{
+					width: 460px;
+					height: 370px;
+					margin-left: 14px;
+					div.word{
+						background-color: rgba(0,0,0,0.5);
+						padding:50px 30px;
+						div.text{
+							height: 200px;
+							div.title{
+								font-size: 26px;
+								line-height: 40px;
+							}
+							p{
+								font-size: 22px;
+								line-height: 28px;
+							}
+						}
+						div.link{
+							padding:0 30px 20px;
+							a{
+								width: 160px;
+								height: 44px;
+								border-radius:22px;
+								font-size: 22px;
+								line-height: 44px;
+							}
+						}
+					}
+				}
+
+			}
+		}
+
+		div.btnCn{
+			display: none;
+		}
+	}
+
+
+
+
+
+	div.HomeVideoAndKay{
+		height:1050px;
+		background-position: center 600px;
+		padding:20px;
+
+		.Video,
+		.Kay{
+			width: 100%;
+			float: left;
+		}
+
+		.Kay{
+			margin-top: 70px;
+			.kayIndex{
+
+				margin:80px auto 0;
+				background-image:url(../images/index_07_10.png);
+				background-repeat: no-repeat;
+				background-size:100% 100%;
+				width: 440px;
+				height: 380px;
+				color: $themeColor;
+				padding-top: 40px;
+				text-align: center;
+
+				.p1{
+					font-size: 36px;
+					font-weight: bold;
+				}
+				.p2{
+					font-size: 24px;
+					margin-top: 24px;
+
+				}
+				.p3{
+					margin-top: 30px;
+					font-size: 24px;
+
+				}
+			}
+		}
+	}
+
+
+
+
+
+
+
+	// aboutUs///////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+	div.AboutUsCompanyProfile{
+		padding:20px;
+		div.CompanyProfileCn{
+			@include clearfloat;
+			div.imgC{
+				text-align: center;
+				width: 100%;
+				padding-top:50px;
+				>img{
+					width: 435px;
+				}
+			}
+
+			div.word{
+				width:100%;
+				padding-right:0px;
+				padding: 50px;
+				>p{
+					width: 100%;
+					float: left;
+					font-size: 24px;
+					line-height: 34px;
+				}
+				div.link{
+					margin-top: 20px;
+					font-size: 24px;
+					a{
+						i{
+							margin-right: 20px;
+						}
+					}
+				}
+
+				div.btnC{
+					margin-top: 20px;
+					a{
+						width: 160px;
+						height: 48px;
+						line-height: 48px;
+						border-radius:24px;
+						font-size: 24px;
+
+					}
+				}
+			}
+		}
+	}
+
+
+
+
+	div.AboutUsCompanyHistory{
+		padding:20px;
+		background-color: #fff;
+
+		div.CompanyHistoryCn{
+			height: 980px;
+			width: 100%;
+			margin:50px auto 0;
+
+			.mCSB_scrollTools .mCSB_draggerRail{
+				width: 100%;
+				background-color: #f0f0f0;
+			}
+
+			.mCS-rounded.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+			.mCS-rounded-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+			.mCS-rounded-dots.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar,
+			.mCS-rounded-dots-dark.mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar{
+				width: 100%;
+				background-color:#cdcdcd;
+				margin:0;
+			}
+
+			ul.list{
+				margin: 0 auto;
+				position: relative;
+				width: 420px;
+				@include clearfloat;
+				&:before{
+					display: none;
+				}
+
+				>li{
+					width: 417px;
+					height: 270px;
+					padding-right:0px;
+					margin-top: 10px;
+
+
+					div.date{
+						position: relative;
+						height: 56px;
+						width: 100%;
+						&:after{
+							display: none;
+						}
+						span.time{
+							width: 100px;
+							font-size: 30px;
+							line-height: 56px;
+
+						}
+						div.dian{
+							width: 56px;
+							height: 56px;
+							left: 115px;
+							border-radius:50%;
+
+							>span{
+								width: 18px;
+								height: 18px;
+								margin-left: -9px;
+								margin-top: -9px;
+							}
+						}
+					}
+
+					div.photo{
+						width: 100%;
+						text-align: right;
+						padding-top:17px;
+						div.imgC{
+							width: 300px;
+							height: 200px;
+
+						}
+
+						div.word{
+							margin-top: 20px;
+							font-size: 24px;
+						}
+
+					}
+
+
+				}
+				>li:nth-child(2){
+					margin-top: 10px;
+				}
+				>li:nth-child(2n){
+					padding-left:0px;
+					float: left;
+
+					div.date{
+						text-align: left;
+						div.dian{
+							left: 115px;
+						}
+					}
+
+					div.photo{
+						text-align: right;
+						div.imgC{
+							&:after{
+
+								border-top:1px solid $themeColor;
+								border-right:none;
+								border-left:1px solid $themeColor;
+								left: 20px;
+								transform:rotate(45deg) skewX(20deg);
+
+							}
+						}
+					}
+
+				}
+			}
+		}
+	}
+
+
+
+
+
+
+	div.AboutUsCriticalData{
+		padding: 20px 20px 0;
+		div.CriticalDataCn{
+			width: 750px;
+			margin-left: -20px;
+			overflow-x: auto;
+			height: 200px;
+			ul{
+				width: 1200px;
+				height: 200px;
+				@include clearfloat;
+				>li{
+					div.name{
+						font-size: 24px;
+					}
+				}
+			}
+		}
+	}
+
+
+	div.AboutUsTheSompanyBusiness{
+		display: none;
+	}
+
+
+
+
+
+	div.AboutUs_CompanyAdminister{
+		padding:20px 0px 20px 20px;
+		div.AdministerCn{
+			margin-top: 0px;
+			overflow-x: auto;
+			height: 490px;
+			padding: 25px 0;
+			ul{
+				>li{
+
+					div.title{
+						font-size: 24px;
+					}
+				}
+			}
+		}
+	}
+
+
+	div.AboutUs_TheSocialResponsibility{
+		padding:20px 20px 40px;
+		background-color: #fff;
+
+
+		div.describe{
+			padding:0 40px;
+			font-size: 22px;
+			line-height: 32px;
+		}
+
+		ul.label{
+			padding: 20px 40px 0;
+			>li{
+				margin-top: 30px;
+				width: 50%;
+				div.title{
+					font-size: 22px;
+					color: $themeColor;
+					margin-top: 15px;
+				}
+			}
+		}
+	}
+
+
+
+	//investors///////////////////////////////////////////////////////////////////////////////////////////
+
+	div.investors_news{
+		padding:20px;
+		background-color: #fff;
+		.publicMoreBtnCn{
+			width: 100%;
+		}
+
+		ul.newslist{
+			width: 100%;
+			margin:20px auto;
+			>li{
+				margin-top: 30px;
+				padding: 0 20px;
+				width: 100%;
+				border-bottom:1px solid #e1e1e1;
+				>a{
+					div.imgC{
+						width: 100%;
+						height: 330px;
+					}
+
+					div.word{
+						width: 100%;
+						height: auto;
+						padding-bottom: 50px;
+						padding-top: 20px;
+						div.title{
+							font-size: 30px;
+						}
+						div.describe{
+							font-size: 24px;
+						}
+						div.time{
+							font-size: 24px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	div.investors_feature{
+	padding:20px 0 80px;
+	}
+
+
+	div.investors_StockInformation{
+		padding: 0px ;
+
+		.head{
+			padding: 0 20px;
+		}
+
+		div.StockCon{
+
+			ul{
+				width: 100%;
+			}
+			
+		}
+
+		div.navlistCn{
+			width: 100%;
+			overflow-x: auto;
+			margin:-100px auto 0;
+			ul{
+				width: 1040px;
+				>li{
+					div.name{
+						font-size: 24px;
+						color: #234300;
+						margin-top: 30px;
+
+					}
+				}
+			}
+		}
+	}
+
+
+
+
+
+
+	div.AboutUs_Financial{
+		padding:20px 0 0 ;
+
+		.head{
+			padding:0 20px;
+		}
+
+		div.FinancialCn{
+			margin-top: 20px;
+			height: 280px;
+
+			ul{
+				width: 100%;
+				padding-top:60px;
+				>li{
+					div.title{
+						font-size: 26px;
+					}
+					div.describe{
+						font-size:20px;
+					}
+					a.download{
+						width: 160px;
+						height: 56px;
+						border-radius:28px;
+						font-size: 18px;
+						line-height: 56px;
+
+					}
+				}
+			}
+
+		}
+
+	}
+
+
+
+
+
+
+	div.AboutUs_publications{
+		padding:20px 20px 40px;
+		ul.publicationsList{
+			margin-top: 0px;
+			width: 100%;
+			@include clearfloat;
+			>li{
+
+				width: 50%;
+				float: left;
+				padding-top:40px;
+				text-align:center;
+				>a{
+					display: block;
+				}
+				div.iconC{
+					i{
+						font-size: 110px;
+						color: $themeColor;
+					}
+				}
+				div.name{
+					color: #333;
+					margin-top: 20px;
+					font-size: 18px;
+				}
+
+				div.size{
+					color: #666;
+					margin-top: 15px;
+					font-size: 14px;
+				}
+			}
+		}
+	}
+
+
+
+
+
+	// newsroom//////////////////////////////////////////////////////////////////
+
+
+
+
+
+	div.News_Announcement{
+		padding: 20px;
+
+		ul.newslist{
+			margin: 30px auto 0;
+			width: 100%;
+
+			>li{
+				border-bottom:1px solid #e1e1e1;
+				padding: 20px 0;
+				>a{
+					display: block;
+					@include clearfloat;
+					div.L{
+						float: left;
+						width: 540px;
+						div.title{
+							font-size: 20px;
+							color: #333;
+						}
+						div.source{
+							display: none;
+						}
+					}
+					div.R{
+						float: right;
+						width: 130px;
+						font-size: 20px;
+						color: #818181;
+					}
+				}
+			}
+		}
+
+		.publicMoreBtnCn{
+			margin: 40px auto 0;
+			width: 100%;
+		}
+	}
+
+
+
+
+	div.News_video{
+		padding-top:20px;
+		.head{
+			padding: 0 20px;
+
+		}
+		div.VideoBack{
+			margin-top: 20px;
+			div.playCn{
+				p{
+					font-size: 24px;
+				}
+			}
+
+		}
+	}
+
+
+
+
+	// Research///////////////////////////////////////////////////////////
+
+
+
+	div.Research_GeneralSituation{
+		padding:20px;
+		div.describe{
+			margin-top: 20px;
+			text-align: left;
+			line-height: 34px;
+			font-size: 24px;
+			padding:0 0px;
+			color: #666;
+		}
+
+
+		div.listCn{
+			overflow-x: auto;
+			width: 750px;
+			margin-left: -20px;
+		}
+	}
+
+
+
+
+
+	div.Research_photo{
+		padding: 20px;
+		background-color: #fff;
+
+		ul.photoList{
+			padding: 0 65px;
+			>li{
+				margin:40px 15px 0;
+				width: 550px;
+				height: 584px;
+
+				div.word{
+					padding:20px 40px;
+				}
+
+				div.imgC{
+					height: 420px;
+					>img{
+						width: 100%;
+					}
+				}
+
+				div.name{
+					font-size: 26px;
+				}
+
+				div.describe{
+					font-size: 22px;
+					margin-top: 20px;
+				}
+			}
+		}
+	}
+
+
+
+	div.Research_mechanism{
+		padding: 20px;
+		div.describe{
+			margin-top: 30px;
+			text-align: center;
+			font-size: 18px;
+		}
+
+		div.MapCon{
+			text-align: center;
+			img{
+				width: 100%;
+			}
+
+		}
+	}
+
+
+
+
+
+
+	// Product///////////////////////////////////////////////////////////////////////
+
+	div.Product_Select{
+		padding:20px;
+
+		a.porduct{
+
+			div.iconC{
+				width: 140px;
+				height: 140px;
+				line-height: 140px;
+				i{
+					font-size: 80px;
+					line-height: 140px;
+				}
+			}
+
+			div.imgC{
+				img{
+					width: 400px;
+					height: 400px;
+				}
+			}
+
+			div.name{
+				font-size: 30px;
+				margin-top: 40px;
+			}
+
+			div.describe{
+				margin-top: 20px;
+				font-size: 24px;
+			}
+		}
+
+		div.PorductSwiper{
+			display: none;
+		}
+
+		div.PorductList{
+			display: block;
+			li{
+				margin-top: 50px;
+			}
+
+			div.publicMoreBtnCn{
+				margin-top: 40px;
+			}
+		}
+	}
+
+
+
+
+
+	
+	div.Product_product{
+		padding-top: 20px;
+		padding-bottom: 20px;
+		background-color: #fff;
+		
+		.head{
+			padding: 0 20px;
+		}
+		div.RroductNav{
+			width: 100%;
+			height: 58px;
+			margin: 30px auto 0; 
+			background-color: #ededed;
+			padding:14px;
+			position: relative;
+			@include clearfloat;
+			div.functionC{
+				float: right;
+				height: 100%;
+				line-height: 30px;
+				padding-left:8px;
+				border-left:none;
+				font-size: 24px;
+
+				color: #666;
+			}
+			select{
+				font-size: 24px;
+				width: 120px;
+				height: 30px;
+			}
+		}
+
+		ul.PorductList{
+			width: 100%;
+			margin: 20px auto;
+			padding: 0 20px;
+			>li{
+				width:328px;
+				height: 338px;
+				border-radius:20px;
+				border:1px solid #e1e1e1;
+				background-color:#fff;
+				float: left;
+				margin-right: 45px;
+				margin-top: 30px;
+				>a{
+					display: block;
+					width: 100%;
+					padding: 16px;
+					div.imgC{
+						height: 220px;
+						border-radius:20px;
+						overflow: hidden;
+						>img{
+							width: 100%;
+						}
+					}
+					div.name{
+						text-align: center;
+						font-size: 18px;
+						color: #333;
+						margin-top: 30px;
+					}
+
+				}
+			}
+			>li:nth-child(3n){
+				margin-right: 45px;
+			}
+			>li:nth-child(2n){
+				margin-right: 0;
+			}
+
+
+
+		}
+
+		div.btnCn{
+			span{
+				i{
+					font-size:40px;
+
+				}
+
+			}
+		}
+	}
+
+
+
+
+	div.Product_SellWell{
+		padding:20px 0;
+		.head{
+			padding:0 20px;
+		}
+		div.SellWellList{
+			margin-top: 40px;
+			width: 750px;
+			overflow-x:auto;
+
+			ul{
+				width: 1720px;
+			}
+			li{
+				width: 430px;
+				height: 750px;
+				text-align: center;
+				padding:35px;
+				background-color: #fff;
+				float: left;
+				div.imgC{
+					width: 300px;
+					height: 300px;
+				}
+
+				div.name{
+					font-size: 34px;
+				}
+				div.describe{
+					height: 200px;
+					font-size: 24px;
+					line-height: 32px;
+				}
+
+				a.link{
+					width: 160px;
+					height: 56px;
+					border-radius: 28px;
+					font-size: 24px;
+					line-height: 56px;
+				}
+
+			}
+		}
+	}
+
+
+
+	// Artcle////////////////////////////////////////////////////////////////////////////////////
+
+	div.Artcle_Content{
+		padding:50px 20px;
+		min-height: 1000px;
+		div.wordCN{
+			width: 100%;
+			margin:0 auto;
+
+			div.title{
+				font-size: 32px;
+				text-align: left;
+
+			}
+
+			div.textCn{
+				margin-top: 50px;
+				font-size: 16px;
+				color: #777;
+				line-height: 26px;
+				@include clearfloat;
+				p{
+					float: left;
+					width: 100%;
+				}
+
+				img{
+					margin-top: 30px;
+					max-width: 100%;
+
+				}
+			}
+		}
+	}
+
+
+
+
+
+}
+
+
